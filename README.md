@@ -1,1 +1,1 @@
-# fullstack-teamProject
+# fullstack-team-project
