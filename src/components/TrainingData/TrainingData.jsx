@@ -1,5 +1,5 @@
 const TrainingData = () => {
-  return (  );
+  return ( <></> );
 }
  
 export default TrainingData;
