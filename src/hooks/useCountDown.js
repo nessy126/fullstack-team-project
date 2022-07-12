@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useCountDown = (targetDate) => {
+const useCountdown = (targetDate) => {
   const countDownDate = new Date(targetDate).getTime();
 
   const [countDown, setCountDown] = useState(
@@ -30,4 +30,4 @@ const getReturnValues = (countDown) => {
   return [days, hours, minutes, seconds];
 };
 
-export default useCountDown;
+export { useCountdown };
