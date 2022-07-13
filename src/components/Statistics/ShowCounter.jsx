@@ -5,7 +5,7 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
     <div className="show-counter">
       <DateTimeDisplay value={days} type={"Days"} isDanger={days <= 3} />
       <p>:</p>
-      <DateTimeDisplay value={hours} type={"Hours"} isDanger={false} />
+      <DateTimeDisplay value={hours} type={"Hours"} isDanger={true} />
       <p>:</p>
       <DateTimeDisplay value={minutes} type={"Mins"} isDanger={false} />
       <p>:</p>
