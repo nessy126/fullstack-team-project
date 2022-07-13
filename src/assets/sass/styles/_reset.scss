@@ -42,13 +42,12 @@ html,
 body {
   width: 100%;
   font-size: 100%;
-  line-height: 1;
-  font-size: 14px;
+  margin: 0;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  margin: 0;
   overflow-x: hidden;
+  background-color: var(--auth-bg-cl);
 }
 
 input,
