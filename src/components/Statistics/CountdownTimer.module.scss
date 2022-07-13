@@ -37,14 +37,14 @@
 
 }
 
-.showCounter {
+// .showCounter {
 
-     &:not(:last-child) {
-            @include vp(tablet) {
-                margin-right: 24px;
-            }
-        }
-}
+//      &:not(:last-child) {
+//             @include vp(tablet) {
+//                 margin-right: 24px;
+//             }
+//         }
+// }
 
 
 
