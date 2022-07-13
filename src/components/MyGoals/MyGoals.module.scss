@@ -1,9 +1,45 @@
-@import '../../index.scss';
+@import '../../assets/sass/main.scss';
+
 .goal__wrapper{
     display: flex;
     flex-direction: column;
     width: 100%;
+    background-color: var(--main-bg-cl);
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
+    @include vp(tablet){
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 8px;
+        padding-left: 45px;
+        padding-right: 45px;
+        height: 105px;
+    }
+    @include vp(desktop) {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        width: 275px;
+        height: 318px;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
     
+}
+.top__wrapper{
+    width: 100%;
+    @include vp(tablet){
+        width: 275px;
+        padding-bottom: 14px;
+        // margin-right: 78px;
+        
+    }
+    @include vp(desktop) {
+        padding-bottom: 0;
+    }
 }
 .title__wrapper{
     width: 100%;
@@ -14,34 +50,48 @@
     justify-content: center;
     padding-top: 11px;
     padding-bottom: 11px;
-    
 }
 .title{
-    font-family: 'Montserrat';
-    font-style: normal;
     @include font(600, 20px, 1.9);
 }
 .list{
     display: flex;
-    // align-items: center;
-    // justify-content: space-between;
-    // width: 100%;
+    justify-content: space-between;
     padding-top: 55px;
     padding-bottom: 55px;
     padding-left: 25px;
     padding-right: 25px;
     background-color: var(--main-bg-cl);
+    @include vp(tablet){
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+    @include vp(desktop){
+        padding-top: 55px;
+        padding-bottom: 55px;
+        padding-left: 28px;
+        padding-right: 27px;
+    }
+
 }
 .item{
     display: flex;
     flex-direction: column;
-align-items: center;
-justify-content: center;
+    align-items: center;
+    justify-content: center;
     width: 100px;
     height: 100%;
 }
 .item:not(:last-child){
     margin-right: 20px;
+    @include vp(tablet){
+        margin-right: 35px;  
+    }
+    @include vp(desktop){
+        margin-right: 20px;
+    }
 }
 .amount{
     display: flex;
@@ -49,26 +99,35 @@ justify-content: center;
     justify-content: center;
     width: 100%;
     height: 100px;
+    padding-top: 31px;
+    padding-bottom: 31px;
     background-color: var(--auth-bg-cl);
     color: var(--chart-plan-cl);
     font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 0.95;
-    box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15)
+    @include font(700, 40px, 0.95);
+    box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+    @include vp(tablet){
+    height: 100%;
+    padding-top: 11px;
+    padding-bottom: 11px;
+    }
+    @include vp(desktop){
+        height: 100px;
+        padding-top: 31px;
+        padding-bottom: 31px; 
+    }
     }
 .text{
-    // display: flex;
-    // align-items: center;
-    // justify-content: center;
-    font-family: 'Montserrat';
     text-align: center;
-    font-style: normal;
     @include font(500, 14px, 1.21);
-    // font-weight: 500;
-    // font-size: 14px;
-    // line-height: 1.21;
     color: var(--secondary-text-cl);
     margin-top: 14px;
+    @include vp(tablet){
+        margin-top: 4px;
+        @include font(500, 11px, 1.18);
+    }
+    @include vp(desktop){
+        @include font(500, 14px, 1.21);
+        margin-top: 14px;
+    }
 }
