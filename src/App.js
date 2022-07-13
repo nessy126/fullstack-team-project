@@ -1,12 +1,13 @@
 import Container from "./components/Container/Container";
-import MainNav from "./components/MainNav/MainNav";
-import MyGoals from "./components/MyGoals/MyGoals";
+// import MainNav from "./components/MainNav/MainNav";
+
+import TrainingPage from './pages/TrainingPage/TrainingPage';
+
 
 function App() {
   return (
     <Container>
-      <MainNav />
-      <MyGoals />
+      <TrainingPage />
     </Container>
   );
 }
