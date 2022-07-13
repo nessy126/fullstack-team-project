@@ -1,8 +1,38 @@
-.page{
-    display: flex;
-}
+@import '../../assets/sass/styles/mixin';
 
+.page{
+    @include vp(tablet){
+        display: flex;
+    }
+}
 
 .quote{
-    //
+    position: relative;
+    margin-top: 50px;
+    text-align: center;
 }
+
+.quoteText{
+    @include font(500, 13px, 16px)
+}
+
+.author{
+    margin-top: 10px;
+    width: 100px;
+    margin-right: auto;
+    margin-left: auto;
+    border-top: 1px solid var(--secondary-text-cl);
+}
+.quoteAuthor{
+    color: var(--secondary-text-cl);
+    @include font(500, 14px, 38px )
+}
+.iconQuote{
+    fill: var(--accent-active-cl);
+    width: 20px;
+    position: absolute;
+    top: 0;
+    right: 40%;
+    transform: translate(-60%, -60%);
+}
+

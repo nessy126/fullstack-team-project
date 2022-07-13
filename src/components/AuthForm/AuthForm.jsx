@@ -1,5 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 
+import spriteSVG from "../../assets/images/sprite.svg";
+
 import s from "./AuthForm.module.scss";
 
 const AuthForm = () => {
@@ -27,19 +29,53 @@ const AuthForm = () => {
       >
         {({ isSubmitting }) => (
           <Form className={s.form}>
+            <div className={s.google}>
+              <button>
+                <svg className={s.iconGoogle}>
+                  <use href={`${spriteSVG}#google`}></use>
+                </svg>
+                Google
+              </button>
+            </div>
             <div>
-              <p>Email *</p>
-              <Field type="email" name="email" />
-              <ErrorMessage name="email" component="div" />
-              <p>Password *</p>
-              <Field type="password" name="password" />
-              <ErrorMessage name="password" component="div" />
+              <div className={s.email}>
+                <p>
+                  Email <b>*</b>
+                </p>
+                <Field
+                  className={s.emailInput}
+                  type="email"
+                  name="email"
+                  placeholder="example@email.com"
+                />
+                <ErrorMessage
+                  className={s.errorMessage}
+                  name="email"
+                  component="div"
+                />
+              </div>
+              <div className={s.password}>
+                <p>
+                  Password <b>*</b>
+                </p>
+                <Field
+                  className={s.passwordInput}
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                />
+                <ErrorMessage name="password" component="div" />
+              </div>
             </div>
             <div className={s.buttons}>
-              <button type="submit" disabled={isSubmitting}>
+              <button className={s.login} type="submit" disabled={isSubmitting}>
                 Login
               </button>
-              <button type="button" disabled={isSubmitting}>
+              <button
+                className={s.register}
+                type="button"
+                disabled={isSubmitting}
+              >
                 Registration
               </button>
             </div>
