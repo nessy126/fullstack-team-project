@@ -11,10 +11,3 @@
     --chart-plan-cl: #091E3F;
     --accent-active-cl: #FF6B08;
   }
-
-
-  @mixin font($fw, $fs, $lh) {     
-    font-weight: $fw;     
-    font-size: $fs;     
-    line-height: $lh;   
-  }
