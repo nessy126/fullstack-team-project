@@ -1,4 +1,5 @@
 import CountdownTimer from "./CountdownTimer";
+import s from "./Statistics.module.scss";
 
 const Statistics = () => {
   const now_in_ms = new Date().getTime();
@@ -12,8 +13,8 @@ const Statistics = () => {
 
   function ms_of_a_year(year) {
     return isLeapYear(year)
-      ? 366 * 86400000 - 3600000
-      : 365 * 86400000 - 3600000;
+      ? 366 * 86400000 - 7200000
+      : 365 * 86400000 - 7200000;
   }
 
   function isLeapYear(year) {
@@ -21,11 +22,15 @@ const Statistics = () => {
   }
 
   return (
-    <div>
-      <h1>Year countdown</h1>
-      <CountdownTimer targetDate={dateTimeToNewYear} />
-      <h1>Goal countdown</h1>
-      <CountdownTimer targetDate={dateTimeToGoal} />
+    <div className={s.counterDiv}>
+      <div>
+        <h2 className={s.counterTitle}>Year countdown</h2>
+        <CountdownTimer targetDate={dateTimeToNewYear} />
+      </div>
+      <div>
+        <h2 className={s.counterTitle}>Goal countdown</h2>
+        <CountdownTimer targetDate={dateTimeToGoal} />
+      </div>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from "react";
 import DateTimeDisplay from "./DateTimeDisplay";
 import { useCountdown } from "../../hooks";
+import s from "./CountdownTimer.module.scss";
 
 const ExpiredNotice = () => {
   return (
@@ -13,7 +14,7 @@ const ExpiredNotice = () => {
 
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
-    <div className="show-counter">
+    <div className={s.showCounter}>
       <DateTimeDisplay value={days} type={"Days"} isDanger={days <= 3} />
       <p>:</p>
       <DateTimeDisplay value={hours} type={"Hours"} isDanger={false} />
