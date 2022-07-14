@@ -3,17 +3,19 @@ import { createSlice } from '@reduxjs/toolkit';
 const trainingSlice = createSlice({
   name: 'training',
   initialState: {
-    currentTraining: {
-      books: [],
-      startTraining: "11.07.2022",
-      endTraining: "11.07.2022",
+      booksId: [],
+      startTraining: "",
+      endTraining: "",
+      factEndTraining: "", 
+      factReadPages: 0,
+      amountOfDays: 0,
+      amountOfPages: 0,
+      pagesPerDay: 0,
       statistics: [{
         data:  "11.07.2022",
         time: "08:10:09",
-        readPages: 12,
-      }]
-    },
-    finishedTrainings: [],
+        readPages: 0,
+    }],
   },
   isLoading: false,
   isLoggedIn: false,

@@ -7,7 +7,8 @@ const authSlice = createSlice({
     user: {
       name: '',
       email: '',
-    }
+    },
+    // currentTrainig: false,
   },
   isLoading: false,
   isLoggedIn: false,
