@@ -1,14 +1,11 @@
 @import '../../assets/sass/styles/mixin';
 
 .login{
-
     background-color: var(--main-bg-cl);
-
     @include vp(desktop){
         display: flex;
         height: 790px;
     }
-
 }
 
 .quote{
