@@ -1,11 +1,11 @@
-import Container from "./components/Container/Container";
-import TrainingPage from "./pages/TrainingPage/TrainingPage";
+import Container from "components/Container";
+import TrainingPage from "pages/TrainingPage";
 
-import MainNav from "./components/MainNav/MainNav";
-import LoginForm from "./components/LoginForm";
-import RegisterForm from "./components/RegisterForm";
-// import Statistics from "./components/Statistics/Statistics";
-// import MyGoals from "./components/MyGoals/MyGoals";
+import MainNav from "components/MainNav";
+import LoginForm from "components/LoginForm";
+import RegisterForm from "components/RegisterForm";
+// import Statistics from "./components/Statistics";
+// import MyGoals from "./components/MyGoals";
 
 function App() {
   return (
