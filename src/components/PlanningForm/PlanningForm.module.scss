@@ -56,30 +56,40 @@
 
         }
     }
-    
-
-    
 }
-.datetime__picker{
+div.datetime__picker{
     background-color: var(--secondary-bg-cl);
     box-sizing: border-box;
     color: var(--main-text-cl);
     @include font(500, 14px, 2.71);
     margin: 0;
-    // padding: 10px;
     display: block;
     width: 270px;
     height: 42px;
     border: none;
-    // button.react-calendar__tile--active {
-    //     background-color: #ff6b08;
-    //     color: #fff;
-    // }
+}
+.react-datetime-picker__wrapper{
+    border: none;
 }
 
 // .datetime-picker * {
 //     border: none;
 //   }
+div.react__calendar {
+    background-color: var(--main-bg-cl);
+    width: 270px;
+    border-radius: 4px;
+    font-family: 'Montserrat', sans-serif;
+    @include font(500, 12px, 1.25);
+    
+}
+div.react__calendar.react-calendar button.react-calendar__tile--now {
+    background-color: var(--accent-active-cl);
+}
+
+
+
+
 
 
 

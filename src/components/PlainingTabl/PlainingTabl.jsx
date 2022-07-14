@@ -1,4 +1,4 @@
-import s from "./Table.module.scss";
+import s from "./PlainingTabl.module.scss";
 import { MdMenuBook, MdOutlineDeleteOutline } from 'react-icons/md';
 import Media from "react-media";
 // import deleteIconSvg from '../../assets/svg/delete.svg';
@@ -6,7 +6,7 @@ import Media from "react-media";
 
 
 
-const Tabl = (props) => {
+const PlaningTabl = (props) => {
 const{listBooks, handleDelBook}=props;
 
     const isLoading = false;
@@ -130,4 +130,4 @@ const{listBooks, handleDelBook}=props;
     );
 }
 
-export default Tabl;
+export default PlaningTabl;

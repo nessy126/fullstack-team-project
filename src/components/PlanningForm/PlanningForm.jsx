@@ -11,7 +11,9 @@ const PlanningForm = () => {
 
     const [valueStart, setValueStart] = useState(null);
     const [valueEnd, setValueEnd] = useState(null);
-       
+    const dateFin=new Date()
+    console.log(dateFin.getTime())
+    console.log(new Date(2017, 0, 1))
     return ( 
     <>
         <div className={s.planningForm__wrapper}>
@@ -22,10 +24,27 @@ const PlanningForm = () => {
           </div>
           <div className={s.calendar__wrapper}>
             <div className={s.input__wrapper}>
-              <DateTimePicker onChange={setValueStart} value={valueStart} minDate={new Date()} calendarIcon={<img alt="" src={polygonIconSvg}/>} clearIcon={null} className={s.datetime__picker} disableClock={true} format="dd.MM.yyyy HH:mm" placeholderText="Start"/>
+              <DateTimePicker 
+              onChange={setValueStart} 
+              value={valueStart} 
+              minDate={new Date()} 
+              calendarIcon={<img alt="" src={polygonIconSvg}/>} clearIcon={null} 
+              className={s.datetime__picker} 
+              calendarClassName={s.react__calendar} disableClock={true} 
+              format="dd.MM.yyyy HH:mm" 
+              placeholderText="Start"/>
             </div>
             <div className={s.input__wrapper}>
-              <DateTimePicker onChange={setValueEnd} value={valueEnd} minDate={valueStart} clearIcon={null} className={s.datetime__picker} disableClock={true} format="dd.MM.yyyy HH:mm" placeholder={"Finish"} calendarIcon={<img alt="" src={polygonIconSvg}/>} />
+              <DateTimePicker 
+              onChange={setValueEnd} 
+              value={valueEnd} 
+              minDate={valueStart|| new Date(Date.now() + 24*60*60*1000)} 
+              clearIcon={null} 
+              className={s.datetime__picker} 
+              calendarClassName={s.react__calendar} disableClock={true} 
+              format="dd.MM.yyyy HH:mm" 
+              placeholderText={"Finish"} 
+              calendarIcon={<img alt="" src={polygonIconSvg}/>} />
             </div>
           </div>
         </div>
@@ -35,5 +54,5 @@ const PlanningForm = () => {
     //компонент в котором два инпута с календарем даты начала и окончания
    );
 }
-
+// selected.date.add(1, 'days')
 export default PlanningForm;

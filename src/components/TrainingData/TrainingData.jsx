@@ -1,4 +1,4 @@
-import Tabl from '../PlanningForm/Tabl';
+import PlaningTabl from '../PlainingTabl/PlainingTabl';
 const books=[{
   id: 1,
   title: "Мастер и Маргарита",
@@ -121,7 +121,7 @@ const TrainingData = () => {
     console.log(id)
       }
   return <>
-  <Tabl listBooks={listBooks} handleDelBook={handleDelBook}/>
+  <PlaningTabl listBooks={listBooks} handleDelBook={handleDelBook}/>
   </>;
 };
 
