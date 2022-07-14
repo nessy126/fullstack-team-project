@@ -1,19 +1,38 @@
 @import '../../assets/sass/styles/mixin';
 
-.page{
-    @include vp(tablet){
+.login{
+
+    background-color: var(--main-bg-cl);
+
+    @include vp(desktop){
         display: flex;
+        height: 790px;
     }
+
 }
 
 .quote{
-    position: relative;
-    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-align: center;
+    height: 180px;
+    // border: 1px solid red;
+    @include vp(desktop){
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.quoteContent{
+    position: relative;
 }
 
 .quoteText{
-    @include font(500, 13px, 16px)
+    @include font(500, 13px, 16px); 
+    @include vp(tablet) {
+            width: 300px;
+        }
 }
 
 .author{
@@ -23,6 +42,7 @@
     margin-left: auto;
     border-top: 1px solid var(--secondary-text-cl);
 }
+
 .quoteAuthor{
     color: var(--secondary-text-cl);
     @include font(500, 14px, 38px )
@@ -30,9 +50,10 @@
 .iconQuote{
     fill: var(--accent-active-cl);
     width: 20px;
+    height: 20px;
     position: absolute;
-    top: 0;
-    right: 40%;
-    transform: translate(-60%, -60%);
+    top: -20px;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
