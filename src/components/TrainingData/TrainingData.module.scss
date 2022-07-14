@@ -28,3 +28,28 @@
 .select__button:active{
     background-color: var(--training-bg-cl); 
 }
+.button__wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.start__button{
+    background-color: var(--accent-active-cl);
+    color: var(--main-bg-cl);
+    @include font(600, 14px, 2.71);
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-left: 38px;
+    padding-right: 38px;
+    border: none;
+    transition: all 250ms linear;
+
+}
+.start__button:hover, .start__button:focus{
+    background-color: var( --accent-active-cl-hover);
+    box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+}
+.start__button:active{
+    background-color: var(--training-bg-cl);
+    color: var(--accent-active-cl);
+}

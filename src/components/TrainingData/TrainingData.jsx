@@ -143,6 +143,10 @@ const TrainingData = () => {
         <button type='button' onClick={handleSelect} className={s.select__button}>Add</button>
     </div> 
     <PlaningTabl listBooks={listBooks} handleDelBook={handleDelBook}/>
+    <div className={s.button__wrapper}>
+        <button type='button' onClick={()=>{console.log("Start training")}} className={s.start__button}>Start training</button>
+    </div>
+    
     </>;
 };
 
