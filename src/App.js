@@ -1,4 +1,6 @@
 import Container from "./components/Container/Container";
+import TrainingPage from "./pages/TrainingPage/TrainingPage";
+
 import MainNav from "./components/MainNav/MainNav";
 import LoginForm from "./components/LoginForm";
 import RegisterForm from "./components/RegisterForm";
@@ -8,6 +10,7 @@ import RegisterForm from "./components/RegisterForm";
 function App() {
   return (
     <Container>
+      <TrainingPage />
       <MainNav />
       <LoginForm />
       <RegisterForm />

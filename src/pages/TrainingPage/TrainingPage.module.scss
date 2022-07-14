@@ -1,0 +1,14 @@
+@import '../../assets/sass/main.scss';
+.page__wrapper{
+    display: flex;
+    flex-direction: column;
+    @include vp(desktop){
+        flex-direction: row-reverse;
+        padding-top: 50px;
+    }
+}
+.left__wrapper{
+    @include vp(desktop){
+        margin-right: 41px;
+    }
+}

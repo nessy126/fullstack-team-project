@@ -9,7 +9,7 @@ const baseUrl = "http://localhost:8000.api/users/";
 //   "email": "123456@i.ua",
 //   "password": "123456"
 // }
-export const singupApi = (newUser) => {
+export const registerApi = (newUser) => {
   return axios
     .post(baseUrl + 'signup/')
     .then(res => {
