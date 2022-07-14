@@ -1,7 +1,15 @@
+import AuthForm from "../AuthForm";
+import s from "./RegisterForm.module.scss";
+
 const RegisterForm = () => {
-  return ( 
-    <h1>RegisterForm</h1>
-   );
-}
- 
+  return (
+    <div className={s.register}>
+      <AuthForm type="register" />
+      <div className={s.intro}>
+        <h1> Books Heading</h1>
+      </div>
+    </div>
+  );
+};
+
 export default RegisterForm;

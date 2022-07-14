@@ -13,7 +13,6 @@ const trainingSlice = createSlice({
         readPages: 12,
       }]
     },
-    finishedTrainings: [],
   },
   isLoading: false,
   isLoggedIn: false,

@@ -1,0 +1,23 @@
+@import '../../assets/sass/styles/mixin';
+
+.register{
+    @include vp(desktop){
+
+        display: flex;
+        height: 790px;
+        width: 100%;
+    }
+}
+
+.intro{
+    display: none;
+    background-color: var(--main-bg-cl);
+    @include vp(desktop){
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+    }
+
+}

@@ -1,10 +1,9 @@
 import { lazy, Suspense } from "react";
+import { Switch } from "react-router-dom";
 import Container from "./components/Container/Container";
 import Header from "./components/Header/Header";
 import Statistics from "./components/Statistics/Statistics";
 import PublicRoute from "./components/PublicRoute/PublicRoute";
-
-import { Switch } from "react-router-dom";
 import PrivatRoute from "./components/PrivatRoute/PrivatRoute";
 
 const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"))
@@ -32,7 +31,6 @@ function App() {
       <PrivatRoute path="/library" >
         <LibraryPage/>
       </PrivatRoute>
-
       <TrainingPage />
       <Statistics />
       </Switch>
