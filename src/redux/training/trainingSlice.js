@@ -20,4 +20,4 @@ const trainingSlice = createSlice({
   error: null,
 })
  
-export default trainingSlice;
+export default trainingSlice.reducer;
