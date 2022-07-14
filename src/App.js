@@ -4,12 +4,15 @@ import Statistics from "./components/Statistics/Statistics";
 // import MyGoals from "./components/MyGoals/MyGoals";
 
 function App() {
+  const isLogin = true;
   return (
-    <Container>
-      <MainNav />
-      <Statistics />
-      {/* <MyGoals /> */}
-    </Container>
+    <>
+      {isLogin && <MainNav />}
+      <Container>
+        <Statistics />
+        {/* <MyGoals /> */}
+      </Container>
+    </>
   );
 }
 
