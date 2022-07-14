@@ -4,6 +4,8 @@ import { Redirect, Route } from "react-router-dom";
 
 const PublicRoute = ({ children, path, isRestricted }) => {
   const isAuth = useSelector(getIsAuth)
+  
+
   return isAuth && isRestricted ? (
     <Redirect to="/" />
     ) : (

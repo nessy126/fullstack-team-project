@@ -6,6 +6,7 @@ import { SignUpSchema, LoginSchema } from "../../assets/schemas/authSchemas";
 import s from "./AuthForm.module.scss";
 
 const AuthForm = ({ type }) => {
+  
   const isRegister = type === "register";
   const handleReset = (resetForm) => {
     resetForm();
