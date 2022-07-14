@@ -1,4 +1,8 @@
 import PlaningTabl from '../PlainingTabl/PlainingTabl';
+import Select from './../Select/Select';
+import { useState } from 'react';
+import s from './TrainingData.module.scss';
+
 const books=[{
   id: 1,
   title: "Мастер и Маргарита",
@@ -114,15 +118,36 @@ const books=[{
                       owner: {},
                       }]
 // const books1=[]
-const listBooks=[...books]
+
 
 const TrainingData = () => {
-  const handleDelBook =(id)=>{
-    console.log(id)
-      }
-  return <>
-  <PlaningTabl listBooks={listBooks} handleDelBook={handleDelBook}/>
-  </>;
+    const[selected, setSelected]=useState('');
+    let listBooks=[];
+    const handleDelBook =(id)=>{
+        const newListBooks=listBooks.filter(book=>book.id!==id);
+        return newListBooks;
+    }
+    const resetState=()=>{
+        setSelected('Choose books from the library')
+    }
+    const handleSelect=(e)=>{
+        console.log(e.target)
+        listBooks.push(selected);
+        resetState()
+        console.log(listBooks);
+    }
+
+    return <>
+    <div className={s.select__wrapper}>
+        <Select books={books} selected={selected} setSelected={setSelected}/>
+        <button type='button' onClick={handleSelect} className={s.select__button}>Add</button>
+    </div> 
+    <PlaningTabl listBooks={listBooks} handleDelBook={handleDelBook}/>
+    <div className={s.button__wrapper}>
+        <button type='button' onClick={()=>{console.log("Start training")}} className={s.start__button}>Start training</button>
+    </div>
+    
+    </>;
 };
 
 export default TrainingData;
