@@ -75,7 +75,7 @@ const AuthForm = ({ type }) => {
                       type="email"
                       name="email"
                       placeholder="example@email.com"
-                      //   autoComplete="off"
+                      autoComplete="off"
                     />
                     <ErrorMessage
                       className={s.errorMessage}
