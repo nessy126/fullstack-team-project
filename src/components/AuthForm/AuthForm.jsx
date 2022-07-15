@@ -1,4 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { useSelector, useDispatch } from "react-redux";
 
 import spriteSVG from "../../assets/images/sprite.svg";
 import { SignUpSchema, LoginSchema } from "../../assets/schemas/authSchemas";
@@ -6,19 +7,24 @@ import { SignUpSchema, LoginSchema } from "../../assets/schemas/authSchemas";
 import s from "./AuthForm.module.scss";
 
 const AuthForm = ({ type }) => {
+  const { auth } = useSelector((state) => state);
+  console.log(auth);
+
+  const dispatch = useDispatch();
+
   const isRegister = type === "register";
-  const handleReset = (resetForm) => {
-    resetForm();
-  };
+  // const handleReset = (resetForm) => {
+  //   resetForm();
+  // };
+
+  const initialValue = isRegister
+    ? { name: "", email: "", password: "", confirmPassword: "" }
+    : { email: "", password: "" };
 
   return (
     <div>
       <Formik
-        initialValues={
-          isRegister
-            ? { name: "", email: "", password: "", confirmPassword: "" }
-            : { email: "", password: "" }
-        }
+        initialValues={initialValue}
         validationSchema={isRegister ? SignUpSchema : LoginSchema}
         onSubmit={(values) => {
           console.log(values);
@@ -123,7 +129,7 @@ const AuthForm = ({ type }) => {
                   <button
                     className={s.login}
                     type="submit"
-                    onClick={handleReset.bind(null, formProps.resetForm)}
+                    // onClick={handleReset.bind(null, formProps.resetForm)}
                     // disabled={isSubmitting}
                   >
                     {isRegister ? "Register" : "Login"}

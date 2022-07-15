@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import authAPI from "../../utils/userApi";
+import * as authAPI from "../../utils/userApi";
 
 // export const registerUser = createAsyncThunk(
 //   "register",
@@ -18,7 +18,7 @@ export const signup = createAsyncThunk(
   "auth/signup",
   async (data, { rejectWithValue }) => {
     try {
-      const result = await authAPI.signup(data);
+      const result = await authAPI.registerApi(data);
       return result;
     } catch (error) {
       return rejectWithValue(error);
@@ -30,7 +30,7 @@ export const login = createAsyncThunk(
   "auth/login",
   async (data, { rejectWithValue }) => {
     try {
-      const result = await authAPI.login(data);
+      const result = await authAPI.loginApi(data);
       return result;
     } catch (error) {
       return rejectWithValue(error);
@@ -42,7 +42,7 @@ export const logout = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {
     try {
-      const result = await authAPI.logout();
+      const result = await authAPI.logOut();
       return result;
     } catch (error) {
       return rejectWithValue(error);
@@ -58,7 +58,7 @@ export const current = createAsyncThunk(
       // if(!auth.token){
       //     return rejectWithValue("Not autorization");
       // }
-      const result = await authAPI.getCurrent(auth.token);
+      const result = await authAPI(auth.token);
       return result;
     } catch (error) {
       return rejectWithValue(error);

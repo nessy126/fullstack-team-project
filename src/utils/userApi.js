@@ -38,7 +38,6 @@ export const loginApi = (user) => {
 };
 
 export const logOut = () => {
-  token.unset();;
-  return await axios.post("/users/logout");
-
+  token.unset();
+  return axios.post("/users/logout");
 };
