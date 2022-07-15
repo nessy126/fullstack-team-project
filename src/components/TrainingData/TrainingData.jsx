@@ -1,7 +1,7 @@
-import PlaningTabl from '../PlainingTabl/PlainingTabl';
-import Select from './../Select/Select';
-import { useState } from 'react';
-import s from './TrainingData.module.scss';
+import PlaningTabl from "../PlainingTabl";
+import Select from "./../Select";
+import { useState } from "react";
+import s from "./TrainingData.module.scss";
 
 const books=[{
     _id: "62d06588582a767000c16319",
@@ -112,7 +112,6 @@ const books=[{
         },
     }]
 // const books1=[]
-
 
 const TrainingData = () => {
     const[selected, setSelected]=useState('');
