@@ -13,6 +13,7 @@ import storage from "redux-persist/lib/storage";
 
 import authSlice from "./auth";
 import bookSlice from "./book";
+import trainingSlice from "./training";
 
 const persistConfig = {
   key: "auth",
@@ -26,6 +27,7 @@ export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
     book: bookSlice,
+    training: trainingSlice,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

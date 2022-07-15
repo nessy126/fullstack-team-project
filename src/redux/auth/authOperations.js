@@ -54,12 +54,9 @@ export const current = createAsyncThunk(
   "auth/current",
   async (_, { getState, rejectWithValue }) => {
     try {
-      const { auth } = getState();
-      // if(!auth.token){
-      //     return rejectWithValue("Not autorization");
-      // }
-      const result = await authAPI(auth.token);
-      return result;
+      const dataRegister = await registerApi(newUser);
+      // console.log(dataRegister);
+      return dataRegister;
     } catch (error) {
       return rejectWithValue(error);
     }

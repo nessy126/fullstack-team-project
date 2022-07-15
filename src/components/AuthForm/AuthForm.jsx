@@ -11,7 +11,6 @@ const AuthForm = ({ type }) => {
   console.log(auth);
 
   const dispatch = useDispatch();
-
   const isRegister = type === "register";
   // const handleReset = (resetForm) => {
   //   resetForm();
