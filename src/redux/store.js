@@ -11,9 +11,9 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import authSlice from "./auth";
-import bookSlice from "./book";
-import trainingSlice from "./training";
+import authSlice from "./auth/authSlice";
+import bookSlice from "./book/bookSlice";
+import trainingSlice from "./training/trainingSlice";
 
 const persistConfig = {
   key: "auth",

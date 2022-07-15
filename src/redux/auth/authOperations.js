@@ -52,11 +52,11 @@ export const logout = createAsyncThunk(
 
 export const current = createAsyncThunk(
   "auth/current",
-  async (_, { getState, rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const dataRegister = await registerApi(newUser);
-      // console.log(dataRegister);
-      return dataRegister;
+      // const dataRegister = await registerApi(newUser);
+      // console.log(dataRegister);s
+      // return dataRegister;
     } catch (error) {
       return rejectWithValue(error);
     }
