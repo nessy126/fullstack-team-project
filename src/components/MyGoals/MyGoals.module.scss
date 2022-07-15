@@ -19,7 +19,7 @@
     @include vp(desktop) {
         display: flex;
         flex-direction: column;
-        justify-content: start;
+        justify-content: flex-start;
         width: 275px;
         height: 318px;
         padding-top: 0;

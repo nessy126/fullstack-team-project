@@ -25,13 +25,13 @@ const{listBooks, handleDelBook}=props;
             (<ul className={s.column__list}>
             {listBooks?.map((book) => {
                 return (
-                    <li key={book.id} className={s.column__item}>
+                    <li key={book._id} className={s.column__item}>
                         <div className={s.column__flex}>                        
                             <div className={s.column__icon}>
                             <MdMenuBook style={{ width: "22", height: "17", color: "#A6ABB9" }} />
                             </div>
                             <div className={s.column__title}>{book.title}</div>
-                            <button type="button" onClick={()=>handleDelBook(book.id)} className={s.column__btn}>
+                            <button type="button" onClick={()=>handleDelBook(book._id)} className={s.column__btn}>
                             <MdOutlineDeleteOutline style={{ width: "14", height: "18", color: "#A6ABB9" }}/>
                             </button>
                         </div>
@@ -89,7 +89,7 @@ const{listBooks, handleDelBook}=props;
                 <ul className={s.table__list}>
                 {listBooks?.map((book) => {
                     return (
-                        <li key={book.id} className={s.table__item}>
+                        <li key={book._id} className={s.table__item}>
                             <div className={s.table__icon}>
                                 <MdMenuBook style={{ width: "22", height: "17", color: "#A6ABB9" }} />
                             </div>
@@ -97,7 +97,7 @@ const{listBooks, handleDelBook}=props;
                             <div className={s.table__author}>{book.author}</div>
                             <div className={s.table__year}>{book.year}</div>
                             <div className={s.table__pagesTotal}>{book.pagesTotal}</div>
-                            <button type="button" onClick={()=>handleDelBook(book.id)} className={s.table__btn}>
+                            <button type="button" onClick={()=>handleDelBook(book._id)} className={s.table__btn}>
                                 <MdOutlineDeleteOutline style={{ width: "14", height: "18", color: "#A6ABB9" }}/>
                             </button>
                         </li>

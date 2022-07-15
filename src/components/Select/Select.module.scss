@@ -12,9 +12,10 @@
   padding-bottom: 8px;
   padding-left: 13px;
   padding-right: 13px;
-  cursor: pointer;
   margin-bottom: 35px;
-
+display: flex;
+align-items: center;
+justify-content: space-between;
   @include vp(tablet) {
     width: 482px;
     margin-right: 25px;
@@ -26,17 +27,27 @@
   }
 }
 
-.dropdown__btn {
+.dropdown__wrapper {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.dropdown__text{
+.dropdown__input{
     width: 90%;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
+    border: none;
+}
+.dropdown__btn{
+  border: none;
+  background-color: transparent;
+  width: 10%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .react__icon{
     width: 10%;
