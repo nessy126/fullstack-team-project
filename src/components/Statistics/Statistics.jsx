@@ -1,4 +1,4 @@
-import CountdownTimer from "./CountdownTimer";
+import CountdownTimer from "../CountdownTimer/CountdownTimer";
 import s from "./Statistics.module.scss";
 
 const Statistics = () => {
@@ -25,6 +25,7 @@ const Statistics = () => {
     <div className={s.counterDiv}>
       <div>
         <h2 className={s.counterTitle}>Year countdown</h2>
+
         <CountdownTimer targetDate={dateTimeToNewYear} />
       </div>
       <div>
