@@ -50,7 +50,7 @@ export const current = createAsyncThunk(
         return rejectWithValue("Not authorized");
       }
 
-      const result = await authAPI.current();
+      const result = await authAPI.current(auth);
       return result;
     } catch (error) {
       return rejectWithValue(error);

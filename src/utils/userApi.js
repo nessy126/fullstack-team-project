@@ -40,8 +40,8 @@ export const loginApi = (user) => {
     });
 };
 
-export const current = (res) => {
-  token.set(res);
+export const current = (auth) => {
+  token.set(auth.token);
   return axios.get("current").then((res) => {
     return res.data;
   });
