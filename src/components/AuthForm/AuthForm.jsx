@@ -4,12 +4,13 @@ import { NavLink } from "react-router-dom";
 
 import spriteSVG from "../../assets/images/sprite.svg";
 import { SignUpSchema, LoginSchema } from "../../assets/schemas/authSchemas";
+import { login, signUp } from "../../redux/auth/authActionThunk";
 
 import s from "./AuthForm.module.scss";
 
 const AuthForm = ({ type }) => {
-  const { auth } = useSelector((state) => state);
-  console.log(auth);
+  // const { auth } = useSelector((state) => state);
+  // console.log(auth);
 
   const dispatch = useDispatch();
   const isRegister = type === "register";
@@ -27,13 +28,15 @@ const AuthForm = ({ type }) => {
         initialValues={initialValue}
         validationSchema={isRegister ? SignUpSchema : LoginSchema}
         onSubmit={(values) => {
-          console.log(values);
+          // console.log(values);
           try {
             const { name, email, password } = values;
             const data = isRegister
               ? { name, email, password }
               : { email, password };
             console.log(data);
+            isRegister ? dispatch(signUp(data)) : dispatch(login(data));
+            // dispatch(isRegister ? signUp(data) : login(data));
           } catch (error) {
             console.log(error.message);
           }

@@ -13,10 +13,10 @@ const token = {
 
 export const registerApi = (newUser) => {
   return axios
-    .post("signup/", newUser)
+    .post("signup", newUser)
     .then((res) => {
-      console.log(res.data);
-      token.set(res.data.token);
+      console.log(res);
+      // token.set(res.data.token);
       return res.data;
     })
     .catch((err) => {
