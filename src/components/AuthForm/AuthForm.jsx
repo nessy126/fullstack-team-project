@@ -1,5 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 
 import spriteSVG from "../../assets/images/sprite.svg";
 import { SignUpSchema, LoginSchema } from "../../assets/schemas/authSchemas";
@@ -136,10 +137,14 @@ const AuthForm = ({ type }) => {
                   {isRegister ? (
                     <p className={s.alreadyReg}>
                       Already register
-                      <span className={s.changePage}>login</span>
+                      <span className={s.changePage}>
+                        <NavLink to="/login">login</NavLink>
+                      </span>
                     </p>
                   ) : (
-                    <span className={s.changePage}>Registration</span>
+                    <span className={s.changePage}>
+                      <NavLink to="/register">Registration</NavLink>
+                    </span>
                   )}
                 </div>
               </Form>
