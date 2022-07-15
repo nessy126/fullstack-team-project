@@ -4,13 +4,13 @@ import Container from "./components/Container";
 import Header from "./components/Header";
 import Statistics from "./components/Statistics";
 import PublicRoute from "./components/PublicRoute";
-import PrivatRoute from "./components/PrivatRoute";
+import PrivateRoute from "./components/PrivateRoute";
 import { getIsAuth } from "./redux/auth/authSelector";
 import { useSelector } from "react-redux";
 
 const LoginPage = lazy(() => import("./pages/LoginPage"));
 const RegisterPage = lazy(() => import("./pages/RegisterPage"));
-const LibraryPage = lazy(() => import("./pages/LibraryPage/LibraryPage"));
+const LibraryPage = lazy(() => import("./pages/LibraryPage"));
 const TrainingPage = lazy(() => import("./pages/TrainingPage"));
 
 function App() {
@@ -28,12 +28,12 @@ function App() {
             <RegisterPage />
           </PublicRoute>
 
-          <PrivatRoute path="/training">
+          <PrivateRoute path="/training">
             <TrainingPage />
-          </PrivatRoute>
-          <PrivatRoute path="/library">
+          </PrivateRoute>
+          <PrivateRoute path="/library">
             <LibraryPage />
-          </PrivatRoute>
+          </PrivateRoute>
 
           {isAuth ? (
             <PublicRoute path="/">
