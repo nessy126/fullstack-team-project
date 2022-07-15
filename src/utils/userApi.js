@@ -1,42 +1,43 @@
-import axios from 'axios';
+import axios from "axios";
 
-const baseUrl = "http://localhost:8000.api/users/";
+axios.defaults.baseURL = "http://localhost:8000.api/users/";
 
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = "";
+  },
+};
 
-// newUser - пример:
-// {
-//   "name": "user.name",
-//   "email": "123456@i.ua",
-//   "password": "123456"
-// }
 export const registerApi = (newUser) => {
   return axios
-    .post(baseUrl + 'signup/')
-    .then(res => {
-      // console.log(res.data);
+    .post("signup/", newUser)
+    .then((res) => {
+      console.log(res.data);
+      token.set(res.data.token);
       return res.data;
     })
     .catch((err) => {
       throw err;
     });
-}
+};
 
-// console.log(singupApi(
-//   {
-//       "name": "user.name",
-//       "email": "123456@i.ua",
-//       "password": "123456"
-//     }
-// ));
-
-export const loginApi = () => {
+export const loginApi = (user) => {
   return axios
-    .get(baseUrl + "login/")
-    .then(res => {
-      // console.log(res.data);
+    .get("login/", user)
+    .then((res) => {
+      console.log(res.data);
+      token.set(res.data.token);
       return res.data;
     })
     .catch((err) => {
       throw err;
     });
-}
+};
+
+export const logOut = () => {
+  token.unset();
+  return axios.post("/users/logout");
+};

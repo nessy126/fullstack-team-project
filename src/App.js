@@ -45,8 +45,8 @@ function App() {
             </PublicRoute>
           )}
 
-          <TrainingPage />
-          <Statistics />
+          {/* <TrainingPage />
+      <Statistics /> */}
         </Switch>
       </Suspense>
     </Container>
