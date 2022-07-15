@@ -13,7 +13,7 @@ export const registerApi = (newUser) => {
   return axios
     .post(baseUrl + 'signup/')
     .then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     })
     .catch((err) => {
@@ -33,7 +33,7 @@ export const loginApi = () => {
   return axios
     .get(baseUrl + "login/")
     .then(res => {
-      console.log(res.data);
+      // console.log(res.data);
       return res.data;
     })
     .catch((err) => {

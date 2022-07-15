@@ -13,11 +13,10 @@ const trainingSlice = createSlice({
         readPages: 12,
       }]
     },
-    finishedTrainings: [],
   },
   isLoading: false,
   isLoggedIn: false,
   error: null,
 })
  
-export default trainingSlice;
+export default trainingSlice.reducer;
