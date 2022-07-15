@@ -7,6 +7,7 @@ const initialState = {
     name: "",
     email: "",
   },
+  isTraining: false,
   isLoading: false,
   isLoggedIn: false,
   error: null,
@@ -17,33 +18,15 @@ const authSlice = createSlice({
   name: "auth",
   initialState,
   extraReducers: {
-    // builder
-    //   .addCase(signUp.pending, (state) => {
-    //     return { ...state, isLoading: true };
-    //   })
-    //   .addCase(signUp.rejected, (state) => {
-    //     return { ...state, isLoading: false };
-    //   })
-    //   .addCase(signUp.fulfilled, (state, action) => {
-    //     console.log({ ...state });
-    //     console.log(action);
-    //     // return {
-    //     //   ...state,
-    //     //   user: { ...payload?.user },
-    //     //   token: payload?.token,
-    //     //   isLoading: false,
-    //     //   isLoggedIn: true,
-    //     // };
-    //   });
     [signUp.pending]: (state) => {
       state.isLoading = true;
       state.error = null;
     },
     [signUp.fulfilled]: (state, { payload }) => {
       // console.log("state");
-      console.log("payload:", payload.data);
-      state.user = { ...payload.data?.user };
-      state.token = payload.data?.token;
+      // console.log("payload:", payload);
+      state.user = { ...payload?.user };
+      // state.token = payload?.token;
       state.isLoading = false;
       state.isLoggedIn = true;
     },
@@ -57,8 +40,9 @@ const authSlice = createSlice({
       state.error = null;
     },
     [login.fulfilled]: (state, { payload }) => {
-      state.user = { ...payload.user };
-      state.token = payload.token;
+      console.log(payload);
+      state.user = { ...payload?.user };
+      state.token = payload?.token;
       state.isLoading = false;
       state.isLoggedIn = true;
     },

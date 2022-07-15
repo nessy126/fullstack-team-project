@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8000.api/users/";
+axios.defaults.baseURL = "http://localhost:8000/api/users/";
 
 const token = {
   set(token) {
@@ -15,29 +15,44 @@ export const registerApi = (newUser) => {
   return axios
     .post("signup", newUser)
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       // token.set(res.data.token);
       return res.data;
     })
     .catch((err) => {
+      console.log(err);
       throw err;
     });
 };
 
 export const loginApi = (user) => {
+  console.log(user);
   return axios
-    .get("login/", user)
+    .post("login", user)
     .then((res) => {
-      console.log(res.data);
       token.set(res.data.token);
       return res.data;
     })
     .catch((err) => {
+      console.log(err);
+
       throw err;
     });
 };
 
+export const current = (res) => {
+  token.set(res);
+  return axios.get("current").then((res) => {
+    return res.data;
+  });
+};
+
 export const logOut = () => {
-  token.unset();
-  return axios.post("/users/logout");
+  return axios
+    .get("logout")
+    .then(token.unset())
+    .catch((err) => {
+      console.log(err);
+      throw err;
+    });
 };

@@ -9,8 +9,8 @@ import { login, signUp } from "../../redux/auth/authActionThunk";
 import s from "./AuthForm.module.scss";
 
 const AuthForm = ({ type }) => {
-  // const { auth } = useSelector((state) => state);
-  // console.log(auth);
+  const { auth } = useSelector((state) => state);
+  console.log(auth);
 
   const dispatch = useDispatch();
   const isRegister = type === "register";
@@ -34,7 +34,7 @@ const AuthForm = ({ type }) => {
             const data = isRegister
               ? { name, email, password }
               : { email, password };
-            console.log(data);
+            // console.log(data);
             isRegister ? dispatch(signUp(data)) : dispatch(login(data));
             // dispatch(isRegister ? signUp(data) : login(data));
           } catch (error) {
