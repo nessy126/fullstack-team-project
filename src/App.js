@@ -22,7 +22,7 @@ function App() {
       <Suspense fallback={<div>Loading...</div>}>
         {/* <Switch> */}
           {/* <PublicRoute path="/login" isRestricted> */}
-            {/* <LoginPage /> */}
+            <LoginPage />
           {/* </PublicRoute> */}
           {/* <PublicRoute path="/register" isRestricted> */}
             {/* <RegisterPage /> */}

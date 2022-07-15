@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import {
   persistStore,
   persistReducer,
@@ -12,8 +12,8 @@ import {
 
 import storage from "redux-persist/lib/storage";
 import authSlice from "./auth/authSlice";
-import {bookReducer} from "./book/bookSlice";
-import {trainingReduser} from "./training/trainingSlice";
+import bookSlice from "./book/bookSlice";
+import trainingSlice from "./training/trainingSlice";
 
 const persistConfig = {
   key: "auth",
@@ -24,21 +24,18 @@ const persistConfig = {
 const persistedAuthReducer = persistReducer(persistConfig, authSlice);
 
 
-const middleware = [
-  ...getDefaultMiddleware({
-    serializableCheck: {
-      ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-    },
-  })
-];
-
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-    book: bookReducer,
-    training: trainingReduser,
+    book: bookSlice,
+    training: trainingSlice,
   },
-  middleware: middleware,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export const persister = persistStore(store);

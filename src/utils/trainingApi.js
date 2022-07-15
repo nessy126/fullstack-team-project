@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-axios.defaults.baseURL  = "http://localhost:8000.api/training/";
+axios.defaults.baseURL  = "http://localhost:8000/api/training/";
 
 export const addTraining = (newTraining) => {
     return axios
@@ -10,6 +10,7 @@ export const addTraining = (newTraining) => {
         return res.data;
     })
     .catch((err) => {
+        console.log(err);
         throw err;
     });
 }
@@ -22,6 +23,7 @@ export const getProgress = () => {
         return res.data;
     })
     .catch((err) => {
+        console.log(err);
         throw err;
     });
 }

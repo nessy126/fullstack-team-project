@@ -4,8 +4,20 @@ import TrainingData from "../../components/TrainingData";
 import Chart from "../../components/Chart";
 import Statistics from "../../components/Statistics";
 import s from "./TrainingPage.module.scss";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from "react-redux";
+import bookSelectors from "../../redux/book/bookSelectors";
+
 
 const TrainingPage = () => {
+  const dispatch=useDispatch();
+  const allBooks=useSelector(bookSelectors.getAllBooks)
+console.log(allBooks);
+
+  // useEffect(() => {
+  //   dispatch(allBooks);
+  // }, [dispatch]);
+
   return (
     <section className={s.page__wrapper}>
       <div className={s.right__wrapper}>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = "http://localhost:8000.api/books/";
+const baseUrl = "http://localhost:8000/api/books/";
 
 
 // newBook - пример:
@@ -18,6 +18,7 @@ export const addBook = (newBook) => {
       return res.data;
     })
     .catch((err) => {
+      console.log(err);
       throw err;
     });
 }
@@ -30,6 +31,7 @@ export const getAllBooks = () => {
       return res.data;
     })
     .catch((err) => {
+          console.log(err);
       throw err;
     });
 }

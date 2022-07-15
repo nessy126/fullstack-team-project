@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8000.api/users/";
+axios.defaults.baseURL = "http://localhost:8000/api/users/";
 
 const token = {
   set(token) {
@@ -20,6 +20,7 @@ export const registerApi = (newUser) => {
       return res.data;
     })
     .catch((err) => {
+      console.log(err);
       throw err;
     });
 };
