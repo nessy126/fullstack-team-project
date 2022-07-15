@@ -14,7 +14,7 @@ const Header = () => {
   return (
     <>
       <h1 className={s.title}>Header</h1>
-      <button onClick={logOutUser}>Logout</button>
+      {/* <button onClick={logOutUser}>Logout</button> */}
     </>
   );
 };
