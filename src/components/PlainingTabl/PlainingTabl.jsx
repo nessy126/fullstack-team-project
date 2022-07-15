@@ -7,12 +7,12 @@ import Media from "react-media";
 
 
 const PlaningTabl = (props) => {
-const{listBooks, handleDelBook}=props;
+const{books, handleDelBook}=props;
 
     const isLoading = false;
 
 
-    const show = listBooks.length>0 ? true : false;
+    const show = books?.length>0 ? true : false;
     return (
         <Media queries={{
             small: "(max-width: 767px)",
@@ -23,7 +23,7 @@ const{listBooks, handleDelBook}=props;
             <>
             {matches.small && (show ?
             (<ul className={s.column__list}>
-            {listBooks?.map((book) => {
+            {books?.map((book) => {
                 return (
                     <li key={book._id} className={s.column__item}>
                         <div className={s.column__flex}>                        
@@ -87,7 +87,7 @@ const{listBooks, handleDelBook}=props;
             <p>InlineLoader</p>
             ) : (
                 <ul className={s.table__list}>
-                {listBooks?.map((book) => {
+                {books?.map((book) => {
                     return (
                         <li key={book._id} className={s.table__item}>
                             <div className={s.table__icon}>

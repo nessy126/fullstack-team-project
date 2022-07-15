@@ -126,24 +126,24 @@ const error = useSelector(trainingSelectors.getError);
 
     const[selected, setSelected]=useState('');
     let listBooks=[...books];
+
     const handleDelBook =(id)=>{
         const newListBooks=listBooks.filter(book=>book.id!==id);
         return newListBooks;
     }
     const resetState=()=>{
-        setSelected('Choose books from the library')
+        setSelected('')
     }
     const handleSelect=(e)=>{
-        console.log(e.target)
         listBooks.push(selected);
         resetState()
-        console.log(listBooks);
+
     }
 
     return <>
         <div className={s.select__wrapper}>
             <Select 
-                books={books} 
+                books={listBooks} 
                 selected={selected} 
                 setSelected={setSelected}/>
             <button 

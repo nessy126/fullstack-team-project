@@ -6,13 +6,23 @@
 const getAllBooks=(state)=>state.book.book;
 
 const getListGoingToRead=(state)=>{
-    const allBooks= getAllBooks(state)||[];
+    const allBooks= getAllBooks(state);
     return allBooks.filter(book=>book.status==="goingToRead");
 };
+const getListInReading = (state)=>{
+    const allBooks= getAllBooks(state);
+    return allBooks.filter(book=>book.status==="inReading")
+}
+const getListFinished = (state)=>{
+    const allBooks= getAllBooks(state);
+    return allBooks.filter(book=>book.status==="finished")
+}
 
 const bookSelectors={
     getAllBooks,
-    getListGoingToRead
+    getListGoingToRead,
+    getListInReading,
+    getListFinished
 }
 
 export default bookSelectors;

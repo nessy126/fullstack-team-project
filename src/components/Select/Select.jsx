@@ -3,10 +3,9 @@ import { useState, useEffect, useCallback } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
-const Select = (props) => {
-    const {books, selected, setSelected}=props;
+const Select = ({books, selected, setSelected}) => {
     const [isActive, setIsActive] = useState(false);
-    const [filterBook, setFilterBook]=useState('');
+    const [filterBook, setFilterBook] = useState('');
 
     const handleClick = (e) => {
         setIsActive(!isActive);
@@ -16,13 +15,9 @@ const Select = (props) => {
     //     setIsActive(false);
     // };
 
-    const closeSelectByEsc = useCallback(
-        (e) => {if (e.code === "Escape") {
-            setIsActive(false);
-            setFilterBook('');
-            }}, [setIsActive]);
 
-    const getVisibleBooks = () => {
+
+    const getVisibleBooks = (books) => {
         if (!books) {
             return [];
         }
@@ -33,12 +28,21 @@ const Select = (props) => {
         return books.filter(({title}) =>
             title.toLocaleLowerCase().includes(normWord)
         );
-    };        
+    };    
+    const booksFiltered = getVisibleBooks(books);
+
+    console.log(booksFiltered)
 
     const onChangeFilter=(e)=>{
         const{value}=e.target;
         setFilterBook(value);
     };
+
+    const closeSelectByEsc = useCallback(
+        (e) => {if (e.code === "Escape") {
+            setIsActive(false);
+            setFilterBook('');
+            }}, [setIsActive]);
 
     useEffect(() => {
         window.addEventListener("keydown", closeSelectByEsc);
@@ -51,12 +55,19 @@ const Select = (props) => {
         <>
         <div  className={s.dropdown}>
             <div className={s.dropdown__wrapper} >
-                <input className={s.dropdown__input}
+                {isActive?(<input className={s.dropdown__input}
                 type="text"
                 name="filter"
                 value={filterBook}
                 onChange={onChangeFilter}
-                placeholder="Choose books from the library"/>
+                placeholder="Choose books from the library"/>):
+                (<input className={s.dropdown__input}
+                    readOnly
+                    type="text"
+                    name="filter"
+                    value={filterBook}
+                    onChange={onChangeFilter}
+                    placeholder="Choose books from the library"/>)}
                 <button type="button" onClick={handleClick} className={s.dropdown__btn}>
                     <IconContext.Provider
                     value={{
@@ -64,8 +75,7 @@ const Select = (props) => {
                     style: {
                     width: "17px",
                     height: "15px",
-                    color: "#242A37",
-                                        },
+                        },
                     }}>
                     <AiFillCaretDown />
                 </IconContext.Provider></button>
@@ -73,10 +83,11 @@ const Select = (props) => {
             </div>
         {isActive && (
         <ul className={s.dropdown__content}>
-            {books?.map((book) => (
+            {booksFiltered?.map((book) => (
             <li key={[book._id]}
                 onClick={(e) => {
-                    setSelected(book.title);
+                    setFilterBook(book.title);
+                    setSelected(book._id);
                     setIsActive(false);
                 }}
                 className={s.dropdown__item}

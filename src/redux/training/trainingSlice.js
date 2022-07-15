@@ -32,7 +32,6 @@ const trainingSlice = createSlice({
       state.error=null;
     },
     [addTraining.rejected]: (state, {payload})=>{
-      state.training=[...state.training, payload];
       state.isLoading=false;
       state.error=payload;
       console.log("addTraining", payload);
@@ -45,6 +44,11 @@ const trainingSlice = createSlice({
       state.training=[...state.training, payload];
       state.isLoading=false;
       state.error=null;
+    },
+    [getProgress.rejected]: (state, {payload})=>{
+      state.isLoading=false;
+      state.error=payload;
+      console.log("getProgress", payload);
     }
   }
 })

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import spriteSVG from "../../assets/images/sprite.svg";
 import { SignUpSchema, LoginSchema } from "../../assets/schemas/authSchemas";
+import { login, signUp } from "../../redux/auth/authActionThunk";
 
 import s from "./AuthForm.module.scss";
 
@@ -33,6 +34,7 @@ const AuthForm = ({ type }) => {
             const data = isRegister
               ? { name, email, password }
               : { email, password };
+              isRegister ? dispatch(signUp(data)) : dispatch(login(data));
             console.log(data);
           } catch (error) {
             console.log(error.message);

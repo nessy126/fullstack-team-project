@@ -5,7 +5,7 @@ import Header from "./components/Header";
 import Statistics from "./components/Statistics";
 import PublicRoute from "./components/PublicRoute";
 import PrivateRoute from "./components/PrivateRoute";
-import { getIsAuth } from "./redux/auth/authSelector";
+import { getIsLogin } from "./redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 
 const LoginPage = lazy(() => import("./pages/LoginPage"));
@@ -14,39 +14,39 @@ const LibraryPage = lazy(() => import("./pages/LibraryPage"));
 const TrainingPage = lazy(() => import("./pages/TrainingPage"));
 
 function App() {
-  const isAuth = useSelector(getIsAuth);
+  const isAuth = useSelector(getIsLogin);
 
   return (
     <Container>
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
         {/* <Switch> */}
-          {/* <PublicRoute path="/login" isRestricted> */}
-            <LoginPage />
-          {/* </PublicRoute> */}
-          {/* <PublicRoute path="/register" isRestricted> */}
-            {/* <RegisterPage /> */}
-          {/* </PublicRoute> */}
+        {/* <PublicRoute path="/login" isRestricted> */}
+        <LoginPage />
+        {/* </PublicRoute> */}
+        {/* <PublicRoute path="/register" isRestricted> */}
+        <RegisterPage />
+        {/* </PublicRoute> */}
 
-          {/* <PrivateRoute path="/training"> */}
-            <TrainingPage />
-          {/* </PrivateRoute> */}
-          {/* <PrivateRoute path="/library"> */}
-            <LibraryPage />
-          {/* </PrivateRoute> */}
+        {/* <PrivateRoute path="/training"> */}
+        <TrainingPage />
+        {/* </PrivateRoute> */}
+        {/* <PrivateRoute path="/library"> */}
+        <LibraryPage />
+        {/* </PrivateRoute> */}
 
-          {isAuth ? (
-            // <PublicRoute path="/">
+        {/* {isAuth ? (
+            <PublicRoute path="/">
               <TrainingPage />
-            // </PublicRoute>
+            </PublicRoute>
           ) : (
-            // <PublicRoute path="/">
+            <PublicRoute path="/">
               <LoginPage />
-            // </PublicRoute>
-          )}
+            </PublicRoute>
+          )} */}
 
-          {/* <TrainingPage />
-      <Statistics /> */}
+        <TrainingPage />
+        <Statistics />
         {/* </Switch> */}
       </Suspense>
     </Container>

@@ -18,6 +18,7 @@ export const getAllBooks = createAsyncThunk(
     "/api/books",
     async (_, {rejectWithValue})=>{
         try {
+            console.log("getAllBooks");
             const result = await bookApi.getAllBooks();
             return result;
         } catch (error) {

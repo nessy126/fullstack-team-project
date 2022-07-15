@@ -11,7 +11,9 @@ import bookSelectors from "../../redux/book/bookSelectors";
 
 const TrainingPage = () => {
   const dispatch=useDispatch();
-  const allBooks=useSelector(bookSelectors.getAllBooks)
+  const allBooks=useSelector(bookSelectors.getAllBooks);
+  const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
+  const listInReading=useSelector(bookSelectors.getListInReading);
 console.log(allBooks);
 
   // useEffect(() => {

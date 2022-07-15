@@ -13,10 +13,9 @@ const token = {
 
 export const registerApi = (newUser) => {
   return axios
-    .post("signup/", newUser)
+    .post("signup", newUser)
     .then((res) => {
       console.log(res.data);
-      token.set(res.data.token);
       return res.data;
     })
     .catch((err) => {
@@ -27,7 +26,7 @@ export const registerApi = (newUser) => {
 
 export const loginApi = (user) => {
   return axios
-    .get("login/", user)
+    .get("login", user)
     .then((res) => {
       console.log(res.data);
       token.set(res.data.token);
