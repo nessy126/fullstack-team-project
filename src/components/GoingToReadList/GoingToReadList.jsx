@@ -1,7 +1,5 @@
 const GoingToReadList = () => {
-  return ( 
-    <></>
-   );
-}
- 
+  return <></>;
+};
+
 export default GoingToReadList;

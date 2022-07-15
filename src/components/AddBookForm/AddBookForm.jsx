@@ -1,7 +1,5 @@
 const AddBookForm = () => {
-  return ( 
-    <></>
-   );
-}
- 
+  return <></>;
+};
+
 export default AddBookForm;

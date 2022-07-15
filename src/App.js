@@ -1,17 +1,17 @@
 import { lazy, Suspense } from "react";
 import { Redirect, Switch } from "react-router-dom";
-import Container from "./components/Container/Container";
-import Header from "./components/Header/Header";
-import Statistics from "./components/Statistics/Statistics";
-import PublicRoute from "./components/PublicRoute/PublicRoute";
-import PrivatRoute from "./components/PrivatRoute/PrivatRoute";
+import Container from "./components/Container";
+import Header from "./components/Header";
+import Statistics from "./components/Statistics";
+import PublicRoute from "./components/PublicRoute";
+import PrivatRoute from "./components/PrivatRoute";
 import { getIsAuth } from "./redux/auth/authSelector";
 import {useSelector} from 'react-redux';
 
-const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"))
-const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"))
+const LoginPage = lazy(() => import("./pages/LoginPage"))
+const RegisterPage = lazy(() => import("./pages/RegisterPage"))
 const LibraryPage = lazy(() => import("./pages/LibraryPage/LibraryPage"))
-const TrainingPage = lazy(() => import("./pages/TrainingPage/TrainingPage"))
+const TrainingPage = lazy(() => import("./pages/TrainingPage"))
 
 
 function App() {
