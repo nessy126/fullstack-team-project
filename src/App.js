@@ -20,34 +20,34 @@ function App() {
     <Container>
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <PublicRoute path="/login" isRestricted>
-            <LoginPage />
-          </PublicRoute>
-          <PublicRoute path="/register" isRestricted>
-            <RegisterPage />
-          </PublicRoute>
+        {/* <Switch> */}
+          {/* <PublicRoute path="/login" isRestricted> */}
+            {/* <LoginPage /> */}
+          {/* </PublicRoute> */}
+          {/* <PublicRoute path="/register" isRestricted> */}
+            {/* <RegisterPage /> */}
+          {/* </PublicRoute> */}
 
-          <PrivateRoute path="/training">
+          {/* <PrivateRoute path="/training"> */}
             <TrainingPage />
-          </PrivateRoute>
-          <PrivateRoute path="/library">
+          {/* </PrivateRoute> */}
+          {/* <PrivateRoute path="/library"> */}
             <LibraryPage />
-          </PrivateRoute>
+          {/* </PrivateRoute> */}
 
           {isAuth ? (
-            <PublicRoute path="/">
+            // <PublicRoute path="/">
               <TrainingPage />
-            </PublicRoute>
+            // </PublicRoute>
           ) : (
-            <PublicRoute path="/">
+            // <PublicRoute path="/">
               <LoginPage />
-            </PublicRoute>
+            // </PublicRoute>
           )}
 
           {/* <TrainingPage />
       <Statistics /> */}
-        </Switch>
+        {/* </Switch> */}
       </Suspense>
     </Container>
   );

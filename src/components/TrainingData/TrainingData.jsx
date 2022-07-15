@@ -1,7 +1,11 @@
 import PlaningTabl from "../PlainingTabl";
-import Select from "./../Select";
+import Select from "../Select";
 import { useState } from "react";
 import s from "./TrainingData.module.scss";
+import { useSelector, useDispatch } from "react-redux";
+import bookSelectors from "../../redux/book/bookSelectors";
+import trainingSelectors from "../../redux/training/trainingSelectors";
+
 
 const books=[{
     _id: "62d06588582a767000c16319",
@@ -114,6 +118,12 @@ const books=[{
 // const books1=[]
 
 const TrainingData = () => {
+const isLoading =useSelector(trainingSelectors.getIsLoading);
+const listGoingToRead= useSelector(bookSelectors.getListGoingToRead);
+const error = useSelector(trainingSelectors.getError);
+
+
+
     const[selected, setSelected]=useState('');
     let listBooks=[...books];
     const handleDelBook =(id)=>{

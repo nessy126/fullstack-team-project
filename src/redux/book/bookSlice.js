@@ -1,26 +1,46 @@
 import { createSlice } from '@reduxjs/toolkit';
+import {addBook, getAllBooks} from "./bookOperations";
+
+const initialState = {
+  book: [{
+    title: "",
+    author: "",
+    year: 0,
+    status: "",
+    pageTotal: 0,
+    pageFinished: 0, 
+    feedBack: {
+      rating: 0,
+      comment: ""
+    },
+  }],
+  isLoading: false,
+  isLoggedIn: false,
+  error: null,
+}
 
 const bookSlice  = createSlice({
   name: "book",
-  books: [{
-    id: 1,
-    title: "",
-    author: "",
-    year: 1978,
-    status: ["goingToRead", "inReading", "finished"],
-    pagesTotal: 100,
-    pagesFinished: 15, //сумма прочитанных стр из статистики, но не более pages;
-    feedBack: {
-      rating: 5,
-      comment: ""
+  initialState,
+  extraReducers:{
+    [getAllBooks.pending]: (state)=>{
+      state.isLoading=true;
+      state.error=null;
+      
     },
-    statistics: [{
-      id_stat: 123,
-      date: "11.09.2009",
-      pagesFinished: 3,
-    }],
-    owner: {},
-  }],
-})
- 
-export default bookSlice.reducer ;
+    [getAllBooks.fulfilled]: (state, {payload})=>{
+      state.books=[...state, payload];
+      state.isLoading=true;
+      state.error=null;
+      console.log("getAllBooks", payload);
+    },
+    [getAllBooks.rejected]: (state, {payload})=>{
+      state.books=[...state.books, payload];
+      state.isLoading=false;
+      state.error=payload;
+      console.log("getAllBooks", payload);
+    },
+  }
+}) 
+
+export const bookReducer = bookSlice.reducer;
