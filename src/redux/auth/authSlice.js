@@ -4,8 +4,8 @@ import { signUp, login, logout, current } from "./authActionThunk";
 
 const initialState = {
   user: {
-    name: "",
-    email: "",
+    name: null,
+    email: null,
   },
   isTraining: false,
   isLoading: false,
@@ -23,15 +23,12 @@ const authSlice = createSlice({
       state.error = null;
     },
     [signUp.fulfilled]: (state, { payload }) => {
-      // console.log("state");
-      // console.log("payload:", payload);
       state.user = { ...payload?.user };
       // state.token = payload?.token;
       state.isLoading = false;
       state.isLoggedIn = true;
     },
     [signUp.rejected]: (state, { payload }) => {
-      console.log("reject");
       state.isLoading = false;
       state.error = payload;
     },
@@ -40,7 +37,6 @@ const authSlice = createSlice({
       state.error = null;
     },
     [login.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       state.user = { ...payload?.user };
       state.token = payload?.token;
       state.isLoading = false;
@@ -56,9 +52,9 @@ const authSlice = createSlice({
     },
     [logout.fulfilled]: (state) => {
       state.user = { ...initialState.user };
-      state.token = "";
-      state.isLoggedIn = false;
+      state.token = null;
       state.isLoading = false;
+      state.isLoggedIn = false;
     },
     [logout.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -69,8 +65,7 @@ const authSlice = createSlice({
       state.error = null;
     },
     [current.fulfilled]: (state, { payload }) => {
-      state.user = { ...payload.user };
-      state.token = payload.token;
+      state.user = { ...payload };
       state.isLoading = false;
       state.isLoggedIn = true;
     },

@@ -1,14 +1,30 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import * as authAPI from "../../utils/userApi";
+// import * as authAPI from "../../utils/userApi";
+
+import axios from "axios";
+
+axios.defaults.baseURL = "http://localhost:8000/api/users/";
+
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = "";
+  },
+};
 
 export const signUp = createAsyncThunk(
+  //type for 3 conditions of promises (pending, reject, fulfilled)
   "auth/signup",
-  async (data, { rejectWithValue }) => {
+
+  async (user, { rejectWithValue }) => {
+    // console.log(user);
     try {
-      // console.log(data);
-      const result = await authAPI.registerApi(data);
-      // console.log(result);
-      return result;
+      const { data } = await axios.post("signup", user);
+      token.set(data.token);
+      // const result = await authAPI.registerApi(data);
+      return data;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -17,24 +33,14 @@ export const signUp = createAsyncThunk(
 
 export const login = createAsyncThunk(
   "auth/login",
-  async (data, { rejectWithValue }) => {
+  async (user, { rejectWithValue }) => {
+    // console.log(user);
     try {
-      // console.log(data);
-      const result = await authAPI.loginApi(data);
-      return result;
+      const { data } = await axios.post("login", user);
+      token.set(data.token);
+      // const result = await authAPI.loginApi(data);
+      return data;
     } catch (error) {
-      return rejectWithValue(error);
-    }
-  }
-);
-
-export const logout = createAsyncThunk(
-  "auth/logout",
-  async (_, { rejectWithValue }) => {
-    try {
-      await authAPI.logOut();
-    } catch (error) {
-      console.log(error);
       return rejectWithValue(error);
     }
   }
@@ -45,23 +51,33 @@ export const current = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { auth } = getState();
+      // console.log(auth.token);
 
       if (!auth.token) {
         return rejectWithValue("Not authorized");
       }
 
-      const result = await authAPI.current(auth);
-      return result;
+      token.set(auth.token);
+      const { data } = await axios.get("current");
+      // const result = await authAPI.current(auth);
+      return data;
     } catch (error) {
       return rejectWithValue(error);
     }
-  },
-  {
-    condition: (_, { getState }) => {
-      const { auth } = getState();
-      if (!auth.token) {
-        return false;
-      }
-    },
+  }
+);
+
+export const logout = createAsyncThunk(
+  "auth/logout",
+  async (_, { rejectWithValue }) => {
+    try {
+      await axios.post("logout");
+      token.unset();
+      // await authAPI.logOut(auth);
+      // return result;
+    } catch (error) {
+      // console.log(error);
+      return rejectWithValue(error);
+    }
   }
 );

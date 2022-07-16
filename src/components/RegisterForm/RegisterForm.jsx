@@ -1,4 +1,4 @@
-import AuthForm from "../AuthForm";
+import AuthForm from "components/AuthForm";
 import s from "./RegisterForm.module.scss";
 
 const RegisterForm = () => {

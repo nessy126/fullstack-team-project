@@ -1,4 +1,4 @@
-import { getIsLogin } from "../../redux/auth/authSelectors";
+import { getIsLogin } from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 import { Redirect, Route } from "react-router-dom";
 
