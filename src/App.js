@@ -31,6 +31,9 @@ function App() {
       </Route>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
+          {/* <PublicRoute path="/" isRestricted>
+            <HomePage />
+          </PublicRoute> */}
           <PublicRoute path="/login" isRestricted>
             <LoginPage />
           </PublicRoute>
