@@ -12,8 +12,9 @@ import {
 import storage from "redux-persist/lib/storage";
 
 import authSlice from "./auth/authSlice";
-import bookSlice from "./book/bookSlice";
+// import bookSlice from "./book/bookSlice";
 import trainingSlice from "./training/trainingSlice";
+
 const persistConfig = {
   key: "auth",
   storage,
@@ -36,4 +37,4 @@ export const store = configureStore({
     }),
 });
 
-export const persister = persistStore(store);
+export const persistor = persistStore(store);
