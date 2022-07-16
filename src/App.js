@@ -1,5 +1,7 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import Media from "react-media";
+
 import Container from "components/Container";
 import Header from "components/Header";
 import Statistics from "components/Statistics";
@@ -26,14 +28,14 @@ function App() {
   return (
     <Container>
       <Header />
-      <Route path="/" exact>
-        <HomePage />
-      </Route>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           {/* <PublicRoute path="/" isRestricted>
             <HomePage />
           </PublicRoute> */}
+          <Route path="/" exact>
+            <HomePage />
+          </Route>
           <PublicRoute path="/login" isRestricted>
             <LoginPage />
           </PublicRoute>

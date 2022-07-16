@@ -8,7 +8,9 @@ const PublicRoute = ({ children, path, isRestricted }) => {
   return isAuth && isRestricted ? (
     <Redirect to="/" />
   ) : (
-    <Route path={path}>{children}</Route>
+    <Route path={path} exact>
+      {children}
+    </Route>
   );
 };
 

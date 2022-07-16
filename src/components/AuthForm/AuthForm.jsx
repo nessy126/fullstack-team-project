@@ -1,6 +1,7 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
+// import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 
 import spriteSVG from "assets/images/sprite.svg";
 import { SignUpSchema, LoginSchema } from "assets/schemas/authSchemas";
@@ -9,7 +10,10 @@ import { login, signUp } from "redux/auth/authActionThunk";
 import s from "./AuthForm.module.scss";
 
 const AuthForm = ({ type }) => {
-  const auth = useSelector((state) => state.auth);
+  // const [redirect, setRedirect] = useState(false);
+  const { registerPass } = useSelector((state) => state.auth);
+  console.log(registerPass);
+  // const auth = useSelector((state) => state.auth);
   // console.log(auth);
 
   const dispatch = useDispatch();
@@ -33,6 +37,7 @@ const AuthForm = ({ type }) => {
               : { email, password };
 
             isRegister ? dispatch(signUp(data)) : dispatch(login(data));
+            // setRedirect(true);
           } catch (error) {
             console.log(error.message);
           }
@@ -130,15 +135,16 @@ const AuthForm = ({ type }) => {
                   {isRegister ? (
                     <p className={s.alreadyReg}>
                       Already register
-                      <span className={s.changePage}>
-                        <NavLink to="/login">login</NavLink>
-                      </span>
+                      <NavLink to="/login" className={s.changePage}>
+                        login
+                      </NavLink>
                     </p>
                   ) : (
-                    <span className={s.changePage}>
-                      <NavLink to="/register">Registration</NavLink>
-                    </span>
+                    <NavLink to="/register" className={s.changePage}>
+                      Registration
+                    </NavLink>
                   )}
+                  {registerPass && <Redirect to="/login" />}
                 </div>
               </Form>
             </div>

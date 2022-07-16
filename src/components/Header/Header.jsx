@@ -28,6 +28,13 @@ const Header = () => {
       >
         HomePage
       </NavLink>
+      <NavLink
+        to="/training"
+        style={{ color: "black" }}
+        activeStyle={{ color: "red" }}
+      >
+        Training
+      </NavLink>
       {isAuth && (
         <>
           <NavLink
@@ -44,9 +51,9 @@ const Header = () => {
           >
             Library
           </NavLink>
+          <button onClick={logOutUser}>Logout</button>
         </>
       )}
-      <button onClick={logOutUser}>Logout</button>
     </>
   );
 };
