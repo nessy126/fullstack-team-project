@@ -12,7 +12,7 @@ import axios from 'axios';
 // }
 export const addBook = (newBook) => {
   return axios
-    .post(baseUrl)
+    .post("books")
     .then(res => {
       console.log(res.data);
       return res.data;
@@ -25,7 +25,7 @@ export const addBook = (newBook) => {
 
 export const getAllBooks = () => {
   return axios
-    .get(baseUrl)
+    .get('books/')
     .then(res => {
       console.log(res.data);
       return res.data;
