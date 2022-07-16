@@ -1,5 +1,5 @@
 const GoingToReadList = () => {
-  return (  );
-}
- 
+  return null;
+};
+
 export default GoingToReadList;

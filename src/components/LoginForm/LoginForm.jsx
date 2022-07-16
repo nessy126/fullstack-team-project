@@ -1,5 +1,5 @@
 const LoginForm = () => {
-  return (  );
-}
- 
+  return null;
+};
+
 export default LoginForm;

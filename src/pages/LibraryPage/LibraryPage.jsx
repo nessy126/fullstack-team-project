@@ -1,17 +1,19 @@
 import AddBookForm from "../../components/AddBookForm/AddBookForm";
-import AlreadyReadList from "../../components/AlreadyReadList/AlreadyReadList";
-import GoingToReadList from "../../components/GoingToReadList/GoingToReadList";
-import ReadingNowList from "../../components/ReadingNowList/ReadingNowList";
+import { LibraryModal } from "../../components/LibraryModal/LibraryModal";
+// import AlreadyReadList from "../../components/AlreadyReadList/AlreadyReadList";
+// import GoingToReadList from "../../components/GoingToReadList/GoingToReadList";
+// import ReadingNowList from "../../components/ReadingNowList/ReadingNowList";
 
 const LibraryPage = () => {
-  return ( 
+  return (
     <>
-    <AddBookForm/>
-    <AlreadyReadList/>
+      <AddBookForm />
+      <LibraryModal />
+      {/* <AlreadyReadList/>
     <ReadingNowList/>
-    <GoingToReadList/>
+    <GoingToReadList/> */}
     </>
-   );
-}
- 
+  );
+};
+
 export default LibraryPage;

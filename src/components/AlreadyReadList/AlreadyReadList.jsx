@@ -1,5 +1,5 @@
 const AlreadyReadList = () => {
-  return (  );
-}
- 
+  return null;
+};
+
 export default AlreadyReadList;

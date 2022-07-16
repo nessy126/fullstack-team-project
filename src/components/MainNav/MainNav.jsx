@@ -1,11 +1,31 @@
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Home } from "./icons/homeIcon";
 import { LibraryIcon } from "./icons/libraryIcon";
-
 import s from "./MainNav.module.scss";
+import Modal from "./Modal/Modal";
 
 const MainNav = () => {
   const userName = "Artem";
+  const dispatch = useDispatch();
+
+  const [modal, setModal] = useState({
+    open: false,
+    content: null,
+  });
+
+  const openModal = () => {
+    setModal({
+      open: true,
+    });
+  };
+
+  const closeModal = () => {
+    setModal({
+      open: false,
+    });
+  };
 
   return (
     <header>
@@ -35,11 +55,22 @@ const MainNav = () => {
           </nav>
           <div className={s.line}>|</div>
           <div className={s.accLogo}>A</div>
-          <button className={s.logout__button} type="button">
+          <button
+            className={s.logout__button}
+            type="button"
+            onClick={() => openModal()}
+          >
             <span className={s.logout__text}>Exit</span>
           </button>
         </div>
       </section>
+      {modal.open && (
+        <Modal closeModal={closeModal}>
+          <p>Why are you running?</p>
+          <button onClick={() => closeModal()}> joke</button>
+          <button> WHYYYYYY?</button>
+        </Modal>
+      )}
     </header>
   );
 };
