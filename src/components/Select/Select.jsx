@@ -87,7 +87,7 @@ const Select = ({books, selected, setSelected}) => {
             <li key={[book._id]}
                 onClick={(e) => {
                     setFilterBook(book.title);
-                    setSelected(book._id);
+                    setSelected([...selected, book]);
                     setIsActive(false);
                 }}
                 className={s.dropdown__item}

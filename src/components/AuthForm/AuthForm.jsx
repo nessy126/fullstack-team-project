@@ -10,7 +10,7 @@ import s from "./AuthForm.module.scss";
 
 const AuthForm = ({ type }) => {
   const { auth } = useSelector((state) => state);
-  console.log(auth);
+
 
   const dispatch = useDispatch();
   const isRegister = type === "register";

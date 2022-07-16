@@ -1,8 +1,10 @@
 import PlaningTabl from "../PlainingTabl";
+import PlanningForm from "../../components/PlanningForm";
 import Select from "../Select";
 import { useState } from "react";
 import s from "./TrainingData.module.scss";
 import { useSelector, useDispatch } from "react-redux";
+import {addTraining} from "../../redux/training/trainingOperations";
 import bookSelectors from "../../redux/book/bookSelectors";
 import trainingSelectors from "../../redux/training/trainingSelectors";
 
@@ -118,47 +120,72 @@ const books=[{
 // const books1=[]
 
 const TrainingData = () => {
+const dispatch=useDispatch()
 const isLoading =useSelector(trainingSelectors.getIsLoading);
-const listGoingToRead= useSelector(bookSelectors.getListGoingToRead);
+// const listGoingToRead= useSelector(bookSelectors.getListGoingToRead);
 const error = useSelector(trainingSelectors.getError);
 
+const value={ 
+    bookId:[],
+    startTraining:123131,
+    endTraining:132132131
+}
 
 
-    const[selected, setSelected]=useState('');
-    let listBooks=[...books];
+    const[selected, setSelected]=useState([]);
+    let listGoingToRead=[...books];
 
     const handleDelBook =(id)=>{
-        const newListBooks=listBooks.filter(book=>book.id!==id);
+        const newListBooks=listGoingToRead.filter(book=>book.id!==id);
         return newListBooks;
     }
     const resetState=()=>{
-        setSelected('')
+        setSelected([])
     }
+    const listPlainingBooks=[]
     const handleSelect=(e)=>{
-        listBooks.push(selected);
-        resetState()
+        listPlainingBooks.push(selected);
+        console.log(11111)
+        // resetState()
+  
 
     }
 
+const show=true
     return <>
+            <PlanningForm />
         <div className={s.select__wrapper}>
             <Select 
-                books={listBooks} 
+                books={listGoingToRead} 
                 selected={selected} 
                 setSelected={setSelected}/>
-            <button 
-                type='button' 
-                onClick={handleSelect} 
-                className={s.select__button}>Add
-            </button>
+                {show ? (
+                    <button 
+                        type='button' 
+                        onClick={handleSelect} 
+                        className={s.select__button}>Add
+                    </button>) : (
+                    <button 
+                        type='button' 
+                        disabled
+                        onClick={handleSelect} 
+                        className={s.select__button}>Add
+                    </button>)}
         </div> 
         <PlaningTabl 
-            listBooks={listBooks} 
+            books={listPlainingBooks} 
             handleDelBook={handleDelBook}/>
         <div className={s.button__wrapper}>
             <button 
                 type='button' 
-                onClick={()=>{console.log("Start training")}} className={s.start__button}>Start training
+                onClick={()=>{
+                    try {
+                        dispatch(addTraining(value));
+                        console.log("Start training")
+                    } catch (error) {
+                        console.log(error.message);
+                    }
+                    }} className={s.start__button}>Start training
             </button>
         </div>
     </>;

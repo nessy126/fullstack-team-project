@@ -1,17 +1,17 @@
 import s from './MyGoals.module.scss';
 
-let data=[
-  {
-      "title": "Amount of books",
-      "amount": 3
-  },
-  {
-      "title": "Amount of days",
-      "amount": 28
-  }
-]
+// let data=[
+//   {
+//       "title": "Amount of books",
+//       "amount": 3
+//   },
+//   {
+//       "title": "Amount of days",
+//       "amount": 28
+//   }
+// ]
 
-const MyGoals = (props) => {
+const MyGoals = ({data}) => {
   return ( <div className={s.goal__wrapper}>
               <div className={s.top__wrapper}>              
                 <div className={s.title__wrapper}>

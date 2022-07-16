@@ -28,6 +28,15 @@
 .select__button:active{
     background-color: var(--training-bg-cl); 
 }
+.select__button:disabled{
+    cursor:auto;
+}
+.select__button:disabled.select__button:hover{
+    background-color: var(--secondary-bg-cl);
+    border: 1px solid var(--additional-bg-cl);
+    box-shadow: none;
+}
+
 .button__wrapper{
     display: flex;
     align-items: center;

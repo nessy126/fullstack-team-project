@@ -7,8 +7,16 @@ import DateTimePicker from "react-datetime-picker";
 const PlanningForm = () => {
   const [valueStart, setValueStart] = useState(null);
   const [valueEnd, setValueEnd] = useState(null);
+
+
+  if (valueStart!==null && valueEnd!==null){
+    const amountOfDays = Math.ceil(
+      (valueEnd - valueStart) / (1000 * 3600 * 24)
+    );
+  }
+
   const dateFin = new Date();
-  // console.log(dateFin.getTime())
+  console.log(dateFin.getTime())
   // console.log(new Date(2017, 0, 1))
   return (
     <>

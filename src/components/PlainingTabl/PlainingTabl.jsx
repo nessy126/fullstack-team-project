@@ -8,6 +8,7 @@ import Media from "react-media";
 
 const PlaningTabl = (props) => {
 const{books, handleDelBook}=props;
+// console.log(books.length);
 
     const isLoading = false;
 
