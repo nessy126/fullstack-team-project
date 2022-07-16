@@ -2,21 +2,18 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 
-import spriteSVG from "../../assets/images/sprite.svg";
-import { SignUpSchema, LoginSchema } from "../../assets/schemas/authSchemas";
-import { login, signUp } from "../../redux/auth/authActionThunk";
+import spriteSVG from "assets/images/sprite.svg";
+import { SignUpSchema, LoginSchema } from "assets/schemas/authSchemas";
+import { login, signUp } from "redux/auth/authActionThunk";
 
 import s from "./AuthForm.module.scss";
 
 const AuthForm = ({ type }) => {
-  const { auth } = useSelector((state) => state);
-
+  const auth = useSelector((state) => state.auth);
+  // console.log(auth);
 
   const dispatch = useDispatch();
   const isRegister = type === "register";
-  // const handleReset = (resetForm) => {
-  //   resetForm();
-  // };
 
   const initialValue = isRegister
     ? { name: "", email: "", password: "", confirmPassword: "" }
@@ -28,22 +25,21 @@ const AuthForm = ({ type }) => {
         initialValues={initialValue}
         validationSchema={isRegister ? SignUpSchema : LoginSchema}
         onSubmit={(values) => {
-          console.log(values);
+          // console.log(values);
           try {
             const { name, email, password } = values;
             const data = isRegister
               ? { name, email, password }
               : { email, password };
-              isRegister ? dispatch(signUp(data)) : dispatch(login(data));
-            console.log(data);
+
+            isRegister ? dispatch(signUp(data)) : dispatch(login(data));
           } catch (error) {
             console.log(error.message);
           }
         }}
       >
-        {(formProps) => (
+        {({ handleSubmit }) => (
           <div className={s.auth}>
-            {/* {console.log(isSubmitting)} */}
             <div className={isRegister ? s.formReg : s.form}>
               <div className={s.google}>
                 <button>
@@ -53,7 +49,7 @@ const AuthForm = ({ type }) => {
                   Google
                 </button>
               </div>
-              <Form>
+              <Form onSubmit={handleSubmit}>
                 <div>
                   {isRegister && (
                     <div className={s.name}>
@@ -128,12 +124,7 @@ const AuthForm = ({ type }) => {
                   )}
                 </div>
                 <div className={s.buttons}>
-                  <button
-                    className={s.login}
-                    type="submit"
-                    // onClick={handleReset.bind(null, formProps.resetForm)}
-                    // disabled={isSubmitting}
-                  >
+                  <button className={s.login} type="submit">
                     {isRegister ? "Register" : "Login"}
                   </button>
                   {isRegister ? (

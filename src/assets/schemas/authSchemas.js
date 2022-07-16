@@ -7,7 +7,7 @@ const SignUpSchema = Yup.object({
     .required("Required"),
   email: Yup.string().email("Invalid email").required("Email required"),
   password: Yup.string()
-    .min(3, "Minimum 6 symbols!")
+    .min(6, "Minimum 6 symbols!")
     .required("Password required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Password must match")
@@ -17,7 +17,7 @@ const SignUpSchema = Yup.object({
 const LoginSchema = Yup.object({
   email: Yup.string().email("Invalid email").required("Email required"),
   password: Yup.string()
-    .min(3, "Minimum 6 symbols!")
+    .min(6, "Minimum 6 symbols!")
     .required("Password required"),
 });
 

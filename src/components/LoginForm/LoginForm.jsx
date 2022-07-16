@@ -1,7 +1,7 @@
-import AuthForm from "../AuthForm";
+import AuthForm from "components/AuthForm";
 import s from "./LoginForm.module.scss";
 
-import spriteSVG from "../../assets/images/sprite.svg";
+import spriteSVG from "assets/images/sprite.svg";
 
 const LoginForm = () => {
   return (
