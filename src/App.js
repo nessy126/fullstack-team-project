@@ -1,20 +1,20 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
-import Container from "components/Container";
-import Header from "components/Header";
-import Statistics from "components/Statistics";
-import PublicRoute from "components/PublicRoute";
-import PrivateRoute from "components/PrivateRoute";
-import { getIsLogin } from "redux/auth/authSelectors";
+import Container from "../src/components/Container";
+import Header from "../src/components/Header";
+import Statistics from "../src/components/Statistics";
+import PublicRoute from "../src/components/PublicRoute";
+import PrivateRoute from "../src/components/PrivateRoute";
+import { getIsLogin } from "../src/redux/auth/authSelectors";
 import { useDispatch, useSelector } from "react-redux";
-import { current } from "redux/auth/authActionThunk";
+import { current } from "../src/redux/auth/authActionThunk";
 
 import HomePage from "components/HomePage";
 // const HomePage = lazy(() => import("pages/HomePage"));
-const LoginPage = lazy(() => import("pages/LoginPage"));
-const RegisterPage = lazy(() => import("pages/RegisterPage"));
-const LibraryPage = lazy(() => import("pages/LibraryPage"));
-const TrainingPage = lazy(() => import("pages/TrainingPage"));
+const LoginPage = lazy(() => import("../src/pages/LoginPage"));
+const RegisterPage = lazy(() => import("../src/pages/RegisterPage"));
+const LibraryPage = lazy(() => import("../src/pages/LibraryPage"));
+const TrainingPage = lazy(() => import("../src/pages/TrainingPage"));
 
 function App() {
   const dispatch = useDispatch();
@@ -31,12 +31,12 @@ function App() {
       </Route>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-        {/* <PublicRoute path="/login" isRestricted> */}
+        <PublicRoute path="/login" isRestricted>
         <LoginPage />
-        {/* </PublicRoute> */}
-        {/* <PublicRoute path="/register" isRestricted> */}
+        </PublicRoute>
+        <PublicRoute path="/register" isRestricted>
         <RegisterPage />
-        {/* </PublicRoute> */}
+        </PublicRoute>
 
         {/* <PrivateRoute path="/training"> */}
         <TrainingPage />

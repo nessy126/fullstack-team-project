@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = "http://localhost:8000/api/books/";
+// const baseUrl = "http://localhost:8000/api/books";
 
 
 // newBook - пример:

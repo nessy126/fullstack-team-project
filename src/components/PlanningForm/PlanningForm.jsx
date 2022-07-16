@@ -13,6 +13,9 @@ const PlanningForm = () => {
     const amountOfDays = Math.ceil(
       (valueEnd - valueStart) / (1000 * 3600 * 24)
     );
+    if(amountOfDays<0){
+      alert("Дата завершения тренировки должна быть больше даты начала тренировки")
+    }
   }
 
   const dateFin = new Date();
