@@ -8,7 +8,6 @@
     height: 580px;
     background-color: var(--main-bg-cl);
     padding: 30px 25px 60px;
-    
     justify-content: space-between;
     
     h1{
@@ -16,19 +15,35 @@
         color: var(--main-text-cl);
         font-family: Abril Fatface;
         @include font(400, 34px, 38px);
+        @include vp(tablet){
+            margin-bottom: 40px;
+        }
     }
     h2{
         color: var(--main-text-cl);
+        &:nth-last-child(n){
+            margin-top: 20px;
+        }
         @include font(500, 20px, 38px);
+        @include vp(tablet) {
+                margin-bottom: 5px;
+            }
+    }
+    @include vp(tablet){
+        padding: 0 140px;        
+        height: 530px;
+        justify-content: center;
+        @include font(500, 14px, 38px);
+    }
+    @include vp(desktop){
+        height: 100%;
+        padding-left: 90px;
+        justify-content: center;
     }
 }
 
 .pages{
-//  position: absolute;
-//  bottom: 0;
-//  right: 0;
  width: 100%;
-//  margin-bottom: 0;
  display: flex;
  justify-content: space-between;
 }

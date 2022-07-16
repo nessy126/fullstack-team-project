@@ -8,5 +8,10 @@
     "Pose your own independent point of view",
     "Improve your professional skills according to new knowledge",
     "Become an interesting interlocutor"
-  ]
+  ],
+
+  "quote": {
+    "text": "Some books should be tasted, some devoured, but only a few should be chewed and digested thoroughly.",
+    "author": "Francis Bacon"
+  }
 }

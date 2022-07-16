@@ -3,6 +3,9 @@
 .item{
     position: relative;
     display: flex;
+    @include vp(tablet){
+        align-items: center;
+    }
 }
 
 .iconVector{
@@ -13,11 +16,13 @@
     fill: var(--accent-active-cl);
 }
 .list{
-    //
 }
 
 .element{
     color: var(--secondary-text-cl);
     padding-left: 15px;
     @include font(500, 14px, 17px);
+    @include vp(tablet) {
+            @include font(500, 14px, 38px);
+        }
 }
