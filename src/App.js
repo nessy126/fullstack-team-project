@@ -1,18 +1,15 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import Media from "react-media";
 
 import Container from "components/Container";
 import Header from "components/Header";
-import Statistics from "components/Statistics";
 import PublicRoute from "components/PublicRoute";
 import PrivateRoute from "components/PrivateRoute";
-import { getIsLogin } from "redux/auth/authSelectors";
-import { useDispatch, useSelector } from "react-redux";
+
+import { useDispatch } from "react-redux";
 import { current } from "redux/auth/authActionThunk";
 
-import HomePage from "components/HomePage";
-// const HomePage = lazy(() => import("pages/HomePage"));
+const HomePage = lazy(() => import("pages/HomePage"));
 const LoginPage = lazy(() => import("pages/LoginPage"));
 const RegisterPage = lazy(() => import("pages/RegisterPage"));
 const LibraryPage = lazy(() => import("pages/LibraryPage"));
@@ -30,16 +27,13 @@ function App() {
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          {/* <PublicRoute path="/" isRestricted>
+          <PublicRoute exact path="/" isRestricted>
             <HomePage />
-          </PublicRoute> */}
-          <Route path="/" exact>
-            <HomePage />
-          </Route>
-          <PublicRoute path="/login" isRestricted>
+          </PublicRoute>
+          <PublicRoute exact path="/login" isRestricted>
             <LoginPage />
           </PublicRoute>
-          <PublicRoute path="/register" isRestricted>
+          <PublicRoute exact path="/register" isRestricted>
             <RegisterPage />
           </PublicRoute>
 
@@ -49,19 +43,6 @@ function App() {
           <PrivateRoute path="/library">
             <LibraryPage />
           </PrivateRoute>
-
-          {/* {isAuth ? (
-            <PublicRoute path="/">
-              <TrainingPage />
-            </PublicRoute>
-          ) : (
-            <PublicRoute path="/">
-              <LoginPage />
-            </PublicRoute>
-          )} */}
-
-          {/* <TrainingPage />
-          <Statistics /> */}
         </Switch>
       </Suspense>
     </Container>

@@ -28,13 +28,6 @@ const Header = () => {
       >
         HomePage
       </NavLink>
-      <NavLink
-        to="/training"
-        style={{ color: "black" }}
-        activeStyle={{ color: "red" }}
-      >
-        Training
-      </NavLink>
       {isAuth && (
         <>
           <NavLink
