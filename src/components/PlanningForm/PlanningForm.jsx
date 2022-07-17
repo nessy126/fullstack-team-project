@@ -19,7 +19,7 @@ const PlanningForm = () => {
   }
 
   const dateFin = new Date();
-  console.log(dateFin.getTime())
+  // console.log(dateFin.getTime())
   // console.log(new Date(2017, 0, 1))
   return (
     <>

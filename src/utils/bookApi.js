@@ -25,7 +25,7 @@ export const addBook = (newBook) => {
 
 export const getAllBooks = () => {
   return axios
-    .get('books/')
+    .get('books')
     .then(res => {
       console.log(res.data);
       return res.data;

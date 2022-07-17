@@ -2,21 +2,22 @@ import { createSlice } from '@reduxjs/toolkit';
 import {addTraining, getProgress} from './trainingOperations';
 
 const initialState = {
-  training: {
-    booksId: [],
-    startTraining: 0,
-    endTraining: 0,
-    statistics: [{
-      data:  0,
-      time: 0,
-      readPages: 0,
-    }]
-  },
+  training: {},
   finishedTrainings: [],
   isLoading: false,
   isLoggedIn: false,
   error: null,
 }
+// training: {
+//   booksId: [],
+//   startTraining: 0,
+//   endTraining: 0,
+//   statistics: [{
+//     data:  0,
+//     time: 0,
+//     readPages: 0,
+//   }]
+// }
 
 const trainingSlice = createSlice({
   name: 'training',

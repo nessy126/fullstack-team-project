@@ -3,7 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8000/api/users/";
+axios.defaults.baseURL = "http://localhost:8000/api/";
 
 const token = {
   set(token) {
@@ -21,7 +21,7 @@ export const signUp = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     // console.log(user);
     try {
-      const { data } = await axios.post("signup", user);
+      const { data } = await axios.post("users/signup", user);
       token.set(data.token);
       // const result = await authAPI.registerApi(data);
       return data;
@@ -36,7 +36,7 @@ export const login = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     // console.log(user);
     try {
-      const { data } = await axios.post("login", user);
+      const { data } = await axios.post("users/login", user);
       token.set(data.token);
       // const result = await authAPI.loginApi(data);
       return data;
@@ -58,7 +58,7 @@ export const current = createAsyncThunk(
       }
 
       token.set(auth.token);
-      const { data } = await axios.get("current");
+      const { data } = await axios.get("users/current");
       // const result = await authAPI.current(auth);
       return data;
     } catch (error) {
@@ -71,7 +71,7 @@ export const logout = createAsyncThunk(
   "auth/logout",
   async (_, { rejectWithValue }) => {
     try {
-      await axios.post("logout");
+      await axios.post("users/logout");
       token.unset();
       // await authAPI.logOut(auth);
       // return result;

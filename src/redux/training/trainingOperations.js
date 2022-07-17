@@ -3,7 +3,7 @@ import * as trainingAPI from "../../utils/trainingApi";
 
 
 export const addTraining = createAsyncThunk(
-    "api/training/start",
+    "training/start",
     async (data, {rejectWithValue})=>{
         try {
             const result = await trainingAPI.addTraining(data);
@@ -15,7 +15,7 @@ export const addTraining = createAsyncThunk(
 );
 
 export const getProgress = createAsyncThunk(
-    "api/training",
+    "training",
     async (_, {rejectWithValue})=>{
         try {
             const result = await trainingAPI.getProgress();

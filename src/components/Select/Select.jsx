@@ -31,7 +31,7 @@ const Select = ({books, selected, setSelected}) => {
     };    
     const booksFiltered = getVisibleBooks(books);
 
-    console.log(booksFiltered)
+    // console.log(booksFiltered)
 
     const onChangeFilter=(e)=>{
         const{value}=e.target;

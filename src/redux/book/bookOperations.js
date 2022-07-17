@@ -1,27 +1,32 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as bookApi from "../../utils/bookApi";
+import axios from 'axios';
 
 
 export const addBook = createAsyncThunk(
-    "/api/books",
+    "books",
     async (data, {rejectWithValue})=>{
         try {
-            const result = await bookApi.addBook(data);
-            return result;
+            console.log("addBook");
+            const result = await axios.post("books");
+            console.log(result.data);
+            return result.data;
         } catch (error) {
+            console.log(error);
             return rejectWithValue(error);
         }
     }
 )
 
 export const getAllBooks = createAsyncThunk(
-    "/api/books",
+    "books",
     async (_, {rejectWithValue})=>{
         try {
             console.log("getAllBooks");
-            const result = await bookApi.getAllBooks();
-            return result;
+            const result = await axios.get("books");
+            console.log(result.data);
+            return result.data;
         } catch (error) {
+            console.log(error);
             return rejectWithValue(error);
         }
     }

@@ -5,9 +5,9 @@ import Header from "../src/components/Header";
 import Statistics from "../src/components/Statistics";
 import PublicRoute from "../src/components/PublicRoute";
 import PrivateRoute from "../src/components/PrivateRoute";
-import { getIsLogin } from "../src/redux/auth/authSelectors";
+import { getIsLogin } from "redux/auth/authSelectors";
 import { useDispatch, useSelector } from "react-redux";
-import { current } from "../src/redux/auth/authActionThunk";
+import { current } from "redux/auth/authActionThunk";
 
 import HomePage from "components/HomePage";
 // const HomePage = lazy(() => import("pages/HomePage"));
@@ -31,19 +31,22 @@ function App() {
       </Route>
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-        <PublicRoute path="/login" isRestricted>
-        <LoginPage />
-        </PublicRoute>
-        <PublicRoute path="/register" isRestricted>
-        <RegisterPage />
-        </PublicRoute>
+          {/* <PublicRoute path="/" isRestricted>
+            <HomePage />
+          </PublicRoute> */}
+          <PublicRoute path="/login" isRestricted>
+            <LoginPage />
+          </PublicRoute>
+          <PublicRoute path="/register" isRestricted>
+            <RegisterPage />
+          </PublicRoute>
 
-        {/* <PrivateRoute path="/training"> */}
+        <PrivateRoute path="/training">
         <TrainingPage />
-        {/* </PrivateRoute> */}
-        {/* <PrivateRoute path="/library"> */}
+        </PrivateRoute>
+        <PrivateRoute path="/library">
         <LibraryPage />
-        {/* </PrivateRoute> */}
+        </PrivateRoute>
 
           {/* {isAuth ? (
             <PublicRoute path="/">

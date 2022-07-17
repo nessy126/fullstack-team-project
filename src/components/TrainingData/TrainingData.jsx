@@ -1,12 +1,12 @@
-import PlaningTabl from "../PlainingTabl";
-import PlanningForm from "../../components/PlanningForm";
-import Select from "../Select";
+import PlaningTabl from "components/PlainingTabl";
+import PlanningForm from "components/PlanningForm";
+import Select from "components/Select";
 import { useState } from "react";
 import s from "./TrainingData.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import {addTraining} from "../../redux/training/trainingOperations";
-import bookSelectors from "../../redux/book/bookSelectors";
-import trainingSelectors from "../../redux/training/trainingSelectors";
+import {addTraining} from "redux/training/trainingOperations";
+import bookSelectors from "redux/book/bookSelectors";
+import trainingSelectors from "redux/training/trainingSelectors";
 
 
 const books=[{
@@ -124,6 +124,7 @@ const dispatch=useDispatch()
 const isLoading =useSelector(trainingSelectors.getIsLoading);
 // const listGoingToRead= useSelector(bookSelectors.getListGoingToRead);
 const error = useSelector(trainingSelectors.getError);
+const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
 
 const value={ 
     bookId:[],
@@ -133,7 +134,7 @@ const value={
 
 
     const[selected, setSelected]=useState([]);
-    let listGoingToRead=[...books];
+
 
     const handleDelBook =(id)=>{
         const newListBooks=listGoingToRead.filter(book=>book.id!==id);
@@ -181,9 +182,7 @@ const show=true
                 onClick={()=>{
                     try {
                         dispatch(addTraining(value));
-                        console.log("Start training")
                     } catch (error) {
-                        console.log(error.message);
                     }
                     }} className={s.start__button}>Start training
             </button>

@@ -7,6 +7,21 @@ const getStartTraining=({training})=> training.training.startTraining;
 const getEndTraining=({training})=> training.training.endTraining;
 const getListIdBooksTraining=({training})=> training.training.booksId;
 
+const getAmountDaysTraining=({training})=> {
+    const dataStartTraining=getStartTraining({training});
+    
+    const dataEndTraining=getEndTraining({training});
+    const amountOfDays = Math.ceil((dataEndTraining -       dataStartTraining) / (1000 * 3600 * 24));
+    console.log(amountOfDays);
+    return amountOfDays
+};
+const getAmountBooksTraining=({training})=>{
+    const amountBooksTraining = getListIdBooksTraining?.length;
+    return amountBooksTraining;
+}
+
+
+
 
 const trainingSelectors={
     getError,
@@ -16,7 +31,9 @@ const trainingSelectors={
     getTrainingInfo,
     getStartTraining,
     getEndTraining,
-    getListIdBooksTraining
+    getListIdBooksTraining,
+    getAmountDaysTraining,
+    getAmountBooksTraining
 };
 
 

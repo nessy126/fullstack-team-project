@@ -6,17 +6,20 @@
 const getAllBooks=(state)=>state.book.book;
 
 const getListGoingToRead=(state)=>{
-    const allBooks= getAllBooks(state);
-    return allBooks.filter(book=>book.status==="goingToRead");
+    const allBooks= getAllBooks(state)|| [];
+    const listGoingToRead =allBooks?.filter(book=>{
+        return book.status==="goingToRead"});
+    return listGoingToRead;
 };
 const getListInReading = (state)=>{
-    const allBooks= getAllBooks(state);
-    return allBooks.filter(book=>book.status==="inReading")
+    const allBooks= getAllBooks(state)|| [];
+    return allBooks?.filter(book=>book.status==="inReading")
 }
 const getListFinished = (state)=>{
-    const allBooks= getAllBooks(state);
-    return allBooks.filter(book=>book.status==="finished")
+    const allBooks= getAllBooks(state)|| [];
+    return allBooks?.filter(book=>book.status==="finished")
 }
+
 
 const bookSelectors={
     getAllBooks,

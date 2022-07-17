@@ -2,22 +2,23 @@ import { createSlice } from '@reduxjs/toolkit';
 import {addBook, getAllBooks} from "./bookOperations";
 
 const initialState = {
-  book: [{
-    title: "",
-    author: "",
-    year: 0,
-    status: "",
-    pageTotal: 0,
-    pageFinished: 0, 
-    feedBack: {
-      rating: 0,
-      comment: ""
-    },
-  }],
+  book: [],
   isLoading: false,
   isLoggedIn: false,
   error: null,
 }
+// book: [{
+//   title: "",
+//   author: "",
+//   year: 0,
+//   status: "",
+//   pageTotal: 0,
+//   pageFinished: 0, 
+//   feedBack: {
+//     rating: 0,
+//     comment: ""
+//   },
+// }]
 
 const bookSlice  = createSlice({
   name: "book",
@@ -28,12 +29,14 @@ const bookSlice  = createSlice({
       state.error=null;
     },
     [getAllBooks.fulfilled]: (state, {payload})=>{
-      state.books=[...state, payload];
+      console.log(payload);
+      state.book=[...payload];
       state.isLoading=false;
       state.error=null;
       console.log("getAllBooks", payload);
     },
     [getAllBooks.rejected]: (state, {payload})=>{
+      console.log(payload);
       state.isLoading=false;
       state.error=payload;
       console.log("getAllBooks", payload);
@@ -43,7 +46,8 @@ const bookSlice  = createSlice({
       state.error=null;
     },
     [addBook.fulfilled]: (state, {payload})=>{
-      state.books=[...state, payload];
+      console.log(state.book);
+      state.book=[...state.book, payload];
       state.isLoading=false;
       state.error=null;
       console.log("addBook", payload);
@@ -57,3 +61,5 @@ const bookSlice  = createSlice({
 }) 
 
 export default bookSlice.reducer;
+
+
