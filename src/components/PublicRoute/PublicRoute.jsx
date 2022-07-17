@@ -7,7 +7,7 @@ const PublicRoute = ({ children, isRestricted = false }) => {
 
   return (
     <>
-      {isAuth && isRestricted ? <Navigate to="/training" replace /> : children}
+      {isAuth && isRestricted ? <Navigate to="/library" replace /> : children}
     </>
   );
 };

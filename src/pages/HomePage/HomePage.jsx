@@ -1,12 +1,8 @@
 import Media from "react-media";
-import MainPage from "components/MainPage";
-import LoginPage from "../LoginPage";
-import { useSelector } from "react-redux";
-import { getIsLogin } from "redux/auth/authSelectors";
+import RegisterPage from "pages/RegisterPage";
+import MobileHomePage from "components/MobileHomePage";
 
 const HomePage = () => {
-  const isAuth = useSelector(getIsLogin);
-  console.log(isAuth);
   return (
     <Media
       queries={{
@@ -16,8 +12,8 @@ const HomePage = () => {
     >
       {(matches) => (
         <>
-          {matches.small && <MainPage />}
-          {matches.medium && <LoginPage />}
+          {matches.small && <MobileHomePage />}
+          {matches.medium && <RegisterPage />}
         </>
       )}
     </Media>
