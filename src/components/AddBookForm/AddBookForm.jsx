@@ -3,11 +3,10 @@ import Notiflix from "notiflix";
 import { useDispatch } from "react-redux";
 import { addBookValidationSchema } from "./validation/validationAddBook";
 import s from "./addBookForm.module.scss";
-import Modal from "../MainNav/Modal/Modal";
+import MediaQuery from "react-responsive";
 
-export default function AddBookForm({ onHandleClose }) {
+export default function AddBookForm({ closeModal }) {
   const dispatch = useDispatch();
-  const screenWidth = window.screen.width;
 
   return (
     <>
@@ -21,9 +20,9 @@ export default function AddBookForm({ onHandleClose }) {
         validationSchema={addBookValidationSchema}
         onSubmit={(values, { resetForm }) => {
           console.log("values", values);
-          Notiflix.Notify.success("book add to list");
           resetForm();
-          // onHandleClose();
+          closeModal();
+          Notiflix.Notify.success("book add to list");
         }}
       >
         {({ values, handleChange, handleBlur, handleSubmit }) => (

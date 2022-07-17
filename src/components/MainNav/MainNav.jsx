@@ -3,10 +3,12 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Home } from "./icons/homeIcon";
 import { LibraryIcon } from "./icons/libraryIcon";
-import s from "./MainNav.module.scss";
-import Modal from "./Modal/Modal";
 
-const MainNav = () => {
+import Modal from "./Modal/Modal";
+import MediaQuery from "react-responsive";
+import s from "./MainNav.module.scss";
+
+const MainNav = ({ modalClass }) => {
   const userName = "Artem";
   const dispatch = useDispatch();
 
@@ -29,8 +31,8 @@ const MainNav = () => {
 
   return (
     <header>
-      <section className={s.header}>
-        <Link to="/home" className={s.link}>
+      <section className={modalClass ? modalClass : s.header}>
+        <Link to="/home" className={s.titleLink}>
           <h1 className={s.title}>BR</h1>
         </Link>
         <div className={s.userBar}>
@@ -65,10 +67,24 @@ const MainNav = () => {
         </div>
       </section>
       {modal.open && (
-        <Modal closeModal={closeModal}>
-          <p>Why are you running?</p>
-          <button onClick={() => closeModal()}> joke</button>
-          <button> WHYYYYYY?</button>
+        <Modal type="Exit" closeModal={closeModal}>
+          <p className={s.exitText}>
+            The changes you made will be lost if you navigate away from this
+            application
+          </p>
+          <div className={s.modalButtonBlock}>
+            <button className={s.notExit} onClick={() => closeModal()}>
+              <span className={s.notExitText}>Сancel</span>
+            </button>
+            <button className={s.exit}>
+              <MediaQuery maxWidth={767}>
+                <span className={s.buttonExitText}>Leave</span>
+              </MediaQuery>
+              <MediaQuery minWidth={768}>
+                <span className={s.buttonExitText}>Leave this app</span>
+              </MediaQuery>
+            </button>
+          </div>
         </Modal>
       )}
     </header>

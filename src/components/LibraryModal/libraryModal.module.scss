@@ -1,0 +1,121 @@
+@import "../../assets/sass/main.scss";
+
+.titles {
+  width: 62px;
+  height: 38px;
+
+  margin-top: 25px;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 19px;
+  line-height: 38px;
+
+  color: #242a37;
+}
+
+@include vp(tablet) {
+  .titles {
+    margin-top: 0px;
+  }
+}
+
+.titlesMargin {
+  margin-top: 25px;
+}
+
+@include vp(tablet) {
+  .titlesMargin {
+    margin-top: 0px;
+  }
+}
+.textBlock {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.underTitle {
+  width: 169px;
+
+  margin-left: 10px;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 38px;
+
+  color: #242a37;
+}
+
+@include vp(tablet) {
+  .underTitle {
+    width: 193px;
+    font-size: 15px;
+  }
+}
+
+.textBl {
+  display: flex;
+  align-items: center;
+
+  margin-left: 35px;
+}
+
+.text {
+  width: 190px;
+
+  margin-left: 10px;
+
+  font-family: "Montserrat";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+
+  color: #898f9f;
+}
+
+@include vp(tablet) {
+  .text {
+    width: 319px;
+    height: 38px;
+
+    margin-left: 10px;
+
+    line-height: 38px;
+  }
+}
+
+.buttonContainer {
+  margin-top: 35px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.button {
+  width: 127px;
+  height: 40px;
+
+  text-align: center;
+
+  background: #ff6b08;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.bcg {
+  width: 570px;
+  height: 270px;
+
+  padding-top: 15px;
+  padding-left: 30px;
+  padding-bottom: 30px;
+
+  margin: 0 auto;
+  margin-top: 40px;
+
+  background: #ffffff;
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+}

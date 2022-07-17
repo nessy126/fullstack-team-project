@@ -1,0 +1,29 @@
+@import "../../assets/sass/main.scss";
+
+.phonePlusButton {
+  width: 52px;
+  height: 52px;
+
+  padding: 15px;
+
+  display: block;
+
+  text-align: center;
+
+  position: fixed;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  border: none;
+  border-radius: 50%;
+
+  background: #ff6b08;
+}
+
+@include vp(tablet) {
+  .phonePlusButton {
+    display: none;
+  }
+}

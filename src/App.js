@@ -10,7 +10,7 @@ function App() {
     <>
       {isLogin && <MainNav />}
       <Container>
-        <Statistics />
+        {/* <Statistics /> */}
         <LibraryPage />
         {/* <MyGoals /> */}
       </Container>
