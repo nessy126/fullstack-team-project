@@ -19,13 +19,15 @@ export const signUp = createAsyncThunk(
   "auth/signup",
 
   async (user, { rejectWithValue }) => {
-    // console.log(user);
     try {
       const { data } = await axios.post("users/signup", user);
       token.set(data.token);
-      // const result = await authAPI.registerApi(data);
       return data;
     } catch (error) {
+      const { status } = error.response;
+      if (status === 409) {
+        alert("Email in use");
+      }
       return rejectWithValue(error);
     }
   }
@@ -34,11 +36,9 @@ export const signUp = createAsyncThunk(
 export const login = createAsyncThunk(
   "auth/login",
   async (user, { rejectWithValue }) => {
-    // console.log(user);
     try {
       const { data } = await axios.post("users/login", user);
       token.set(data.token);
-      // const result = await authAPI.loginApi(data);
       return data;
     } catch (error) {
       return rejectWithValue(error);
@@ -51,7 +51,6 @@ export const current = createAsyncThunk(
   async (_, { getState, rejectWithValue }) => {
     try {
       const { auth } = getState();
-      // console.log(auth.token);
 
       if (!auth.token) {
         return rejectWithValue("Not authorized");
@@ -59,7 +58,6 @@ export const current = createAsyncThunk(
 
       token.set(auth.token);
       const { data } = await axios.get("users/current");
-      // const result = await authAPI.current(auth);
       return data;
     } catch (error) {
       return rejectWithValue(error);
@@ -73,10 +71,7 @@ export const logout = createAsyncThunk(
     try {
       await axios.post("users/logout");
       token.unset();
-      // await authAPI.logOut(auth);
-      // return result;
     } catch (error) {
-      // console.log(error);
       return rejectWithValue(error);
     }
   }

@@ -44,9 +44,9 @@ const Header = () => {
           >
             Library
           </NavLink>
+          <button onClick={logOutUser}>Logout</button>
         </>
       )}
-      <button onClick={logOutUser}>Logout</button>
     </>
   );
 };
