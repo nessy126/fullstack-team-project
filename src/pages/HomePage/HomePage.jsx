@@ -13,7 +13,7 @@ const HomePage = () => {
       {(matches) => (
         <>
           {matches.small && <MobileHomePage />}
-          {matches.medium && <RegisterPage />}
+          {matches.medium && <LoginPage  />}
         </>
       )}
     </Media>
