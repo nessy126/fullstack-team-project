@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = "http://localhost:8000.api/books/";
+const baseUrl = "https://book-reader-team-project.herokuapp.com/api/books/";
 
 
 // newBook - пример:
