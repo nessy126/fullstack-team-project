@@ -1,6 +1,6 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 
 import spriteSVG from "assets/images/sprite.svg";
 import { SignUpSchema, LoginSchema } from "assets/schemas/authSchemas";
@@ -138,7 +138,7 @@ const AuthForm = ({ type }) => {
                         Registration
                       </NavLink>
                     )}
-                    {registerPass && <Redirect to="/login" />}
+                    {registerPass && <Navigate to="/login" />}
                   </div>
                 </Form>
               </div>
