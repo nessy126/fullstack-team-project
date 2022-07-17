@@ -62,3 +62,11 @@
     background-color: var(--training-bg-cl);
     color: var(--accent-active-cl);
 }
+.start__button:disabled{
+    cursor:auto;
+}
+.start__button:disabled:hover, .start__button:disabled:focus{
+    cursor:auto;
+    background-color: var(--accent-active-cl);
+    color: var(--main-bg-cl);;
+}

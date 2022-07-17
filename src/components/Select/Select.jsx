@@ -3,41 +3,11 @@ import { useState, useEffect, useCallback } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
-const Select = ({books, selected, setSelected}) => {
+const Select = ({books, onGetSelectBook}) => {
     const [isActive, setIsActive] = useState(false);
     const [filterBook, setFilterBook] = useState('');
 
-    const handleClick = (e) => {
-        setIsActive(!isActive);
-        setFilterBook('')};
-        
-    // const handleClickAway = () => {
-    //     setIsActive(false);
-    // };
-
-
-
-    const getVisibleBooks = (books) => {
-        if (!books) {
-            return [];
-        }
-        if (!filterBook) {
-            return books;
-        }
-        const normWord = filterBook.toLocaleLowerCase().trim();
-        return books.filter(({title}) =>
-            title.toLocaleLowerCase().includes(normWord)
-        );
-    };    
-    const booksFiltered = getVisibleBooks(books);
-
-    // console.log(booksFiltered)
-
-    const onChangeFilter=(e)=>{
-        const{value}=e.target;
-        setFilterBook(value);
-    };
-
+// При нажатии на клавишу ESС селект закрывается и инпут очищается 
     const closeSelectByEsc = useCallback(
         (e) => {if (e.code === "Escape") {
             setIsActive(false);
@@ -50,6 +20,35 @@ const Select = ({books, selected, setSelected}) => {
         window.removeEventListener("keydown", closeSelectByEsc);
         };
     }, [closeSelectByEsc]);
+
+    // При клике по иконке треугольника в инпуте, очищается инпут и открывается/закрывается селект
+    const handleClick = (e) => {
+        setIsActive(!isActive);
+        setFilterBook('')};
+        
+    // Функция для получения отфильтрованного списка книг для рендера в селекте (отбор по слову введенному в инпут)
+        const getVisibleBooks = (books) => {
+        if (!books) {
+            return [];
+        }
+        if (!filterBook) {
+            return books;
+        }
+        const normWord = filterBook.toLocaleLowerCase().trim();
+        return books.filter(({title}) =>
+            title.toLocaleLowerCase().includes(normWord)
+        );
+    };  
+    // Результатом выполнения функции является список отфильтрованный по слову введенному в инпут
+    const booksFiltered = getVisibleBooks(books);
+
+    // Забрасывает в локальный стейт слово введенное в инпут
+    const onChangeFilter=(e)=>{
+        const{value}=e.target;
+        setFilterBook(value);
+    };
+
+
     
     return (
         <>
@@ -87,8 +86,8 @@ const Select = ({books, selected, setSelected}) => {
             <li key={[book._id]}
                 onClick={(e) => {
                     setFilterBook(book.title);
-                    setSelected([...selected, book]);
                     setIsActive(false);
+                    onGetSelectBook(book);
                 }}
                 className={s.dropdown__item}
             >

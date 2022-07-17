@@ -9,10 +9,8 @@ const getListIdBooksTraining=({training})=> training.training.booksId;
 
 const getAmountDaysTraining=({training})=> {
     const dataStartTraining=getStartTraining({training});
-    
     const dataEndTraining=getEndTraining({training});
-    const amountOfDays = Math.ceil((dataEndTraining -       dataStartTraining) / (1000 * 3600 * 24));
-    console.log(amountOfDays);
+    const amountOfDays = Math.ceil((dataEndTraining - dataStartTraining) / (1000 * 3600 * 24));
     return amountOfDays
 };
 const getAmountBooksTraining=({training})=>{

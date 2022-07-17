@@ -6,7 +6,7 @@ export const addTraining = createAsyncThunk(
     "training/start",
     async (data, {rejectWithValue})=>{
         try {
-            const result = await trainingAPI.addTraining(data);
+            const result = await trainingAPI.addTrainingAPI(data);
             return result;
         } catch (error) {
             return rejectWithValue(error);
@@ -15,10 +15,10 @@ export const addTraining = createAsyncThunk(
 );
 
 export const getProgress = createAsyncThunk(
-    "training",
+    "training/progress",
     async (_, {rejectWithValue})=>{
         try {
-            const result = await trainingAPI.getProgress();
+            const result = await trainingAPI.getProgressAPI();
             return result;
         } catch (error) {
             return rejectWithValue(error);

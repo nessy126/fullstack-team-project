@@ -1,12 +1,9 @@
 import axios from 'axios';
 
-// axios.defaults.baseURL  = "http://localhost:8000/api";
-
-export const addTraining = (newTraining) => {
+export const addTrainingAPI = (newTraining) => {
     return axios
     .post("training/start", newTraining)
     .then(res => {
-        console.log(res.data);
         return res.data;
     })
     .catch((err) => {
@@ -15,11 +12,10 @@ export const addTraining = (newTraining) => {
     });
 }
 
-export const getProgress = () => {
+export const getProgressAPI = () => {
     return axios
     .get("training/")
     .then(res => {
-        console.log(res.data);
         return res.data;
     })
     .catch((err) => {

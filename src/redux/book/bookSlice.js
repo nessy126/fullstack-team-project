@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {addBook, getAllBooks} from "./bookOperations";
+import {getAllBooks, addBook} from "./bookOperations";
 
 const initialState = {
   book: [],
@@ -29,17 +29,16 @@ const bookSlice  = createSlice({
       state.error=null;
     },
     [getAllBooks.fulfilled]: (state, {payload})=>{
-      console.log(payload);
-      state.book=[...payload];
+      state.book=payload;
       state.isLoading=false;
       state.error=null;
-      console.log("getAllBooks", payload);
+
     },
     [getAllBooks.rejected]: (state, {payload})=>{
       console.log(payload);
       state.isLoading=false;
       state.error=payload;
-      console.log("getAllBooks", payload);
+      console.log("getAllBooks.rejected", payload);
     },
     [addBook.pending]: (state)=>{
       state.isLoading=true;

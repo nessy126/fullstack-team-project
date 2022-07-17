@@ -1,166 +1,84 @@
 import PlaningTabl from "components/PlainingTabl";
 import PlanningForm from "components/PlanningForm";
 import Select from "components/Select";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import s from "./TrainingData.module.scss";
 import { useSelector, useDispatch } from "react-redux";
 import {addTraining} from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
 import trainingSelectors from "redux/training/trainingSelectors";
 
-
-const books=[{
-    _id: "62d06588582a767000c16319",
-    title: "Мастер и Маргарита",
-    author: "Михаил Булгаков",
-    year: 1978,
-    status: "goingToRead", 
-    pageTotal: 100,
-    pageFinished: 0, //сумма прочитанных стр из статистики, но не более pages;
-    feedback: {
-        rating: 0,
-        comment: ""
-    },
-    owner: {            
-        _id: "62cf0bfc68b78831d2c0fa9e",
-        name: "John Doe",
-        email: "some.mail@mail.com"
-        },
-    },
-    {
-        _id: "62d06588582a767000c16313",
-        title: "Преступление и наказание, dsfkjhdfkjhdfg, sdfkjhadfkjhbdgfhkjgdf, sdfg, sdfgadfg",
-        author: "Фёдор Достоевский",
-        year: 1978,
-        status: "finished",
-        pageTotal: 100,
-        pageFinished: 100, //сумма прочитанных стр из статистики, но не более pages;
-        feedback: {
-            rating: 2,
-            comment: "sfghdfgh"
-        },
-        owner: {            
-            _id: "62cf0bfc68b78831d2c0fa9e",
-            name: "John Doe",
-            email: "some.mail@mail.com"
-            },
-    },
-    {
-    _id: "62d06588582a767000c16314",
-        title: "Маленький принц",
-        author: "Антуан де Сент-Экзюпери",
-        year: 1928,
-        status: "goingToRead", 
-        pageTotal: 80,
-        pageFinished: 0,
-        feedback: {
-            rating: 0,
-            comment: ""
-        },
-        owner: {            
-        _id: "62cf0bfc68b78831d2c0fa9e",
-        name: "John Doe",
-        email: "some.mail@mail.com"
-        },
-        },
-        {
-        _id: "62d06588582a767000c16315",
-            title: "Двенадцать стульев",
-            author: "Евгений Петров", 
-            year: 1928,
-            status: "goingToRead", 
-            pageTotal: 80,
-            pageFinished: 0,
-            feedback: {
-                rating: 0,
-                comment: ""
-            },
-            owner: {            
-            _id: "62cf0bfc68b78831d2c0fa9e",
-            name: "John Doe",
-            email: "some.mail@mail.com"
-            },
-        },
-        {
-        _id: "62d06588582a767000c16316",
-            title: "Исчезнувшая",
-            author: "Гиллиан Флинн", 
-            year: 1978,
-            status: "goingToRead", 
-            pageTotal: 90,
-            pageFinished: 0, //сумма прочитанных стр из статистики, но не более pages;
-            feedback: {
-                rating: 0,
-                comment: ""
-            },
-            owner: {            
-            _id: "62cf0bfc68b78831d2c0fa9e",
-            name: "John Doe",
-            email: "some.mail@mail.com"
-            },
-        },
-    {
-    _id: "62d06588582a767000c16317",
-        title: "Милые кости",
-        author: "ГЭлис Сиболд", 
-        year: 2008,
-        status: "goingToRead", 
-        pageTotal: 190,
-        pageFinished: 0,
-        feedback: {
-            rating: 0,
-            comment: ""
-        },
-        owner: {            
-            _id: "62cf0bfc68b78831d2c0fa9e",
-            name: "John Doe",
-            email: "some.mail@mail.com"
-        },
-    }]
-// const books1=[]
-
 const TrainingData = () => {
+
 const dispatch=useDispatch()
 const isLoading =useSelector(trainingSelectors.getIsLoading);
-// const listGoingToRead= useSelector(bookSelectors.getListGoingToRead);
-const error = useSelector(trainingSelectors.getError);
 const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
+const error = useSelector(trainingSelectors.getError);
 
-const value={ 
-    bookId:[],
-    startTraining:123131,
-    endTraining:132132131
-}
+    // Локальный стейт для получения и передачи данных из других компонентов
+    const [selected, setSelected]=useState({});
+    const [listPlainingBooks, setListPlainingBooks]=useState([])
+    const [showBtnAdd, setShowBtnAdd]=useState(false)
+    const [booksId, setBooksId]=useState([]);
+    const [startTraining, setStartTraining]=useState(0);
+    const [endTraining, setEndTraining]=useState(0);
+    const [valueTraining, setValueTraining] = useState({})
 
+    const addStartTraining=(e)=>{
+        setStartTraining(e)
+    };
+    const addEndTraining=(e)=>{
+        setEndTraining(e)
+    };
 
-    const[selected, setSelected]=useState([]);
+    useEffect(()=>{
+        if(startTraining>0 && endTraining>0 && booksId.length>0){
+            setValueTraining({booksId, startTraining, endTraining})
+        }
+    },[booksId, startTraining, endTraining])
 
+// Функция для получения из компонента Селект объекта книги (при клике по li)
+    const onGetSelectBook=(book)=>{
+        setSelected(book);
+        setShowBtnAdd(true);
+    }
 
     const handleDelBook =(id)=>{
         const newListBooks=listGoingToRead.filter(book=>book.id!==id);
         return newListBooks;
     }
-    const resetState=()=>{
-        setSelected([])
-    }
-    const listPlainingBooks=[]
-    const handleSelect=(e)=>{
-        listPlainingBooks.push(selected);
-        console.log(11111)
-        // resetState()
-  
 
+    // При нажатии на кнопку Add в список книг listPlainingBooks пушится книга выбранная в инпуте селекта, сетится в стейт id книги, обнуляется стейт выбранной книги
+    const handleSelect = () => {
+        setListPlainingBooks([...listPlainingBooks, selected]);
+        const{_id}=selected;
+        setBooksId([...booksId, _id.toString()]);
+        setSelected({});
+    };
+
+    const clickOnStartBtn =()=>{
+        try {
+            dispatch(addTraining(valueTraining));
+        } catch (error) {
+            console.log(error)
+        }
     }
 
-const show=true
+const hideBtnStart = listPlainingBooks?.length >0 ? true : false;
+
+const activBtnStart= startTraining>0 && endTraining>0 && booksId.length>0 ? true : false;
+
+
     return <>
-            <PlanningForm />
+            <PlanningForm 
+            addStartTraining={addStartTraining}
+            addEndTraining={addEndTraining}/>
         <div className={s.select__wrapper}>
             <Select 
                 books={listGoingToRead} 
-                selected={selected} 
-                setSelected={setSelected}/>
-                {show ? (
+                selected={selected}
+                onGetSelectBook={onGetSelectBook}/>
+                {showBtnAdd ? (
                     <button 
                         type='button' 
                         onClick={handleSelect} 
@@ -176,17 +94,15 @@ const show=true
         <PlaningTabl 
             books={listPlainingBooks} 
             handleDelBook={handleDelBook}/>
-        <div className={s.button__wrapper}>
+
+        {!hideBtnStart ? null:(<div className={s.button__wrapper}>
             <button 
                 type='button' 
-                onClick={()=>{
-                    try {
-                        dispatch(addTraining(value));
-                    } catch (error) {
-                    }
-                    }} className={s.start__button}>Start training
+                
+                onClick={clickOnStartBtn} 
+                className={s.start__button}>Start training
             </button>
-        </div>
+        </div>) }
     </>;
 };
 

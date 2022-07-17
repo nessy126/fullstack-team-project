@@ -1,9 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 // import * as authAPI from "../../utils/userApi";
 
+
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:8000/api/";
+axios.defaults.baseURL = "https://book-reader-team-project.herokuapp.com/api/";
 
 const token = {
   set(token) {

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 
 export const addBook = createAsyncThunk(
-    "books",
+    "addBooks/post",
     async (data, {rejectWithValue})=>{
         try {
             console.log("addBook");
@@ -18,12 +18,10 @@ export const addBook = createAsyncThunk(
 )
 
 export const getAllBooks = createAsyncThunk(
-    "books",
+    "allBooks/get",
     async (_, {rejectWithValue})=>{
         try {
-            console.log("getAllBooks");
             const result = await axios.get("books");
-            console.log(result.data);
             return result.data;
         } catch (error) {
             console.log(error);

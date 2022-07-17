@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect,  useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import MyGoals from "components/MyGoals";
 import TrainingData from "components/TrainingData";
@@ -12,6 +12,7 @@ import {getStatusTraining} from "redux/auth/authSelectors";
 import s from "./TrainingPage.module.scss";
 
 const TrainingPage = () => {
+
   const dispatch=useDispatch();
   const allBooksList=useSelector(bookSelectors.getAllBooks);
   const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
@@ -20,19 +21,18 @@ const TrainingPage = () => {
   const amountDaysTraining=useSelector(trainingSelectors.getAmountDaysTraining);
   const statusTraining= useSelector(getStatusTraining);
 
+ 
 
   useEffect(() => {
     dispatch(getAllBooks());
-    console.log("dispatch(getAllBooks())");
   }, [dispatch]);
 
 
-  useEffect(() => {
-    if(statusTraining){
-      dispatch(getProgress());
-      console.log("dispatch(getProgress())");
-    }
-  }, [dispatch, statusTraining]);
+  // useEffect(() => {
+  //   if(statusTraining){
+  //     dispatch(getProgress());
+  //   }
+  // }, [dispatch, statusTraining]);
 
   const array=[
     {
@@ -53,11 +53,11 @@ const TrainingPage = () => {
     <section className={s.page__wrapper}>
       <div className={s.right__wrapper}>
         <MyGoals data={array}/>
+        {statusTraining ? <Statistics />: null}
       </div>
       <div className={s.left__wrapper}>
-        <TrainingData />
-        <Chart />
-        <Statistics />
+      {!statusTraining ? <TrainingData />: null}
+      <Chart />
       </div>
     </section>
   );

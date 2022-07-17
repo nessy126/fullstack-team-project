@@ -2,7 +2,9 @@ import { createSlice } from '@reduxjs/toolkit';
 import {addTraining, getProgress} from './trainingOperations';
 
 const initialState = {
-  training: {},
+  training: {
+  
+  },
   finishedTrainings: [],
   isLoading: false,
   isLoggedIn: false,
@@ -28,7 +30,7 @@ const trainingSlice = createSlice({
       state.error=null;
     },
     [addTraining.fulfilled]: (state, {payload})=>{
-      state.training=[...state.training, payload]
+      state.training=payload;
       state.isLoading=false;
       state.error=null;
     },
