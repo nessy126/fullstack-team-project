@@ -6,9 +6,15 @@ const PrivateRoute = ({ children, ...routeProps }) => {
   const isAuth = useSelector(getIsLogin);
 
   return (
-    <Route {...routeProps}>
+    <>
+      <Route
+        {...routeProps}
+        element={isAuth ? children : <Redirect to="/login" />}
+      />
+      {/* <Route {...routeProps}>
       {isAuth ? children : <Redirect to="/login" />}
-    </Route>
+    </Route> */}
+    </>
   );
 };
 

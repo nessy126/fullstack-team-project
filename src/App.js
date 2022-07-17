@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Routes, Route, Switch } from "react-router-dom";
 
 import Container from "components/Container";
 import Header from "components/Header";
@@ -26,24 +26,24 @@ function App() {
     <Container>
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
+        <Routes>
           <PublicRoute exact path="/" isRestricted>
             <HomePage />
           </PublicRoute>
-          <PublicRoute exact path="/login" isRestricted>
+          <PublicRoute exact path="login" isRestricted>
             <LoginPage />
           </PublicRoute>
-          <PublicRoute exact path="/register" isRestricted>
+          <PublicRoute exact path="register" isRestricted>
             <RegisterPage />
           </PublicRoute>
 
-          <PrivateRoute path="/training">
+          <PrivateRoute path="training">
             <TrainingPage />
           </PrivateRoute>
-          <PrivateRoute path="/library">
+          <PrivateRoute path="library">
             <LibraryPage />
           </PrivateRoute>
-        </Switch>
+        </Routes>
       </Suspense>
     </Container>
   );

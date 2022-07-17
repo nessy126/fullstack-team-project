@@ -6,9 +6,17 @@ const PublicRoute = ({ children, isRestricted = false, ...routeProps }) => {
   const isAuth = useSelector(getIsLogin);
 
   return (
-    <Route {...routeProps}>
-      {isAuth && isRestricted ? <Redirect to="/training" /> : children}
-    </Route>
+    <>
+      <Route
+        {...routeProps}
+        element={
+          isAuth && isRestricted ? <Redirect to="/training" /> : children
+        }
+      />
+      {/* <Route {...routeProps}>
+        {isAuth && isRestricted ? <Redirect to="/training" /> : children}
+      </Route> */}
+    </>
   );
 };
 
