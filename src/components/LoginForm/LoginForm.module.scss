@@ -3,6 +3,8 @@
 .login{
     background-color: var(--main-bg-cl);
     @include vp(desktop){
+        align-items: center;
+        text-align: center;
         display: flex;
         height: 790px;
     }
@@ -14,9 +16,8 @@
     align-items: center;
     text-align: center;
     height: 180px;
-    // border: 1px solid red;
-    @include vp(desktop){
-        height: 100%;
+    @include vp(tablet){
+        height: 400px;
         width: 100%;
     }
 }
@@ -26,23 +27,35 @@
 }
 
 .quoteText{
+    width: 230px;
+    margin-bottom: 20px;
     @include font(500, 13px, 16px); 
     @include vp(tablet) {
-            width: 300px;
+        margin-bottom: 25px;
+            width: 400px;
+            @include font(500, 24px, 38px);
         }
 }
 
 .author{
     margin-top: 10px;
-    width: 100px;
-    margin-right: auto;
-    margin-left: auto;
-    border-top: 1px solid var(--secondary-text-cl);
+    width: 100%;
+    // width: 140px;
+    // margin: 0 auto;
+    align-items: center;
+    // border-top: 1px solid var(--secondary-text-cl);
 }
 
 .quoteAuthor{
     color: var(--secondary-text-cl);
-    @include font(500, 14px, 38px )
+    width: 100px;
+    margin: 0 auto;
+    border-top: 1px solid var(--secondary-text-cl);
+    @include font(500, 14px, 38px );
+    @include vp(tablet) {
+            width: 140px;
+            @include font(500, 20px, 38px);
+        }
 }
 .iconQuote{
     fill: var(--accent-active-cl);

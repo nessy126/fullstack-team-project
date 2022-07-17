@@ -10,6 +10,7 @@ const initialState = {
   isTraining: false,
   isLoading: false,
   isLoggedIn: false,
+  registerPass: false,
   error: null,
   token: null,
 };
@@ -24,9 +25,8 @@ const authSlice = createSlice({
     },
     [signUp.fulfilled]: (state, { payload }) => {
       state.user = { ...payload?.user };
-      // state.token = payload?.token;
       state.isLoading = false;
-      // state.isLoggedIn = true;
+      state.registerPass = true;
     },
     [signUp.rejected]: (state, { payload }) => {
       state.isLoading = false;
