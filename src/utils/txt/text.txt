@@ -1,0 +1,31 @@
+Пользователь НЕ ЗАРЕГИСТРИРОВАН. PublicRoute
+  Экран от 768px
+1. "/" LoginPage.
+2. "/register" RegisterPage
+3. "/login" LoginPage
+4. "library" Redirect to=LoginPage
+5. "training" Redirect to=LoginPage
+
+  Экран до 768px
+1. "/" MobileHomePage.
+2. "/register" RegisterPage
+3. "/login" LoginPage
+4. "library" Redirect to=LoginPage
+5. "training" Redirect to=LoginPage
+
+Пользователь ЗАРЕГИСТРИРОВАН. PrivatRoute
+  Если тренировка запущена:
+  1. "/" TrainingPage.
+  2. "/register" TrainingPage
+  3. "/login" TrainingPage
+  4. "library" Redirect to=LibraryPage
+  5. "training" Redirect to=TrainingPage
+
+    Если тренировка НЕ запущена:
+  1. "/" LibraryPage.
+  2. "/register" LibraryPage
+  3. "/login" LibraryPage
+  4. "library" Redirect to=LibraryPage
+  5. "training" Redirect to=TrainingPage
+
+  
