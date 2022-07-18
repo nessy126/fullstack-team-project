@@ -1,14 +1,40 @@
+import { configureStore } from "@reduxjs/toolkit"
 import {
-  configureStore
-} from "@reduxjs/toolkit";
-import authSlice from "./auth/authSlice";
-import bookSlice from "./book/bookSlice";
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist"
+import storage from "redux-persist/lib/storage"
 
-const store = configureStore({
-    reducer: {
-      auth: authSlice,
-      book: bookSlice,
-    }
-  })
+import authSlice from "./auth/authSlice"
+// import bookSlice from "./book/bookSlice";
+import trainingSlice from "./training/trainingSlice"
 
-export default store;
+const persistConfig = {
+  key: "auth",
+  storage,
+  whitelist: ["token"],
+}
+
+const persistedAuthReducer = persistReducer(persistConfig, authSlice)
+
+export const store = configureStore({
+  reducer: {
+    auth: persistedAuthReducer,
+    // book: bookSlice,
+    training: trainingSlice,
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
+})
+
+export const persistor = persistStore(store)

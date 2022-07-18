@@ -13,9 +13,12 @@
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.5",
     "react": "^18.2.0",
+    "react-calendar": "^3.7.0",
     "react-chartjs-2": "^4.2.0",
     "react-datepicker": "^4.8.0",
+    "react-datetime-picker": "^3.5.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^4.4.0",
     "react-loader-spinner": "^5.1.5",
     "react-media": "^1.10.0",
     "react-redux": "^8.0.2",
@@ -24,6 +27,7 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.4.0",
     "react-toastify": "^9.0.5",
+    "redux-persist": "^6.0.0",
     "sass": "^1.53.0",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"
@@ -32,7 +36,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "netlify deploy -p"
   },
   "eslintConfig": {
     "extends": [
@@ -53,6 +59,9 @@
     ]
   },
   "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^12.4.1",
+    "prettier": "^2.6.2",
     "prop-types": "^15.8.1"
   }
 }
