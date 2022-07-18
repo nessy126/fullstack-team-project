@@ -4,9 +4,6 @@ import s from "./Statistics.module.scss";
 import { useSelector } from "react-redux";
 import trainingSelectors from "redux/training/trainingSelectors";
 const Statistics = () => {
-  // useEffect(() => {
-  //   dispatch(getAllBooks());
-  // }, [dispatch]);
   const dateTimeToEnd = useSelector(trainingSelectors.getEndTraining);
   const now_in_ms = new Date().getTime();
   const getFullYear = new Date().getFullYear();
@@ -14,7 +11,7 @@ const Statistics = () => {
   const newYearCountdown = Date.now() - getFullYearMs;
   const timeEndYear = ms_of_a_year(getFullYear) - newYearCountdown;
   const dateTimeToNewYear = now_in_ms + timeEndYear;
-  const goalCountdown = 3 * 24 * 60 * 60 * 1000;
+  const goalCountdown = dateTimeToEnd - now_in_ms;
   const dateTimeToGoal = now_in_ms + goalCountdown;
   console.log("dateTimeToEnd :>> ", dateTimeToEnd);
 
