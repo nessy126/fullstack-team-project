@@ -1,9 +1,14 @@
-import s from './Chart.module.scss';
+import s from "./Chart.module.scss";
 
 const Chart = (props) => {
-  return (<>
-<div className={s.title}></div>
-  </>  );
-}
+  const chartTitle = "кількість сторінок / день";
+  return (
+    <>
+      <div className={s.chartWrapper}>
+        <p className={s.chartText}>{chartTitle}</p>
+      </div>
+    </>
+  );
+};
 
 export default Chart;

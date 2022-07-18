@@ -1,14 +1,16 @@
-import { getIsLogin } from "../../redux/auth/authSelectors";
+import { getIsLogin } from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
-import { Redirect, Route } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import { getStatusIsTraining } from "redux/auth/authSelectors";
 
-const PublicRoute = ({ children, isRestricted = false, ...routeProps }) => {
+const PublicRoute = () => {
   const isAuth = useSelector(getIsLogin);
+  const training = useSelector(getStatusIsTraining);
 
-  return (
-    <Route {...routeProps}>
-      {isAuth && isRestricted ? <Redirect to="/training" /> : children}
-    </Route>
+  return isAuth ? (
+    <Navigate to={training ? "/training" : "/library"} replace />
+  ) : (
+    <Outlet />
   );
 };
 
