@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import { signUp, login, logout, current } from "./authActionThunk";
-import { addTraining } from './../training/trainingOperations';
-
 
 const initialState = {
   user: {
@@ -72,19 +70,6 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
     },
     [current.rejected]: (state, { payload }) => {
-      state.isLoading = false;
-      state.error = payload;
-    },
-    [addTraining.pending]: (state) => {
-      state.isLoading = true;
-      state.error = null;
-    },
-    [addTraining.fulfilled]: (state) => {
-      state.isTraining = true;
-      state.isLoading = false;
-      state.error = null;
-    },
-    [addTraining.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },

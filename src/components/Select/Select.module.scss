@@ -12,10 +12,9 @@
   padding-bottom: 8px;
   padding-left: 13px;
   padding-right: 13px;
+  cursor: pointer;
   margin-bottom: 35px;
-display: flex;
-align-items: center;
-justify-content: space-between;
+
   @include vp(tablet) {
     width: 482px;
     margin-right: 25px;
@@ -27,40 +26,20 @@ justify-content: space-between;
   }
 }
 
-.dropdown__wrapper {
-  width: 100%;
+.dropdown__btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.dropdown__input{
+.dropdown__text{
     width: 90%;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
     overflow: hidden;
-    border: none;
-}
-.dropdown__btn{
-  border: none;
-  background-color: transparent;
-  color:var(--main-text-cl);
-  width: 10%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  transition: all 250ms linear;
 }
 .react__icon{
     width: 10%;
-
-}
-.dropdown__btn:hover, 
-.dropdown__btn:focus{
-  color: var(--accent-active-cl);
-}
-.dropdown__btn:active{
-  color:var(--accent-active-cl-hover);
 }
 .dropdown__content {
   position: absolute;

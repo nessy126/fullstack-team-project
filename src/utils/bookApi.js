@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const endPoint = "api/books/";
 
 // newBook - пример:
@@ -8,28 +9,26 @@ const endPoint = "api/books/";
 //   "year": 1834,
 //   "pageTotal": 345
 // }
-export const addBookAPI = (newBook) => {
+export const addBook = (newBook) => {
   return axios
-    .post("books")
+    .post(baseUrl)
     .then((res) => {
       console.log(res.data);
       return res.data;
     })
     .catch((err) => {
-      console.log(err);
       throw err;
     });
 };
 
-export const getAllBooksAPI = () => {
+export const getAllBooks = () => {
   return axios
-    .get("books")
+    .get(baseUrl)
     .then((res) => {
       console.log(res.data);
       return res.data;
     })
     .catch((err) => {
-      console.log(err);
       throw err;
     });
 };
