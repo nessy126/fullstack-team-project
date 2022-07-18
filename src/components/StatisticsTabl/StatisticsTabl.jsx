@@ -1,17 +1,20 @@
-import s from "./PlainingTabl.module.scss";
-import { useState } from "react";
-import { MdMenuBook, MdOutlineDeleteOutline } from "react-icons/md";
+import s from "./StatisticsTable.module.scss";
+import { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getProgress } from "redux/training/trainingOperations";
+import trainingSelectors from "redux/training/trainingSelectors";
 import Media from "react-media";
-// import deleteIconSvg from '../../assets/svg/delete.svg';
+import { MdMenuBook } from "react-icons/md";
+const StatisticsTabl = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getProgress());
+  }, [dispatch]);
 
-const PlaningTabl = ({ books, handleDelBook }) => {
-  const [itemDel, setItemDel] = useState({});
-  const deletItemFromList = (e) => {
-    setItemDel(e);
-    handleDelBook(e);
-  };
+  const allTraining = useSelector(trainingSelectors.getAllTrainings);
+  console.log("statusIsTraining :>> ", allTraining);
+  const show = allTraining?.length > 0 ? true : false;
   const isLoading = false;
-  const show = books?.length > 0 ? true : false;
   return (
     <Media
       queries={{
@@ -24,7 +27,7 @@ const PlaningTabl = ({ books, handleDelBook }) => {
           {matches.small &&
             (show ? (
               <ul className={s.column__list}>
-                {books?.map((book) => {
+                {allTraining?.map((book) => {
                   return (
                     <li key={book._id} className={s.column__item}>
                       <div className={s.column__flex}>
@@ -38,20 +41,6 @@ const PlaningTabl = ({ books, handleDelBook }) => {
                           />
                         </div>
                         <div className={s.column__title}>{book.title}</div>
-                        <button
-                          type="button"
-                          onClick={deletItemFromList}
-                          id={book._id}
-                          className={s.column__btn}
-                        >
-                          <MdOutlineDeleteOutline
-                            style={{
-                              width: "14",
-                              height: "18",
-                              color: "#A6ABB9",
-                            }}
-                          />
-                        </button>
                       </div>
                       <div className={s.column__flex}>
                         <div className={s.column__right}>Author:</div>
@@ -63,7 +52,7 @@ const PlaningTabl = ({ books, handleDelBook }) => {
                       </div>
                       <div className={s.column__flex}>
                         <div className={s.column__right}>Pages:</div>
-                        <div className={s.column__left}>{book.pagesTotal}</div>
+                        <div className={s.column__left}>{book.pageTotal}</div>
                       </div>
                     </li>
                   );
@@ -109,7 +98,7 @@ const PlaningTabl = ({ books, handleDelBook }) => {
                       <p>InlineLoader</p>
                     ) : (
                       <ul className={s.table__list}>
-                        {books?.map((book) => {
+                        {allTraining?.map((book) => {
                           return (
                             <li key={book._id} className={s.table__item}>
                               <div className={s.table__icon}>
@@ -127,22 +116,8 @@ const PlaningTabl = ({ books, handleDelBook }) => {
                               </div>
                               <div className={s.table__year}>{book.year}</div>
                               <div className={s.table__pagesTotal}>
-                                {book.pagesTotal}
+                                {book.pageTotal}
                               </div>
-                              <button
-                                type="button"
-                                onClick={deletItemFromList}
-                                id={book._id}
-                                className={s.table__btn}
-                              >
-                                <MdOutlineDeleteOutline
-                                  style={{
-                                    width: "14",
-                                    height: "18",
-                                    color: "#A6ABB9",
-                                  }}
-                                />
-                              </button>
                             </li>
                           );
                         })}
@@ -176,4 +151,4 @@ const PlaningTabl = ({ books, handleDelBook }) => {
   );
 };
 
-export default PlaningTabl;
+export default StatisticsTabl;

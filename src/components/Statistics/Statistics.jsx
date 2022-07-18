@@ -1,7 +1,13 @@
+import StatisticsTabl from "components/StatisticsTabl";
 import CountdownTimer from "./CountdownTimer";
 import s from "./Statistics.module.scss";
-
+import { useSelector } from "react-redux";
+import trainingSelectors from "redux/training/trainingSelectors";
 const Statistics = () => {
+  // useEffect(() => {
+  //   dispatch(getAllBooks());
+  // }, [dispatch]);
+  const dateTimeToEnd = useSelector(trainingSelectors.getEndTraining);
   const now_in_ms = new Date().getTime();
   const getFullYear = new Date().getFullYear();
   const getFullYearMs = new Date(getFullYear + "-01-01").getTime();
@@ -10,6 +16,7 @@ const Statistics = () => {
   const dateTimeToNewYear = now_in_ms + timeEndYear;
   const goalCountdown = 3 * 24 * 60 * 60 * 1000;
   const dateTimeToGoal = now_in_ms + goalCountdown;
+  console.log("dateTimeToEnd :>> ", dateTimeToEnd);
 
   function ms_of_a_year(year) {
     return isLeapYear(year)
@@ -22,16 +29,19 @@ const Statistics = () => {
   }
 
   return (
-    <div className={s.counterDiv}>
-      <div>
-        <h2 className={s.counterTitle}>Year countdown</h2>
-        <CountdownTimer targetDate={dateTimeToNewYear} />
+    <>
+      <div className={s.counterDiv}>
+        <div>
+          <h2 className={s.counterTitle}>Year countdown</h2>
+          <CountdownTimer targetDate={dateTimeToNewYear} />
+        </div>
+        <div>
+          <h2 className={s.counterTitle}>Goal countdown</h2>
+          <CountdownTimer targetDate={dateTimeToGoal} />
+        </div>
       </div>
-      <div>
-        <h2 className={s.counterTitle}>Goal countdown</h2>
-        <CountdownTimer targetDate={dateTimeToGoal} />
-      </div>
-    </div>
+      <StatisticsTabl />
+    </>
   );
 };
 
