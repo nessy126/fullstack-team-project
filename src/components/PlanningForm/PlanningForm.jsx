@@ -7,7 +7,7 @@ import DateTimePicker from "react-datetime-picker";
 const PlanningForm = () => {
   const [valueStart, setValueStart] = useState(null);
   const [valueEnd, setValueEnd] = useState(null);
-  const dateFin = new Date();
+  // const dateFin = new Date();
   // console.log(dateFin.getTime())
   // console.log(new Date(2017, 0, 1))
   return (

@@ -1,15 +1,17 @@
 import { getIsLogin } from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
+import { getStatusIsTraining } from "redux/auth/authSelectors";
 
 const PublicRoute = () => {
   const isAuth = useSelector(getIsLogin);
-  const location = useLocation();
-  console.log("Public");
+  const training = useSelector(getStatusIsTraining);
 
-  // console.log(location);
-  // console.log(isRestricted);
-  return isAuth ? <Navigate to="/training" replace /> : <Outlet />;
+  return isAuth ? (
+    <Navigate to={training ? "/training" : "/library"} replace />
+  ) : (
+    <Outlet />
+  );
 };
 
 export default PublicRoute;

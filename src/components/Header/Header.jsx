@@ -14,9 +14,6 @@ const Header = () => {
   const logOutUser = () => {
     dispatch(logout());
   };
-  const toggle = ({ isActive }) => {
-    return isActive ? { color: "red" } : { color: "black" };
-  };
   return (
     <>
       <h1 className={s.title}>Header</h1>

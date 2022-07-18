@@ -1,11 +1,10 @@
 import { getIsLogin } from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
 const PrivateRoute = () => {
   const isAuth = useSelector(getIsLogin);
-  const location = useLocation();
-  console.log("Privet");
+  // const location = useLocation();
   // state={{ from: location }}
 
   return isAuth ? <Outlet /> : <Navigate to="/login" replace />;

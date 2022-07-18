@@ -1,13 +1,12 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 import Container from "components/Container";
 import Header from "components/Header";
 import PublicRoute from "components/PublicRoute";
 import PrivateRoute from "components/PrivateRoute";
 import { current } from "redux/auth/authActionThunk";
-import { getTraining, getIsLogin } from "redux/auth/authSelectors";
 import NotFoundPage from "pages/NotFoundPage";
 
 const HomePage = lazy(() => import("pages/HomePage"));
@@ -18,9 +17,6 @@ const TrainingPage = lazy(() => import("pages/TrainingPage"));
 
 function App() {
   const dispatch = useDispatch();
-  const training = useSelector(getTraining);
-
-  const chosenWay = training ? "/training" : "/library";
 
   useEffect(() => {
     dispatch(current());
