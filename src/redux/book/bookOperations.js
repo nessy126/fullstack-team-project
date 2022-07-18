@@ -11,18 +11,15 @@ const token = {
 };
 
 export const addBook = createAsyncThunk(
-  "addBooks/post",
-  async (data, { rejectWithValue }) => {
-    try {
-      console.log("addBook");
-      const result = await axios.post("/api/books", data);
-      console.log(result.data);
-      return result.data;
-    } catch (error) {
-      console.log(error);
-      return rejectWithValue(error);
+    "book/add",
+    async (data, {rejectWithValue})=>{
+        try {
+            const result = await axios.post("books", data);
+            return result.data;
+        } catch (error) {
+            return rejectWithValue(error);
+        }
     }
-  }
 );
 
 export const getAllBooks = createAsyncThunk(
