@@ -28,15 +28,6 @@
 .select__button:active{
     background-color: var(--training-bg-cl); 
 }
-.select__button:disabled{
-    cursor:auto;
-}
-.select__button:disabled.select__button:hover{
-    background-color: var(--secondary-bg-cl);
-    border: 1px solid var(--additional-bg-cl);
-    box-shadow: none;
-}
-
 .button__wrapper{
     display: flex;
     align-items: center;
@@ -55,18 +46,10 @@
 
 }
 .start__button:hover, .start__button:focus{
-    background-color: var(--accent-active-cl-hover);
+    background-color: var( --accent-active-cl-hover);
     box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
 }
 .start__button:active{
     background-color: var(--training-bg-cl);
     color: var(--accent-active-cl);
-}
-.start__button:disabled{
-    cursor:auto;
-}
-.start__button:disabled:hover, .start__button:disabled:focus{
-    cursor:auto;
-    background-color: var(--accent-active-cl);
-    color: var(--main-bg-cl);;
 }

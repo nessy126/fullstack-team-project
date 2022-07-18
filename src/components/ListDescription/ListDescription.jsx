@@ -1,7 +1,7 @@
 import React from "react";
 
 import spriteSVG from "assets/images/sprite.svg";
-import s from "./List.module.scss";
+import s from "./ListDescription.module.scss";
 
 const list = ({ list }) => {
   return (

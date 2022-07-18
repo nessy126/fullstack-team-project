@@ -3,11 +3,11 @@ import { getIsLogin } from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 import Media from "react-media";
 
-import data from "assets/dataBase/db.json";
-import s from "./MainPage.module.scss";
-import List from "./List";
+import data from "assets/dataBase/descriptionLists.json";
+import s from "./MobileHomePage.module.scss";
+import ListDescription from "components/ListDescription";
 
-const HomePage = () => {
+const MobileHomePage = () => {
   const isAuth = useSelector(getIsLogin);
 
   const { helpingList, alsoList } = data;
@@ -23,10 +23,10 @@ const HomePage = () => {
         <div className={s.homePage}>
           <h1>Books Reading</h1>
           <h2>Will help you to </h2>
-          <List list={helpingList} />
+          <ListDescription list={helpingList} />
 
           <h2>You may also</h2>
-          <List list={alsoList} />
+          <ListDescription list={alsoList} />
           {!isAuth && matches.medium && (
             <div className={s.pages}>
               <NavLink to="/login" className={s.page}>
@@ -43,4 +43,4 @@ const HomePage = () => {
   );
 };
 
-export default HomePage;
+export default MobileHomePage;

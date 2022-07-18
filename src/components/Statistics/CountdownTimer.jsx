@@ -1,10 +1,9 @@
 import React from "react";
 import DateTimeDisplay from "./DateTimeDisplay";
-import { useCountdown } from "hooks";
+import { useCountdown } from "hooks/useCountDown";
 import s from "./CountdownTimer.module.scss";
-  console.log(useCountdown);
-const ExpiredNotice = () => {
 
+const ExpiredNotice = () => {
   return (
     <div className="expired-notice">
       <span>Expired!!!</span>
