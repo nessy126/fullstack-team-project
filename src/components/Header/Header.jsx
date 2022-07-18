@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import s from "./Header.module.scss";
 
-import { logout } from "redux/auth/authActionThunk";
+import { logout } from "redux/auth/authOperations";
 import { NavLink } from "react-router-dom";
 import { getIsLogin } from "redux/auth/authSelectors";
 

@@ -1,15 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import s from "./PlanningForm.module.scss";
 // import calendarIconSvg from '../../assets/svg/calendar1.svg';
 import polygonIconSvg from "../../assets/svg/polygon1.svg";
 import DateTimePicker from "react-datetime-picker";
 
-const PlanningForm = () => {
+const PlanningForm = ({addStartTraining, addEndTraining, addAmountOfDaysTraining}) => {
   const [valueStart, setValueStart] = useState(null);
   const [valueEnd, setValueEnd] = useState(null);
-  // const dateFin = new Date();
-  // console.log(dateFin.getTime())
-  // console.log(new Date(2017, 0, 1))
+
+useEffect(()=>{
+    if (valueStart!==null && valueEnd!==null){
+    const amountOfDays = Math.ceil(
+      (valueEnd - valueStart) / (1000 * 3600 * 24)
+    );
+    if(amountOfDays<=0){
+      alert("Дата завершения тренировки должна быть больше даты начала тренировки");
+      return;
+    }
+    addStartTraining(valueStart.getTime());
+    addEndTraining(valueEnd.getTime());
+    addAmountOfDaysTraining(amountOfDays);
+  }
+}, [valueStart, valueEnd])
+
   return (
     <>
       <div className={s.planningForm__wrapper}>
@@ -24,7 +37,7 @@ const PlanningForm = () => {
               onChange={setValueStart}
               value={valueStart}
               minDate={new Date()}
-              calendarIcon={<img alt="" src={polygonIconSvg} />}
+              calendarIcon={<img alt="button" src={polygonIconSvg} />}
               clearIcon={null}
               className={s.datetime__picker}
               calendarClassName={s.react__calendar}
@@ -44,7 +57,7 @@ const PlanningForm = () => {
               disableClock={true}
               format="dd.MM.yyyy HH:mm"
               placeholderText={"Finish"}
-              calendarIcon={<img alt="" src={polygonIconSvg} />}
+              calendarIcon={<img alt="button" src={polygonIconSvg} />}
             />
           </div>
         </div>

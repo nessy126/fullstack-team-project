@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { signUp, login, logout, current } from "./authActionThunk";
+import { signUp, login, logout, current } from "./authOperations";
 
 const initialState = {
   user: {
@@ -41,6 +41,7 @@ const authSlice = createSlice({
       state.token = payload?.token;
       state.isLoading = false;
       state.isLoggedIn = true;
+      state.isTraining = payload.user.isTrainingActive;
     },
     [login.rejected]: (state, { payload }) => {
       state.isLoading = false;

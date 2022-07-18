@@ -2,7 +2,6 @@ import React from "react";
 import DateTimeDisplay from "./DateTimeDisplay";
 import { useCountdown } from "hooks/useCountDown";
 import s from "./CountdownTimer.module.scss";
-
 const ExpiredNotice = () => {
   return (
     <div className="expired-notice">

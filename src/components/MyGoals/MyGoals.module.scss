@@ -1,6 +1,6 @@
 @import '../../assets/sass/main.scss';
 
-.goal__wrapper{
+.goal__wrapper__plan{
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -29,13 +29,38 @@
     }
     
 }
+.goal__wrapper__statistic{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--main-bg-cl);
+    box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
+    @include vp(tablet){
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 20px;
+        padding-bottom: 8px;
+        padding-left: 30px;
+        padding-right: 30px;
+        height: 125px;
+    }
+    @include vp(desktop) {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 275px;
+        height: 318px;
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
 .top__wrapper{
     width: 100%;
     @include vp(tablet){
-        width: 275px;
         padding-bottom: 14px;
-        // margin-right: 78px;
-        
     }
     @include vp(desktop) {
         padding-bottom: 0;
@@ -50,13 +75,17 @@
     justify-content: center;
     padding-top: 11px;
     padding-bottom: 11px;
+    @include vp(tablet){
+        width: 275px;
+    }
 }
 .title{
     @include font(600, 20px, 1.9);
 }
-.list{
+.list__plan{
     display: flex;
     justify-content: space-between;
+    width: 100%;
     padding-top: 55px;
     padding-bottom: 55px;
     padding-left: 25px;
@@ -67,16 +96,41 @@
         padding-bottom: 0;
         padding-left: 0px;
         padding-right: 0px;
+        margin-left: 78px;
     }
     @include vp(desktop){
         padding-top: 55px;
         padding-bottom: 55px;
         padding-left: 28px;
         padding-right: 27px;
+        margin-left: 0;
     }
-
 }
-.item{
+.list__statistic{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: var(--main-bg-cl);
+    @include vp(tablet){
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: 0px;
+        padding-right: 0px;
+        margin-left: 19px;
+    }
+    @include vp(desktop){
+        padding-top: 72px;
+        padding-bottom: 72px;
+        padding-left: 16px;
+        padding-right: 17px;
+        margin-left: 0;
+    }
+}
+.item__plan{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -84,13 +138,33 @@
     width: 100px;
     height: 100%;
 }
-.item:not(:last-child){
+.item__plan:not(:last-child){
     margin-right: 20px;
     @include vp(tablet){
         margin-right: 35px;  
     }
     @include vp(desktop){
         margin-right: 20px;
+    }
+}
+.item__statistic{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 63px;
+    height: 100%;
+    @include vp(tablet){
+        width: 100px;
+    }
+    @include vp(desktop){
+        width: 66px;
+    }
+}
+.item__statistic:not(:last-child){
+    margin-right: 12px;
+    @include vp(desktop){
+        margin-right: 22px;
     }
 }
 .amount{
@@ -104,7 +178,7 @@
     background-color: var(--auth-bg-cl);
     color: var(--chart-plan-cl);
     font-family: 'Open Sans';
-    @include font(700, 40px, 0.95);
+    @include font(700, 45px, 0.85);
     box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
     @include vp(tablet){
     height: 100%;
@@ -116,8 +190,32 @@
         padding-top: 31px;
         padding-bottom: 31px; 
     }
+}
+.list__statistic .amount{
+        height: 100%;
+        padding-top: 13px;
+        padding-bottom: 12px;
+        @include font(700, 35px, 1.09);
+        @include vp(tablet){
+        padding-top: 11px;
+        padding-bottom: 11px;
+        }
+        @include vp(desktop){
+            height: 66px;
+            padding-top: 14px;
+            padding-bottom: 14px; 
+            @include font(700, 36px, 1.06);
+        }
+    }
+.item__statistic:nth-child(3) >.amount{
+        color: var(--accent-active-cl); 
     }
 .text{
+    display: flex;
+    flex-grow: 2;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
     text-align: center;
     @include font(500, 14px, 1.21);
     color: var(--secondary-text-cl);
@@ -126,6 +224,14 @@
         margin-top: 4px;
         @include font(500, 11px, 1.18);
     }
+    @include vp(desktop){
+        @include font(500, 14px, 1.21);
+        margin-top: 14px;
+    }
+}
+.list__statistic .text{
+    @include font(500, 11px, 1.18);
+    margin-top: 6px;
     @include vp(desktop){
         @include font(500, 14px, 1.21);
         margin-top: 14px;

@@ -4,7 +4,7 @@ import { Navigate, Link } from "react-router-dom";
 
 import spriteSVG from "assets/images/sprite.svg";
 import { SignUpSchema, LoginSchema } from "assets/schemas/authSchemas";
-import { login, signUp } from "redux/auth/authActionThunk";
+import { login, signUp } from "redux/auth/authOperations";
 
 import s from "./AuthForm.module.scss";
 

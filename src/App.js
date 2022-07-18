@@ -6,7 +6,7 @@ import Container from "components/Container";
 import Header from "components/Header";
 import PublicRoute from "components/PublicRoute";
 import PrivateRoute from "components/PrivateRoute";
-import { current } from "redux/auth/authActionThunk";
+import { current } from "redux/auth/authOperations";
 import NotFoundPage from "pages/NotFoundPage";
 
 const HomePage = lazy(() => import("pages/HomePage"));

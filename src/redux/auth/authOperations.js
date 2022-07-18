@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import * as authAPI from "utils/usersApi";
+import * as authAPI from "utils/api/usersApi";
 
 export const signUp = createAsyncThunk(
   //type for 3 conditions of promises (pending, reject, fulfilled)
