@@ -15,7 +15,7 @@ const LibraryPage = () => {
     content: null,
   });
 
-  const [add, setAdd] = useState([1]);
+  const [add, setAdd] = useState([]);
 
   const openModal = () => {
     setModal({
