@@ -1,4 +1,7 @@
 import axios from "axios";
+import api from "utils/api";
+
+api();
 
 const endPoint = "api/users/";
 

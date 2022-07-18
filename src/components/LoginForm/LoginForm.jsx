@@ -14,9 +14,7 @@ const LoginForm = () => {
             <use href={`${spriteSVG}#quote`}></use>
           </svg>
           <p className={s.quoteText}>{text}</p>
-          {/* <div className={s.author}> */}
           <p className={s.quoteAuthor}>{author}</p>
-          {/* </div> */}
         </div>
       </div>
     </div>

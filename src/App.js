@@ -1,12 +1,14 @@
 import { lazy, Suspense, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import Container from "components/Container";
 import Header from "components/Header";
 import PublicRoute from "components/PublicRoute";
 import PrivateRoute from "components/PrivateRoute";
 import { current } from "redux/auth/authActionThunk";
+import { getTraining, getIsLogin } from "redux/auth/authSelectors";
+import NotFoundPage from "pages/NotFoundPage";
 
 const HomePage = lazy(() => import("pages/HomePage"));
 const LoginPage = lazy(() => import("pages/LoginPage"));
@@ -16,6 +18,9 @@ const TrainingPage = lazy(() => import("pages/TrainingPage"));
 
 function App() {
   const dispatch = useDispatch();
+  const training = useSelector(getTraining);
+
+  const chosenWay = training ? "/training" : "/library";
 
   useEffect(() => {
     dispatch(current());
@@ -26,47 +31,16 @@ function App() {
       <Header />
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <PublicRoute isRestricted>
-                <HomePage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="login"
-            element={
-              <PublicRoute isRestricted>
-                <LoginPage />
-              </PublicRoute>
-            }
-          />
-          <Route
-            path="register"
-            element={
-              <PublicRoute isRestricted>
-                <RegisterPage />
-              </PublicRoute>
-            }
-          />
-
-          <Route
-            path="training"
-            element={
-              <PrivateRoute>
-                <TrainingPage />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="library"
-            element={
-              <PrivateRoute>
-                <LibraryPage />
-              </PrivateRoute>
-            }
-          />
+          <Route element={<PublicRoute />}>
+            <Route path="/" exact element={<HomePage />} />
+            <Route path="/login" exact element={<LoginPage />} />
+            <Route path="/register" exact element={<RegisterPage />} />
+          </Route>
+          <Route element={<PrivateRoute />}>
+            <Route path="/training" element={<TrainingPage />} />
+            <Route path="/library" element={<LibraryPage />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </Suspense>
     </Container>

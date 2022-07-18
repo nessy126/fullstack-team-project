@@ -1,6 +1,6 @@
 import Media from "react-media";
-import RegisterPage from "pages/RegisterPage";
 import MobileHomePage from "pages/MobileHomePage";
+import LoginPage from "pages/LoginPage";
 
 const HomePage = () => {
   return (
@@ -13,7 +13,7 @@ const HomePage = () => {
       {(matches) => (
         <>
           {matches.small && <MobileHomePage />}
-          {matches.medium && <RegisterPage />}
+          {matches.medium && <LoginPage />}
         </>
       )}
     </Media>
