@@ -1,7 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
 // const baseUrl = "https://book-reader-team-project.herokuapp.com/api/books/";
-
 
 // newBook - пример:
 // {
@@ -10,28 +9,28 @@ import axios from 'axios';
 //   "year": 1834,
 //   "pageTotal": 345
 // }
-export const addBookAPI = (newBook) => {
-  return axios
-    .post("books")
-    .then(res => {
-      console.log(res.data);
-      return res.data;
-    })
-    .catch((err) => {
-      console.log(err);
-      throw err;
-    });
-}
+// export const addBookAPI = (newBook) => {
+//   return axios
+//     .post("books")
+//     .then(res => {
+//       console.log(res.data);
+//       return res.data;
+//     })
+//     .catch((err) => {
+//       console.log(err);
+//       throw err;
+//     });
+// }
 
-export const getAllBooksAPI = () => {
-  return axios
-    .get('books')
-    .then(res => {
-      console.log(res.data);
-      return res.data;
-    })
-    .catch((err) => {
-          console.log(err);
-      throw err;
-    });
-}
+// export const getAllBooksAPI = () => {
+//   return axios
+//     .get('books')
+//     .then(res => {
+//       console.log(res.data);
+//       return res.data;
+//     })
+//     .catch((err) => {
+//           console.log(err);
+//       throw err;
+//     });
+// }

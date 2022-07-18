@@ -9,6 +9,8 @@ import { getStatusIsTraining } from "redux/auth/authSelectors";
 import s from "./TrainingPage.module.scss";
 
 const TrainingPage = () => {
+  const { auth } = useSelector((state) => state);
+
   const dispatch = useDispatch();
 
   const [amountBooksTraining, setAmountBooksTraining] = useState(0);
@@ -55,7 +57,7 @@ const TrainingPage = () => {
   return (
     <section className={s.page__wrapper}>
       <div className={s.right__wrapper}>
-        {/* {!statusIsTraining ? (
+        {!statusIsTraining ? (
           <MyGoals data={arrayPlanTraining} />
         ) : (
           <MyGoals data={arrayStatistic} />
@@ -69,8 +71,7 @@ const TrainingPage = () => {
             getAmountBooksTraining={getAmountBooksTraining}
           />
         ) : null}
-        <Chart /> */}
-        <Statistics />
+        <Chart />
       </div>
     </section>
   );
