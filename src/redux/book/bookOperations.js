@@ -3,15 +3,12 @@ import axios from 'axios';
 
 
 export const addBook = createAsyncThunk(
-    "addBooks/post",
+    "book/add",
     async (data, {rejectWithValue})=>{
         try {
-            console.log("addBook");
-            const result = await axios.post("books");
-            console.log(result.data);
+            const result = await axios.post("books", data);
             return result.data;
         } catch (error) {
-            console.log(error);
             return rejectWithValue(error);
         }
     }
@@ -24,7 +21,6 @@ export const getAllBooks = createAsyncThunk(
             const result = await axios.get("books");
             return result.data;
         } catch (error) {
-            console.log(error);
             return rejectWithValue(error);
         }
     }
