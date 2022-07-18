@@ -1,5 +1,5 @@
-import axios from "axios";
 
+import axios from "axios";
 const endPoint = "api/books/";
 
 // newBook - пример:
@@ -9,26 +9,34 @@ const endPoint = "api/books/";
 //   "year": 1834,
 //   "pageTotal": 345
 // }
-export const addBook = (newBook) => {
+export const addBookAPI = (newBook) => {
   return axios
-    .post(baseUrl)
-    .then((res) => {
+
+    .post("books")
+    .then(res => {
       console.log(res.data);
       return res.data;
     })
     .catch((err) => {
+      console.log(err);
       throw err;
     });
 };
 
-export const getAllBooks = () => {
+export const getAllBooksAPI = () => {
   return axios
+<<<<<<< HEAD:src/utils/bookApi.js
     .get(baseUrl)
     .then((res) => {
+=======
+    .get('books')
+    .then(res => {
+>>>>>>> ab15d2d058478e17b35de10caa124261956a243a:src/utils/api/bookApi.js
       console.log(res.data);
       return res.data;
     })
     .catch((err) => {
+          console.log(err);
       throw err;
     });
 };
