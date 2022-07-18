@@ -5,7 +5,7 @@ import { Plus } from "../../components/MainNav/icons/Plus";
 import Modal from "../../components/MainNav/Modal/Modal";
 import MediaQuery from "react-responsive";
 // import AlreadyReadList from "../../components/AlreadyReadList/AlreadyReadList";
-// import GoingToReadList from "../../components/GoingToReadList/GoingToReadList";
+import GoingToReadList from "../../components/GoingToReadList/GoingToReadList";
 // import ReadingNowList from "../../components/ReadingNowList/ReadingNowList";
 import s from "./library.module.scss";
 
@@ -15,7 +15,7 @@ const LibraryPage = () => {
     content: null,
   });
 
-  const [add, setAdd] = useState([]);
+  const [add, setAdd] = useState([1]);
 
   const openModal = () => {
     setModal({
@@ -37,10 +37,10 @@ const LibraryPage = () => {
       <button className={s.phonePlusButton} onClick={() => openModal()}>
         <Plus />
       </button> */}
-      {/* <AlreadyReadList/>
-    <ReadingNowList/>
-    
-    <GoingToReadList/> */}
+      {/* {/* <AlreadyReadList/> */}
+      {/* <ReadingNowList/> */}
+
+      {/* } */}
 
       <MediaQuery maxWidth={767}>
         <button className={s.phonePlusButton} onClick={() => openModal()}>
@@ -50,7 +50,7 @@ const LibraryPage = () => {
       <MediaQuery minWidth={768}>
         <AddBookForm closeModal={closeModal} />
       </MediaQuery>
-      {add.length ? add : <LibraryModal />}
+      {add.length ? <GoingToReadList /> : <LibraryModal />}
 
       {modal.open && (
         <Modal closeModal={closeModal}>

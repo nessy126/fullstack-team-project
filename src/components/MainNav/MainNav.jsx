@@ -11,7 +11,8 @@ import { logout } from "redux/auth/authActionThunk";
 import { getUser } from "redux/auth/authSelectors";
 
 const MainNav = ({ modalClass }) => {
-  const userName = useSelector(getUser.name);
+  const user = useSelector(getUser);
+  const userName = user.name;
   const dispatch = useDispatch();
 
   const [modal, setModal] = useState({
