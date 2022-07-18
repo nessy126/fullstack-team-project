@@ -7,6 +7,7 @@ import { LibraryIcon } from "./icons/libraryIcon";
 import Modal from "./Modal/Modal";
 import MediaQuery from "react-responsive";
 import s from "./MainNav.module.scss";
+import { logout } from "redux/auth/authActionThunk";
 
 const MainNav = ({ modalClass }) => {
   const userName = "Artem";
@@ -76,7 +77,7 @@ const MainNav = ({ modalClass }) => {
             <button className={s.notExit} onClick={() => closeModal()}>
               <span className={s.notExitText}>Сancel</span>
             </button>
-            <button className={s.exit}>
+            <button className={s.exit} onClick={() => dispatch(logout())}>
               <MediaQuery maxWidth={767}>
                 <span className={s.buttonExitText}>Leave</span>
               </MediaQuery>
