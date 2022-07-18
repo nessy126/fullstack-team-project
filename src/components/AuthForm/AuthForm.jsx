@@ -128,9 +128,9 @@ const AuthForm = ({ type }) => {
                     </button>
                     {isRegister ? (
                       <p className={s.alreadyReg}>
-                        Already register
+                        Already have an account?
                         <NavLink to="/login" className={s.changePage}>
-                          login
+                          Log in
                         </NavLink>
                       </p>
                     ) : (

@@ -1,18 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-// import * as authAPI from "../../utils/userApi";
+import * as authAPI from "utils/usersApi";
+import api from "utils/api";
 
-import axios from "axios";
-
-axios.defaults.baseURL = "http://localhost:8000/api/";
-
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = "";
-  },
-};
+api();
 
 export const signUp = createAsyncThunk(
   //type for 3 conditions of promises (pending, reject, fulfilled)
@@ -20,9 +10,8 @@ export const signUp = createAsyncThunk(
 
   async (user, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post("users/signup", user);
-      token.set(data.token);
-      return data;
+      const res = await authAPI.signUpApi(user);
+      return res;
     } catch (error) {
       const { status } = error.response;
       if (status === 409) {
@@ -37,9 +26,8 @@ export const login = createAsyncThunk(
   "auth/login",
   async (user, { rejectWithValue }) => {
     try {
-      const { data } = await axios.post("users/login", user);
-      token.set(data.token);
-      return data;
+      const res = await authAPI.loginApi(user);
+      return res;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -56,9 +44,8 @@ export const current = createAsyncThunk(
         return rejectWithValue("Not authorized");
       }
 
-      token.set(auth.token);
-      const { data } = await axios.get("users/current");
-      return data;
+      const res = await authAPI.currentApi(auth);
+      return res;
     } catch (error) {
       return rejectWithValue(error);
     }
@@ -67,10 +54,10 @@ export const current = createAsyncThunk(
 
 export const logout = createAsyncThunk(
   "auth/logout",
-  async (_, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
     try {
-      await axios.post("users/logout");
-      token.unset();
+      const { auth } = getState();
+      await authAPI.logoutApi(auth);
     } catch (error) {
       return rejectWithValue(error);
     }

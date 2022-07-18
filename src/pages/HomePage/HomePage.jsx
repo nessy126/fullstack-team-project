@@ -1,6 +1,6 @@
 import Media from "react-media";
 import RegisterPage from "pages/RegisterPage";
-import MobileHomePage from "components/MobileHomePage";
+import MobileHomePage from "pages/MobileHomePage";
 
 const HomePage = () => {
   return (

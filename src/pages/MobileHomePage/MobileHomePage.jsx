@@ -3,7 +3,7 @@ import { getIsLogin } from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
 import Media from "react-media";
 
-import data from "assets/dataBase/db.json";
+import data from "assets/dataBase/descriptionLists.json";
 import s from "./MobileHomePage.module.scss";
 import ListDescription from "components/ListDescription";
 

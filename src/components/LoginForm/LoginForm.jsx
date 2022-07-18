@@ -1,10 +1,10 @@
 import AuthForm from "components/AuthForm";
 import s from "./LoginForm.module.scss";
-import data from "assets/dataBase/db.json";
+import data from "assets/dataBase/quote.json";
 import spriteSVG from "assets/images/sprite.svg";
 
 const LoginForm = () => {
-  const { text, author } = data.quote;
+  const { text, author } = data;
   return (
     <div className={s.login}>
       <AuthForm type="login" />

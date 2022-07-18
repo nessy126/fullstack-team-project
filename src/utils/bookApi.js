@@ -1,7 +1,6 @@
-import axios from 'axios';
+import axios from "axios";
 
-const baseUrl = "http://localhost:8000.api/books/";
-
+const endPoint = "api/books/";
 
 // newBook - пример:
 // {
@@ -13,23 +12,23 @@ const baseUrl = "http://localhost:8000.api/books/";
 export const addBook = (newBook) => {
   return axios
     .post(baseUrl)
-    .then(res => {
+    .then((res) => {
       console.log(res.data);
       return res.data;
     })
     .catch((err) => {
       throw err;
     });
-}
+};
 
 export const getAllBooks = () => {
   return axios
     .get(baseUrl)
-    .then(res => {
+    .then((res) => {
       console.log(res.data);
       return res.data;
     })
     .catch((err) => {
       throw err;
     });
-}
+};
