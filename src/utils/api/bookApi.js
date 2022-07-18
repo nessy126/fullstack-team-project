@@ -1,4 +1,3 @@
-
 import axios from "axios";
 const endPoint = "api/books/";
 
@@ -11,9 +10,8 @@ const endPoint = "api/books/";
 // }
 export const addBookAPI = (newBook) => {
   return axios
-
     .post("books")
-    .then(res => {
+    .then((res) => {
       console.log(res.data);
       return res.data;
     })
@@ -25,18 +23,13 @@ export const addBookAPI = (newBook) => {
 
 export const getAllBooksAPI = () => {
   return axios
-<<<<<<< HEAD:src/utils/bookApi.js
-    .get(baseUrl)
+    .get("books")
     .then((res) => {
-=======
-    .get('books')
-    .then(res => {
->>>>>>> ab15d2d058478e17b35de10caa124261956a243a:src/utils/api/bookApi.js
       console.log(res.data);
       return res.data;
     })
     .catch((err) => {
-          console.log(err);
+      console.log(err);
       throw err;
     });
 };
