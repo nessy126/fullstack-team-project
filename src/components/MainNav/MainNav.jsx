@@ -44,12 +44,12 @@ const MainNav = ({ modalClass }) => {
             <ul className={s.navMenu}>
               <li className={s.navItem}></li>
               <li className={s.navItem}>
-                <Link to="/statistics" className={s.link}>
+                <Link to="/library" className={s.link}>
                   <LibraryIcon svg={s.svg} />
                 </Link>
               </li>
               <li className={s.navItem}>
-                <Link to="/home" className={s.link}>
+                <Link to="/training" className={s.link}>
                   <Home svg={s.svg} />
                 </Link>
               </li>
