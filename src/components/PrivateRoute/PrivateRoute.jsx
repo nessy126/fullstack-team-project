@@ -1,15 +1,13 @@
 import { getIsLogin } from "redux/auth/authSelectors";
 import { useSelector } from "react-redux";
-import { Redirect, Route } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
-const PrivateRoute = ({ children, ...routeProps }) => {
+const PrivateRoute = () => {
   const isAuth = useSelector(getIsLogin);
+  // const location = useLocation();
+  // state={{ from: location }}
 
-  return (
-    <Route {...routeProps}>
-      {isAuth ? children : <Redirect to="/login" />}
-    </Route>
-  );
+  return isAuth ? <Outlet /> : <Navigate to="/login" replace />;
 };
 
 export default PrivateRoute;

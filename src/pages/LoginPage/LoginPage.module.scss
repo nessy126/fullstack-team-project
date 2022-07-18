@@ -1,8 +1,9 @@
 @import '../../assets/sass/styles/mixin';
 
-.login{
+.login {
     background-color: var(--main-bg-cl);
-    @include vp(desktop){
+
+    @include vp(desktop) {
         align-items: center;
         text-align: center;
         display: flex;
@@ -10,34 +11,36 @@
     }
 }
 
-.quote{
+.quote {
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     height: 180px;
-    @include vp(tablet){
+
+    @include vp(tablet) {
         height: 400px;
         width: 100%;
     }
 }
 
-.quoteContent{
+.quoteContent {
     position: relative;
 }
 
-.quoteText{
+.quoteText {
     width: 230px;
     margin-bottom: 20px;
-    @include font(500, 13px, 16px); 
+    @include font(500, 13px, 16px);
+
     @include vp(tablet) {
         margin-bottom: 25px;
-            width: 400px;
-            @include font(500, 24px, 38px);
-        }
+        width: 400px;
+        @include font(500, 24px, 38px);
+    }
 }
 
-.author{
+.author {
     margin-top: 10px;
     width: 100%;
     // width: 140px;
@@ -46,18 +49,20 @@
     // border-top: 1px solid var(--secondary-text-cl);
 }
 
-.quoteAuthor{
+.quoteAuthor {
     color: var(--secondary-text-cl);
     width: 100px;
     margin: 0 auto;
     border-top: 1px solid var(--secondary-text-cl);
-    @include font(500, 14px, 38px );
+    @include font(500, 14px, 38px);
+
     @include vp(tablet) {
-            width: 140px;
-            @include font(500, 20px, 38px);
-        }
+        width: 140px;
+        @include font(500, 20px, 38px);
+    }
 }
-.iconQuote{
+
+.iconQuote {
     fill: var(--accent-active-cl);
     width: 20px;
     height: 20px;

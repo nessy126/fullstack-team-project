@@ -1,7 +1,7 @@
 @import '../../assets/sass/styles/mixin';
 
-.register{
-    @include vp(desktop){
+.register {
+    @include vp(desktop) {
 
         display: flex;
         height: 790px;
@@ -9,10 +9,11 @@
     }
 }
 
-.intro{
+.intro {
     display: none;
     background-color: var(--main-bg-cl);
-    @include vp(desktop){
+
+    @include vp(desktop) {
         display: flex;
         justify-content: center;
         align-items: center;
