@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = "https://book-reader-team-project.herokuapp.com/api/books/";
+// const baseUrl = "https://book-reader-team-project.herokuapp.com/api/books/";
 
 
 // newBook - пример:
@@ -10,26 +10,28 @@ const baseUrl = "https://book-reader-team-project.herokuapp.com/api/books/";
 //   "year": 1834,
 //   "pageTotal": 345
 // }
-export const addBook = (newBook) => {
+export const addBookAPI = (newBook) => {
   return axios
-    .post(baseUrl)
+    .post("books")
     .then(res => {
       console.log(res.data);
       return res.data;
     })
     .catch((err) => {
+      console.log(err);
       throw err;
     });
 }
 
-export const getAllBooks = () => {
+export const getAllBooksAPI = () => {
   return axios
-    .get(baseUrl)
+    .get('books')
     .then(res => {
       console.log(res.data);
       return res.data;
     })
     .catch((err) => {
+          console.log(err);
       throw err;
     });
 }
