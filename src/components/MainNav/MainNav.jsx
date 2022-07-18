@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Home } from "./icons/homeIcon";
 import { LibraryIcon } from "./icons/libraryIcon";
@@ -8,9 +8,10 @@ import Modal from "./Modal/Modal";
 import MediaQuery from "react-responsive";
 import s from "./MainNav.module.scss";
 import { logout } from "redux/auth/authActionThunk";
+import { getUser } from "redux/auth/authSelectors";
 
 const MainNav = ({ modalClass }) => {
-  const userName = "Artem";
+  const userName = useSelector(getUser.name);
   const dispatch = useDispatch();
 
   const [modal, setModal] = useState({
