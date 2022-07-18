@@ -8,34 +8,44 @@ import {addTraining} from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
 import trainingSelectors from "redux/training/trainingSelectors";
 
-const TrainingData = () => {
+const TrainingData = ({getAmountDaysTraining, getAmountBooksTraining}) => {
 
 const dispatch=useDispatch()
-const isLoading =useSelector(trainingSelectors.getIsLoading);
-const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
-const error = useSelector(trainingSelectors.getError);
+    // const isLoading = useSelector(trainingSelectors.getIsLoading);
+    const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
+    // const error = useSelector(trainingSelectors.getError);
 
     // Локальный стейт для получения и передачи данных из других компонентов
     const [selected, setSelected]=useState({});
-    const [listPlainingBooks, setListPlainingBooks]=useState([])
-    const [showBtnAdd, setShowBtnAdd]=useState(false)
+    const [listPlainingBooks, setListPlainingBooks] = useState([]);
+    const [showBtnAdd, setShowBtnAdd] = useState(false);
     const [booksId, setBooksId]=useState([]);
     const [startTraining, setStartTraining]=useState(0);
     const [endTraining, setEndTraining]=useState(0);
-    const [valueTraining, setValueTraining] = useState({})
+    const [valueTraining, setValueTraining] = useState({});
+    const [amountOfDaysTraining, setAmountOfDaysTraining]=useState(0);
 
     const addStartTraining=(e)=>{
-        setStartTraining(e)
+        setStartTraining(e);
     };
     const addEndTraining=(e)=>{
-        setEndTraining(e)
+        setEndTraining(e);
+    };
+    const addAmountOfDaysTraining=(e)=>{
+        setAmountOfDaysTraining(e);
     };
 
-    useEffect(()=>{
-        if(startTraining>0 && endTraining>0 && booksId.length>0){
-            setValueTraining({booksId, startTraining, endTraining})
+    useEffect(() => {
+        if (amountOfDaysTraining > 0) {
+            getAmountDaysTraining(amountOfDaysTraining)
         }
-    },[booksId, startTraining, endTraining])
+    }, [amountOfDaysTraining, getAmountDaysTraining]);
+
+    useEffect(() => {
+        if (startTraining > 0 && endTraining > 0 && booksId.length > 0) {
+            setValueTraining({ booksId, startTraining, endTraining })
+        }
+    }, [booksId, startTraining, endTraining]);
 
 // Функция для получения из компонента Селект объекта книги (при клике по li)
     const onGetSelectBook=(book)=>{
@@ -72,7 +82,8 @@ const activBtnStart= startTraining>0 && endTraining>0 && booksId.length>0 ? true
     return <>
             <PlanningForm 
             addStartTraining={addStartTraining}
-            addEndTraining={addEndTraining}/>
+            addEndTraining={addEndTraining}
+            addAmountOfDaysTraining={addAmountOfDaysTraining} />
         <div className={s.select__wrapper}>
             <Select 
                 books={listGoingToRead} 

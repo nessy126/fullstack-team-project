@@ -1,8 +1,8 @@
-const getAllBooks=(state)=>state.book.book;
+const getAllBooks=(state)=>state.books.books;
 
 const getListGoingToRead=(state)=>{
-    const allBooks= getAllBooks(state)|| [];
-    const listGoingToRead =allBooks?.filter(book=>{
+    const allBooks = getAllBooks(state) || [];   
+    const listGoingToRead = allBooks?.filter(book => {
         return book.status==="goingToRead"});
     return listGoingToRead;
 };

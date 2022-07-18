@@ -10,7 +10,7 @@ import axios from 'axios';
 //   "year": 1834,
 //   "pageTotal": 345
 // }
-export const addBook = (newBook) => {
+export const addBookAPI = (newBook) => {
   return axios
     .post("books")
     .then(res => {
@@ -23,7 +23,7 @@ export const addBook = (newBook) => {
     });
 }
 
-export const getAllBooks = () => {
+export const getAllBooksAPI = () => {
   return axios
     .get('books')
     .then(res => {

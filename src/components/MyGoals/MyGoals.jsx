@@ -1,41 +1,42 @@
 import s from './MyGoals.module.scss';
 import { useSelector } from 'react-redux';
-import {getStatusTraining} from "redux/auth/authSelectors";
+import { getStatusIsTraining } from "redux/auth/authSelectors";
 
 const MyGoals = ({data}) => {
-const statusTraining= useSelector(getStatusTraining);
+const statusIsTraining= useSelector(getStatusIsTraining);
 
-  return (<>{statusTraining ?(
-    <div className={s.goal__wrapper__plan}>
-    <div className={s.top__wrapper}>              
-      <div className={s.title__wrapper}>
-        <h3 className={s.title}>My goals</h3>
+  return (<>
+    {!statusIsTraining ? (
+      <div className={s.goal__wrapper__plan}>
+      <div className={s.top__wrapper}>              
+        <div className={s.title__wrapper}>
+          <h3 className={s.title}>My goals</h3>
+        </div>
       </div>
-    </div>
-    <ul className={s.list__plan}>{data.map(({title, amount})=>{
-      return(
-        <li key={title} className={s.item__plan}>
-          <div className={s.amount}>{amount}</div>
-          <div className={s.text}>{title}</div>
-        </li>
-      )
-    })}</ul>
-  </div>):
-  (<div className={s.goal__wrapper__statistic}>
-    <div className={s.top__wrapper}>              
-      <div className={s.title__wrapper}>
-        <h3 className={s.title}>My goals</h3>
+      <ul className={s.list__plan}>{data.map(({title, amount})=>{
+        return(
+          <li key={title} className={s.item__plan}>
+            <div className={s.amount}>{amount}</div>
+            <div className={s.text}>{title}</div>
+          </li>
+        )
+      })}</ul>
+    </div>):
+    (<div className={s.goal__wrapper__statistic}>
+      <div className={s.top__wrapper}>              
+        <div className={s.title__wrapper}>
+          <h3 className={s.title}>My goals</h3>
+        </div>
       </div>
-    </div>
-    <ul className={s.list__statistic}>{data.map(({title, amount})=>{
-      return(
-        <li key={title} className={s.item__statistic}>
-          <div className={s.amount}>{amount}</div>
-          <div className={s.text}>{title}</div>
-        </li>
-      )
-    })}</ul>
-  </div>)}
+      <ul className={s.list__statistic}>{data.map(({title, amount})=>{
+        return(
+          <li key={title} className={s.item__statistic}>
+            <div className={s.amount}>{amount}</div>
+            <div className={s.text}>{title}</div>
+          </li>
+        )
+      })}</ul>
+    </div>)}
   </>  
   );
 }

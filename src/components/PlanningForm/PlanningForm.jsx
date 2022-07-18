@@ -4,11 +4,9 @@ import s from "./PlanningForm.module.scss";
 import polygonIconSvg from "../../assets/svg/polygon1.svg";
 import DateTimePicker from "react-datetime-picker";
 
-const PlanningForm = ({addStartTraining, addEndTraining}) => {
+const PlanningForm = ({addStartTraining, addEndTraining, addAmountOfDaysTraining}) => {
   const [valueStart, setValueStart] = useState(null);
   const [valueEnd, setValueEnd] = useState(null);
-
-
 
 useEffect(()=>{
     if (valueStart!==null && valueEnd!==null){
@@ -21,14 +19,10 @@ useEffect(()=>{
     }
     addStartTraining(valueStart.getTime());
     addEndTraining(valueEnd.getTime());
+    addAmountOfDaysTraining(amountOfDays);
   }
 }, [valueStart, valueEnd])
 
-  
-
-  const dateFin = new Date();
-  // console.log(dateFin.getTime())
-  // console.log(new Date(2017, 0, 1))
   return (
     <>
       <div className={s.planningForm__wrapper}>

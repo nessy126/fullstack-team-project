@@ -27,7 +27,7 @@ const persistedAuthReducer = persistReducer(persistConfig, authSlice)
 export const store = configureStore({
   reducer: {
     auth: persistedAuthReducer,
-    book: bookSlice,
+    books: bookSlice,
     training: trainingSlice,
   },
   middleware: (getDefaultMiddleware) =>
