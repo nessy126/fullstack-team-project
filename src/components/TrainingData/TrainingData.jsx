@@ -3,25 +3,27 @@ import PlanningForm from "components/PlanningForm";
 import Select from "components/Select";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import Media from "react-media";
 import { addTraining } from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
 import s from "./TrainingData.module.scss";
 
-const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining }) => {
-  const dispatch = useDispatch();
-  // const isLoading = useSelector(trainingSelectors.getIsLoading);
-  const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
-  // const error = useSelector(trainingSelectors.getError);
+const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight }) => {
+    const dispatch = useDispatch();
+    // const isLoading = useSelector(trainingSelectors.getIsLoading);
+    const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
+    // const error = useSelector(trainingSelectors.getError);
 
-  // Локальный стейт для получения и передачи данных из других компонентов
-  const [selected, setSelected] = useState({});
-  const [listPlainingBooks, setListPlainingBooks] = useState([]);
-  const [showBtnAdd, setShowBtnAdd] = useState(false);
-  const [booksId, setBooksId] = useState([]);
-  const [startTraining, setStartTraining] = useState(0);
-  const [endTraining, setEndTraining] = useState(0);
-  const [valueTraining, setValueTraining] = useState({});
-  const [amountOfDaysTraining, setAmountOfDaysTraining] = useState(0);
+    // Локальный стейт для получения и передачи данных из других компонентов
+    const [selected, setSelected] = useState({});
+    const [listPlainingBooks, setListPlainingBooks] = useState([]);
+    const [showBtnAdd, setShowBtnAdd] = useState(false);
+    const [booksId, setBooksId] = useState([]);
+    const [startTraining, setStartTraining] = useState(0);
+    const [endTraining, setEndTraining] = useState(0);
+    const [valueTraining, setValueTraining] = useState({});
+    const [amountOfDaysTraining, setAmountOfDaysTraining] = useState(0);
+    // const [showRight, setShowRight]= useState(false);
 
     const addStartTraining=(e)=>{
         setStartTraining(e);
@@ -103,7 +105,89 @@ const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining }) => {
     const hideBtnStart = listPlainingBooks?.length >0 ? true : false;
 
     return <>
-            <PlanningForm 
+        <Media queries={{
+            small: "(max-width: 767px)",
+            medium: "(min-width: 768px)"}}>
+            {(matches) => (
+                <>
+                    {matches.small && (<>
+                        {showRight ? (<>
+                            <PlanningForm 
+                                addStartTraining={addStartTraining}
+                                addEndTraining={addEndTraining}
+                                addAmountOfDaysTraining={addAmountOfDaysTraining} />
+                            <div className={s.select__wrapper}>
+                                <Select 
+                                    books={onFilteredlistGoingToRead} 
+                                    selected={selected}
+                                    onGetSelectBook={onGetSelectBook}/>
+                                    {showBtnAdd ? (
+                                        <button 
+                                            type='button' 
+                                            onClick={handleAddSelected} 
+                                            className={s.select__button}>Add
+                                        </button>) : (
+                                        <button 
+                                            type='button' 
+                                            disabled
+                                            onClick={handleAddSelected} 
+                                            className={s.select__button}>Add
+                                        </button>)}
+                            </div> </>) : (
+                        <>
+                            <PlaningTabl 
+                            books={listPlainingBooks} 
+                            handleDelBook={handleDelBook}/>
+                                    {!hideBtnStart ? null : (<>
+                            <div className={s.button__wrapper}>
+                                <button 
+                                    type='button' 
+                                    onClick={clickOnStartBtn} 
+                                    className={s.start__button}>Start training
+                                </button>
+                            </div>
+                        </>)}
+                    </>)}
+                </>)}
+                    {matches.medium && (<>
+                        <PlanningForm 
+                            addStartTraining={addStartTraining}
+                            addEndTraining={addEndTraining}
+                            addAmountOfDaysTraining={addAmountOfDaysTraining} />
+                        <div className={s.select__wrapper}>
+                            <Select 
+                                books={onFilteredlistGoingToRead} 
+                                selected={selected}
+                                onGetSelectBook={onGetSelectBook}/>
+                            {showBtnAdd ? (
+                                <button 
+                                    type='button' 
+                                    onClick={handleAddSelected} 
+                                    className={s.select__button}>Add
+                                </button>) : (
+                                <button 
+                                    type='button' 
+                                    disabled
+                                    onClick={handleAddSelected} 
+                                    className={s.select__button}>Add
+                                </button>)}
+                        </div> 
+                            <PlaningTabl 
+                                books={listPlainingBooks} 
+                                handleDelBook={handleDelBook}/>
+                            {!hideBtnStart ? null : (<>
+                                <div className={s.button__wrapper}>
+                                    <button 
+                                        type='button' 
+                                        onClick={clickOnStartBtn} 
+                                        className={s.start__button}>Start training
+                                    </button>
+                                </div>
+                            </>)}
+                    </>)}
+                </>
+            )}
+            {/* {(matches) =>(<> <PlanningForm 
             addStartTraining={addStartTraining}
             addEndTraining={addEndTraining}
             addAmountOfDaysTraining={addAmountOfDaysTraining} />
@@ -129,13 +213,16 @@ const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining }) => {
             books={listPlainingBooks} 
             handleDelBook={handleDelBook}/>
 
-        {!hideBtnStart ? null:(<div className={s.button__wrapper}>
-            <button 
-                type='button' 
-                onClick={clickOnStartBtn} 
-                className={s.start__button}>Start training
-            </button>
-        </div>) }
+        {!hideBtnStart ? null : (<>
+            <div className={s.button__wrapper}>
+                <button 
+                    type='button' 
+                    onClick={clickOnStartBtn} 
+                    className={s.start__button}>Start training
+                </button>
+            </div>
+            </>)}</>)} */}
+        </Media>
     </>;
 };
 
