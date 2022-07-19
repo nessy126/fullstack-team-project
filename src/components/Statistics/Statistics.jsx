@@ -13,7 +13,6 @@ const Statistics = () => {
   const dateTimeToNewYear = now_in_ms + timeEndYear;
   const goalCountdown = dateTimeToEnd - now_in_ms;
   const dateTimeToGoal = now_in_ms + goalCountdown;
-  console.log("dateTimeToEnd :>> ", dateTimeToEnd);
 
   function ms_of_a_year(year) {
     return isLeapYear(year)

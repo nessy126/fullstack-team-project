@@ -9,6 +9,7 @@ const initialState = {
   isLoading: false,
   isLoggedIn: false,
   error: null,
+  stats: [],
 };
 // training: {
 //   booksId: [],
@@ -43,7 +44,6 @@ const trainingSlice = createSlice({
       state.error = null;
     },
     [getProgress.fulfilled]: (state, { payload }) => {
-      console.log("payload", payload.booksList);
       state.training = payload.booksList;
       state.isLoading = false;
       state.startTraining = payload.startTraining;

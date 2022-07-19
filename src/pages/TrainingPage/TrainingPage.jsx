@@ -7,6 +7,7 @@ import Statistics from "components/Statistics";
 import { getAllBooks } from "redux/book/bookOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 import s from "./TrainingPage.module.scss";
+import StatisticsResults from "components/StatisticsResults";
 
 const TrainingPage = () => {
   const { auth } = useSelector((state) => state);
@@ -57,7 +58,7 @@ const TrainingPage = () => {
   return (
     <section className={s.page__wrapper}>
       <div className={s.right__wrapper}>
-        {!statusIsTraining ? (
+        {/* {!statusIsTraining ? (
           <MyGoals data={arrayPlanTraining} />
         ) : (
           <MyGoals data={arrayStatistic} />
@@ -70,8 +71,10 @@ const TrainingPage = () => {
             getAmountDaysTraining={getAmountDaysTraining}
             getAmountBooksTraining={getAmountBooksTraining}
           />
-        ) : null}
-        <Chart />
+        ) : null} */}
+        <Statistics />
+        <StatisticsResults />
+        {/* <Chart /> */}
       </div>
     </section>
   );

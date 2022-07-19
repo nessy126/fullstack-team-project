@@ -12,7 +12,6 @@ const StatisticsTabl = () => {
   }, [dispatch]);
 
   const allTraining = useSelector(trainingSelectors.getAllTrainings);
-  console.log("statusIsTraining :>> ", allTraining);
   const show = allTraining?.length > 0 ? true : false;
   const isLoading = false;
   return (
