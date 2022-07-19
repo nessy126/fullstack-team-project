@@ -1,4 +1,4 @@
-import s from "./oneCard.module.scss";
+import s from "./OneCard.module.scss";
 
 // import { useDispatch } from "react-redux";
 

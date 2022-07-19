@@ -3,7 +3,7 @@ import { createPortal } from "react-dom";
 import { ArrowLeft } from "../icons/ArrowLeft";
 import MainNav from "../MainNav";
 
-import s from "./modal.module.scss";
+import s from "./Modal.module.scss";
 
 const modalRoot = document.getElementById("modalRoot");
 

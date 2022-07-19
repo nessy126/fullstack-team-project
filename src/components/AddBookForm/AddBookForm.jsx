@@ -2,7 +2,7 @@ import { ErrorMessage, Formik } from "formik";
 import Notiflix from "notiflix";
 import { useDispatch } from "react-redux";
 import { addBookValidationSchema } from "../../utils/validation/validationAddBook";
-import s from "./addBookForm.module.scss";
+import s from "./AddBookForm.module.scss";
 import { addBook } from "redux/book/bookOperations";
 
 export default function AddBookForm({ closeModal }) {
