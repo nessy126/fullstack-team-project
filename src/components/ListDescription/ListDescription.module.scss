@@ -1,28 +1,32 @@
 @import 'assets/sass/styles/mixin';
 
-.item{
+.item {
     position: relative;
     display: flex;
-    @include vp(tablet){
+
+    @include vp(tablet) {
         align-items: center;
     }
 }
 
-.iconVector{
+.iconVector {
     position: absolute;
     width: 15px;
     height: 15px;
     padding-right: 5px;
     fill: var(--accent-active-cl);
 }
-.list{
+
+.list {
+    //
 }
 
-.element{
+.element {
     color: var(--secondary-text-cl);
     padding-left: 15px;
     @include font(500, 14px, 17px);
+
     @include vp(tablet) {
-            @include font(500, 14px, 38px);
-        }
+        @include font(500, 14px, 38px);
+    }
 }

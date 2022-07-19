@@ -121,4 +121,5 @@
 
 .alreadyReg{
     color: var(--secondary-text-cl);
+    @include font(500, 13px, 38px)
 }
