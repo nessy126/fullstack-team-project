@@ -7,7 +7,7 @@ import { LibraryIcon } from "./icons/libraryIcon";
 import Modal from "./Modal/Modal";
 import MediaQuery from "react-responsive";
 import s from "./MainNav.module.scss";
-import { logout } from "redux/auth/authActionThunk";
+import { logout } from "redux/auth/authOperations";
 import { getUser } from "redux/auth/authSelectors";
 
 const MainNav = ({ modalClass }) => {

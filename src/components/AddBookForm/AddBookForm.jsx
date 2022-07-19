@@ -1,25 +1,27 @@
 import { ErrorMessage, Formik } from "formik";
 import Notiflix from "notiflix";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addBookValidationSchema } from "./validation/validationAddBook";
 import s from "./addBookForm.module.scss";
 import MediaQuery from "react-responsive";
+import { addBook } from "redux/book/bookOperations";
+import { getToken } from "redux/auth/authSelectors";
 
 export default function AddBookForm({ closeModal }) {
   const dispatch = useDispatch();
-
   return (
     <>
       <Formik
         initialValues={{
           title: "",
           author: "",
-          publishYear: "",
-          pagesTotal: "",
+          year: "",
+          pageTotal: "",
         }}
         validationSchema={addBookValidationSchema}
         onSubmit={(values, { resetForm }) => {
           console.log("values", values);
+          dispatch(addBook(values));
           resetForm();
           closeModal();
           Notiflix.Notify.success("book add to list");
@@ -68,9 +70,9 @@ export default function AddBookForm({ closeModal }) {
                 <p>Publication date</p>
                 <input
                   type="number"
-                  name="publishYear"
+                  name="year"
                   autoComplete="off"
-                  value={values.publishYear}
+                  value={values.year}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="2022"
@@ -78,7 +80,7 @@ export default function AddBookForm({ closeModal }) {
                 />
                 <ErrorMessage
                   component="div"
-                  name="publishYear"
+                  name="year"
                   className={s.errorMessage}
                 />
               </label>
@@ -86,9 +88,9 @@ export default function AddBookForm({ closeModal }) {
                 <p>Amount of pages</p>
                 <input
                   type="number"
-                  name="pagesTotal"
+                  name="pageTotal"
                   autoComplete="off"
-                  value={values.pagesTotal}
+                  value={values.pageTotal}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="500"
@@ -96,7 +98,7 @@ export default function AddBookForm({ closeModal }) {
                 />
                 <ErrorMessage
                   component="div"
-                  name="pagesTotal"
+                  name="pageTotal"
                   className={s.errorMessage}
                 />
               </label>
