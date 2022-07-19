@@ -1,25 +1,23 @@
-import axios from 'axios';
+import axios from "axios";
 
 export const addTrainingAPI = (newTraining) => {
-    return axios
+  return axios
     .post("training/start", newTraining)
-    .then(res => {
-        return res.data;
+    .then((res) => {
+      return res.data;
     })
     .catch((err) => {
-        console.log(err);
-        throw err;
+      throw err;
     });
-}
+};
 
 export const getProgressAPI = () => {
-    return axios
+  return axios
     .get("training/")
-    .then(res => {
-        return res.data;
+    .then((res) => {
+      return res.data;
     })
     .catch((err) => {
-        console.log(err);
-        throw err;
+      throw err;
     });
-}
+};
