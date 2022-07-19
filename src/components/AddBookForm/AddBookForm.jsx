@@ -1,11 +1,9 @@
 import { ErrorMessage, Formik } from "formik";
 import Notiflix from "notiflix";
-import { useDispatch, useSelector } from "react-redux";
-import { addBookValidationSchema } from "./validation/validationAddBook";
+import { useDispatch } from "react-redux";
+import { addBookValidationSchema } from "../../utils/validation/validationAddBook";
 import s from "./addBookForm.module.scss";
-import MediaQuery from "react-responsive";
 import { addBook } from "redux/book/bookOperations";
-import { getToken } from "redux/auth/authSelectors";
 
 export default function AddBookForm({ closeModal }) {
   const dispatch = useDispatch();

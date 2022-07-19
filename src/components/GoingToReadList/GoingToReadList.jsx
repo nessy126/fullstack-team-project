@@ -1,5 +1,5 @@
 import s from "./GoingToReadList.module.scss";
-import OneCard from "./oneCard/OneCard";
+import OneCard from "./OneCard/OneCard";
 
 const GoingToReadList = () => {
   const books = [

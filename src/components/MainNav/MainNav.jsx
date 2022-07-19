@@ -42,7 +42,7 @@ const MainNav = ({ modalClass }) => {
           <div className={s.accLogoTablet}>{userName.slice(0, 1)}</div>
           <p>{userName}</p>
         </div>
-        <div className={s.zaebalo}>
+        <div className={s.navMenuContainer}>
           <nav>
             <ul className={s.navMenu}>
               <li className={s.navItem}></li>

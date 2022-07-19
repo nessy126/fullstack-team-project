@@ -7,7 +7,7 @@ import MediaQuery from "react-responsive";
 // import AlreadyReadList from "../../components/AlreadyReadList/AlreadyReadList";
 import GoingToReadList from "../../components/GoingToReadList/GoingToReadList";
 // import ReadingNowList from "../../components/ReadingNowList/ReadingNowList";
-import s from "./library.module.scss";
+import s from "./libraryPage.module.scss";
 
 const LibraryPage = () => {
   const [modal, setModal] = useState({
