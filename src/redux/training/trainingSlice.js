@@ -1,24 +1,14 @@
-import { createSlice } from '@reduxjs/toolkit';
-import { getProgress} from './trainingOperations';
+// import { createSlice } from '@reduxjs/toolkit';
+// import {addTraining, getProgress} from './trainingOperations';
 
-const initialState = {
-  training: {
+// const initialState = {
+//   training: {
   
-  },
-  finishedTrainings: [],
-  isLoading: false,
-  isLoggedIn: false,
-  error: null,
-}
-// training: {
-//   booksId: [],
-//   startTraining: 0,
-//   endTraining: 0,
-//   statistics: [{
-//     data:  0,
-//     time: 0,
-//     readPages: 0,
-//   }]
+//   },
+//   finishedTrainings: [],
+//   isLoading: false,
+//   isLoggedIn: false,
+//   error: null,
 // }
 
 const trainingSlice = createSlice({
@@ -44,4 +34,4 @@ const trainingSlice = createSlice({
 })
 
 
-export default trainingSlice.reducer;
+// export default trainingSlice.reducer;

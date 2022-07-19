@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAllBooks, addBook } from "./bookOperations";
-import { addTraining } from './../training/trainingOperations';
+import { addTraining } from "redux/training/trainingOperations";
 
 const initialState = {
   books: [],

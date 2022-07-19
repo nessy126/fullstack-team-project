@@ -1,30 +1,38 @@
 import axios from 'axios';
 
-export const addTrainingAPI = (newTraining) => {
+const endPoint = "api/training/";
+
+const token = {
+    set(token) {
+        axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+    },
+    unset() {
+        axios.defaults.headers.common.Authorization = "";
+    },
+};
+
+export const addTrainingAPI = (newTraining, auth) => {
+    token.set(auth.token);
     return axios
-    .post("training/start", newTraining)
+    .post(endPoint + "start", newTraining)
     .then(res => {
         return res.data;
     })
     .catch((err) => {
-        console.log(err);
         throw err;
     });
 }
 
-export const getProgressAPI = () => {
+export const getProgressAPI = (auth) => {
+    token.set(auth.token);
     return axios
-    .get("training/")
-    .then(res => {
+    .get(endPoint)
+        .then(res => {
+        console.log(res);
+        token.set(res.data.token);
         return res.data;
     })
     .catch((err) => {
-        console.log(err);
         throw err;
     });
-}
-
-export const addStatisticsAPI = ({data, time, pages}) => {
-  return axios
-  .post("training/start")
 }
