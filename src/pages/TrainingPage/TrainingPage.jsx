@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Media from "react-media";
 import MyGoals from "components/MyGoals";
 import TrainingData from "components/TrainingData";
 import Chart from "components/Chart";
@@ -55,25 +56,59 @@ const TrainingPage = () => {
   }, [dispatch]);
 
   return (
+    <Media queries={{
+      medium: "(max-width: 1199px)",
+      large: "(min-width: 1200px)"
+    }}>
+      {(matches) => (
+        <>
+          {matches.medium && (!statusIsTraining ?
+            (<section className={s.page__wrapper}>
+              <div className={s.right__wrapper}>
+                  <MyGoals data={arrayPlanTraining} />
+              </div>
+              <div className={s.left__wrapper}>
+                <TrainingData
+                  getAmountDaysTraining={getAmountDaysTraining}
+                  getAmountBooksTraining={getAmountBooksTraining}
+                />
+                <Chart />
+              </div>  
+            </section>) :
+            (<section className={s.page__wrapper}>
+              <div className={s.left__wrapper}>
+                <Statistics />
+                <MyGoals data={arrayStatistic} />
+              </div>
+              <div className={s.right__wrapper}>
+                <div>StatisticsTabl</div>
+                <Chart />
+                <div>StatisticsRes</div>
+              </div>
+            </section>))}
+        </>
+
+      )}
     <section className={s.page__wrapper}>
       <div className={s.right__wrapper}>
-        {!statusIsTraining ? (
-          <MyGoals data={arrayPlanTraining} />
-        ) : (
-          <MyGoals data={arrayStatistic} />
-        )}
-        {statusIsTraining ? <Statistics /> : null}
-      </div>
-      <div className={s.left__wrapper}>
-        {!statusIsTraining ? (
-          <TrainingData
-            getAmountDaysTraining={getAmountDaysTraining}
-            getAmountBooksTraining={getAmountBooksTraining}
-          />
-        ) : null}
-        <Chart />
-      </div>
-    </section>
+        {statusIsTraining ? (
+          <>
+            <Statistics />
+            <MyGoals data={arrayStatistic} />
+          </>) :
+          (<>
+          <div className={s.left__wrapper}>
+            <MyGoals data={arrayPlanTraining} />
+            <TrainingData
+              getAmountDaysTraining={getAmountDaysTraining}
+              getAmountBooksTraining={getAmountBooksTraining}
+            />
+              <Chart />
+              </div>
+          </>)}
+        </div>
+      </section>
+      </Media>
   );
 };
 

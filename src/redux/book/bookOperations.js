@@ -28,7 +28,6 @@ export const getAllBooks = createAsyncThunk(
       const result = await bookAPI.getAllBooksAPI(auth);
       return result;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error);
     }
   }
