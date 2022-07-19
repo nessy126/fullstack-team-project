@@ -1,11 +1,29 @@
+@import "../../assets/sass/main.scss";
+
 .chartWrapper {
-  width: 928px;
-  height: 340px;
+  @include vp(mobile) {
+    padding: 25px 23px 39px 22px;
+  }
+
+  @include vp(mobile) {
+    padding: 35px 49px 50px 49px;
+  }
+
+  padding: 35px 78px 51px 40px;
+  width: 100%;
+  height: 100%;
   font-weight: normal;
   font-size: 40px;
+  background-color: var(--main-bg-cl);
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
 }
 
 .chartText {
+  @include vp(mobile) {
+    margin-bottom: 21px;
+  }
+
+  margin-bottom: 24px;
   font-family: "Montserrat";
   font-style: normal;
   font-weight: 500;
@@ -13,4 +31,22 @@
   line-height: 1.25;
   text-transform: uppercase;
   color: #242a37;
+}
+
+.chartText__Span {
+  margin-left: 10px;
+}
+
+.chart {
+  @include vp(mobile) {
+    width: 100%;
+    height: 190px;
+  }
+
+  @include vp(tablet) {
+    height: 215px;
+  }
+
+  width: 811px;
+  height: 235px;
 }
