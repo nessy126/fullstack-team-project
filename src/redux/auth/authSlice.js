@@ -5,7 +5,18 @@ import { signUp, login, logout, current } from "./authOperations";
 const initialState = {
   user: {
     name: null,
-    email: null,add
+    email: null,
+  },
+  training: {
+    booksId: [],
+    booksList: [],
+    amountOfBooks: 0,
+    booksLeft: 0,
+    startTraining: 0,
+    endTraining: 0,
+    amountOfPages: 0,
+    pagesPerDay: 0,
+    statistics: [],
   },
   isTraining: false,
   isLoading: false,
@@ -74,6 +85,7 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
+    
   },
 });
 

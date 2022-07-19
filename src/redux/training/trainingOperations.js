@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import * as trainingAPI from "../../utils/trainingApi";
+import * as trainingAPI from "../../utils/api/trainingApi";
 
 
 export const addTraining = createAsyncThunk(

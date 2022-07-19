@@ -13,9 +13,11 @@ const TrainingProvider = ({children}) => {
   const [endTraining, setEndTraining] = useState(0)
   const [amountOfPages, setAmountOfPages] = useState(0)
   const [pagesPerDay, setPagesPerDay] = useState(0)
-  const [statistics, setStatistics] = useState(0)
+  const [statistics, setStatistics] = useState([])
 
-  
+// const addReadPages = ({data, time, pages}) => {
+//   addStatisticsAPI({data, time, pages}).then()
+// }
 
   return (
      <TrainingContext.Provider value={
@@ -27,7 +29,9 @@ const TrainingProvider = ({children}) => {
     endTraining,
     amountOfPages,
     pagesPerDay,
-    statistics,}
+    statistics,
+    
+  }
      }>
       {children}
      </TrainingContext.Provider>

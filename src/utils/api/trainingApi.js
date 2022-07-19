@@ -23,3 +23,8 @@ export const getProgressAPI = () => {
         throw err;
     });
 }
+
+export const addStatisticsAPI = ({data, time, pages}) => {
+  return axios
+  .post("training/start")
+}

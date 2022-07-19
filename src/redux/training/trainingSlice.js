@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import {addTraining, getProgress} from './trainingOperations';
+import { getProgress} from './trainingOperations';
 
 const initialState = {
   training: {
@@ -25,20 +25,7 @@ const trainingSlice = createSlice({
   name: 'training',
   initialState,
   extraReducers:{
-    [addTraining.pending]: (state)=>{
-      state.isLoading=true;
-      state.error=null;
-    },
-    [addTraining.fulfilled]: (state, {payload})=>{
-      state.training=payload;
-      state.isLoading=false;
-      state.error=null;
-    },
-    [addTraining.rejected]: (state, {payload})=>{
-      state.isLoading=false;
-      state.error=payload;
-      console.log("addTraining", payload);
-    },
+//Перенести в слайс Юзера
     [getProgress.pending]: (state)=>{
       state.isLoading=true;
       state.error=null;
