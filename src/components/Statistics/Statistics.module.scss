@@ -1,0 +1,26 @@
+@import "../../assets/sass/styles/_mixin.scss";
+
+.counterTitle {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 38px;
+  /* identical to box height, or 271% */
+
+  text-align: center;
+
+  color: #898f9f;
+}
+
+@include vp(tablet) {
+  .counterDiv {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+@include vp(tablet) {
+  .counterTitle {
+    width: 290px;
+  }
+}
