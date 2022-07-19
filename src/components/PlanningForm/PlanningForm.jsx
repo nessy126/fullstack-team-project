@@ -3,6 +3,7 @@ import s from "./PlanningForm.module.scss";
 // import calendarIconSvg from '../../assets/svg/calendar1.svg';
 import polygonIconSvg from "../../assets/svg/polygon1.svg";
 import DateTimePicker from "react-datetime-picker";
+import { toast } from "react-toastify";
 
 const PlanningForm = ({addStartTraining, addEndTraining, addAmountOfDaysTraining}) => {
   const [valueStart, setValueStart] = useState(null);
@@ -13,8 +14,12 @@ useEffect(()=>{
     const amountOfDays = Math.ceil(
       (valueEnd - valueStart) / (1000 * 3600 * 24)
     );
-    if(amountOfDays<=0){
-      alert("Дата завершения тренировки должна быть больше даты начала тренировки");
+      if (amountOfDays <= 0) {
+      toast("The end date of the workout must be greater than the start date of the workout",{
+        className: `${s.tost__background}`,
+        bodyClassName: `${s.tost__body}`,
+        progressClassName: `${s.progress__bar}`
+});
       return;
     }
     addStartTraining(valueStart.getTime());

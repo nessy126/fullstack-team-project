@@ -72,3 +72,17 @@
   background-color: var(--accent-active-cl);
   color: var(--main-bg-cl);
 }
+
+// Styles for tost
+.tost__background {
+  background: var(--placeholder-text-cl);
+  color: var(--main-text-cl);
+}
+.tost__body {
+  font-family: "Montserrat", sans-serif;
+  @include font(500, 18px, 1.1);
+}
+.progress__bar {
+  height: 10px;
+  border-radius: 5px;
+}

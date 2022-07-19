@@ -4,6 +4,7 @@ import Select from "components/Select";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Media from "react-media";
+import { toast } from "react-toastify";
 import { addTraining } from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
 import s from "./TrainingData.module.scss";
@@ -96,7 +97,11 @@ const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight
     // При клике по кнопке "Старт тренировки" сначала проверяется наличие обеих дат (начало и конец тренировки) и только после этого отправляется запрос на бек по созданию тренировки
     const clickOnStartBtn = () => {
         if (startTraining === 0 || endTraining === 0) {
-            alert("Выберите дату начала и окончания тренировки");
+            toast("Choose a start and end date for your workout",{
+            className: `${s.tost__background}`,
+            bodyClassName: `${s.tost__body}`,
+            progressClassName: `${s.progress__bar}`
+            })
             return;
         }
         dispatch(addTraining(valueTraining));
