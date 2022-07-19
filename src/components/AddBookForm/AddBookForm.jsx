@@ -20,7 +20,6 @@ export default function AddBookForm({ closeModal }) {
         }}
         validationSchema={addBookValidationSchema}
         onSubmit={(values, { resetForm }) => {
-          console.log("values", values);
           dispatch(addBook(values));
           resetForm();
           closeModal();
