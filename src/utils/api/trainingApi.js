@@ -1,6 +1,6 @@
-import axios from "axios";
+import axios from 'axios';
 
-const endPoint = "api/books/";
+const endPoint = "api/training/";
 
 const token = {
     set(token) {
@@ -11,10 +11,10 @@ const token = {
     },
 };
 
-export const addBookAPI = (newBook, auth) => {
+export const addTrainingAPI = (newTraining, auth) => {
     token.set(auth.token);
     return axios
-    .post(endPoint, newBook)
+    .post(endPoint + "start", newTraining)
     .then(res => {
         return res.data;
     })
@@ -23,11 +23,12 @@ export const addBookAPI = (newBook, auth) => {
     });
 }
 
-export const getAllBooksAPI = (auth) => {
+export const getProgressAPI = (auth) => {
     token.set(auth.token);
     return axios
     .get(endPoint)
         .then(res => {
+        console.log(res);
         token.set(res.data.token);
         return res.data;
     })
