@@ -5,7 +5,7 @@ import { signUp, login, logout, current } from "./authOperations";
 const initialState = {
   user: {
     name: null,
-    email: null,
+    email: null,add
   },
   isTraining: false,
   isLoading: false,
