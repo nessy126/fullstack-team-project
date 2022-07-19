@@ -71,7 +71,7 @@ const TrainingPage = () => {
             getAmountBooksTraining={getAmountBooksTraining}
           />
         ) : null}
-        <Chart />
+        <Chart trainingStatus={statusIsTraining} />
       </div>
     </section>
   );
