@@ -6,11 +6,9 @@ export const addBook = createAsyncThunk(
   async (data, { getState, rejectWithValue }) => {
     try {
       const { auth } = getState();
-      console.log("auth.token", auth.token);
       if (!auth.token) {
         return rejectWithValue("Not authorized");
       }
-      console.log("data", data);
       const result = await bookAPI.addBookAPI(data, auth);
       return result;
     } catch (error) {
