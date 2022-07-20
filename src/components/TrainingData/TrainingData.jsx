@@ -30,7 +30,6 @@ const TrainingData = ({
     const [endTraining, setEndTraining] = useState(0);
     const [valueTraining, setValueTraining] = useState({});
     const [amountOfDaysTraining, setAmountOfDaysTraining] = useState(0);
-    // const [showRight, setShowRight]= useState(false);
 
     const addStartTraining=(e)=>{
         setStartTraining(e);
@@ -97,13 +96,16 @@ const TrainingData = ({
     const onFilteredlistGoingToRead = getVisibleBooks(listGoingToRead);
     
     // При нажатии на кнопку Add в список книг listPlainingBooks пушится книга выбранная в инпуте селекта, сетится в стейт id книги, обнуляется стейт выбранной книги, кнопка Add становится не активной; фильтрация listGoingToRead перед передачей в селект
-        const handleAddSelected = () => {
+    const handleAddSelected = () => {
         setListPlainingBooks([...listPlainingBooks, selected]);
         const{_id}=selected;
         setBooksId([...booksId, _id?.toString()]);
         setSelected({});
         setShowBtnAdd(false);
-
+        toast("Book was added to the list", {className: `${s.tost__background}`,
+            bodyClassName: `${s.tost__body}`,
+            progressClassName: `${s.progress__bar}`
+            })
     };
 
     // При клике по кнопке "Старт тренировки" сначала проверяется наличие обеих дат (начало и конец тренировки) и только после этого отправляется запрос на бек по созданию тренировки
@@ -204,41 +206,6 @@ const TrainingData = ({
                     </>)}
                 </>
             )}
-            {/* {(matches) =>(<> <PlanningForm 
-            addStartTraining={addStartTraining}
-            addEndTraining={addEndTraining}
-            addAmountOfDaysTraining={addAmountOfDaysTraining} />
-        <div className={s.select__wrapper}>
-            <Select 
-                books={onFilteredlistGoingToRead} 
-                selected={selected}
-                onGetSelectBook={onGetSelectBook}/>
-                {showBtnAdd ? (
-                    <button 
-                        type='button' 
-                        onClick={handleAddSelected} 
-                        className={s.select__button}>Add
-                    </button>) : (
-                    <button 
-                        type='button' 
-                        disabled
-                        onClick={handleAddSelected} 
-                        className={s.select__button}>Add
-                    </button>)}
-        </div> 
-        <PlaningTabl 
-            books={listPlainingBooks} 
-            handleDelBook={handleDelBook}/>
-
-        {!hideBtnStart ? null : (<>
-            <div className={s.button__wrapper}>
-                <button 
-                    type='button' 
-                    onClick={clickOnStartBtn} 
-                    className={s.start__button}>Start training
-                </button>
-            </div>
-            </>)}</>)} */}
         </Media>
     </>;
 };

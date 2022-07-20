@@ -22,9 +22,9 @@ const Select = ({books, onGetSelectBook}) => {
     }, [closeSelectByEsc]);
 
     // При клике по иконке треугольника в инпуте, очищается инпут и открывается/закрывается селект
-    const handleClick = (e) => {
+    const handleClick = () => {
         setIsActive(!isActive);
-        setFilterBook('')};
+        resetInput()};
         
     // Функция для получения отфильтрованного списка книг для рендера в селекте (отбор по слову введенному в инпут)
         const getVisibleBooks = (books) => {
@@ -47,6 +47,11 @@ const Select = ({books, onGetSelectBook}) => {
         const{value}=e.target;
         setFilterBook(value);
     };
+
+    // Функция для очистки инпута после клика по кнопке add
+    const resetInput = () => {
+        setFilterBook('');
+    }
 
 
     
