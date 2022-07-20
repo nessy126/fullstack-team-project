@@ -32,7 +32,6 @@
 }
 .iconGoogle{
     position: absolute;
-    // background-color: red;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 20px;
@@ -40,11 +39,6 @@
     height: 20px;
 
 }
-
-// .formReg, .form{
-//     background: red;
-//     // border: 2px solid red;
-// }
 
 .form {
     padding: 30px 25px 10px;
@@ -104,11 +98,16 @@
 .login{
     margin-top: 30px;
     padding: 10px;
-    color: var(--form-text-color);
+    color: var(--buttons-text-cl);
     background-color: var(--accent-active-cl);
     border: none;
     height: 60px;
-    @include font(600, 16px, 38px)
+    @include font(600, 16px, 38px);
+    &:hover {
+            color: var(--main-text-cl);
+            outline: 1px solid var(--main-text-cl);
+            background-color: var(--main-bg-cl);
+        }
 }
 
 .changePage{

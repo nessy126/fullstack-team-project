@@ -1,9 +1,15 @@
+import { useSelector } from "react-redux";
+import Media from "react-media";
+
 import AuthForm from "components/AuthForm";
 import s from "./RegisterPage.module.scss";
-import Media from "react-media";
 import MobileHomePage from "pages/MobileHomePage";
+import CheckEmailModal from "components/CheckEmailModal";
+import { useState } from "react";
 
 const RegisterPage = () => {
+  const { registerPass } = useSelector((state) => state.auth);
+
   return (
     <Media
       queries={{
@@ -15,6 +21,7 @@ const RegisterPage = () => {
           <div className={s.register}>
             <AuthForm type="register" />
             {matches.medium && <MobileHomePage />}
+            {registerPass && <CheckEmailModal isRegister />}
           </div>
         </>
       )}

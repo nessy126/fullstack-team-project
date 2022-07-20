@@ -13,6 +13,7 @@ const initialState = {
   isLoading: false,
   isLoggedIn: false,
   registerPass: false,
+  verify: false,
   error: null,
   token: null,
 };
@@ -88,7 +89,7 @@ const authSlice = createSlice({
     [addTraining.rejected]: (state, { payload }) => {
       state.error = payload;
       state.isLoading = false;
-    }
+    },
   },
 });
 
