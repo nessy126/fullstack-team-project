@@ -4,7 +4,7 @@ import { FirstBook } from "../MainNav/icons/FirstBook";
 import { Flag } from "../MainNav/icons/flag";
 import Modal from "../Modal/Modal";
 import MediaQuery from "react-responsive";
-import s from "./sdas.scss";
+import s from "./LibraryModal.module.scss";
 
 export const LibraryModal = () => {
   const [modal, setModal] = useState(true);
