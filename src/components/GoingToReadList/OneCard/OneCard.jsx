@@ -2,6 +2,7 @@ import s from "./OneCard.module.scss";
 
 import MediaQuery from "react-responsive";
 import { FirstBook } from "components/MainNav/icons/FirstBook";
+import { OrangeBook } from "components/MainNav/icons/OrangeBook";
 
 const OneCard = (book) => {
   //   const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const OneCard = (book) => {
     <li className={s.card}>
       <div className={s.iconTitle}>
         <div className={s.navIcon}>
-          <FirstBook />
+          {book.type === "booksInReading" ? <OrangeBook /> : <FirstBook />}
         </div>
         <p className={s.bookTitle}>{book.title}</p>
       </div>

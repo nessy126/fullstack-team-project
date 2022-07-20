@@ -16,7 +16,7 @@ const LibraryPage = () => {
   const dispatch = useDispatch();
   const [next, setNext] = useState(false);
   const booksGoingToRead = useSelector(bookSelectors.getListGoingToRead);
-  // const booksInReading = useSelector(bookSelectors.getListInReading);
+  const booksInReading = useSelector(bookSelectors.getListInReading);
   // const booksFinished = useSelector(bookSelectors.getListFinished);
   const [modal, setModal] = useState({
     open: false,
@@ -51,10 +51,24 @@ const LibraryPage = () => {
       </MediaQuery>
       {booksGoingToRead.length ? (
         <>
-          {next ? null : (
+          {next ? (
+            <>
+              <GoingToReadList
+                library={booksInReading}
+                type={"booksInReading"}
+              />
+              <GoingToReadList
+                library={booksGoingToRead}
+                type={booksGoingToRead}
+              />
+            </>
+          ) : (
             <>
               <p className={s.sectionTitle}>Going to read</p>
-              <GoingToReadList library={booksGoingToRead} />
+              <GoingToReadList
+                library={booksGoingToRead}
+                type={booksGoingToRead}
+              />
               <button className={s.button} onClick={() => setNext(true)}>
                 Next
               </button>
