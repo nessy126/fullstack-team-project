@@ -1,70 +1,85 @@
 @import '../../assets/sass/main.scss';
-
-.planningForm__wrapper {
+.section {
+background-color: var(--main-bg-cl);
+box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+margin-top: 20px;
+margin-bottom: 20px;
+}
+.flex {
     display: flex;
-    flex-direction: column;
-    width: 100%;
+   justify-content: center;
+}
+.input {
+    height: 40px;
+    width: 110px;
+    background-color: var(--secondary-bg-cl);
+    border: 1px solid #505154;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 38px;
+}
 
-    @include vp(tablet) {
-        margin-top: 40px;
+@include vp(tablet) {
+    .input {
+        margin-right: 30px;
+
     }
+}
 
-    @include vp(desktop) {
-        margin-top: 0;
+@include vp(desktop) {
+    .input {
+        margin-right: 0px;
+
     }
-
 }
 
-.top__wrapper {
-    width: 100%;
-}
-
-.title__wrapper {
-    width: 100%;
-    background-color: var(--training-bg-cl);
-    color: var(--main-bg-cl);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 11px;
-    padding-bottom: 11px;
-
-}
 
 .title {
-    @include font(600, 20px, 1.9);
+    font-weight: 600;
+        font-size: 14px;
+        line-height: 38px;
+        text-align: center;
+}
+.button {
+    margin-left: -20px;
 }
 
-.calendar__wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding-bottom: 20px;
+.paragraph {
+    font-weight: 500;
+        font-size: 11px;
+        line-height: 38px;
+        
+}
+.button {
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+    font-weight: 500;
+        font-size: 14px;
+        line-height: 38px;
+        color: var(--main-bg-cl);
+        background-color: var(--accent-active-cl);
+        border: none;
+        padding: 2px 45px;
+}
 
-    @include vp(tablet) {
-        flex-direction: row;
-        justify-content: center;
-        margin-top: 25px;
-        padding-bottom: 25px;
+@include vp(tablet) {
+    .button {
+        margin: 0px;
+        padding: 1px 78px;
+        font-weight: 600;
+        font-size: 16px;
+        align-self:flex-end;
+
     }
 }
 
-.input__wrapper {
-    margin-top: 20px;
-    width: 270px;
-    height: 42px;
-    display: flex;
 
-    // border: 1px solid var(--placeholder-text-cl);
-    @include vp(tablet) {
-        margin-top: 0;
+@include vp(desktop) {
+    .button {
+        margin: 0 auto;
+        padding: 2px 45px;
 
-        &:first-child {
-            margin-right: 45px;
-            align-items: center;
-            justify-content: end;
-
-        }
     }
 }
 
@@ -74,28 +89,155 @@ div.datetime__picker {
     color: var(--main-text-cl);
     @include font(500, 14px, 2.71);
     margin: 0;
-    display: block;
-    width: 270px;
-    height: 42px;
+    height: 40px;
+    width: 110px;
     border: none;
+    margin-right: 20px;
 }
+    .titleStatic {
+            font-weight: 600;
+                font-size: 14px;
+                line-height: 38px;
+                text-align: center;
+    }
 
-.react-datetime-picker__wrapper {
-    border: none;
-}
+         @include vp(tablet) {
+             .titleStatic {
+                margin-left: -45%;
+             }
+         }
+    
 
-// .datetime-picker * {
-//     border: none;
-//   }
-div.react__calendar {
-    background-color: var(--main-bg-cl);
-    width: 270px;
-    border-radius: 4px;
-    font-family: 'Montserrat', sans-serif;
-    @include font(500, 12px, 1.25);
+        @include vp(desktop) {
+            .titleStatic {
+                margin-left: 0px;
+    
+            }
+        }
 
-}
+ .titleStatic:before,
+ .titleStatic:after {
+     content: "";
+     display: inline-block;
+     vertical-align: middle;
+     width: 70px;
+     height: 1px;
+     background-color: var(--scrollbar-bg-cl);
+     position: relative;
+ }
 
-div.react__calendar.react-calendar button.react-calendar__tile--now {
-    background-color: var(--accent-active-cl);
-}
+ .titleStatic:before {
+     margin-left: -100%;
+     left: -8px;
+ }
+
+ .titleStatic:after {
+     margin-right: -100%;
+     right: -8px;
+ }
+
+
+  @include vp(tablet) {
+    .titleStatic:after {
+        right: -30px;
+      }
+  }
+
+   @include vp(desktop) {
+       .titleStatic:after {
+           right: -8px;
+       }
+   }
+
+ @include vp(tablet) {
+    .titleStatic:before {
+        width: 0px;
+        height: 0px;
+     }
+ }
+
+  @include vp(desktop) {
+      .titleStatic:before {
+          right: -8px;
+      }
+  }
+
+ @include vp(tablet) {
+     .titleStatic::after {
+        width: 128px;
+     }
+ }
+  @include vp(desktop) {
+    .titleStatic::after {
+            width: 70px;
+        }
+  }
+
+ .list {
+    padding-right: 17px;
+    padding-left: 17px;
+    padding-bottom: 13px;
+ }
+ .item {
+    display: flex;
+ }
+
+ @include vp(tablet) {
+     .list {
+         margin-left: 66px;
+     }
+ }
+
+  @include vp(desktop) {
+      .list {
+          margin-left: 17px;
+      }
+  }
+
+ .itemData {
+    margin-right: 30px;
+    font-weight: 400;
+        font-size: 14px;
+        line-height: 38px;
+        color: var(--main-text-cl);
+ }
+ .itemTime {
+    margin-right: 30px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 38px;
+
+    text-transform: uppercase;
+
+    color: var(--secondary-text-cl);
+ }
+ .itemPages {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 38px;
+        color: var(--secondary-text-cl);
+ }
+
+ .itemNumber {
+    font-weight: 400;
+        font-size: 14px;
+        line-height: 38px;
+        color: var(--main-text-cl);
+        margin-right: 5px;
+ }
+
+ @include vp(tablet) {
+     .form {
+         display: flex;
+        justify-content: center;
+        align-items: center;
+     }
+    }
+
+    @include vp(desktop) {
+            .form {
+                display: block;
+                justify-content: none;
+                align-items: none;
+            }
+        }

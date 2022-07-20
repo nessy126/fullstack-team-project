@@ -1,76 +1,92 @@
 import DateTimePicker from "react-datetime-picker";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import s from "./StatisticsResults.module.scss";
-import { Formik, ErrorMessage } from "formik";
-import * as Yup from "yup";
-
-export const addPagesCountValidationSchema = Yup.object().shape({
-  pagesCount: Yup.number()
-    .required("Field required")
-    .moreThan(0, "Nice try")
-    .lessThan(5001, "Max 5000"),
-});
 
 const StatisticsResults = () => {
+  const [pagesRead, setPagesRead] = useState("");
   const [valueStart, setValueStart] = useState(new Date());
-  const [valueEnd, setValueEnd] = useState(null);
+  const [newName, setnewName] = useState();
+
+  useEffect(() => {
+    setValueStart(new Date());
+  }, [newName]);
+
+  const onInput = (e) => {
+    const { name, value } = e.target;
+
+    switch (name) {
+      case "number":
+        setPagesRead(value);
+        break;
+      default:
+        return;
+    }
+  };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const newName = {
+      date: `${valueStart.getDate()}.0${
+        valueStart.getMonth() + 1
+      }.${valueStart.getFullYear()} `,
+      time: `${valueStart.getHours()}:${valueStart.getMinutes()}:${valueStart.getSeconds()} `,
+      pagesRead,
+    };
+
+    // dispatch();
+    console.log("newName :>> ", newName);
+    setnewName(newName);
+    setPagesRead("");
+  };
 
   return (
-    <>
-      <div>
-        <h2>RESULTS</h2>
-        <p>Date</p>
-        <DateTimePicker
-          onChange={setValueStart}
-          value={valueStart}
-          minDate={new Date()}
-          //   calendarIcon={<img alt="button" src={polygonIconSvg} />}
-          clearIcon={null}
-          className={s.datetime__picker}
-          calendarClassName={s.react__calendar}
-          disableClock={true}
-          format="dd.MM.yyyy"
-          placeholderText="Start"
-        />
-        <Formik
-          initialValues={{ pagesCount: "" }}
-          validationSchema={addPagesCountValidationSchema}
-          onSubmit={(values, { setSubmitting }) => {
-            values.valueStart = valueStart;
-            console.log("values :>> ", values);
-            setTimeout(() => {
-              alert(JSON.stringify(values, null, 2));
-              setSubmitting(false);
-            }, 400);
-          }}
-        >
-          {({
-            values,
-            errors,
-            touched,
-            handleChange,
-            handleBlur,
-            handleSubmit,
-            isSubmitting,
-          }) => (
-            <form onSubmit={handleSubmit}>
-              <p>Amount of pages</p>
-              <input
-                type="number"
-                name="pagesCount"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.pagesCount}
-              />
-              <ErrorMessage className={null} name="name" component="div" />
-              <button type="submit" disabled={isSubmitting}>
-                Submit
-              </button>
-            </form>
-          )}
-        </Formik>
-      </div>
-    </>
+    <section className={s.section}>
+      <h2 className={s.title}>RESULTS</h2>
+      <form className={s.form} onSubmit={onSubmit}>
+        <div className={s.flex}>
+          <div>
+            <p className={s.paragraph}>Date</p>
+            <DateTimePicker
+              onChange={setValueStart}
+              value={valueStart}
+              minDate={new Date()}
+              clearIcon={null}
+              className={s.datetime__picker}
+              calendarClassName={s.react__calendar}
+              disableClock={true}
+              format="dd.MM.yyyy"
+              placeholderText="Start"
+            />
+          </div>
+          <label>
+            <p className={s.paragraph}>Amount of pages</p>
+            <input
+              className={s.input}
+              type="tel"
+              name="number"
+              value={pagesRead}
+              title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+              required
+              autoComplete="off"
+              onChange={onInput}
+            />
+          </label>
+        </div>
+        <button className={s.button} type="submit">
+          Add result
+        </button>
+      </form>
+      <h2 className={s.titleStatic}>STATISTICS</h2>
+      <ul className={s.list}>
+        <li className={s.item}>
+          <p className={s.itemData}>10.10.2019</p>
+          <p className={s.itemTime}>08:10:23</p>
+          <p className={s.itemPages}>
+            <span className={s.itemNumber}>32</span>pages
+          </p>
+        </li>
+      </ul>
+    </section>
   );
 };
 

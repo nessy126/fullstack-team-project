@@ -1,5 +1,5 @@
 import StatisticsTabl from "components/StatisticsTabl";
-import CountdownTimer from "./CountdownTimer";
+import CountdownTimer from "../CountdownTimer/CountdownTimer";
 import s from "./Statistics.module.scss";
 import { useSelector } from "react-redux";
 import trainingSelectors from "redux/training/trainingSelectors";
