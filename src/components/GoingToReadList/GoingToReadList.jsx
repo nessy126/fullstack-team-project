@@ -1,5 +1,5 @@
-import s from "./asda.scss";
-import OneCard from "./asdasd/OneCard";
+import s from "./GoingToReadList.module.scss";
+import OneCard from "./OneCard/OneCard";
 
 import MediaQuery from "react-responsive";
 
