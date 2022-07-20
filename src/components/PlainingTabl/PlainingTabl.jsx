@@ -1,13 +1,13 @@
 import s from "./PlainingTabl.module.scss";
-import { useState } from "react";
+// import { useState } from "react";
 import { MdMenuBook, MdOutlineDeleteOutline } from 'react-icons/md';
 import Media from "react-media";
 // import deleteIconSvg from '../../assets/svg/delete.svg';
 
 const PlaningTabl = ({books, handleDelBook}) => {
-    const [itemDel, setItemDel] = useState({});
+    // const [itemDel, setItemDel] = useState({});
     const deletItemFromList =(e)=>{
-        setItemDel(e)
+        // setItemDel(e)
         handleDelBook(e)
     }
     const isLoading = false;

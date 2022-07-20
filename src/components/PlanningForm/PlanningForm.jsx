@@ -19,14 +19,14 @@ useEffect(()=>{
         className: `${s.tost__background}`,
         bodyClassName: `${s.tost__body}`,
         progressClassName: `${s.progress__bar}`
-});
+    });
       return;
     }
     addStartTraining(valueStart.getTime());
     addEndTraining(valueEnd.getTime());
     addAmountOfDaysTraining(amountOfDays);
   }
-}, [valueStart, valueEnd])
+}, [valueStart, valueEnd, addStartTraining, addEndTraining, addAmountOfDaysTraining])
 
   return (
     <>
@@ -68,8 +68,7 @@ useEffect(()=>{
         </div>
       </div>
     </>
-    //компонент в котором два инпута с календарем даты начала и окончания
   );
 };
-// selected.date.add(1, 'days')
+
 export default PlanningForm;

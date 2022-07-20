@@ -1,7 +1,6 @@
 import { lazy, Suspense, useEffect } from "react";
 
 import { Routes, Route } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
@@ -32,9 +31,10 @@ function App() {
     dispatch(current());
   }, [dispatch]);
 
-  return (
+  return (<>
+    <MainNav />
     <Container>
-      <Header />
+      
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
           <Route element={<PublicRoute />}>
@@ -62,6 +62,7 @@ function App() {
         limit={3}
       />
     </Container>
+    </>
   );
 }
 
