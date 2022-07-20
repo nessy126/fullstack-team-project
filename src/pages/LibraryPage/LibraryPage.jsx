@@ -11,13 +11,17 @@ import s from "./LibraryPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBooks } from "redux/book/bookOperations";
 import bookSelectors from "../../redux/book/bookSelectors";
+import AlreadyReadList from "components/AlreadyReadList";
 
 const LibraryPage = () => {
   const dispatch = useDispatch();
+
   const [next, setNext] = useState(false);
+
   const booksGoingToRead = useSelector(bookSelectors.getListGoingToRead);
   const booksInReading = useSelector(bookSelectors.getListInReading);
-  // const booksFinished = useSelector(bookSelectors.getListFinished);
+  const booksFinished = useSelector(bookSelectors.getListFinished);
+
   const [modal, setModal] = useState({
     open: false,
     content: null,
@@ -53,13 +57,26 @@ const LibraryPage = () => {
         <>
           {next ? (
             <>
-              <GoingToReadList
-                library={booksInReading}
-                type={"booksInReading"}
-              />
+              {AlreadyReadList.length > 0 ? (
+                <>
+                  <p className={s.sectionTitle}>Already read</p>
+                  <AlreadyReadList library={booksFinished} />
+                </>
+              ) : null}
+
+              {booksInReading.length > 0 ? (
+                <>
+                  <p className={s.sectionTitle}>Reading now</p>
+                  <GoingToReadList
+                    library={booksInReading}
+                    type={"booksInReading"}
+                  />
+                </>
+              ) : null}
+              <p className={s.sectionTitle}>Going to read</p>
               <GoingToReadList
                 library={booksGoingToRead}
-                type={booksGoingToRead}
+                type={"booksGoingToRead"}
               />
             </>
           ) : (

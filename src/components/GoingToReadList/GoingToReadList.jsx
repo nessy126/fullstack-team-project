@@ -24,7 +24,6 @@ const GoingToReadList = ({ library, type }) => {
                 author={author}
                 year={year}
                 pages={pageTotal}
-                type={type}
               />
             ))
           : null}
