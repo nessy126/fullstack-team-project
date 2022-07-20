@@ -1,5 +1,5 @@
 const ReadingNowList = () => {
-  return <></>;
+  return null;
 };
 
 export default ReadingNowList;
