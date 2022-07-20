@@ -27,7 +27,9 @@ const OneCard = (book) => {
           <p className={s.bookMoreInfoAuthor}>{book.author}</p>
           <p className={s.bookMoreInfoYear}>{book.year}</p>
           <p className={s.bookMoreInfoPage}>{book.pages}</p>
+          <p className={s.bookMoreInfoPage}>{book.rating}</p>
         </div>
+        <button>resume</button>
       </div>
     </li>
   );
