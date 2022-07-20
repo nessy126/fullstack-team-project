@@ -9,11 +9,17 @@ import { addTraining } from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
 import s from "./TrainingData.module.scss";
 
-const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight }) => {
+const TrainingData = ({
+    getAmountDaysTraining,
+    getAmountBooksTraining,
+    getDataStartTraining,
+    getDataEndTraining,
+    getBookListPlaining,
+    showRight }) => {
+    
     const dispatch = useDispatch();
-    // const isLoading = useSelector(trainingSelectors.getIsLoading);
+
     const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
-    // const error = useSelector(trainingSelectors.getError);
 
     // Локальный стейт для получения и передачи данных из других компонентов
     const [selected, setSelected] = useState({});
@@ -38,15 +44,23 @@ const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight
 
     useEffect(() => {
         if (amountOfDaysTraining > 0) {
-            getAmountDaysTraining(amountOfDaysTraining)
+            getAmountDaysTraining(amountOfDaysTraining);
+            getDataStartTraining(startTraining);
+            getDataEndTraining(endTraining);
         }
-    }, [amountOfDaysTraining, getAmountDaysTraining]);
+    }, [amountOfDaysTraining,
+        startTraining,
+        endTraining,
+        getDataStartTraining,
+        getDataEndTraining,
+        getAmountDaysTraining]);
 
     useEffect(() => {
         if (booksId.length >= 0) {
             getAmountBooksTraining(booksId.length)
+            getBookListPlaining(listPlainingBooks)
         }
-    }, [booksId, getAmountBooksTraining]);
+    }, [booksId, listPlainingBooks, getAmountBooksTraining, getBookListPlaining]);
 
     useEffect(() => {
         if (startTraining > 0 && endTraining > 0 && booksId.length > 0) {
@@ -82,8 +96,6 @@ const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight
     // Результатом выполнения функции является список отфильтрованный с учетом списка listPlainingBooks
     const onFilteredlistGoingToRead = getVisibleBooks(listGoingToRead);
     
-    // listPlainingBooks.filter(book=>book._id=== )
-
     // При нажатии на кнопку Add в список книг listPlainingBooks пушится книга выбранная в инпуте селекта, сетится в стейт id книги, обнуляется стейт выбранной книги, кнопка Add становится не активной; фильтрация listGoingToRead перед передачей в селект
         const handleAddSelected = () => {
         setListPlainingBooks([...listPlainingBooks, selected]);

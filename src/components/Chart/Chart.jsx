@@ -1,8 +1,12 @@
 import s from './Chart.module.scss';
 
-const Chart = (props) => {
+const Chart = ({ data, statusIsTraining }) => {
+  
+
   return (<>
-<div className={s.title}>Chart</div>
+    <ul></ul>
+    <div className={s.title}>Chart</div>
+    <ul></ul>
   </>  );
 }
 
