@@ -4,7 +4,6 @@ import MediaQuery from "react-responsive";
 import OneCard from "./OneCard/OneCard";
 
 const AlreadyReadList = ({ library }) => {
-  console.log("library", library);
   return (
     <div className={s.container}>
       <MediaQuery minWidth={768}>
@@ -18,18 +17,20 @@ const AlreadyReadList = ({ library }) => {
       </MediaQuery>
       <ul className={s.list}>
         {library.length > 0
-          ? library.map(({ _id: id, title, author, year, pageTotal,feedback }) => (
-              <OneCard
-                key={id}
-                id={id}
-                title={title}
-                author={author}
-                year={year}
-                pages={pageTotal}
-                rating={feedback.rating}
-                comment={feedback.comment}
-              />
-            ))
+          ? library.map(
+              ({ _id: id, title, author, year, pageTotal, feedback }) => (
+                <OneCard
+                  key={id}
+                  id={id}
+                  title={title}
+                  author={author}
+                  year={year}
+                  pages={pageTotal}
+                  rating={feedback.rating}
+                  comment={feedback.comment}
+                />
+              )
+            )
           : null}
       </ul>
     </div>
