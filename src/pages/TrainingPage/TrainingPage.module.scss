@@ -2,14 +2,41 @@
 .page__wrapper {
   display: flex;
   flex-direction: column;
+  padding-top: 30px;
+  padding-bottom: 30px;
   @include vp(desktop) {
     flex-direction: row-reverse;
     padding-top: 50px;
   }
 }
-.left__wrapper {
+.page__wrapperStat {
+  display: flex;
+  flex-direction: column;
+  padding-top: 15px;
+  padding-bottom: 30px;
+  @include vp(tablet) {
+    padding-top: 30px;
+  }
   @include vp(desktop) {
-    margin-right: 41px;
+    flex-direction: row-reverse;
+    padding-top: 15px;
+  }
+}
+.left__wrapper {
+  margin-bottom: 30px;
+  @include vp(desktop) {
+    border: 1px solid green;
+    margin-right: 40px;
+    margin-bottom: 0;
+  }
+}
+.right__wrapper {
+  margin-bottom: 30px;
+  @include vp(tablet) {
+    margin-bottom: 0;
+  }
+  @include vp(desktop) {
+    border: 1px solid red;
   }
 }
 .button__plus {
@@ -35,7 +62,7 @@
 .button__arrow {
   border: none;
   background-color: transparent;
-  width: 26px;
+  width: 30px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
