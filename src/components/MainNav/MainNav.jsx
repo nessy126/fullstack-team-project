@@ -12,7 +12,7 @@ import { getUser } from "redux/auth/authSelectors";
 
 const MainNav = ({ modalClass }) => {
   const user = useSelector(getUser);
-  const userName = user.name;
+  const userName = user?.name;
   const dispatch = useDispatch();
 
   const [modal, setModal] = useState({
@@ -39,7 +39,7 @@ const MainNav = ({ modalClass }) => {
           <h1 className={s.title}>BR</h1>
         </Link>
         <div className={s.userBar}>
-          <div className={s.accLogoTablet}>{userName.slice(0, 1)}</div>
+          <div className={s.accLogoTablet}>{userName?.slice(0, 1)}</div>
           <p>{userName}</p>
         </div>
         <div className={s.navMenuContainer}>
