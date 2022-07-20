@@ -1,27 +1,30 @@
-import { useEffect } from "react";
+import { useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
-import { ArrowLeft } from "../icons/ArrowLeft";
-import MainNav from "../MainNav";
+import { ArrowLeft } from "../MainNav/icons/ArrowLeft";
+import MainNav from "../MainNav/MainNav";
 
 import s from "./Modal.module.scss";
 
 const modalRoot = document.getElementById("modalRoot");
 
 const Modal = ({ closeModal, children, type }) => {
+  const close = useCallback(
+    (e) => {
+      if (e.code === "Escape") {
+        return closeModal();
+      }
+      if (e.target === e.currentTarget) {
+        closeModal();
+      }
+    },
+    [closeModal]
+  );
+
   useEffect(() => {
     document.addEventListener("keydown", close);
 
     return () => document.removeEventListener("keydown", close);
-  }, []);
-
-  const close = (e) => {
-    if (e.code === "Escape") {
-      return closeModal();
-    }
-    if (e.target === e.currentTarget) {
-      closeModal();
-    }
-  };
+  }, [close]);
 
   return createPortal(
     <>

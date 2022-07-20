@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Home } from "./icons/homeIcon";
 import { LibraryIcon } from "./icons/libraryIcon";
 
-import Modal from "./Modal/Modal";
+import Modal from "../Modal/Modal";
 import MediaQuery from "react-responsive";
 import s from "./MainNav.module.scss";
 import { logout } from "redux/auth/authOperations";

@@ -7,7 +7,7 @@ const OneCard = (book) => {
 
   return (
     <li className={s.card}>
-      <p>{book.title}</p>
+      <p className={s.title}>{book.title}</p>
       <p>{book.author}</p>
       <p>{book.year}</p>
       <p>{book.pages}</p>

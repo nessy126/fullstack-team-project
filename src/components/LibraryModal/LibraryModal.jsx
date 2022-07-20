@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { BotRightArrow } from "../MainNav/icons/botRightArrow";
 import { FirstBook } from "../MainNav/icons/FirstBook";
 import { Flag } from "../MainNav/icons/flag";
-import Modal from "../MainNav/Modal/Modal";
+import Modal from "../Modal/Modal";
 import MediaQuery from "react-responsive";
 import s from "./libraryModal.module.scss";
 
