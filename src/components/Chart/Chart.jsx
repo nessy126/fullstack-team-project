@@ -2,12 +2,15 @@ import { useState } from "react";
 import LineChart from "./LineChart";
 
 import emptyStartUserData from "./emptyUserData";
-import trainingData from "./trainingData";
+import data from "./trainingData";
 
 import s from "./Chart.module.scss";
 
 const Chart = (props) => {
-  const { trainingStatus } = props;
+  const { isTraining = false } = props.auth;
+  const { userData } = props;
+
+  const trainingData = userData === undefined ? data : userData;
 
   //Перевод даты в день(формат числа: 23, 13, 1 и т.п.)
   const daysCountFunc = (start, end) => {
@@ -131,14 +134,13 @@ const Chart = (props) => {
       <div className={s.chartWrapper}>
         <p className={s.chartText}>
           pages/ days
-          <span className={s.chartText__Span}>
-            {!trainingStatus ? 0 : trainingData.pagesPerDay}
-          </span>
+          <span className={s.chartText__Span}>{trainingData.pagesPerDay}</span>
         </p>
         <div className={s.chart}>
           <LineChart
             chartOptions={options}
-            chartData={!trainingStatus ? emptyStartUserData : userReadData}
+            // chartData={!isTraining ? emptyStartUserData : userReadData}
+            chartData={userReadData}
           />
         </div>
       </div>
