@@ -1,5 +1,7 @@
 import axios from "axios";
+
 const endPoint = "api/books/";
+
 const token = {
   set(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -8,6 +10,7 @@ const token = {
     axios.defaults.headers.common.Authorization = "";
   },
 };
+
 export const addBookAPI = (newBook, auth) => {
   token.set(auth.token);
   return axios
@@ -19,6 +22,7 @@ export const addBookAPI = (newBook, auth) => {
       throw err;
     });
 };
+
 export const getAllBooksAPI = (auth) => {
   token.set(auth.token);
   return axios

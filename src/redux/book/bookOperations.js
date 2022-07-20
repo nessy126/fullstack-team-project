@@ -16,6 +16,7 @@ export const addBook = createAsyncThunk(
     }
   }
 );
+
 export const getAllBooks = createAsyncThunk(
   "allBooks/get",
   async (_, { getState, rejectWithValue }) => {
@@ -27,7 +28,6 @@ export const getAllBooks = createAsyncThunk(
       const result = await bookAPI.getAllBooksAPI(auth);
       return result;
     } catch (error) {
-
       return rejectWithValue(error);
     }
   }
