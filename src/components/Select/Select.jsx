@@ -3,7 +3,7 @@ import { useState, useEffect, useCallback } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { IconContext } from "react-icons";
 
-const Select = ({books, onGetSelectBook}) => {
+const Select = ({books, onGetSelectBook, resetInput, getFalseForReset}) => {
     const [isActive, setIsActive] = useState(false);
     const [filterBook, setFilterBook] = useState('');
 
@@ -24,7 +24,10 @@ const Select = ({books, onGetSelectBook}) => {
     // При клике по иконке треугольника в инпуте, очищается инпут и открывается/закрывается селект
     const handleClick = () => {
         setIsActive(!isActive);
-        resetInput()};
+        setFilterBook('');
+        getFalseForReset(false);
+    };
+    
         
     // Функция для получения отфильтрованного списка книг для рендера в селекте (отбор по слову введенному в инпут)
         const getVisibleBooks = (books) => {
@@ -49,11 +52,11 @@ const Select = ({books, onGetSelectBook}) => {
     };
 
     // Функция для очистки инпута после клика по кнопке add
-    const resetInput = () => {
-        setFilterBook('');
-    }
-
-
+    useEffect(() => {
+        if (resetInput) {
+            setFilterBook('')
+        }
+    }, [resetInput]);
     
     return (
         <>

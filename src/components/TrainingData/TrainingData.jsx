@@ -30,6 +30,7 @@ const TrainingData = ({
     const [endTraining, setEndTraining] = useState(0);
     const [valueTraining, setValueTraining] = useState({});
     const [amountOfDaysTraining, setAmountOfDaysTraining] = useState(0);
+    const [resetInput, setResetInput] = useState(false);
 
     const addStartTraining=(e)=>{
         setStartTraining(e);
@@ -40,6 +41,9 @@ const TrainingData = ({
     const addAmountOfDaysTraining=(e)=>{
         setAmountOfDaysTraining(e);
     };
+    const getFalseForReset = (e) => {
+        setResetInput(false);
+    }
 
     useEffect(() => {
         if (amountOfDaysTraining > 0) {
@@ -102,10 +106,12 @@ const TrainingData = ({
         setBooksId([...booksId, _id?.toString()]);
         setSelected({});
         setShowBtnAdd(false);
-        toast("Book was added to the list", {className: `${s.tost__background}`,
+        toast("Book was added to the list", {
+            className: `${s.tost__background}`,
             bodyClassName: `${s.tost__body}`,
             progressClassName: `${s.progress__bar}`
-            })
+        });
+        setResetInput(true);
     };
 
     // При клике по кнопке "Старт тренировки" сначала проверяется наличие обеих дат (начало и конец тренировки) и только после этого отправляется запрос на бек по созданию тренировки
@@ -137,7 +143,8 @@ const TrainingData = ({
                                 addAmountOfDaysTraining={addAmountOfDaysTraining} />
                             <div className={s.select__wrapper}>
                                 <Select 
-                                    books={onFilteredlistGoingToRead} 
+                                    books={onFilteredlistGoingToRead} resetInput={resetInput}
+                                    getFalseForReset={getFalseForReset}
                                     selected={selected}
                                     onGetSelectBook={onGetSelectBook}/>
                                     {showBtnAdd ? (
@@ -177,7 +184,9 @@ const TrainingData = ({
                             <Select 
                                 books={onFilteredlistGoingToRead} 
                                 selected={selected}
-                                onGetSelectBook={onGetSelectBook}/>
+                                onGetSelectBook={onGetSelectBook}
+                                resetInput={resetInput}
+                                getFalseForReset={getFalseForReset}/>
                             {showBtnAdd ? (
                                 <button 
                                     type='button' 
