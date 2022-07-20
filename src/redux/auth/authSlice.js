@@ -88,9 +88,6 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
-<<<<<<< HEAD
-    
-=======
     [addTraining.pending]: (state) => {
       state.isLoading = true;
       state.error = null;
@@ -103,7 +100,6 @@ const authSlice = createSlice({
       state.error = payload;
       state.isLoading = false;
     }
->>>>>>> dev
   },
 });
 
