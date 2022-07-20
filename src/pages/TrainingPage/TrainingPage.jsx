@@ -24,14 +24,26 @@ const TrainingPage = () => {
 
   const [amountBooksTraining, setAmountBooksTraining] = useState(0);
   const [amountDaysTraining, setAmountDaysTraining] = useState(0);
+  const [dataStartTraining, setDataStartTraining] = useState(0);
+  const [dataEndTraining, setDataEndTraining] = useState(0);
+  const [hideRightPart, setHideRightPart] = useState(false);
+  const [bookListPlaining, setBookListPlaining] = useState([]);
   const statusIsTraining = useSelector(getStatusIsTraining);
-      const [hideRightPart, setHideRightPart] = useState(false);
 
   const getAmountBooksTraining = (e) => {
     setAmountBooksTraining(e);
   };
   const getAmountDaysTraining = (e) => {
     setAmountDaysTraining(e);
+  };
+  const getDataStartTraining = (e) => {
+    setDataStartTraining(e);
+  };
+  const getDataEndTraining = (e) => {
+    setDataEndTraining(e);
+  };
+  const getBookListPlaining = (e) => {
+    setBookListPlaining(e);
   };
 
   const arrayPlanTraining = [
@@ -59,13 +71,21 @@ const TrainingPage = () => {
       amount: 2,
     },
   ];
+
+  const dataForChartPlaining = {
+    bookList: bookListPlaining,
+    amountOfBooks: amountBooksTraining,
+    startTraining: dataStartTraining,
+    endTraining: dataEndTraining
+  };
+
   const toglMobileTraining = (e) => {
     setHideRightPart(!hideRightPart)
     }
 
   useEffect(() => {
     dispatch(getAllBooks(auth));
-  }, [dispatch]);
+  }, [dispatch, auth]);
 
   return (
     <Media queries={{
@@ -97,10 +117,16 @@ const TrainingPage = () => {
                 <TrainingData
                   getAmountDaysTraining={getAmountDaysTraining}
                   getAmountBooksTraining={getAmountBooksTraining}
+                  getDataStartTraining={getDataStartTraining}
+                  getDataEndTraining={getDataEndTraining}
+                  getBookListPlaining={getBookListPlaining}
                   showRight={hideRightPart}
                 />
-                {!hideRightPart ?(<><Chart />
-                <button className={s.button__plus} type='button' onClick={toglMobileTraining}>
+                {!hideRightPart ? (<>
+                  <Chart
+                    data={dataForChartPlaining}
+                    statusIsTraining={statusIsTraining} />
+                  <button className={s.button__plus} type='button' onClick={toglMobileTraining}>
                   <IconContext.Provider
                     value={{
                     className: `${s.react__icon}`,
@@ -111,7 +137,7 @@ const TrainingPage = () => {
                     }}>
                     <HiOutlinePlus />
                   </IconContext.Provider>
-                </button></>): null}
+                  </button></>): null}
               </div>  
             </section>) :
             (<section className={s.page__wrapper}>
@@ -121,7 +147,9 @@ const TrainingPage = () => {
               </div>
               <div className={s.right__wrapper}>
                 <StatisticsTabl/>
-                <Chart />
+                <Chart
+                  data={arrayPlanTraining}
+                  statusIsTraining={statusIsTraining} />
                 <StatisticsResults/>
               </div>
             </section>))}
@@ -134,8 +162,13 @@ const TrainingPage = () => {
                 <TrainingData
                   getAmountDaysTraining={getAmountDaysTraining}
                   getAmountBooksTraining={getAmountBooksTraining}
+                  getDataStartTraining={getDataStartTraining}
+                  getDataEndTraining={getDataEndTraining}
+                  getBookListPlaining={getBookListPlaining}
                 />
-                <Chart />
+                <Chart
+                  data={dataForChartPlaining}
+                  statusIsTraining={statusIsTraining}/>
               </div>  
             </section>) :
             (<section className={s.page__wrapper}>
@@ -158,8 +191,13 @@ const TrainingPage = () => {
                 <TrainingData
                   getAmountDaysTraining={getAmountDaysTraining}
                   getAmountBooksTraining={getAmountBooksTraining}
+                  getDataStartTraining={getDataStartTraining}
+                  getDataEndTraining={getDataEndTraining}
+                  getBookListPlaining={getBookListPlaining}
                 />
-                <Chart />
+                <Chart
+                  data={dataForChartPlaining}
+                  statusIsTraining={statusIsTraining} />
               </div>  
             </section>) :
             (<section className={s.page__wrapper}>
