@@ -1,29 +1,44 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import LineChart from "./LineChart";
-
-import emptyStartUserData from "./emptyUserData";
-import data from "./trainingData";
+import { useSelector } from "react-redux";
+import { getStatusIsTraining } from "redux/auth/authSelectors";
+import initialData from "./trainingData";
 
 import s from "./Chart.module.scss";
 
 const Chart = (props) => {
-  const { isTraining = false } = props.auth;
   const { userData } = props;
-
-  const trainingData = userData === undefined ? data : userData;
+  const isTraining = useSelector(getStatusIsTraining);
+  // Проверка данных которые приходят от родительского компонента
+  const trainingData =
+    userData === undefined
+      ? initialData
+      : userData.booksList.length === 0
+      ? initialData
+      : userData;
 
   //Перевод даты в день(формат числа: 23, 13, 1 и т.п.)
   const daysCountFunc = (start, end) => {
     return Math.round((end - start) / (1000 * 3600 * 24));
   };
+
   const amountOfDays = daysCountFunc(
     trainingData.startTraining,
     trainingData.endTraining
   );
-  const pagesReadBeforeStart = trainingData.booksList.reduce(
-    (sum, { pageFinished }) => sum + pageFinished,
-    0
-  );
+
+  const amountOfPagesPlan =
+    trainingData.booksList.length === 0
+      ? 0
+      : Math.round(
+          trainingData.booksList.reduce(
+            (sum, { pageTotal }) => sum + pageTotal,
+            0
+          ) / trainingData.amountOfDays
+        );
+
+  // Подсчет дней тренировки для корресктной работы графика
+
   const countDaysForTraining = () => {
     const daysToRead = [];
     let i = 0;
@@ -36,15 +51,21 @@ const Chart = (props) => {
   const daysForTraining = countDaysForTraining();
 
   // Запланировано к прочтению
-
   const makePlanToRead = () => {
     let pagesSumToRead = 0;
     return daysForTraining.map((day, index) => {
-      if (index === 0 && pagesReadBeforeStart === 0) {
-        return pagesSumToRead;
-      }
-      if (index === 0 && pagesReadBeforeStart !== 0) {
-        return (pagesSumToRead += pagesReadBeforeStart);
+      if (!isTraining) {
+        const amountOfPages = trainingData.booksList.reduce(
+          (sum, { pageTotal }) => sum + pageTotal,
+          0
+        );
+        if (index === 0) {
+          return pagesSumToRead;
+        }
+        const pagesPerDay = Math.round(
+          amountOfPages / trainingData.amountOfDays
+        );
+        return (pagesSumToRead += pagesPerDay);
       }
       return (pagesSumToRead += trainingData.pagesPerDay);
     });
@@ -52,7 +73,6 @@ const Chart = (props) => {
   const planToRead = makePlanToRead();
 
   // Фактически прочитано
-
   const makePagesReadArr = () => {
     let pagesReadTotal = 0;
     return daysForTraining.map((date) => {
@@ -60,20 +80,17 @@ const Chart = (props) => {
         const isDayIn = daysCountFunc(trainingData.startTraining, el.date);
         return isDayIn === date;
       });
-
       if (isDateIn.length === 1) {
         return (pagesReadTotal += isDateIn[0].pagesRead);
       }
-
       if (isDateIn.length > 1) {
         return isDateIn.reduce((sum, { pagesRead }) => (sum += pagesRead), 0);
       }
-
       return pagesReadTotal;
     });
   };
-  const pagesReadInTraining = makePagesReadArr();
-
+  const pagesReadInTraining = isTraining ? makePagesReadArr() : 0;
+  // Инициализация данных для графика
   const [userReadData, setUserReadData] = useState({
     labels: daysForTraining,
     datasets: [
@@ -95,13 +112,39 @@ const Chart = (props) => {
     ],
   });
 
+  // Динамическое отображение графика на странице планирования тренировки
+  useEffect(() => {
+    setUserReadData({
+      labels: daysForTraining,
+      datasets: [
+        {
+          label: "Plan to pages read",
+          data: planToRead,
+          backgroundColor: ["#091E3F"],
+          borderColor: "091E3F",
+          borderWidth: 2,
+        },
+        {
+          label: "Pages read",
+          data: pagesReadInTraining,
+          backgroundColor: ["#FF6B08"],
+          borderColor: "#FF6B08",
+          borderWidth: 2,
+          tension: 0.4,
+        },
+      ],
+    });
+    // Зависимость установлена таким образом, что данные меняються только в том случае, если приходит новый массив с данными от родительского компонента
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userData]);
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
     scales: {
       y: {
         ticks: {
-          display: false,
+          display: true,
           maxTicksLimit: 0,
           beginAtZero: true,
         },
@@ -113,8 +156,18 @@ const Chart = (props) => {
         },
         ticks: {
           beginAtZero: true,
-          display: false,
+          display: true,
           maxTicksLimit: 6,
+        },
+        title: {
+          display: true,
+          text: "Days",
+          align: "end",
+          font: {
+            family: "Montserrat",
+            size: 12,
+            lineHeight: 1.25,
+          },
         },
       },
     },
@@ -134,14 +187,12 @@ const Chart = (props) => {
       <div className={s.chartWrapper}>
         <p className={s.chartText}>
           pages/ days
-          <span className={s.chartText__Span}>{trainingData.pagesPerDay}</span>
+          <span className={s.chartText__Span}>
+            {!isTraining ? amountOfPagesPlan : trainingData.pagesPerDay}
+          </span>
         </p>
         <div className={s.chart}>
-          <LineChart
-            chartOptions={options}
-            // chartData={!isTraining ? emptyStartUserData : userReadData}
-            chartData={userReadData}
-          />
+          <LineChart chartOptions={options} chartData={userReadData} />
         </div>
       </div>
     </>

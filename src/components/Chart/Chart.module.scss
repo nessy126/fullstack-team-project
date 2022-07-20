@@ -2,14 +2,14 @@
 
 .chartWrapper {
   @include vp(mobile) {
-    padding: 25px 23px 39px 22px;
+    padding: 20px 23px 20px 22px;
   }
 
-  @include vp(mobile) {
-    padding: 35px 49px 50px 49px;
+  @include vp(tablet) {
+    padding: 30px 49px 31px 49px;
   }
 
-  padding: 35px 78px 51px 40px;
+  padding: 30px 78px 32px 40px;
   width: 100%;
   height: 100%;
   font-weight: normal;
@@ -20,7 +20,8 @@
 
 .chartText {
   @include vp(mobile) {
-    margin-bottom: 21px;
+    margin-bottom: 19px;
+    padding-left: 6px;
   }
 
   margin-bottom: 24px;
@@ -34,7 +35,13 @@
 }
 
 .chartText__Span {
+  display: inline-flex;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
   margin-left: 10px;
+  background-color: var(--auth-bg-cl);
 }
 
 .chart {

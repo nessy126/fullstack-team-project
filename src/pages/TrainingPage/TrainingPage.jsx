@@ -8,14 +8,13 @@ import StatisticsResults from "components/StatisticsResults/StatisticsResults";
 import StatisticsTabl from "components/StatisticsTabl/StatisticsTabl";
 import Statistics from "components/Statistics";
 import { getAllBooks } from "redux/book/bookOperations";
+import { getProgress } from "redux/training/trainingOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 // import vector2 from "assets/svg/vector2"
 import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { IconContext } from "react-icons";
 
 import s from "./TrainingPage.module.scss";
-
-import { getProgress } from "redux/training/trainingOperations";
 
 const TrainingPage = () => {
   const { auth } = useSelector((state) => state);
@@ -74,10 +73,11 @@ const TrainingPage = () => {
   ];
 
   const dataForChartPlaining = {
-    bookList: bookListPlaining,
+    booksList: bookListPlaining,
     amountOfBooks: amountBooksTraining,
     startTraining: dataStartTraining,
     endTraining: dataEndTraining,
+    amountOfDays: amountDaysTraining,
   };
 
   const toglMobileTraining = (e) => {
@@ -135,11 +135,14 @@ const TrainingPage = () => {
                   <TrainingData
                     getAmountDaysTraining={getAmountDaysTraining}
                     getAmountBooksTraining={getAmountBooksTraining}
+                    getDataStartTraining={getDataStartTraining}
+                    getDataEndTraining={getDataEndTraining}
+                    getBookListPlaining={getBookListPlaining}
                     showRight={hideRightPart}
                   />
                   {!hideRightPart ? (
                     <>
-                      <Chart />
+                      <Chart auth={auth} userData={dataForChartPlaining} />
                       <button
                         className={s.button__plus}
                         type="button"
@@ -169,65 +172,11 @@ const TrainingPage = () => {
                 </div>
                 <div className={s.right__wrapper}>
                   <StatisticsTabl />
-                  <Chart />
-                  <StatisticsResults />
-                </div>
-              </section>
-            ))}
-          {matches.medium &&
-            (!statusIsTraining ? (
-              <section className={s.page__wrapper}>
-                <div className={s.right__wrapper}>
-                  <MyGoals data={arrayPlanTraining} />
-                </div>
-                <div className={s.left__wrapper}>
-                  <TrainingData
-                    getAmountDaysTraining={getAmountDaysTraining}
-                    getAmountBooksTraining={getAmountBooksTraining}
-                    getDataStartTraining={getDataStartTraining}
-                    getDataEndTraining={getDataEndTraining}
-                    getBookListPlaining={getBookListPlaining}
-                    showRight={hideRightPart}
-                  />
-                  {!hideRightPart ? (
-                    <>
-                      <Chart
-                        data={dataForChartPlaining}
-                        statusIsTraining={statusIsTraining}
-                      />
-                      <button
-                        className={s.button__plus}
-                        type="button"
-                        onClick={toglMobileTraining}
-                      >
-                        <IconContext.Provider
-                          value={{
-                            className: `${s.react__icon}`,
-                            style: {
-                              width: "16px",
-                              height: "16px",
-                            },
-                          }}
-                        >
-                          <HiOutlinePlus />
-                        </IconContext.Provider>
-                      </button>
-                    </>
-                  ) : null}
-                </div>
-              </section>
-            ) : (
-              <section className={s.page__wrapper}>
-                <div className={s.left__wrapper}>
-                  <Statistics />
-                  <MyGoals data={arrayStatistic} />
-                </div>
-                <div className={s.right__wrapper}>
-                  <StatisticsTabl />
-                  <Chart
-                    data={arrayPlanTraining}
-                    statusIsTraining={statusIsTraining}
-                  />
+                  {training.isLoading ? (
+                    <p>Loading</p>
+                  ) : (
+                    <Chart auth={auth} userData={training.training[0]} />
+                  )}
                   <StatisticsResults />
                 </div>
               </section>
@@ -246,10 +195,7 @@ const TrainingPage = () => {
                     getDataEndTraining={getDataEndTraining}
                     getBookListPlaining={getBookListPlaining}
                   />
-                  <Chart
-                    data={dataForChartPlaining}
-                    statusIsTraining={statusIsTraining}
-                  />
+                  <Chart auth={auth} userData={dataForChartPlaining} />
                 </div>
               </section>
             ) : (
@@ -260,7 +206,11 @@ const TrainingPage = () => {
                 </div>
                 <div className={s.right__wrapper}>
                   <StatisticsTabl />
-                  <Chart />
+                  {training.isLoading ? (
+                    <p>Loading</p>
+                  ) : (
+                    <Chart auth={auth} userData={training.training[0]} />
+                  )}
                   <StatisticsResults />
                 </div>
               </section>
@@ -279,10 +229,7 @@ const TrainingPage = () => {
                     getDataEndTraining={getDataEndTraining}
                     getBookListPlaining={getBookListPlaining}
                   />
-                  <Chart
-                    data={dataForChartPlaining}
-                    statusIsTraining={statusIsTraining}
-                  />
+                  <Chart auth={auth} userData={dataForChartPlaining} />
                 </div>
               </section>
             ) : (
@@ -294,7 +241,11 @@ const TrainingPage = () => {
                 <div className={s.right__wrapper}>
                   <Statistics />
                   <StatisticsTabl />
-                  <Chart />
+                  {training.isLoading ? (
+                    <p>Loading</p>
+                  ) : (
+                    <Chart auth={auth} userData={training.training[0]} />
+                  )}
                 </div>
               </section>
             ))}
