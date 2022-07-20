@@ -1,18 +1,33 @@
 import s from "./OneCard.module.scss";
 
-// import { useDispatch } from "react-redux";
+import MediaQuery from "react-responsive";
+import { FirstBook } from "components/MainNav/icons/FirstBook";
 
 const OneCard = (book) => {
   //   const dispatch = useDispatch();
 
   return (
     <li className={s.card}>
-      <p className={s.title}>{book.title}</p>
-      <p>{book.author}</p>
-      <p>{book.year}</p>
-      <p>{book.pages}</p>
-
-      {/* <button onClick={() => dispatch(addToCart(product))}>add to card</button> */}
+      <div className={s.iconTitle}>
+        <div className={s.navIcon}>
+          <FirstBook />
+        </div>
+        <p className={s.bookTitle}>{book.title}</p>
+      </div>
+      <div className={s.bookInfoWrapper}>
+        <MediaQuery maxWidth={767}>
+          <div className={s.bookInfo}>
+            <p className={s.bookInfoText}>Author</p>
+            <p className={s.bookInfoText}>Year</p>
+            <p className={s.bookInfoText}>Pages</p>
+          </div>
+        </MediaQuery>
+        <div className={s.bookMoreInfo}>
+          <p className={s.bookMoreInfoAuthor}>{book.author}</p>
+          <p className={s.bookMoreInfoYear}>{book.year}</p>
+          <p className={s.bookMoreInfoPage}>{book.pages}</p>
+        </div>
+      </div>
     </li>
   );
 };

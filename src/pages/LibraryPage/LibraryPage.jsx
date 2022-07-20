@@ -14,6 +14,7 @@ import bookSelectors from "../../redux/book/bookSelectors";
 
 const LibraryPage = () => {
   const dispatch = useDispatch();
+  const [next, setNext] = useState(false);
   const booksGoingToRead = useSelector(bookSelectors.getListGoingToRead);
   // const booksInReading = useSelector(bookSelectors.getListInReading);
   // const booksFinished = useSelector(bookSelectors.getListFinished);
@@ -49,7 +50,17 @@ const LibraryPage = () => {
         <AddBookForm closeModal={closeModal} />
       </MediaQuery>
       {booksGoingToRead.length ? (
-        <GoingToReadList library={booksGoingToRead} />
+        <>
+          {next ? null : (
+            <>
+              <p className={s.sectionTitle}>Going to read</p>
+              <GoingToReadList library={booksGoingToRead} />
+              <button className={s.button} onClick={() => setNext(true)}>
+                Next
+              </button>
+            </>
+          )}
+        </>
       ) : (
         <LibraryModal />
       )}

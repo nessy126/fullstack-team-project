@@ -9,7 +9,7 @@ const GoingToReadList = ({ library }) => {
       <MediaQuery minWidth={768}>
         <div className={s.bookColumns}>
           <p className={s.title}>Book title</p>
-          <p className={s.author}>author</p>
+          <p className={s.author}>Author</p>
           <p className={s.year}>Year</p>
           <p className={s.page}>Pages</p>
         </div>
