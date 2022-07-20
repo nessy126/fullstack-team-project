@@ -7,7 +7,7 @@ import MediaQuery from "react-responsive";
 
 import GoingToReadList from "../../components/GoingToReadList/GoingToReadList";
 
-import s from "./libraryPage.module.scss";
+import s from "./LibraryPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBooks } from "redux/book/bookOperations";
 import bookSelectors from "../../redux/book/bookSelectors";
