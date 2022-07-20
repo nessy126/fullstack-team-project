@@ -1,56 +1,41 @@
 import s from "./PlainingTabl.module.scss";
 // import { useState } from "react";
-import { MdMenuBook, MdOutlineDeleteOutline } from 'react-icons/md';
+import { MdMenuBook, MdOutlineDeleteOutline } from "react-icons/md";
 import Media from "react-media";
 // import deleteIconSvg from '../../assets/svg/delete.svg';
 
-const PlaningTabl = ({books, handleDelBook}) => {
-    // const [itemDel, setItemDel] = useState({});
-    const deletItemFromList =(e)=>{
-        // setItemDel(e)
-        handleDelBook(e)
-    }
-    const isLoading = false;
-    const show = books?.length>0 ? true : false;
-    return (
-        <Media queries={{
-            small: "(max-width: 767px)",
-            medium: "(min-width: 768px)",
-        }}
-        >
-            {(matches) => (
-            <>
-            {matches.small && (show ?
-            (<ul className={s.column__list}>
-            {books?.map((book) => {
-                return (
-                    <li key={book._id} 
-                        className={s.column__item}>
-                        <div className={s.column__flex}>                        
-                            <div className={s.column__icon}>
-                            <MdMenuBook 
-                            style={{ width: "22", height: "17", color: "#A6ABB9" }} />
-                            </div>
-                            <div className={s.column__title}>{book.title}</div>
-                            <button type="button" 
-                            onClick={deletItemFromList} 
-                            id={book._id} 
-                            className={s.column__btn}>
-                            <MdOutlineDeleteOutline 
-                            style={{ width: "14", height: "18", color: "#A6ABB9" }}/>
-                            </button>
-                        </div>
-                        <div className={s.column__flex}>
-                            <div className={s.column__right}>Author:</div>
-                            <div className={s.column__left}>{book.author}</div>
-                        </div>
-                        <div className={s.column__flex}>
-                            <div className={s.column__right}>Year:</div>
-                            <div className={s.column__left}>{book.year}</div>
-                        </div>
-                        <div className={s.column__flex}>
-                            <div className={s.column__right}>Pages:</div>
-                            <div className={s.column__left}>{book.pagesTotal}</div>
+const PlaningTabl = ({ books, handleDelBook }) => {
+  // const [itemDel, setItemDel] = useState({});
+  const deletItemFromList = (e) => {
+    // setItemDel(e)
+    handleDelBook(e);
+  };
+  const isLoading = false;
+  const show = books?.length > 0 ? true : false;
+  return (
+    <Media
+      queries={{
+        small: "(max-width: 767px)",
+        medium: "(min-width: 768px)",
+      }}
+    >
+      {(matches) => (
+        <>
+          {matches.small &&
+            (show ? (
+              <ul className={s.column__list}>
+                {books?.map((book) => {
+                  return (
+                    <li key={book._id} className={s.column__item}>
+                      <div className={s.column__flex}>
+                        <div className={s.column__icon}>
+                          <MdMenuBook
+                            style={{
+                              width: "22",
+                              height: "17",
+                              color: "#A6ABB9",
+                            }}
+                          />
                         </div>
                         <div className={s.column__title}>{book.title}</div>
                         <button

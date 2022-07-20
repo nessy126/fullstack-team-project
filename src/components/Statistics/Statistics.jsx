@@ -4,15 +4,15 @@ import s from "./Statistics.module.scss";
 import { useSelector } from "react-redux";
 import trainingSelectors from "redux/training/trainingSelectors";
 const Statistics = () => {
-  const dateTimeToEnd = useSelector(trainingSelectors.getEndTraining);
+  // const dateTimeToEnd = useSelector(trainingSelectors.getAllTrainings);
   const now_in_ms = new Date().getTime();
   const getFullYear = new Date().getFullYear();
   const getFullYearMs = new Date(getFullYear + "-01-01").getTime();
   const newYearCountdown = Date.now() - getFullYearMs;
   const timeEndYear = ms_of_a_year(getFullYear) - newYearCountdown;
   const dateTimeToNewYear = now_in_ms + timeEndYear;
-  const goalCountdown = dateTimeToEnd - now_in_ms;
-  const dateTimeToGoal = now_in_ms + goalCountdown;
+  // const goalCountdown = dateTimeToEnd - now_in_ms;
+  // const dateTimeToGoal = now_in_ms + goalCountdown;
 
   function ms_of_a_year(year) {
     return isLeapYear(year)
@@ -33,7 +33,7 @@ const Statistics = () => {
         </div>
         <div>
           <h2 className={s.counterTitle}>Goal countdown</h2>
-          <CountdownTimer targetDate={dateTimeToGoal} />
+          {/* <CountdownTimer targetDate={dateTimeToGoal} /> */}
         </div>
       </div>
       <StatisticsTabl />

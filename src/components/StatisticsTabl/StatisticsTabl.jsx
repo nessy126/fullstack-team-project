@@ -1,8 +1,8 @@
 import s from "./StatisticsTable.module.scss";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getProgress } from "redux/training/trainingOperations";
-import trainingSelectors from "redux/training/trainingSelectors";
+import { getProgress } from "../../redux/training/trainingOperations";
+import trainingSelectors from "../../redux/training/trainingSelectors";
 import Media from "react-media";
 import { MdMenuBook } from "react-icons/md";
 const StatisticsTabl = () => {

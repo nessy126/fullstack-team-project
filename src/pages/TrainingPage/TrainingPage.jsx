@@ -4,7 +4,6 @@ import Media from "react-media";
 import MyGoals from "components/MyGoals";
 import TrainingData from "components/TrainingData";
 import Chart from "components/Chart";
-import StatisticsResults from "components/StatisticsResults/StatisticsResults";
 import StatisticsTabl from "components/StatisticsTabl/StatisticsTabl";
 import Statistics from "components/Statistics";
 import { getAllBooks } from "redux/book/bookOperations";
