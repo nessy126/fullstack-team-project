@@ -1,16 +1,64 @@
-import AddBookForm from "../../components/AddBookForm";
-import AlreadyReadList from "../../components/AlreadyReadList";
-import GoingToReadList from "../../components/GoingToReadList";
-import ReadingNowList from "../../components/ReadingNowList";
+import { useEffect, useState } from "react";
+import AddBookForm from "../../components/AddBookForm/AddBookForm";
+import { LibraryModal } from "../../components/LibraryModal/LibraryModal";
+import { Plus } from "../../components/MainNav/icons/Plus";
+import Modal from "../../components/Modal/Modal";
+import MediaQuery from "react-responsive";
+
+import GoingToReadList from "../../components/GoingToReadList/GoingToReadList";
+
+import s from "./LibraryPage.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBooks } from "redux/book/bookOperations";
+import bookSelectors from "../../redux/book/bookSelectors";
 
 const LibraryPage = () => {
+  const dispatch = useDispatch();
+  const booksGoingToRead = useSelector(bookSelectors.getListGoingToRead);
+  // const booksInReading = useSelector(bookSelectors.getListInReading);
+  // const booksFinished = useSelector(bookSelectors.getListFinished);
+  const [modal, setModal] = useState({
+    open: false,
+    content: null,
+  });
+
+  useEffect(() => {
+    dispatch(getAllBooks());
+  }, [dispatch]);
+
+  const openModal = () => {
+    setModal({
+      open: true,
+    });
+  };
+
+  const closeModal = () => {
+    setModal({
+      open: false,
+    });
+  };
+
   return (
     <>
-      <h1>Library</h1>
-      <AddBookForm />
-      <AlreadyReadList />
-      <ReadingNowList />
-      <GoingToReadList />
+      <MediaQuery maxWidth={767}>
+        <button className={s.phonePlusButton} onClick={() => openModal()}>
+          <Plus />
+        </button>
+      </MediaQuery>
+      <MediaQuery minWidth={768}>
+        <AddBookForm closeModal={closeModal} />
+      </MediaQuery>
+      {booksGoingToRead.length ? (
+        <GoingToReadList library={booksGoingToRead} />
+      ) : (
+        <LibraryModal />
+      )}
+
+      {modal.open && (
+        <Modal closeModal={closeModal}>
+          <AddBookForm closeModal={closeModal} />
+        </Modal>
+      )}
     </>
   );
 };

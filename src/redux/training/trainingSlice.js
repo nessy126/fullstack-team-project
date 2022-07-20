@@ -3,14 +3,13 @@
 
 // const initialState = {
 //   training: {
-  
+
 //   },
 //   finishedTrainings: [],
 //   isLoading: false,
 //   isLoggedIn: false,
 //   error: null,
 // }
-
 
 // const trainingSlice = createSlice({
 //   name: 'training',
@@ -46,6 +45,5 @@
 //     }
 //   }
 // })
-
 
 // export default trainingSlice.reducer;
