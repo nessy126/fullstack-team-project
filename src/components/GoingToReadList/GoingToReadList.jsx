@@ -1,49 +1,25 @@
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBooks } from "redux/book/bookOperations";
 import s from "./GoingToReadList.module.scss";
 import OneCard from "./OneCard/OneCard";
+import bookSelectors from "redux/book/bookSelectors";
+import { useEffect } from "react";
 
 const GoingToReadList = () => {
-  const books = [
-    {
-      _id: 1,
-      title: "asdasd",
-      author: "asdasd",
-      year: 2020,
-      pageTotal: 500,
-    },
-    {
-      _id: 2,
-      title: "asdasd",
-      author: "asdasd",
-      year: 2020,
-      pageTotal: 500,
-    },
-    {
-      _id: 3,
-      title: "asdasd",
-      author: "asdasd",
-      year: 2020,
-      pageTotal: 500,
-    },
-    {
-      _id: 4,
-      title: "asdasd",
-      author: "asdasd",
-      year: 2020,
-      pageTotal: 500,
-    },
-  ];
+  const dispatch = useDispatch();
+  const books = useSelector(bookSelectors.getListGoingToRead);
 
   return (
     <ul className={s.list}>
-      {books.length
-        ? books.map(({ _id: id, title, author, year, pages }) => (
+      {books.length > 0
+        ? books.map(({ _id: id, title, author, year, pageTotal }) => (
             <OneCard
               key={id}
               id={id}
               title={title}
               author={author}
               year={year}
-              pages={pages}
+              pages={pageTotal}
             />
           ))
         : null}

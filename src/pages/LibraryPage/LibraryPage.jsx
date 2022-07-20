@@ -8,14 +8,21 @@ import MediaQuery from "react-responsive";
 import GoingToReadList from "../../components/GoingToReadList/GoingToReadList";
 // import ReadingNowList from "../../components/ReadingNowList/ReadingNowList";
 import s from "./libraryPage.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllBooks } from "redux/book/bookOperations";
 
 const LibraryPage = () => {
+  const dispatch = useDispatch();
+  const books = dispatch(getAllBooks());
+  console.log("books :>> ", books);
   const [modal, setModal] = useState({
     open: false,
     content: null,
   });
 
-  const [add, setAdd] = useState([]);
+  // useEffect(() => {
+  //   dispatch(getAllBooks());
+  // }, []);
 
   const openModal = () => {
     setModal({
@@ -50,7 +57,7 @@ const LibraryPage = () => {
       <MediaQuery minWidth={768}>
         <AddBookForm closeModal={closeModal} />
       </MediaQuery>
-      {add.length ? <GoingToReadList /> : <LibraryModal />}
+      {books.length ? <GoingToReadList /> : <LibraryModal />}
 
       {modal.open && (
         <Modal closeModal={closeModal}>

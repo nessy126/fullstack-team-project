@@ -1,0 +1,12 @@
+@import "../../../assets/sass/main.scss";
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  color: var(--main-text-cl);
+  border-bottom: 1px solid var(--scrollbar-bg-cl);
+  @include font(500, 14px, 1.21);
+}
