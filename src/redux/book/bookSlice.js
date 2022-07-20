@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllBooks, addBook } from "./bookOperations";
-import { addTraining } from "./../training/trainingOperations";
+import { addTraining } from "redux/training/trainingOperations";
 
 const initialState = {
   books: [],
@@ -8,18 +8,6 @@ const initialState = {
   isLoggedIn: false,
   error: null,
 };
-// book: [{
-//   title: "",
-//   author: "",
-//   year: 0,
-//   status: "",
-//   pageTotal: 0,
-//   pageFinished: 0,
-//   feedBack: {
-//     rating: 0,
-//     comment: ""
-//   },
-// }]
 
 const bookSlice = createSlice({
   name: "books",
@@ -59,5 +47,4 @@ const bookSlice = createSlice({
     },
   },
 });
-
 export default bookSlice.reducer;

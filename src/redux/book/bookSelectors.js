@@ -9,7 +9,6 @@ const getListGoingToRead = (state) => {
 };
 const getListInReading = (state) => {
   const allBooks = getAllBooks(state) || [];
-  console.log("allBooks :>> ", allBooks);
   return allBooks?.filter((book) => book.status === "inReading");
 };
 const getListFinished = (state) => {

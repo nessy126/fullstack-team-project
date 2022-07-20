@@ -11,7 +11,8 @@ const token = {
   },
 };
 
-export const addTrainingAPI = (newTraining) => {
+export const addTrainingAPI = (newTraining, auth) => {
+  token.set(auth.token);
   return axios
     .post(endPoint + "start", newTraining)
     .then((res) => {
@@ -27,6 +28,7 @@ export const getProgressAPI = (auth) => {
   return axios
     .get(endPoint)
     .then((res) => {
+      console.log(res);
       token.set(res.data.token);
       return res.data;
     })

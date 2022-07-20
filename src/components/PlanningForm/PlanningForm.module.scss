@@ -1,103 +1,98 @@
-@import '../../assets/sass/main.scss';
+@import "../../assets/sass/main.scss";
 
-.planningForm__wrapper{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    @include vp(tablet){
-        margin-top: 40px;
-    }
-    @include vp(desktop){
-        margin-top: 0;
-    }
-
+.planningForm__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  @include vp(tablet) {
+    margin-top: 40px;
+  }
+  @include vp(desktop) {
+    margin-top: 0;
+  }
 }
-.top__wrapper{
-    width: 100%;
+.top__wrapper {
+  width: 100%;
 }
-.title__wrapper{
-    width: 100%;
-    background-color: var(--training-bg-cl);
-    color: var(--main-bg-cl);
-    display: flex;
-    align-items: center;
+.title__wrapper {
+  width: 100%;
+  background-color: var(--training-bg-cl);
+  color: var(--main-bg-cl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+.title {
+  @include font(600, 20px, 1.9);
+}
+.calendar__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 20px;
+  @include vp(tablet) {
+    flex-direction: row;
     justify-content: center;
-    padding-top: 11px;
-    padding-bottom: 11px;
-
+    margin-top: 25px;
+    padding-bottom: 25px;
+  }
 }
-.title{
-    @include font(600, 20px, 1.9);
-}
-.calendar__wrapper{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    padding-bottom: 20px;
-    @include vp(tablet){
-        flex-direction: row;
-        justify-content: center;
-        margin-top: 25px;
-        padding-bottom: 25px;
+.input__wrapper {
+  margin-top: 20px;
+  width: 270px;
+  height: 42px;
+  display: flex;
+  // border: 1px solid var(--placeholder-text-cl);
+  @include vp(tablet) {
+    margin-top: 0;
+    &:first-child {
+      margin-right: 45px;
+      align-items: center;
+      justify-content: end;
     }
+  }
 }
-.input__wrapper{
-    margin-top: 20px;
-    width: 270px;
-    height: 42px;
-    display: flex;
-    // border: 1px solid var(--placeholder-text-cl);
-        @include vp(tablet){
-            margin-top: 0;
-        &:first-child{
-            margin-right: 45px;
-            align-items: center;
-            justify-content: end;
-
-        }
-    }
+div.datetime__picker {
+  background-color: var(--secondary-bg-cl);
+  box-sizing: border-box;
+  color: var(--main-text-cl);
+  @include font(500, 14px, 2.71);
+  margin: 0;
+  display: block;
+  width: 270px;
+  height: 42px;
+  border: none;
 }
-div.datetime__picker{
-    background-color: var(--secondary-bg-cl);
-    box-sizing: border-box;
-    color: var(--main-text-cl);
-    @include font(500, 14px, 2.71);
-    margin: 0;
-    display: block;
-    width: 270px;
-    height: 42px;
-    border: none;
-}
-.react-datetime-picker__wrapper{
-    border: none;
+.react-datetime-picker__wrapper {
+  border: none;
 }
 
 // .datetime-picker * {
 //     border: none;
 //   }
 div.react__calendar {
-    background-color: var(--main-bg-cl);
-    width: 270px;
-    border-radius: 4px;
-    font-family: 'Montserrat', sans-serif;
-    @include font(500, 12px, 1.25);
-    
+  background-color: var(--main-bg-cl);
+  width: 270px;
+  border-radius: 4px;
+  font-family: "Montserrat", sans-serif;
+  @include font(500, 12px, 1.25);
 }
 div.react__calendar.react-calendar button.react-calendar__tile--now {
-    background-color: var(--accent-active-cl);
+  background-color: var(--accent-active-cl);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Styles for tost
+.tost__background {
+  background: var(--placeholder-text-cl);
+  color: var(--main-text-cl);
+}
+.tost__body {
+  font-family: "Montserrat", sans-serif;
+  @include font(500, 18px, 1.1);
+}
+.progress__bar {
+  height: 10px;
+  border-radius: 5px;
+}

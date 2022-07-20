@@ -1,25 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
-
-const token = {
-  set(token) {
-    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-  },
-  unset() {
-    axios.defaults.headers.common.Authorization = "";
-  },
-};
+import * as bookAPI from "utils/api/bookApi";
 
 export const addBook = createAsyncThunk(
-  "addBooks/post",
-  async (data, { rejectWithValue }) => {
+  "book/add",
+  async (data, { getState, rejectWithValue }) => {
     try {
-      console.log("addBook");
-      const result = await axios.post("/api/books", data);
-      console.log(result.data);
-      return result.data;
+      const { auth } = getState();
+      if (!auth.token) {
+        return rejectWithValue("Not authorized");
+      }
+      const result = await bookAPI.addBookAPI(data, auth);
+      return result;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error);
     }
   }
@@ -27,13 +19,15 @@ export const addBook = createAsyncThunk(
 
 export const getAllBooks = createAsyncThunk(
   "allBooks/get",
-  async (auth, { rejectWithValue }) => {
+  async (_, { getState, rejectWithValue }) => {
     try {
-      token.set(auth.token);
-      const result = await axios.get("/api/books");
-      return result.data;
+      const { auth } = getState();
+      if (!auth.token) {
+        return rejectWithValue("Not authorized");
+      }
+      const result = await bookAPI.getAllBooksAPI(auth);
+      return result;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error);
     }
   }

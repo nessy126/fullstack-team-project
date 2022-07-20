@@ -1,66 +1,56 @@
 .countdown {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    
-    
-    width: 270px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 
-   
+  width: 270px;
 }
 
 .countdown > p {
-    margin: 0;
+  margin: 0;
 
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 38px;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 38px;
 
-    
-    
-    color: #091E3F;
+  color: #091e3f;
 }
 
 .countdown > span {
-font-family: 'Montserrat';
+  font-family: "Montserrat";
 
-font-weight: 500;
-font-size: 10px;
-// line-height: 38px;
-text-transform: uppercase;
+  font-weight: 500;
+  font-size: 10px;
+  // line-height: 38px;
+  text-transform: uppercase;
 }
-
 
 .danger {
-    color: #ff0000;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+  color: #ff0000;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
 
-    width: 270px;
+  width: 270px;
 }
 
-
 .danger > p {
-    margin: 0;
+  margin: 0;
 
-    font-family: 'Open Sans';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 25px;
-    line-height: 38px;
-
-
-
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 25px;
+  line-height: 38px;
 }
 
 .danger > span {
-    font-family: 'Montserrat';
+  font-family: "Montserrat";
 
-    font-weight: 500;
-    font-size: 10px;
-    // line-height: 38px;
-    text-transform: uppercase;
+  font-weight: 500;
+  font-size: 10px;
+  // line-height: 38px;
+  text-transform: uppercase;
 }
