@@ -3,13 +3,13 @@ import LineChart from "./LineChart";
 import { useSelector } from "react-redux";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 import initialData from "./trainingData";
+import { options } from "./chartOptions";
 
 import s from "./Chart.module.scss";
 
 const COLORS = {
   PLAN: "#091E3F",
   READ: "#FF6B08",
-  GRID: "#B1B5C2",
 };
 
 const Chart = (props) => {
@@ -59,19 +59,22 @@ const Chart = (props) => {
   // Запланировано к прочтению
   const makePlanToRead = () => {
     let pagesSumToRead = 0;
-    return daysForTraining.map((day, index) => {
+    return daysForTraining.map((day) => {
       if (!isTraining) {
         const amountOfPages = trainingData.booksList.reduce(
           (sum, { pageTotal }) => sum + pageTotal,
           0
         );
-        if (index === 0) {
+        if (day === 0) {
           return pagesSumToRead;
         }
         const pagesPerDay = Math.round(
           amountOfPages / trainingData.amountOfDays
         );
         return (pagesSumToRead += pagesPerDay);
+      }
+      if (day === 0) {
+        return pagesSumToRead;
       }
       return (pagesSumToRead += trainingData.pagesPerDay);
     });
@@ -143,50 +146,6 @@ const Chart = (props) => {
     // Зависимость установлена таким образом, что данные меняються только в том случае, если приходит новый массив с данными от родительского компонента
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userData]);
-
-  const options = {
-    responsive: true,
-    maintainAspectRatio: false,
-    scales: {
-      y: {
-        ticks: {
-          display: true,
-          maxTicksLimit: 0,
-          beginAtZero: true,
-        },
-      },
-      x: {
-        grid: {
-          drawBorder: true,
-          color: COLORS.GRID,
-        },
-        ticks: {
-          beginAtZero: true,
-          display: true,
-          maxTicksLimit: 6,
-        },
-        title: {
-          display: true,
-          text: "Days",
-          align: "end",
-          font: {
-            family: "Montserrat",
-            size: 12,
-            lineHeight: 1.25,
-          },
-        },
-      },
-    },
-    elements: {
-      point: {
-        radius: 0,
-        hitRadius: 5,
-      },
-    },
-    plugins: {
-      legend: { display: false },
-    },
-  };
 
   return (
     <>
