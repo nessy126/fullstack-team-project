@@ -3,6 +3,7 @@ import CountdownTimer from "../CountdownTimer/CountdownTimer";
 import s from "./Statistics.module.scss";
 import { useSelector } from "react-redux";
 import trainingSelectors from "redux/training/trainingSelectors";
+import StatisticsResults from "components/StatisticsResults";
 const Statistics = () => {
   // const dateTimeToEnd = useSelector(trainingSelectors.getAllTrainings);
   const now_in_ms = new Date().getTime();
@@ -37,6 +38,7 @@ const Statistics = () => {
         </div>
       </div>
       <StatisticsTabl />
+      <StatisticsResults></StatisticsResults>
     </>
   );
 };

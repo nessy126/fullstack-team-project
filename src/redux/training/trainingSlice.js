@@ -25,7 +25,6 @@ const trainingSlice = createSlice({
     [addTraining.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
-      console.log("addTraining", payload);
     },
     [getProgress.pending]: (state) => {
       state.isLoading = true;

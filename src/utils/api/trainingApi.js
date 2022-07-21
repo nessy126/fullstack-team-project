@@ -28,7 +28,6 @@ export const getProgressAPI = (auth) => {
   return axios
     .get(endPoint)
     .then((res) => {
-      console.log(res);
       token.set(res.data.token);
       return res.data;
     })

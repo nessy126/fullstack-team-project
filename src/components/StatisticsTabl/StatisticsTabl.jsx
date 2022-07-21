@@ -12,7 +12,8 @@ const StatisticsTabl = () => {
   }, [dispatch]);
 
   const allTraining = useSelector(trainingSelectors.getAllTrainings);
-  const show = allTraining?.length > 0 ? true : false;
+  console.log("allTraining :>> ", allTraining);
+  const show = allTraining.booksList?.length > 0 ? true : false;
   const isLoading = false;
   return (
     <Media
@@ -26,7 +27,7 @@ const StatisticsTabl = () => {
           {matches.small &&
             (show ? (
               <ul className={s.column__list}>
-                {allTraining?.map((book) => {
+                {allTraining.booksList?.map((book) => {
                   return (
                     <li key={book._id} className={s.column__item}>
                       <div className={s.column__flex}>
@@ -97,7 +98,7 @@ const StatisticsTabl = () => {
                       <p>InlineLoader</p>
                     ) : (
                       <ul className={s.table__list}>
-                        {allTraining?.map((book) => {
+                        {allTraining.booksList?.map((book) => {
                           return (
                             <li key={book._id} className={s.table__item}>
                               <div className={s.table__icon}>

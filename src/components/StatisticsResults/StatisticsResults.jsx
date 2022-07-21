@@ -1,6 +1,7 @@
 import DateTimePicker from "react-datetime-picker";
 import React, { useState, useEffect } from "react";
 import s from "./StatisticsResults.module.scss";
+import { MdOutlineSignalWifiStatusbarNull } from "react-icons/md";
 
 const StatisticsResults = () => {
   const [pagesRead, setPagesRead] = useState("");
@@ -56,6 +57,7 @@ const StatisticsResults = () => {
               disableClock={true}
               format="dd.MM.yyyy"
               placeholderText="Start"
+              required={false}
             />
           </div>
           <label>
@@ -66,7 +68,6 @@ const StatisticsResults = () => {
               name="number"
               value={pagesRead}
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-              required
               autoComplete="off"
               onChange={onInput}
             />
@@ -78,6 +79,34 @@ const StatisticsResults = () => {
       </form>
       <h2 className={s.titleStatic}>STATISTICS</h2>
       <ul className={s.list}>
+        <li className={s.item}>
+          <p className={s.itemData}>10.10.2019</p>
+          <p className={s.itemTime}>08:10:23</p>
+          <p className={s.itemPages}>
+            <span className={s.itemNumber}>32</span>pages
+          </p>
+        </li>
+        <li className={s.item}>
+          <p className={s.itemData}>10.10.2019</p>
+          <p className={s.itemTime}>08:10:23</p>
+          <p className={s.itemPages}>
+            <span className={s.itemNumber}>32</span>pages
+          </p>
+        </li>
+        <li className={s.item}>
+          <p className={s.itemData}>10.10.2019</p>
+          <p className={s.itemTime}>08:10:23</p>
+          <p className={s.itemPages}>
+            <span className={s.itemNumber}>32</span>pages
+          </p>
+        </li>
+        <li className={s.item}>
+          <p className={s.itemData}>10.10.2019</p>
+          <p className={s.itemTime}>08:10:23</p>
+          <p className={s.itemPages}>
+            <span className={s.itemNumber}>32</span>pages
+          </p>
+        </li>
         <li className={s.item}>
           <p className={s.itemData}>10.10.2019</p>
           <p className={s.itemTime}>08:10:23</p>
