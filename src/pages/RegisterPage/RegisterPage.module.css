@@ -1,0 +1,31 @@
+@media (min-width: 1280px) {
+  .register {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 790px;
+    width: 100%;
+  }
+}
+
+.intro {
+  display: none;
+  background-color: var(--main-bg-cl);
+}
+
+@media (min-width: 1280px) {
+  .intro {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+}
+/*# sourceMappingURL=RegisterPage.module.css.map */

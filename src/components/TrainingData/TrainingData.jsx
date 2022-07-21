@@ -7,6 +7,7 @@ import Media from "react-media";
 import { toast } from "react-toastify";
 import { addTraining } from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
+import { get, save, remove } from "utils/localStorage/localStorage";
 import s from "./TrainingData.module.scss";
 
 const TrainingData = ({
@@ -18,7 +19,7 @@ const TrainingData = ({
     showRight }) => {
     
     const dispatch = useDispatch();
-
+    const STORAGE_KEY = "local-data";
     const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
 
     // Локальный стейт для получения и передачи данных из других компонентов
@@ -32,10 +33,12 @@ const TrainingData = ({
     const [amountOfDaysTraining, setAmountOfDaysTraining] = useState(0);
     const [resetInput, setResetInput] = useState(false);
 
-    const addStartTraining=(e)=>{
+    const addStartTraining = (e) => {
+        console.log(e)
         setStartTraining(e);
     };
-    const addEndTraining=(e)=>{
+    const addEndTraining = (e) => {
+        console.log(e)
         setEndTraining(e);
     };
     const addAmountOfDaysTraining=(e)=>{
@@ -67,7 +70,7 @@ const TrainingData = ({
 
     useEffect(() => {
         if (startTraining > 0 && endTraining > 0 && booksId.length > 0) {
-            setValueTraining({ booksId, startTraining, endTraining })
+            setValueTraining({ booksId, startTraining:startTraining.getTime(), endTraining:endTraining.getTime() })
         }
     }, [booksId, startTraining, endTraining]);
 
@@ -104,6 +107,7 @@ const TrainingData = ({
         setListPlainingBooks([...listPlainingBooks, selected]);
         const{_id}=selected;
         setBooksId([...booksId, _id?.toString()]);
+        console.log(booksId);
         setSelected({});
         setShowBtnAdd(false);
         toast("Book was added to the list", {
@@ -125,6 +129,10 @@ const TrainingData = ({
             return;
         }
         dispatch(addTraining(valueTraining));
+        console.log(startTraining);
+        console.log(endTraining);
+        remove(STORAGE_KEY);
+
     };
     // Условие при котором рендерится кнопка Старт тренировки
     const hideBtnStart = listPlainingBooks?.length >0 ? true : false;

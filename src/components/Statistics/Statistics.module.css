@@ -1,0 +1,26 @@
+.counterTitle {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 38px;
+  /* identical to box height, or 271% */
+  text-align: center;
+  color: #898f9f;
+}
+
+@media (min-width: 768px) {
+  .counterDiv {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+}
+
+@media (min-width: 768px) {
+  .counterTitle {
+    width: 290px;
+  }
+}
+/*# sourceMappingURL=Statistics.module.css.map */
