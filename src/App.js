@@ -1,6 +1,8 @@
 import { lazy, Suspense, useEffect } from "react";
 
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.min.css";
 
 import Container from "components/Container";
 import PublicRoute from "components/PublicRoute";
@@ -33,7 +35,7 @@ function App() {
 
   return (
     <>
-      {isLogin && <MainNav />}
+      <MainNav />
       <Container>
         <Suspense fallback={<div>Loading...</div>}>
           <Routes>
@@ -41,7 +43,6 @@ function App() {
               <Route path="/" exact element={<HomePage />} />
               <Route path="/login" exact element={<LoginPage />} />
               <Route path="/register" exact element={<RegisterPage />} />
-              <Route path="/verify/:verificationToken" element={<></>} />
             </Route>
             <Route element={<PrivateRoute />}>
               <Route path="/training" element={<TrainingPage />} />
@@ -50,6 +51,18 @@ function App() {
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggablePercent={60}
+          pauseOnHover
+          limit={3}
+        />
       </Container>
     </>
   );

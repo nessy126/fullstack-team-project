@@ -4,15 +4,22 @@ import Select from "components/Select";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Media from "react-media";
+import { toast } from "react-toastify";
 import { addTraining } from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
 import s from "./TrainingData.module.scss";
 
-const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight }) => {
+const TrainingData = ({
+    getAmountDaysTraining,
+    getAmountBooksTraining,
+    getDataStartTraining,
+    getDataEndTraining,
+    getBookListPlaining,
+    showRight }) => {
+    
     const dispatch = useDispatch();
-    // const isLoading = useSelector(trainingSelectors.getIsLoading);
+
     const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
-    // const error = useSelector(trainingSelectors.getError);
 
     // Локальный стейт для получения и передачи данных из других компонентов
     const [selected, setSelected] = useState({});
@@ -23,7 +30,7 @@ const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight
     const [endTraining, setEndTraining] = useState(0);
     const [valueTraining, setValueTraining] = useState({});
     const [amountOfDaysTraining, setAmountOfDaysTraining] = useState(0);
-    // const [showRight, setShowRight]= useState(false);
+    const [resetInput, setResetInput] = useState(false);
 
     const addStartTraining=(e)=>{
         setStartTraining(e);
@@ -34,18 +41,29 @@ const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight
     const addAmountOfDaysTraining=(e)=>{
         setAmountOfDaysTraining(e);
     };
+    const getFalseForReset = (e) => {
+        setResetInput(false);
+    }
 
     useEffect(() => {
         if (amountOfDaysTraining > 0) {
-            getAmountDaysTraining(amountOfDaysTraining)
+            getAmountDaysTraining(amountOfDaysTraining);
+            getDataStartTraining(startTraining);
+            getDataEndTraining(endTraining);
         }
-    }, [amountOfDaysTraining, getAmountDaysTraining]);
+    }, [amountOfDaysTraining,
+        startTraining,
+        endTraining,
+        getDataStartTraining,
+        getDataEndTraining,
+        getAmountDaysTraining]);
 
     useEffect(() => {
         if (booksId.length >= 0) {
             getAmountBooksTraining(booksId.length)
+            getBookListPlaining(listPlainingBooks)
         }
-    }, [booksId, getAmountBooksTraining]);
+    }, [booksId, listPlainingBooks, getAmountBooksTraining, getBookListPlaining]);
 
     useEffect(() => {
         if (startTraining > 0 && endTraining > 0 && booksId.length > 0) {
@@ -81,22 +99,29 @@ const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight
     // Результатом выполнения функции является список отфильтрованный с учетом списка listPlainingBooks
     const onFilteredlistGoingToRead = getVisibleBooks(listGoingToRead);
     
-    // listPlainingBooks.filter(book=>book._id=== )
-
     // При нажатии на кнопку Add в список книг listPlainingBooks пушится книга выбранная в инпуте селекта, сетится в стейт id книги, обнуляется стейт выбранной книги, кнопка Add становится не активной; фильтрация listGoingToRead перед передачей в селект
-        const handleAddSelected = () => {
+    const handleAddSelected = () => {
         setListPlainingBooks([...listPlainingBooks, selected]);
         const{_id}=selected;
         setBooksId([...booksId, _id?.toString()]);
         setSelected({});
         setShowBtnAdd(false);
-
+        toast("Book was added to the list", {
+            className: `${s.tost__background}`,
+            bodyClassName: `${s.tost__body}`,
+            progressClassName: `${s.progress__bar}`
+        });
+        setResetInput(true);
     };
 
     // При клике по кнопке "Старт тренировки" сначала проверяется наличие обеих дат (начало и конец тренировки) и только после этого отправляется запрос на бек по созданию тренировки
     const clickOnStartBtn = () => {
         if (startTraining === 0 || endTraining === 0) {
-            alert("Выберите дату начала и окончания тренировки");
+            toast("Choose a start and end date for your workout",{
+            className: `${s.tost__background}`,
+            bodyClassName: `${s.tost__body}`,
+            progressClassName: `${s.progress__bar}`
+            })
             return;
         }
         dispatch(addTraining(valueTraining));
@@ -118,7 +143,8 @@ const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight
                                 addAmountOfDaysTraining={addAmountOfDaysTraining} />
                             <div className={s.select__wrapper}>
                                 <Select 
-                                    books={onFilteredlistGoingToRead} 
+                                    books={onFilteredlistGoingToRead} resetInput={resetInput}
+                                    getFalseForReset={getFalseForReset}
                                     selected={selected}
                                     onGetSelectBook={onGetSelectBook}/>
                                     {showBtnAdd ? (
@@ -158,7 +184,9 @@ const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight
                             <Select 
                                 books={onFilteredlistGoingToRead} 
                                 selected={selected}
-                                onGetSelectBook={onGetSelectBook}/>
+                                onGetSelectBook={onGetSelectBook}
+                                resetInput={resetInput}
+                                getFalseForReset={getFalseForReset}/>
                             {showBtnAdd ? (
                                 <button 
                                     type='button' 
@@ -187,41 +215,6 @@ const TrainingData = ({ getAmountDaysTraining, getAmountBooksTraining, showRight
                     </>)}
                 </>
             )}
-            {/* {(matches) =>(<> <PlanningForm 
-            addStartTraining={addStartTraining}
-            addEndTraining={addEndTraining}
-            addAmountOfDaysTraining={addAmountOfDaysTraining} />
-        <div className={s.select__wrapper}>
-            <Select 
-                books={onFilteredlistGoingToRead} 
-                selected={selected}
-                onGetSelectBook={onGetSelectBook}/>
-                {showBtnAdd ? (
-                    <button 
-                        type='button' 
-                        onClick={handleAddSelected} 
-                        className={s.select__button}>Add
-                    </button>) : (
-                    <button 
-                        type='button' 
-                        disabled
-                        onClick={handleAddSelected} 
-                        className={s.select__button}>Add
-                    </button>)}
-        </div> 
-        <PlaningTabl 
-            books={listPlainingBooks} 
-            handleDelBook={handleDelBook}/>
-
-        {!hideBtnStart ? null : (<>
-            <div className={s.button__wrapper}>
-                <button 
-                    type='button' 
-                    onClick={clickOnStartBtn} 
-                    className={s.start__button}>Start training
-                </button>
-            </div>
-            </>)}</>)} */}
         </Media>
     </>;
 };

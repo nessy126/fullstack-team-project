@@ -3,20 +3,20 @@ import OneCard from "./OneCard/OneCard";
 
 import MediaQuery from "react-responsive";
 
-const GoingToReadList = ({ library }) => {
+const GoingToReadList = ({ library, type }) => {
   return (
     <div className={s.infoListContainer}>
       <MediaQuery minWidth={768}>
         <div className={s.bookColumns}>
           <p className={s.title}>Book title</p>
-          <p className={s.author}>author</p>
+          <p className={s.author}>Author</p>
           <p className={s.year}>Year</p>
           <p className={s.page}>Pages</p>
         </div>
       </MediaQuery>
       <ul className={s.list}>
         {library.length > 0
-          ? library.map(({ _id: id, title, author, year, pageTotal }) => (
+          ? library.map(({ _id: id, title, author, year, pageTotal, type }) => (
               <OneCard
                 key={id}
                 id={id}
@@ -24,6 +24,7 @@ const GoingToReadList = ({ library }) => {
                 author={author}
                 year={year}
                 pages={pageTotal}
+                type={type}
               />
             ))
           : null}
