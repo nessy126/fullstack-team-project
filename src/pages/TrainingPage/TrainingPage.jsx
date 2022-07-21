@@ -17,7 +17,6 @@ import s from "./TrainingPage.module.scss";
 
 const TrainingPage = () => {
   const { auth } = useSelector((state) => state);
-  const { training } = useSelector((state) => state);
 
   const dispatch = useDispatch();
 
@@ -173,10 +172,10 @@ const TrainingPage = () => {
                 </div>
                 <div className={s.right__wrapper}>
                   <StatisticsTabl />
-                  {training.isLoading ? (
+                  {auth.isLoading ? (
                     <p>Loading</p>
                   ) : (
-                    <Chart auth={auth} userData={training.training[0]} />
+                    <Chart auth={auth} userData={auth.training} />
                   )}
                   <StatisticsResults />
                 </div>
@@ -207,11 +206,11 @@ const TrainingPage = () => {
                 </div>
                 <div className={s.right__wrapper}>
                   <StatisticsTabl />
-                  {/* {training.isLoading ? (
+                  {auth.isLoading ? (
                     <p>Loading</p>
                   ) : (
-                    <Chart auth={auth} userData={training.training[0]} />
-                  )} */}
+                    <Chart auth={auth} userData={auth.training} />
+                  )}
                   <StatisticsResults />
                 </div>
               </section>
@@ -242,11 +241,11 @@ const TrainingPage = () => {
                 <div className={s.left__wrapper}>
                   <Statistics />
                   <StatisticsTabl />
-                  {/* {training.isLoading ? (
+                  {auth.isLoading ? (
                     <p>Loading</p>
                   ) : (
-                    <Chart auth={auth} userData={training.training[0]} />
-                  )} */}
+                    <Chart auth={auth} userData={auth.training} />
+                  )}
                 </div>
               </section>
             ))}

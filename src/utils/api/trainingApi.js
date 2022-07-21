@@ -34,7 +34,7 @@ export const getProgressAPI = (auth) => {
     .catch((err) => {
       throw err;
     });
-}
+};
 
 //data:
 //{
@@ -45,11 +45,11 @@ export const finishTraiiningApi = (data, auth) => {
   token.set(auth.token);
   console.log(data);
   return axios
-  .patch(endPoint + 'finish', data)
-  .then(res => {
-    return res.data
-  })
-  .catch((err) => {
-    throw err;
-});
-}
+    .patch(endPoint + "finish", data)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
