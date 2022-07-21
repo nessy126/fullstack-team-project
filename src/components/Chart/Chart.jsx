@@ -25,7 +25,7 @@ const Chart = (props) => {
 
   //Перевод даты в день(формат числа: 23, 13, 1 и т.п.)
   const daysCountFunc = (start, end) => {
-    return Math.round((end - start) / (1000 * 3600 * 24));
+    return Math.ceil((end - start) / (1000 * 3600 * 24));
   };
 
   const amountOfDays = daysCountFunc(
@@ -68,7 +68,7 @@ const Chart = (props) => {
         if (day === 0) {
           return pagesSumToRead;
         }
-        const pagesPerDay = Math.round(
+        const pagesPerDay = Math.ceil(
           amountOfPages / trainingData.amountOfDays
         );
         return (pagesSumToRead += pagesPerDay);
