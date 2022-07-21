@@ -14,10 +14,10 @@ const PlanningForm = ({addStartTraining, addEndTraining, addAmountOfDaysTraining
   useEffect(() => {
     const saveData = get(STORAGE_KEY);
     if (saveData?.saveValueStart) {
-      setValueStart(saveData.saveValueStart);
+      setValueStart(new Date(saveData?.saveValueStart));
     };
-    if(saveData?.saveValueEnd) {
-      setValueEnd(saveData.saveValueEnd);
+    if (saveData?.saveValueEnd) {
+      setValueEnd(new Date(saveData.saveValueEnd));
     };
   }, []);
 
@@ -25,17 +25,14 @@ const PlanningForm = ({addStartTraining, addEndTraining, addAmountOfDaysTraining
     setValueStart(e);
     const data = new Date(e)
     updateStorage(STORAGE_KEY, "saveValueStart", data.toString());
-    // const saveData = get(STORAGE_KEY);
-    // save(STORAGE_KEY, { ...saveData, saveValueStart:data.toString()});
   };
 
-    const handleChangeEnd = (e) => {
-      setValueEnd(e);
-      const data = new Date(e);
-      updateStorage(STORAGE_KEY, "saveValueEnd", data.toString());
-    //   const saveData = get(STORAGE_KEY);
-    // save(STORAGE_KEY, {...saveData, saveValueEnd:data.toString() });
-  }
+  const handleChangeEnd = (e) => {
+    setValueEnd(e);
+    const data = new Date(e);
+    updateStorage(STORAGE_KEY, "saveValueEnd", data.toString());
+
+  };
 
   useEffect(() => {
     if (valueStart !== null && valueEnd !== null) {
@@ -53,7 +50,6 @@ const PlanningForm = ({addStartTraining, addEndTraining, addAmountOfDaysTraining
       addStartTraining(valueStart);
       addEndTraining(valueEnd);
       addAmountOfDaysTraining(amountOfDays);
-      updateStorage(STORAGE_KEY, "saveAmountOfDaysTraining", amountOfDays);
     }
   }, [valueStart, valueEnd, addStartTraining, addEndTraining, addAmountOfDaysTraining]);
 

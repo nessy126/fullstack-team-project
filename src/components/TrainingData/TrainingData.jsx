@@ -7,7 +7,7 @@ import Media from "react-media";
 import { toast } from "react-toastify";
 import { addTraining } from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
-import { get, save, remove, updateStorage } from "utils/localStorage/localStorage";
+import { get, remove, updateStorage } from "utils/localStorage/localStorage";
 import { STORAGE_KEY } from "assets/const";
 import s from "./TrainingData.module.scss";
 
@@ -36,15 +36,12 @@ const TrainingData = ({
 
     const addStartTraining = (e) => {
         setStartTraining(e);
-        updateStorage(STORAGE_KEY, "saveStartTraining", e);
     };
     const addEndTraining = (e) => {
         setEndTraining(e);
-        updateStorage(STORAGE_KEY, "saveEndTraining", e);
     };
     const addAmountOfDaysTraining=(e)=>{
         setAmountOfDaysTraining(e);
-        // updateStorage(STORAGE_KEY, "saveAmountOfDaysTraining", e);
     };
     const getFalseForReset = (e) => {
         setResetInput(false);
@@ -107,8 +104,6 @@ const TrainingData = ({
             const newValue={ booksId, startTraining: startTraining.getTime(), endTraining: endTraining.getTime() }
             setValueTraining(newValue);
             updateStorage(STORAGE_KEY, "saveValueTraining", newValue);
-            // const saveData = get(STORAGE_KEY);
-            // save(STORAGE_KEY, {...saveData, saveValueTraining:newValue });
         }
     }, [booksId, startTraining, endTraining]);
 
@@ -118,11 +113,6 @@ const TrainingData = ({
         setShowBtnAdd(true);
         updateStorage(STORAGE_KEY, "saveSelected", book);
         updateStorage(STORAGE_KEY, "saveShowBtnAdd", true);
-        // const saveData = get(STORAGE_KEY);
-        // save(STORAGE_KEY, {
-        //     ...saveData, saveSelected: book,
-        //     saveShowBtnAdd: true
-        // });
     };
 
     // Функция для удаления книги из списка listPlainingBooks 
@@ -134,11 +124,6 @@ const TrainingData = ({
         setBooksId(updateBookId);
         updateStorage(STORAGE_KEY, "saveListPlainingBooks", updateList);
         updateStorage(STORAGE_KEY, "saveBooksId", updateBookId);
-        // const saveData = get(STORAGE_KEY);
-        // save(STORAGE_KEY, {
-        //     ...saveData, saveListPlainingBooks: updateList,
-        //     saveBooksId: updateBookId
-        // });
     };
 // и возврата книги в список listGoingToRead
 
@@ -176,15 +161,6 @@ const TrainingData = ({
         updateStorage(STORAGE_KEY, "saveSelected", {});
         updateStorage(STORAGE_KEY, "saveShowBtnAdd", false);
         updateStorage(STORAGE_KEY, "saveResetInput", true);
-        // const saveData = get(STORAGE_KEY);
-        // save(STORAGE_KEY, {
-        //     ...saveData,
-        //     saveListPlainingBooks: updateList,
-        //     saveBooksId: newBookId,
-        //     saveSelected: {},
-        //     saveShowBtnAdd: false,
-        //     saveResetInput: true
-        // });
     };
 
     // При клике по кнопке "Старт тренировки" сначала проверяется наличие обеих дат (начало и конец тренировки) и только после этого отправляется запрос на бек по созданию тренировки
@@ -199,6 +175,7 @@ const TrainingData = ({
         }
         dispatch(addTraining(valueTraining));
         remove(STORAGE_KEY);
+        console.log("remove(STORAGE_KEY)");
     };
     // Условие при котором рендерится кнопка Старт тренировки
     const hideBtnStart = listPlainingBooks?.length >0 ? true : false;

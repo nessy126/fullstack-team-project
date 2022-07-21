@@ -35,7 +35,6 @@ const TrainingPage = () => {
   };
   const getAmountDaysTraining = (e) => {
     setAmountDaysTraining(e);
-    // updateStorage(STORAGE_KEY, "saveAmountOfDaysTraining", e);
   };
   const getDataStartTraining = (e) => {
     setDataStartTraining(e);
