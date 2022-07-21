@@ -33,3 +33,23 @@ export const getProgress = createAsyncThunk(
     }
 )
 
+export const finishTraiining = createAsyncThunk(
+  "training/finish",
+  async (data, { getState, rejectWithValue }) => {
+    try {
+      const { auth } = getState();
+            if (!auth.token) {
+            return rejectWithValue("Not authorized");
+            }
+      const finishedTraining = await trainingAPI.finishTraiiningApi(data, auth);
+      const amountOfBooks = finishedTraining.training.booksId.length
+
+      const result = {...finishedTraining, amountOfBooks}
+      
+      return result
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+)
+
