@@ -29,9 +29,19 @@ export default function FormReview({ closeModal }) {
             <div className={s.form__container}>
               <h2 className={s.modalTitle}>Choose rating of the book</h2>
               <Rating values={values} />
+              <ErrorMessage
+                component="div"
+                name="rating"
+                className={s.errorMessage}
+              />
               <div className={s.hiddenMargin}></div>
               <label className={s.form__label}>
                 <h2 className={s.Resume}>Resume</h2>
+                <ErrorMessage
+                  component="div"
+                  name="review"
+                  className={s.errorMessageUp}
+                />
                 <textarea
                   type="text"
                   name="review"
@@ -41,11 +51,6 @@ export default function FormReview({ closeModal }) {
                   onBlur={handleBlur}
                   placeholder="..."
                   className={s.textArea}
-                />
-                <ErrorMessage
-                  component="div"
-                  name="review"
-                  className={s.errorMessage}
                 />
               </label>
             </div>
