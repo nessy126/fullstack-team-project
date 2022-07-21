@@ -8,7 +8,7 @@ import StatisticsResults from "components/StatisticsResults/StatisticsResults";
 import StatisticsTabl from "components/StatisticsTabl/StatisticsTabl";
 import Statistics from "components/Statistics";
 import { getAllBooks } from "redux/book/bookOperations";
-import { getProgress } from "redux/training/trainingOperations";
+import { getProgressTraining } from "redux/training/trainingOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { IconContext } from "react-icons";
@@ -91,7 +91,7 @@ const TrainingPage = () => {
 
   useEffect(() => {
     if (statusIsTraining) {
-      dispatch(getProgress());
+      dispatch(getProgressTraining());
     }
   }, [dispatch, statusIsTraining]);
 
