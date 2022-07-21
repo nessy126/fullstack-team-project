@@ -1,7 +1,12 @@
-import { externalTooltipHandler } from "./externalTooltipHandler";
-
 const COLORS = {
-  GRID: "#B1B5C2",
+  GRID: "#b1b5c2e5",
+};
+
+const setTitle = (tooltipItems) => {
+  const title = tooltipItems.find((el) => {
+    return typeof el.label === "string";
+  });
+  return `Day ${title.label}`;
 };
 
 export const options = {
@@ -50,9 +55,13 @@ export const options = {
   plugins: {
     legend: { display: false },
     tooltip: {
-      enabled: false,
+      enabled: true,
       position: "nearest",
-      external: externalTooltipHandler,
+      titleAlign: "center",
+      backgroundColor: COLORS.GRID,
+      callbacks: {
+        title: setTitle,
+      },
     },
   },
 };
