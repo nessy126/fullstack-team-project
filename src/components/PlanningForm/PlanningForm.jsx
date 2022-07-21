@@ -8,6 +8,7 @@ import { toast } from "react-toastify";
 const PlanningForm = ({addStartTraining, addEndTraining, addAmountOfDaysTraining}) => {
   const [valueStart, setValueStart] = useState(null);
   const [valueEnd, setValueEnd] = useState(null);
+  
 
 useEffect(()=>{
     if (valueStart!==null && valueEnd!==null){
