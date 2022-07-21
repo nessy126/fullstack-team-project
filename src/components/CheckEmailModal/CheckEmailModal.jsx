@@ -6,8 +6,6 @@ import Modal from "components/Modal";
 
 const CheckEmailModal = ({ isRegister, closeResend, resend }) => {
   const [modal, setModal] = useState(true);
-  // console.log("modal: ", modal);
-  // console.log("isRegister: ", isRegister);
 
   const closeModal = () => {
     setModal(false);

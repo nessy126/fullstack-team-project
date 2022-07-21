@@ -13,15 +13,12 @@ const Timer = ({ setModal }) => {
 
   const ResentConfirmation = async () => {
     const { payload } = await dispatch(resendVerification());
-    // console.log(!!payload);
     if (!!payload) {
       setModal(true);
     }
   };
 
-  //   let timerLink = null;
   useEffect(() => {
-    // let timerLink = null;
     if (timer) {
       const timerLink = setInterval(() => setSeconds(seconds - 1), 1000);
       if (seconds === 0) {
