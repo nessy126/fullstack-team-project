@@ -35,3 +35,19 @@ export const getProgressAPI = (auth) => {
       throw err;
     });
 };
+
+//{
+//   "factEndTraining": "111111111",
+//   "trainingID": "62d6ef9f32198562acca2e3c"
+// }
+export const finishTraiiningApi = (data, auth) => {
+  token.set(auth.token);
+  return axios
+    .patch(endPoint + "finish", data)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
