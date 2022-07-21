@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 import { signUp, login, logout, current } from "./authOperations"
 
-import { addTraining, finishTraiining } from "redux/training/trainingOperations"
+import { addTraining, finishTraiining, getProgressTraining } from "redux/training/trainingOperations"
 
 const initialState = {
   user: {
@@ -24,7 +24,6 @@ const initialState = {
     status: "created",
     statistics: [],
   },
-
   isTraining: false,
   isLoading: false,
   isLoggedIn: false,
@@ -104,6 +103,28 @@ const authSlice = createSlice({
     [addTraining.rejected]: (state, { payload }) => {
       state.error = payload
       state.isLoading = false
+    },
+    [getProgressTraining.pending]: (state) => {
+      state.isLoading = true
+      state.error = null
+    },
+    [getProgressTraining.fulfilled]: (state, {payload}) => {
+      state.isTraining = true;
+      state.isLoading = false;
+      state.error = null
+      state.training = {
+        ...state.training,
+        trainingID: payload._id,
+        booksList: payload.booksId,
+        startTraining: payload.startTraining,
+        endTraining: payload.endTraining,
+        factEndTraining: payload.factEndTraining,
+        amountOfDays: payload.amountOfDays,
+        amountOfPages: payload.amountOfPages,
+        amountOfBooks: payload.amountOfBooks,
+        booksLeft: payload.booksLeft,
+        pagesPerDay: payload.pagesPerDay,
+      }
     },
     [finishTraiining.pending]: (state) => {
       state.isLoading = true

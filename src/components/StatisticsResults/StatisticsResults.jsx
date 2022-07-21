@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { finishTraiining, getProgress } from "redux/training/trainingOperations";
+import { finishTraiining, getProgressTraining } from "redux/training/trainingOperations";
 
 const StatisticsResults = () => {
   const dispatch = useDispatch()
@@ -20,7 +20,7 @@ const StatisticsResults = () => {
             <button 
             type="button"
             onClick={() => {
-              dispatch(getProgress())
+              dispatch(getProgressTraining())
             }}
             >Get Progress</button>
         </>
