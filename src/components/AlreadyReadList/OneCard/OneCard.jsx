@@ -17,17 +17,17 @@ const OneCard = (book) => {
       <div className={s.bookInfoWrapper}>
         <MediaQuery maxWidth={767}>
           <div className={s.bookInfo}>
-            <p className={s.bookInfoText}>Author</p>
-            <p className={s.bookInfoText}>Year</p>
-            <p className={s.bookInfoText}>Pages</p>
-            <p className={s.bookInfoText}>Rating</p>
+            <p className={s.bookInfoText}>Author:</p>
+            <p className={s.bookInfoText}>Year:</p>
+            <p className={s.bookInfoText}>Pages:</p>
+            <p className={s.bookInfoText}>Rating:</p>
           </div>
         </MediaQuery>
         <div className={s.bookMoreInfo}>
           <p className={s.bookMoreInfoAuthor}>{book.author}</p>
           <p className={s.bookMoreInfoYear}>{book.year}</p>
           <p className={s.bookMoreInfoPage}>{book.pages}</p>
-          <p className={s.bookMoreInfoPage}>{book.rating}</p>
+          <p className={s.bookMoreInfoPage}>{book.rating ? book.rating : 0}</p>
         </div>
         <button>resume</button>
       </div>

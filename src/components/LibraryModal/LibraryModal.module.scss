@@ -11,7 +11,7 @@
   font-size: 19px;
   line-height: 38px;
 
-  color: #242a37;
+  color: var(--main-text-cl);
 }
 
 @include vp(tablet) {
@@ -45,7 +45,7 @@
   font-size: 13px;
   line-height: 38px;
 
-  color: #242a37;
+  color: var(--main-text-cl);
 }
 
 @include vp(tablet) {
@@ -72,7 +72,7 @@
   font-size: 14px;
   line-height: 17px;
 
-  color: #898f9f;
+  color: var(--secondary-text-cl);
 }
 
 @include vp(tablet) {
@@ -98,7 +98,7 @@
 
   text-align: center;
 
-  background: #ff6b08;
+  background: var(--accent-active-cl);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
@@ -113,6 +113,6 @@
   margin: 0 auto;
   margin-top: 40px;
 
-  background: #ffffff;
+  background: var(--main-bg-cl);
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
 }

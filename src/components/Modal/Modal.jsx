@@ -29,8 +29,8 @@ const Modal = ({ closeModal, children, type }) => {
   return createPortal(
     <>
       <div onClick={close} className={s.overlay}>
-        <div className={type === "Exit" ? s.headerModal : s.content}>
-          {type !== "Exit" && (
+        <div className={type === "exit" ? s.headerModal : s.content}>
+          {type !== "exit" && (
             <>
               <MainNav modalClass={s.head} />
               <button className={s.button} onClick={() => closeModal()}>

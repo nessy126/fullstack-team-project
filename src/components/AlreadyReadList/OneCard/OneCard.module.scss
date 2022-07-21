@@ -1,7 +1,8 @@
 .card {
   display: flex;
   margin: 0;
-  background-color: #ffffff;
+
+  background-color: var(--main-bg-cl);
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   &:not(:last-child) {
     margin-bottom: 10px;
@@ -9,7 +10,7 @@
   @media screen and (max-width: 767px) {
     padding: 18px 15px 0px 10px;
     position: relative;
-    height: 180px;
+    height: 200px;
   }
 
   @media screen and (min-width: 768px) {
@@ -57,7 +58,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.25;
-  color: #242a37;
+  color: var(--main-text-cl);
   width: 154px;
 
   @media screen and (min-width: 768px) {
@@ -97,14 +98,14 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 3.17;
-  color: #898f9f;
+  color: var(--secondary-text-cl);
 }
 
 .bookMoreInfoAuthor {
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
-  color: #242a37;
+  color: var(--main-text-cl);
   height: 26px;
 
   @media screen and (min-width: 768px) {
@@ -125,7 +126,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 3.17;
-  color: #242a37;
+  color: var(--main-text-cl);
 
   @media screen and (min-width: 768px) {
     font-size: 14px;
@@ -146,7 +147,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 3.17;
-  color: #242a37;
+  color: var(--main-text-cl);
 
   @media screen and (min-width: 768px) {
     font-size: 14px;

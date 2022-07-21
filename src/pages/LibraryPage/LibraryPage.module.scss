@@ -20,7 +20,12 @@
   border: none;
   border-radius: 50%;
 
-  background: #ff6b08;
+  background: var(--accent-active-cl);
+
+  &:hover,
+  &:focus {
+    background-color: var(--accent-active-cl-hover);
+  }
 }
 
 @include vp(tablet) {
@@ -39,7 +44,7 @@
   font-size: 19px;
   line-height: 38px;
 
-  color: #242a37;
+  color: var(--main-text-cl);
 }
 
 .button {
@@ -49,5 +54,10 @@
   display: block;
   margin: 0 auto;
 
-  background-color: #ff6b08;
+  background-color: var(--accent-active-cl);
+
+  &:hover,
+  &:focus {
+    background-color: var(--accent-active-cl-hover);
+  }
 }
