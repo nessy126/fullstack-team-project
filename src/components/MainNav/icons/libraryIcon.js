@@ -1,5 +1,4 @@
 export const LibraryIcon = ({ svg }) => {
-  console.log("svg", svg);
   return (
     <svg
       className={svg}
