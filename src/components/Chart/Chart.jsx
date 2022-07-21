@@ -6,6 +6,12 @@ import initialData from "./trainingData";
 
 import s from "./Chart.module.scss";
 
+const COLORS = {
+  PLAN: "#091E3F",
+  READ: "#FF6B08",
+  GRID: "#B1B5C2",
+};
+
 const Chart = (props) => {
   const { userData } = props;
   const isTraining = useSelector(getStatusIsTraining);
@@ -97,15 +103,15 @@ const Chart = (props) => {
       {
         label: "Plan to pages read",
         data: planToRead,
-        backgroundColor: ["#091E3F"],
-        borderColor: "091E3F",
+        backgroundColor: [COLORS.PLAN],
+        borderColor: COLORS.PLAN,
         borderWidth: 2,
       },
       {
         label: "Pages read",
         data: pagesReadInTraining,
-        backgroundColor: ["#FF6B08"],
-        borderColor: "#FF6B08",
+        backgroundColor: [COLORS.READ],
+        borderColor: COLORS.READ,
         borderWidth: 2,
         tension: 0.4,
       },
@@ -120,15 +126,15 @@ const Chart = (props) => {
         {
           label: "Plan to pages read",
           data: planToRead,
-          backgroundColor: ["#091E3F"],
-          borderColor: "091E3F",
+          backgroundColor: [COLORS.PLAN],
+          borderColor: COLORS.PLAN,
           borderWidth: 2,
         },
         {
           label: "Pages read",
           data: pagesReadInTraining,
-          backgroundColor: ["#FF6B08"],
-          borderColor: "#FF6B08",
+          backgroundColor: [COLORS.READ],
+          borderColor: COLORS.READ,
           borderWidth: 2,
           tension: 0.4,
         },
@@ -152,7 +158,7 @@ const Chart = (props) => {
       x: {
         grid: {
           drawBorder: true,
-          color: "#B1B5C2",
+          color: COLORS.GRID,
         },
         ticks: {
           beginAtZero: true,

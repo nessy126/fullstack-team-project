@@ -10,7 +10,6 @@ import Statistics from "components/Statistics";
 import { getAllBooks } from "redux/book/bookOperations";
 import { getProgress } from "redux/training/trainingOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
-// import vector2 from "assets/svg/vector2"
 import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { IconContext } from "react-icons";
 
@@ -85,8 +84,10 @@ const TrainingPage = () => {
   };
 
   useEffect(() => {
-    dispatch(getAllBooks(auth));
-  }, [dispatch, auth]);
+    if (!statusIsTraining) {
+      dispatch(getAllBooks(auth));
+    }
+  }, [dispatch, auth, statusIsTraining]);
 
   useEffect(() => {
     if (statusIsTraining) {
@@ -117,8 +118,8 @@ const TrainingPage = () => {
                       value={{
                         className: `${s.icon__arrow}`,
                         style: {
-                          width: "24px",
-                          height: "12px",
+                          width: "100%",
+                          height: "100%",
                         },
                       }}
                     >
@@ -165,7 +166,7 @@ const TrainingPage = () => {
                 </div>
               </section>
             ) : (
-              <section className={s.page__wrapper}>
+              <section className={s.page__wrapperStat}>
                 <div className={s.left__wrapper}>
                   <Statistics />
                   <MyGoals data={arrayStatistic} />
@@ -199,7 +200,7 @@ const TrainingPage = () => {
                 </div>
               </section>
             ) : (
-              <section className={s.page__wrapper}>
+              <section className={s.page__wrapperStat}>
                 <div className={s.left__wrapper}>
                   <Statistics />
                   <MyGoals data={arrayStatistic} />
@@ -233,12 +234,12 @@ const TrainingPage = () => {
                 </div>
               </section>
             ) : (
-              <section className={s.page__wrapper}>
-                <div className={s.left__wrapper}>
+              <section className={s.page__wrapperStat}>
+                <div className={s.right__wrapper}>
                   <MyGoals data={arrayStatistic} />
                   <StatisticsResults />
                 </div>
-                <div className={s.right__wrapper}>
+                <div className={s.left__wrapper}>
                   <Statistics />
                   <StatisticsTabl />
                   {training.isLoading ? (
