@@ -8,10 +8,15 @@ import Modal from "../Modal/Modal";
 import MediaQuery from "react-responsive";
 import s from "./MainNav.module.scss";
 import { logout } from "redux/auth/authOperations";
-import { getIsLogin, getUser } from "redux/auth/authSelectors";
+import {
+  getIsLogin,
+  getStatusIsTraining,
+  getUser,
+} from "redux/auth/authSelectors";
 
 const MainNav = ({ modalClass }) => {
   const logIn = useSelector(getIsLogin);
+  const isTraining = useSelector(getStatusIsTraining);
   const user = useSelector(getUser);
   const userName = user?.name;
   const dispatch = useDispatch();
@@ -42,13 +47,16 @@ const MainNav = ({ modalClass }) => {
     <header>
       {!logIn ? (
         <section className={s.authHeader}>
-          <Link to="/home" className={s.titleLink}>
+          <Link to={"/"} className={s.titleLink}>
             <h1 className={s.title}>BR</h1>
           </Link>
         </section>
       ) : (
         <section className={modalClass ? modalClass : s.header}>
-          <Link to="/home" className={s.titleLink}>
+          <Link
+            to={isTraining ? "/training" : "/library"}
+            className={s.titleLink}
+          >
             <h1 className={s.title}>BR</h1>
           </Link>
           <div className={s.userBar}>

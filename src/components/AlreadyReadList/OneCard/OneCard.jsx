@@ -6,13 +6,16 @@ import { FirstBook } from "components/MainNav/icons/FirstBook";
 const OneCard = (book) => {
   //   const dispatch = useDispatch();
 
+  const updatedBookTitle =
+    book.title.length <= 30 ? book.title : book.title.slice(0, 30) + "...";
+
   return (
     <li className={s.card}>
       <div className={s.iconTitle}>
         <div className={s.navIcon}>
           <FirstBook />
         </div>
-        <p className={s.bookTitle}>{book.title}</p>
+        <p className={s.bookTitle}>{updatedBookTitle}</p>
       </div>
       <div className={s.bookInfoWrapper}>
         <MediaQuery maxWidth={767}>
