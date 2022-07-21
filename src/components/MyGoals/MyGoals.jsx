@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 
 const MyGoals = ({data}) => {
-const statusIsTraining= useSelector(getStatusIsTraining);
+  const statusIsTraining = useSelector(getStatusIsTraining);
 
   return (<>
     {!statusIsTraining ? (
