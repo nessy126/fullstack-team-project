@@ -45,7 +45,6 @@ export const finishTraiiningApi = (data, auth) => {
   return axios
   .patch(endPoint + 'finish', data)
   .then(res => {
-    console.log(res);
     return res.data
   })
   .catch((err) => {
