@@ -1,5 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import * as authAPI from "utils/api/usersApi";
+import { toast } from "react-toastify";
 
 export const signUp = createAsyncThunk(
   //type for 3 conditions of promises (pending, reject, fulfilled)
@@ -12,7 +13,7 @@ export const signUp = createAsyncThunk(
     } catch (error) {
       const { status } = error.response;
       if (status === 409) {
-        alert("Email in use");
+        toast.error("Email in use");
       }
       return rejectWithValue(error);
     }

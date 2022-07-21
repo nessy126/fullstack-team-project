@@ -1,13 +1,14 @@
 import s from "./PlainingTabl.module.scss";
-import { useState } from "react";
+// import { useState } from "react";
 import { MdMenuBook, MdOutlineDeleteOutline } from 'react-icons/md';
+import { IconContext } from "react-icons";
 import Media from "react-media";
 // import deleteIconSvg from '../../assets/svg/delete.svg';
 
 const PlaningTabl = ({books, handleDelBook}) => {
-    const [itemDel, setItemDel] = useState({});
+    // const [itemDel, setItemDel] = useState({});
     const deletItemFromList =(e)=>{
-        setItemDel(e)
+        // setItemDel(e)
         handleDelBook(e)
     }
     const isLoading = false;
@@ -28,16 +29,25 @@ const PlaningTabl = ({books, handleDelBook}) => {
                         className={s.column__item}>
                         <div className={s.column__flex}>                        
                             <div className={s.column__icon}>
-                            <MdMenuBook 
-                            style={{ width: "22", height: "17", color: "#A6ABB9" }} />
+                                <MdMenuBook 
+                                style={{ width: "22", height: "17", color: "#A6ABB9" }} />
                             </div>
                             <div className={s.column__title}>{book.title}</div>
                             <button type="button" 
                             onClick={deletItemFromList} 
                             id={book._id} 
-                            className={s.column__btn}>
-                            <MdOutlineDeleteOutline 
-                            style={{ width: "14", height: "18", color: "#A6ABB9" }}/>
+                                className={s.column__btn}>
+                                <IconContext.Provider
+                                    value={{
+                                    className: `${s.icon__del}`,
+                                    style: {
+                                    width: "100%",
+                                    height: "100%",
+                                        },
+                                    }}>
+                                        <MdOutlineDeleteOutline />
+                                </IconContext.Provider>
+                                
                             </button>
                         </div>
                         <div className={s.column__flex}>
@@ -108,9 +118,16 @@ const PlaningTabl = ({books, handleDelBook}) => {
                             <button type="button" 
                                 onClick={deletItemFromList} 
                                 id={book._id} 
-                                className={s.table__btn}>
-                                <MdOutlineDeleteOutline 
-                                style={{ width: "14", height: "18", color: "#A6ABB9" }}/>
+                                className={s.table__btn}> <IconContext.Provider
+                                    value={{
+                                    className: `${s.icon__del}`,
+                                    style: {
+                                    width: "100%",
+                                    height: "100%",
+                                        },
+                                    }}>
+                                        <MdOutlineDeleteOutline />
+                                </IconContext.Provider>
                             </button>
                         </li>
                     );
