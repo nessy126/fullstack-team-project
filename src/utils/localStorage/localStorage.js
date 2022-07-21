@@ -22,4 +22,9 @@ const remove = key => {
   }
 };
 
-export { get, save, remove };
+const updateStorage = (key, nameField, value) => {
+  const saveData = get(key);
+        save(key, {...saveData, [nameField]: value});
+}
+
+export { get, save, remove, updateStorage };

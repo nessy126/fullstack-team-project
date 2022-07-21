@@ -7,7 +7,8 @@ import Media from "react-media";
 import { toast } from "react-toastify";
 import { addTraining } from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
-import { get, save, remove } from "utils/localStorage/localStorage";
+import { get, save, remove, updateStorage } from "utils/localStorage/localStorage";
+import { STORAGE_KEY } from "assets/const";
 import s from "./TrainingData.module.scss";
 
 const TrainingData = ({
@@ -19,7 +20,7 @@ const TrainingData = ({
     showRight }) => {
     
     const dispatch = useDispatch();
-    const STORAGE_KEY = "local-data";
+
     const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
 
     // Локальный стейт для получения и передачи данных из других компонентов
@@ -34,19 +35,52 @@ const TrainingData = ({
     const [resetInput, setResetInput] = useState(false);
 
     const addStartTraining = (e) => {
-        console.log(e)
         setStartTraining(e);
+        updateStorage(STORAGE_KEY, "saveStartTraining", e);
     };
     const addEndTraining = (e) => {
-        console.log(e)
         setEndTraining(e);
+        updateStorage(STORAGE_KEY, "saveEndTraining", e);
     };
     const addAmountOfDaysTraining=(e)=>{
         setAmountOfDaysTraining(e);
+        // updateStorage(STORAGE_KEY, "saveAmountOfDaysTraining", e);
     };
     const getFalseForReset = (e) => {
         setResetInput(false);
+        updateStorage(STORAGE_KEY, "saveResetInput", false);
     }
+
+    useEffect(() => {
+        const saveData = get(STORAGE_KEY);
+        if (saveData?.saveSelected) {
+            setSelected(saveData.saveSelected);
+        };
+        if (saveData?.saveListPlainingBooks) {
+            setListPlainingBooks(saveData.saveListPlainingBooks);
+        };
+        if (saveData?.saveShowBtnAdd) {
+            setShowBtnAdd(saveData.saveShowBtnAdd);
+        };
+        if (saveData?.saveBooksId) {
+            setBooksId(saveData.saveBooksId);
+        };
+        if (saveData?.saveStartTraining) {
+            setStartTraining(saveData.saveStartTraining);
+        };
+        if (saveData?.saveEndTraining) {
+            setEndTraining(saveData.saveEndTraining);
+        };
+        if (saveData?.saveValueTraining) {
+            setValueTraining(saveData.saveValueTraining);
+        };
+        if (saveData?.saveAmountOfDaysTraining) {
+            setAmountOfDaysTraining(saveData.saveAmountOfDaysTraining);
+        };
+        if (saveData?.saveResetInput) {
+            setResetInput(saveData.saveResetInput);
+        };
+    }, []);
 
     useEffect(() => {
         if (amountOfDaysTraining > 0) {
@@ -70,21 +104,41 @@ const TrainingData = ({
 
     useEffect(() => {
         if (startTraining > 0 && endTraining > 0 && booksId.length > 0) {
-            setValueTraining({ booksId, startTraining:startTraining.getTime(), endTraining:endTraining.getTime() })
+            const newValue={ booksId, startTraining: startTraining.getTime(), endTraining: endTraining.getTime() }
+            setValueTraining(newValue);
+            updateStorage(STORAGE_KEY, "saveValueTraining", newValue);
+            // const saveData = get(STORAGE_KEY);
+            // save(STORAGE_KEY, {...saveData, saveValueTraining:newValue });
         }
     }, [booksId, startTraining, endTraining]);
 
 // Функция для получения из компонента Селект объекта книги (при клике по li)
-    const onGetSelectBook=(book)=>{
+    const onGetSelectBook = (book) => {
         setSelected(book);
         setShowBtnAdd(true);
-    }
+        updateStorage(STORAGE_KEY, "saveSelected", book);
+        updateStorage(STORAGE_KEY, "saveShowBtnAdd", true);
+        // const saveData = get(STORAGE_KEY);
+        // save(STORAGE_KEY, {
+        //     ...saveData, saveSelected: book,
+        //     saveShowBtnAdd: true
+        // });
+    };
 
     // Функция для удаления книги из списка listPlainingBooks 
     const handleDelBook = (e) => {
         const idDeletedBook = e.currentTarget.id;
-        setListPlainingBooks(listPlainingBooks.filter(book => book._id !== idDeletedBook));
-        setBooksId(booksId.filter(id => id !== idDeletedBook));
+        const updateList=listPlainingBooks.filter(book => book._id !== idDeletedBook)
+        setListPlainingBooks(updateList);
+        const updateBookId=booksId.filter(id => id !== idDeletedBook)
+        setBooksId(updateBookId);
+        updateStorage(STORAGE_KEY, "saveListPlainingBooks", updateList);
+        updateStorage(STORAGE_KEY, "saveBooksId", updateBookId);
+        // const saveData = get(STORAGE_KEY);
+        // save(STORAGE_KEY, {
+        //     ...saveData, saveListPlainingBooks: updateList,
+        //     saveBooksId: updateBookId
+        // });
     };
 // и возврата книги в список listGoingToRead
 
@@ -104,10 +158,11 @@ const TrainingData = ({
     
     // При нажатии на кнопку Add в список книг listPlainingBooks пушится книга выбранная в инпуте селекта, сетится в стейт id книги, обнуляется стейт выбранной книги, кнопка Add становится не активной; фильтрация listGoingToRead перед передачей в селект
     const handleAddSelected = () => {
-        setListPlainingBooks([...listPlainingBooks, selected]);
-        const{_id}=selected;
-        setBooksId([...booksId, _id?.toString()]);
-        console.log(booksId);
+        const updateList = [...listPlainingBooks, selected];
+        setListPlainingBooks(updateList);
+        const { _id } = selected;
+        const newBookId=[...booksId, _id?.toString()]
+        setBooksId(newBookId);
         setSelected({});
         setShowBtnAdd(false);
         toast("Book was added to the list", {
@@ -116,6 +171,20 @@ const TrainingData = ({
             progressClassName: `${s.progress__bar}`
         });
         setResetInput(true);
+        updateStorage(STORAGE_KEY, "saveListPlainingBooks", updateList);
+        updateStorage(STORAGE_KEY, "saveBooksId", newBookId);
+        updateStorage(STORAGE_KEY, "saveSelected", {});
+        updateStorage(STORAGE_KEY, "saveShowBtnAdd", false);
+        updateStorage(STORAGE_KEY, "saveResetInput", true);
+        // const saveData = get(STORAGE_KEY);
+        // save(STORAGE_KEY, {
+        //     ...saveData,
+        //     saveListPlainingBooks: updateList,
+        //     saveBooksId: newBookId,
+        //     saveSelected: {},
+        //     saveShowBtnAdd: false,
+        //     saveResetInput: true
+        // });
     };
 
     // При клике по кнопке "Старт тренировки" сначала проверяется наличие обеих дат (начало и конец тренировки) и только после этого отправляется запрос на бек по созданию тренировки
@@ -129,10 +198,7 @@ const TrainingData = ({
             return;
         }
         dispatch(addTraining(valueTraining));
-        console.log(startTraining);
-        console.log(endTraining);
         remove(STORAGE_KEY);
-
     };
     // Условие при котором рендерится кнопка Старт тренировки
     const hideBtnStart = listPlainingBooks?.length >0 ? true : false;

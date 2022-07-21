@@ -12,6 +12,8 @@ import { getProgressTraining } from "redux/training/trainingOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { IconContext } from "react-icons";
+import { updateStorage } from "utils/localStorage/localStorage";
+import { STORAGE_KEY } from "assets/const";
 
 import s from "./TrainingPage.module.scss";
 
@@ -33,6 +35,7 @@ const TrainingPage = () => {
   };
   const getAmountDaysTraining = (e) => {
     setAmountDaysTraining(e);
+    // updateStorage(STORAGE_KEY, "saveAmountOfDaysTraining", e);
   };
   const getDataStartTraining = (e) => {
     setDataStartTraining(e);

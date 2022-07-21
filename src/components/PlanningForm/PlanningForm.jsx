@@ -4,17 +4,15 @@ import s from "./PlanningForm.module.scss";
 import polygonIconSvg from "../../assets/svg/polygon1.svg";
 import DateTimePicker from "react-datetime-picker";
 import { toast } from "react-toastify";
-import { get, save, remove } from "utils/localStorage/localStorage";
+import { get, updateStorage } from "utils/localStorage/localStorage";
+import { STORAGE_KEY } from "assets/const";
 
 const PlanningForm = ({addStartTraining, addEndTraining, addAmountOfDaysTraining}) => {
   const [valueStart, setValueStart] = useState(null);
   const [valueEnd, setValueEnd] = useState(null);
 
-  const STORAGE_KEY = "local-data";
-
   useEffect(() => {
     const saveData = get(STORAGE_KEY);
-
     if (saveData?.saveValueStart) {
       setValueStart(saveData.saveValueStart);
     };
@@ -26,15 +24,17 @@ const PlanningForm = ({addStartTraining, addEndTraining, addAmountOfDaysTraining
   const handleChangeStart = (e) => {
     setValueStart(e);
     const data = new Date(e)
-    const saveData = get(STORAGE_KEY);
-    save(STORAGE_KEY, { ...saveData, saveValueStart:data.toString()});
+    updateStorage(STORAGE_KEY, "saveValueStart", data.toString());
+    // const saveData = get(STORAGE_KEY);
+    // save(STORAGE_KEY, { ...saveData, saveValueStart:data.toString()});
   };
 
     const handleChangeEnd = (e) => {
       setValueEnd(e);
-      const data = new Date(e)
-      const saveData = get(STORAGE_KEY);
-    save(STORAGE_KEY, {...saveData, saveValueEnd:data.toString() });
+      const data = new Date(e);
+      updateStorage(STORAGE_KEY, "saveValueEnd", data.toString());
+    //   const saveData = get(STORAGE_KEY);
+    // save(STORAGE_KEY, {...saveData, saveValueEnd:data.toString() });
   }
 
   useEffect(() => {
@@ -42,19 +42,18 @@ const PlanningForm = ({addStartTraining, addEndTraining, addAmountOfDaysTraining
       const amountOfDays = Math.ceil(
         (valueEnd - valueStart) / (1000 * 3600 * 24)
       );
-      if (amountOfDays <= 0) {
+    if (amountOfDays <= 0) {
         toast("The end date of the workout must be greater than the start date of the workout", {
           className: `${s.tost__background}`,
           bodyClassName: `${s.tost__body}`,
           progressClassName: `${s.progress__bar}`
         });
         return;
-      }
+      };
       addStartTraining(valueStart);
-            // addStartTraining(valueStart.getTime());
       addEndTraining(valueEnd);
-      // addEndTraining(valueEnd.getTime());
       addAmountOfDaysTraining(amountOfDays);
+      updateStorage(STORAGE_KEY, "saveAmountOfDaysTraining", amountOfDays);
     }
   }, [valueStart, valueEnd, addStartTraining, addEndTraining, addAmountOfDaysTraining]);
 
