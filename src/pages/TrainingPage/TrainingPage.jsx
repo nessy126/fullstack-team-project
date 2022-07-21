@@ -9,7 +9,6 @@ import StatisticsTabl from "components/StatisticsTabl/StatisticsTabl";
 import Statistics from "components/Statistics";
 import { getAllBooks } from "redux/book/bookOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
-// import vector2 from "assets/svg/vector2"
 import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { IconContext } from "react-icons";
 
@@ -84,8 +83,10 @@ const TrainingPage = () => {
     }
 
   useEffect(() => {
-    dispatch(getAllBooks(auth));
-  }, [dispatch, auth]);
+    if (!statusIsTraining) {
+      dispatch(getAllBooks(auth));
+    }
+  }, [dispatch, auth, statusIsTraining]);
 
   return (
     <Media queries={{
@@ -103,13 +104,13 @@ const TrainingPage = () => {
                     value={{
                     className: `${s.icon__arrow}`,
                     style: {
-                    width: "24px",
-                    height: "12px",
+                    width: "100%",
+                    height: "100%",
                         },
                     }}>
                     <HiOutlineArrowNarrowLeft />
                   </IconContext.Provider>
-            </button>): null}
+              </button>): null}
               {!hideRightPart ?(<div className={s.right__wrapper}>
                   <MyGoals data={arrayPlanTraining} />
               </div>): null}
@@ -140,7 +141,7 @@ const TrainingPage = () => {
                   </button></>): null}
               </div>  
             </section>) :
-            (<section className={s.page__wrapper}>
+            (<section className={s.page__wrapperStat}>
               <div className={s.left__wrapper}>
                 <Statistics />
                 <MyGoals data={arrayStatistic} />
@@ -171,7 +172,7 @@ const TrainingPage = () => {
                   statusIsTraining={statusIsTraining}/>
               </div>  
             </section>) :
-            (<section className={s.page__wrapper}>
+            (<section className={s.page__wrapperStat}>
               <div className={s.left__wrapper}>
                 <Statistics />
                 <MyGoals data={arrayStatistic} />
@@ -200,12 +201,12 @@ const TrainingPage = () => {
                   statusIsTraining={statusIsTraining} />
               </div>  
             </section>) :
-            (<section className={s.page__wrapper}>
-              <div className={s.left__wrapper}>
+            (<section className={s.page__wrapperStat}>
+              <div className={s.right__wrapper}>
                 <MyGoals data={arrayStatistic} />
                 <StatisticsResults/>
               </div>
-              <div className={s.right__wrapper}>
+              <div className={s.left__wrapper}>
                 <Statistics />
                 <StatisticsTabl/>
                 <Chart />
