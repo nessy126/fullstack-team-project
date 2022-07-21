@@ -1,4 +1,59 @@
-.title{
-    font-weight: normal;
+@import "../../assets/sass/main.scss";
+
+.chartWrapper {
+  padding: 20px 23px 20px 22px;
+  background-color: var(--main-bg-cl);
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
+
+  @include vp(tablet) {
+    padding: 30px 49px 31px 49px;
+  }
+  @include vp(desktop) {
+    padding: 30px 78px 32px 40px;
+    width: 100%;
     font-size: 40px;
+  }
+}
+
+.chartText {
+  @include vp(mobile) {
+    margin-bottom: 19px;
+    padding-left: 6px;
+  }
+
+  @include vp(tablet) {
+    margin-bottom: 24px;
+  }
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.25;
+  text-transform: uppercase;
+  color: #242a37;
+}
+
+.chartText__Span {
+  display: inline-flex;
+  width: 25px;
+  height: 25px;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  background-color: var(--auth-bg-cl);
+}
+
+.chart {
+  @include vp(mobile) {
+    width: 100%;
+    height: 190px;
+  }
+
+  @include vp(tablet) {
+    height: 215px;
+  }
+  @include vp(desktop) {
+    width: 811px;
+    height: 235px;
+  }
 }
