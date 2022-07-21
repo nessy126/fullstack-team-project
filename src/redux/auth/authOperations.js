@@ -8,6 +8,7 @@ export const signUp = createAsyncThunk(
   async (user, { rejectWithValue }) => {
     try {
       const res = await authAPI.signUpApi(user);
+      console.log(res);
       return res;
     } catch (error) {
       const { status } = error.response;
@@ -56,6 +57,24 @@ export const logout = createAsyncThunk(
       const { auth } = getState();
       await authAPI.logoutApi(auth);
     } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
+export const resendVerification = createAsyncThunk(
+  "auth/resendConfirmation",
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { email } = getState().auth.user;
+
+      const data = { email: email };
+
+      const res = await authAPI.resendApi(data);
+      // console.log(res);
+      return res;
+    } catch (error) {
+      // console.log(error);
       return rejectWithValue(error);
     }
   }

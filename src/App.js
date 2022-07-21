@@ -22,6 +22,8 @@ const TrainingPage = lazy(() => import("pages/TrainingPage"));
 
 function App() {
   const isLogin = useSelector(getIsLogin);
+  const { verificationToken } = useSelector((state) => state.auth);
+  // console.log(verificationToken);
 
   const dispatch = useDispatch();
 
@@ -39,11 +41,13 @@ function App() {
               <Route path="/" exact element={<HomePage />} />
               <Route path="/login" exact element={<LoginPage />} />
               <Route path="/register" exact element={<RegisterPage />} />
+              <Route path="/verify/:verificationToken" element={<></>} />
             </Route>
             <Route element={<PrivateRoute />}>
               <Route path="/training" element={<TrainingPage />} />
               <Route path="/library" element={<LibraryPage />} />
             </Route>
+            <Route path="/" />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>

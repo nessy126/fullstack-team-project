@@ -13,7 +13,7 @@ const initialState = {
   isLoading: false,
   isLoggedIn: false,
   registerPass: false,
-  verify: false,
+  verificationToken: null,
   error: null,
   token: null,
 };
@@ -27,7 +27,9 @@ const authSlice = createSlice({
       state.error = null;
     },
     [signUp.fulfilled]: (state, { payload }) => {
+      console.log(payload);
       state.user = { ...payload?.user };
+      state.verificationToken = payload.verificationToken;
       state.isLoading = false;
       state.registerPass = true;
     },
@@ -78,6 +80,18 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
+    // [resendVerification.pending]: (state) => {
+    //   state.isLoading = true;
+    //   state.error = null;
+    // },
+    // [resendVerification.fulfilled]: (state, { payload }) => {
+    //   state.user = { ...payload };
+    //   state.isLoading = false;
+    // },
+    // [resendVerification.rejected]: (state, { payload }) => {
+    //   state.isLoading = false;
+    //   state.error = payload;
+    // },
     [addTraining.pending]: (state) => {
       state.isLoading = true;
       state.error = null;

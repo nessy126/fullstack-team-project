@@ -62,3 +62,10 @@ export const logoutApi = (auth) => {
       throw err;
     });
 };
+
+export const resendApi = (email) => {
+  return axios
+    .post(endPoint + "verify", email)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
+};

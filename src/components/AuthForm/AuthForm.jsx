@@ -1,12 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-
 import spriteSVG from "assets/images/sprite.svg";
 import { SignUpSchema, LoginSchema } from "assets/schemas/authSchemas";
 import { login, signUp } from "redux/auth/authOperations";
 
 import s from "./AuthForm.module.scss";
+import RegLogButtons from "components/RegLogButtons";
 
 const AuthForm = ({ type }) => {
   const dispatch = useDispatch();
@@ -121,23 +120,7 @@ const AuthForm = ({ type }) => {
                       </div>
                     )}
                   </div>
-                  <div className={s.buttons}>
-                    <button className={s.login} type="submit">
-                      {isRegister ? "Register" : "Login"}
-                    </button>
-                    {isRegister ? (
-                      <p className={s.alreadyReg}>
-                        Already have an account?
-                        <Link to="/login" className={s.changePage}>
-                          Log in
-                        </Link>
-                      </p>
-                    ) : (
-                      <Link to="/register" className={s.changePage}>
-                        Registration
-                      </Link>
-                    )}
-                  </div>
+                  <RegLogButtons isRegister={isRegister} />
                 </Form>
               </div>
             </div>
