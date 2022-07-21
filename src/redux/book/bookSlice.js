@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAllBooks, addBook } from "./bookOperations";
-import { addTraining } from "redux/training/trainingOperations";
+import { addTraining, finishTraiining } from "redux/training/trainingOperations";
 
 const initialState = {
   books: [],
@@ -45,6 +45,15 @@ const bookSlice = createSlice({
         return (changedBook.status = "inReading");
       });
     },
+    [finishTraiining.pending]: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [finishTraiining.fulfilled]: (state, {payload}) => {
+      state.error = null;
+      state.isLoading = false
+      state.books = [...state.books, ]
+    }
   },
 });
 export default bookSlice.reducer;

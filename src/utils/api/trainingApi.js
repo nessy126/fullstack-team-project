@@ -36,12 +36,14 @@ export const getProgressAPI = (auth) => {
     });
 }
 
+//data:
 //{
 //   "factEndTraining": "111111111",
 //   "trainingID": "62d6ef9f32198562acca2e3c"
 // }
 export const finishTraiiningApi = (data, auth) => {
   token.set(auth.token);
+  console.log(data);
   return axios
   .patch(endPoint + 'finish', data)
   .then(res => {

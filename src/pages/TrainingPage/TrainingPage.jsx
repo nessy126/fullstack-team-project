@@ -207,11 +207,11 @@ const TrainingPage = () => {
                 </div>
                 <div className={s.right__wrapper}>
                   <StatisticsTabl />
-                  {training.isLoading ? (
+                  {/* {training.isLoading ? (
                     <p>Loading</p>
                   ) : (
                     <Chart auth={auth} userData={training.training[0]} />
-                  )}
+                  )} */}
                   <StatisticsResults />
                 </div>
               </section>
@@ -242,11 +242,11 @@ const TrainingPage = () => {
                 <div className={s.left__wrapper}>
                   <Statistics />
                   <StatisticsTabl />
-                  {training.isLoading ? (
+                  {/* {training.isLoading ? (
                     <p>Loading</p>
                   ) : (
                     <Chart auth={auth} userData={training.training[0]} />
-                  )}
+                  )} */}
                 </div>
               </section>
             ))}
