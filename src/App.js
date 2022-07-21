@@ -47,7 +47,6 @@ function App() {
               <Route path="/training" element={<TrainingPage />} />
               <Route path="/library" element={<LibraryPage />} />
             </Route>
-            <Route path="/" />
             <Route path="*" element={<NotFoundPage />} />
           </Routes>
         </Suspense>
