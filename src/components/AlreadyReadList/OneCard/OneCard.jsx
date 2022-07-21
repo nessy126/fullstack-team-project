@@ -2,12 +2,32 @@ import s from "./OneCard.module.scss";
 
 import MediaQuery from "react-responsive";
 import { FirstBook } from "components/MainNav/icons/FirstBook";
+import { useState } from "react";
+import Modal from "components/Modal/Modal";
+import FormReview from "./FormReview/FormReview";
+import { FaStar } from "react-icons/fa";
+import Stars from "components/Rating/Stars/Stars";
 
 const OneCard = (book) => {
   //   const dispatch = useDispatch();
 
+  const [modal, setModal] = useState(false);
+
+  const openModal = () => {
+    setModal({
+      open: true,
+    });
+  };
+  const closeModal = () => {
+    setModal({
+      open: false,
+    });
+  };
+
   const updatedBookTitle =
     book.title.length <= 30 ? book.title : book.title.slice(0, 30) + "...";
+
+  const backRate = 5;
 
   return (
     <li className={s.card}>
@@ -30,10 +50,31 @@ const OneCard = (book) => {
           <p className={s.bookMoreInfoAuthor}>{book.author}</p>
           <p className={s.bookMoreInfoYear}>{book.year}</p>
           <p className={s.bookMoreInfoPage}>{book.pages}</p>
-          <p className={s.bookMoreInfoPage}>{book.rating ? book.rating : 0}</p>
+          <div className={s.bookMoreInfoPage}>
+            {backRate ? (
+              <div className={s.marginStar}>
+                <Stars backRate={backRate} />
+              </div>
+            ) : (
+              <div className={s.marginStar}>
+                <FaStar size={20} color={"#e4e5e9"} />
+                <FaStar size={20} color={"#e4e5e9"} />
+                <FaStar size={20} color={"#e4e5e9"} />
+                <FaStar size={20} color={"#e4e5e9"} />
+                <FaStar size={20} color={"#e4e5e9"} />
+              </div>
+            )}
+          </div>
         </div>
-        <button>resume</button>
       </div>
+      <button className={s.button} onClick={() => openModal()}>
+        <span className={s.buttonText}>resume</span>
+      </button>
+      {modal.open && (
+        <Modal type={"exit"} closeModal={closeModal}>
+          <FormReview closeModal={closeModal} />
+        </Modal>
+      )}
     </li>
   );
 };

@@ -53,7 +53,9 @@ const LibraryPage = () => {
       <MediaQuery minWidth={768}>
         <AddBookForm closeModal={closeModal} />
       </MediaQuery>
-      {booksGoingToRead.length ? (
+      {booksGoingToRead.length ||
+      booksInReading.length ||
+      booksFinished.length ? (
         <>
           {next ? (
             <>
@@ -87,7 +89,7 @@ const LibraryPage = () => {
                 type={booksGoingToRead}
               />
               <button className={s.button} onClick={() => setNext(true)}>
-               <span className={s.buttonText}>Next</span> 
+                <span className={s.buttonText}>Next</span>
               </button>
             </>
           )}
