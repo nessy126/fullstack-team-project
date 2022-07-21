@@ -1,3 +1,5 @@
+@import "../../assets/sass/main.scss";
+
 .form {
   display: flex;
   margin-top: 30px;
@@ -26,7 +28,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 2.71;
-    color: var(--seconadry-text-color);
+    color: var(--secondary-text-cl);
     @media screen and (min-width: 768px) {
       display: flex;
       flex-direction: column;
@@ -48,8 +50,8 @@
   &__btn {
     width: 171px;
     height: 42px;
-    background: #f6f7fb;
-    border: 1px solid #000000;
+    background: var(--secondary-bg-cl);
+    border: 1px solid var(--additional-text-cl);
     box-sizing: border-box;
     cursor: pointer;
     -webkit-transition-duration: 0.4s;
@@ -66,15 +68,15 @@
 
     &:hover,
     &:focus {
-      background: F6F7FB;
-      color: #000000;
+      background: var(--secondary-bg-cl);
+      color: var(--additional-text-cl);
     }
   }
 }
 
 input {
-  background: #f6f7fb;
-  border: 1px solid #a6abb9;
+  background: var(--secondary-bg-cl);
+  border: 1px solid var(--placeholder-text-cl);
   box-sizing: border-box;
   height: 42px;
   margin-bottom: 10px;
@@ -118,5 +120,5 @@ input {
 
 .errorMessage {
   font-size: 15px;
-  color: red;
+  color: var(--error-text-color);
 }

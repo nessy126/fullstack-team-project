@@ -79,9 +79,13 @@ div.react__calendar {
   font-family: "Montserrat", sans-serif;
   @include font(500, 12px, 1.25);
 }
-div.react__calendar.react-calendar button.react-calendar__tile--now {
+button.react__calendar {
   background-color: var(--accent-active-cl);
 }
+// .react__calendar
+//   .react-calendar__tile.react-calendar__tile--now.react-calendar__month-view__days__day {
+//   background-color: var(--accent-active-cl);
+// }
 
 // Styles for tost
 .tost__background {
