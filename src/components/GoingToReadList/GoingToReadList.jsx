@@ -16,7 +16,7 @@ const GoingToReadList = ({ library, type }) => {
       </MediaQuery>
       <ul className={s.list}>
         {library.length > 0
-          ? library.map(({ _id: id, title, author, year, pageTotal }) => (
+          ? library.map(({ _id: id, title, author, year, pageTotal, type }) => (
               <OneCard
                 key={id}
                 id={id}
@@ -24,6 +24,7 @@ const GoingToReadList = ({ library, type }) => {
                 author={author}
                 year={year}
                 pages={pageTotal}
+                type={type}
               />
             ))
           : null}

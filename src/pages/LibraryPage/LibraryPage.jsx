@@ -87,7 +87,7 @@ const LibraryPage = () => {
                 type={booksGoingToRead}
               />
               <button className={s.button} onClick={() => setNext(true)}>
-                Next
+               <span className={s.buttonText}>Next</span> 
               </button>
             </>
           )}
