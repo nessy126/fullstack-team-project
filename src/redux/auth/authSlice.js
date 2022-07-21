@@ -126,6 +126,10 @@ const authSlice = createSlice({
         pagesPerDay: payload.pagesPerDay,
       }
     },
+    [getProgressTraining.rejected]: (state, {payload}) => {
+      state.isLoading = false
+      state.error = payload
+    },
     [finishTraiining.pending]: (state) => {
       state.isLoading = true
       state.error = null
