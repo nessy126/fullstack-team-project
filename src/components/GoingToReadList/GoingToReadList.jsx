@@ -3,13 +3,13 @@ import OneCard from "./OneCard/OneCard";
 
 import MediaQuery from "react-responsive";
 
-const GoingToReadList = ({ library }) => {
+const GoingToReadList = ({ library, type }) => {
   return (
     <div className={s.infoListContainer}>
       <MediaQuery minWidth={768}>
         <div className={s.bookColumns}>
           <p className={s.title}>Book title</p>
-          <p className={s.author}>author</p>
+          <p className={s.author}>Author</p>
           <p className={s.year}>Year</p>
           <p className={s.page}>Pages</p>
         </div>
