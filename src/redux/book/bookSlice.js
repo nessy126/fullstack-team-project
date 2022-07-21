@@ -52,7 +52,11 @@ const bookSlice = createSlice({
     [finishTraiining.fulfilled]: (state, {payload}) => {
       state.error = null;
       state.isLoading = false
-      state.books = [...state.books, ]
+      state.books = [...state.books, payload.booksGoingToReadAgain]//Сюда надо перезаписать книги которые вернулись не прочитанные из завершенной тренировки
+    },
+    [finishTraiining.rejected]: (state, {payload}) => {
+      state.error = payload;
+      state.isLoading = false
     }
   },
 });

@@ -104,7 +104,6 @@ const authSlice = createSlice({
       state.error = null
     },
     [addTraining.fulfilled]: (state, {payload}) => {
-      console.log(payload);
       state.isTraining = true
       state.isLoading = false
       state.training = {
