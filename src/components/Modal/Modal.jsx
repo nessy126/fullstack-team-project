@@ -34,7 +34,7 @@ const Modal = ({ closeModal, children, type }) => {
             <>
               <MainNav modalClass={s.head} />
               <button className={s.button} onClick={() => closeModal()}>
-                <ArrowLeft />
+                <ArrowLeft color={s.closeArrowColor} />
               </button>
             </>
           )}

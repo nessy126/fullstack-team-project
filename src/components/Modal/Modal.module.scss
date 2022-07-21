@@ -11,6 +11,10 @@
   z-index: 1000;
 }
 
+.closeArrowColor {
+  fill: var(--accent-active-cl);
+}
+
 .content {
   background-color: var(--secondary-bg-cl);
   padding: 20px;

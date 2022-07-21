@@ -72,7 +72,7 @@ const MainNav = ({ modalClass }) => {
               </ul>
             </nav>
             <div className={s.line}>|</div>
-            <div className={s.accLogo}>A</div>
+            <div className={s.accLogo}>{userName?.slice(0, 1)}</div>
             <button
               className={s.logout__button}
               type="button"
