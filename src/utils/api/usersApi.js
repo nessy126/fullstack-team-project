@@ -35,7 +35,6 @@ export const loginApi = (user) => {
       return res.data;
     })
     .catch((err) => {
-      console.log(err);
       throw err;
     });
 };
@@ -45,7 +44,6 @@ export const currentApi = (auth) => {
   return axios
     .get(endPoint + "current")
     .then((res) => {
-      token.set(res.data.token);
       return res.data;
     })
     .catch((err) => {

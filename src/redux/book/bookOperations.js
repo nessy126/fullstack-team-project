@@ -3,13 +3,9 @@ import * as bookAPI from "utils/api/bookApi";
 
 export const addBook = createAsyncThunk(
   "book/add",
-  async (data, { getState, rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
-      const { auth } = getState();
-      if (!auth.token) {
-        return rejectWithValue("Not authorized");
-      }
-      const result = await bookAPI.addBookAPI(data, auth);
+      const result = await bookAPI.addBookAPI(data);
       return result;
     } catch (error) {
       return rejectWithValue(error);
@@ -19,13 +15,9 @@ export const addBook = createAsyncThunk(
 
 export const getAllBooks = createAsyncThunk(
   "allBooks/get",
-  async (_, { getState, rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const { auth } = getState();
-      if (!auth.token) {
-        return rejectWithValue("Not authorized");
-      }
-      const result = await bookAPI.getAllBooksAPI(auth);
+      const result = await bookAPI.getAllBooksAPI();
       return result;
     } catch (error) {
       return rejectWithValue(error);
