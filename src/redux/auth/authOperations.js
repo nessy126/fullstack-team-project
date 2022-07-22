@@ -27,6 +27,7 @@ export const login = createAsyncThunk(
       const res = await authAPI.loginApi(user);
       return res;
     } catch (error) {
+      toast.error("Wrong email or password");
       return rejectWithValue(error);
     }
   }
