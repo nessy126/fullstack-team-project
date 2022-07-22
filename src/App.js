@@ -35,9 +35,7 @@ function App() {
       <Container>
         <Suspense
           fallback={
-            <div>
               <Loader />
-            </div>
           }
         >
           <Routes>
