@@ -27,7 +27,6 @@ export const signUpApi = (user) => {
 };
 
 export const loginApi = (user) => {
-  console.log(user);
   return axios
     .post(endPoint + "login", user)
     .then((res) => {
