@@ -175,7 +175,6 @@ const TrainingData = ({
         }
         dispatch(addTraining(valueTraining));
         remove(STORAGE_KEY);
-        console.log("remove(STORAGE_KEY)");
     };
     // Условие при котором рендерится кнопка Старт тренировки
     const hideBtnStart = listPlainingBooks?.length >0 ? true : false;
