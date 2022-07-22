@@ -17,12 +17,12 @@ const Modal = ({ closeModal, children, type }) => {
         closeModal();
       }
     },
+
     [closeModal]
   );
 
   useEffect(() => {
     document.addEventListener("keydown", close);
-
     return () => document.removeEventListener("keydown", close);
   }, [close]);
 

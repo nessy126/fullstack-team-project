@@ -22,12 +22,9 @@
 }
 .bookColumns {
   display: flex;
-  margin-bottom: -20px;
 }
 
 .list {
-  background-color: var(--main-bg-cl);
-
   @media screen and (max-width: 767px) {
     margin: 0 auto;
     margin-bottom: 35px;
