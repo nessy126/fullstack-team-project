@@ -86,16 +86,14 @@ const Chart = (props) => {
     let pagesReadTotal = 0;
     return daysForTraining.map((date) => {
       const isDateIn = trainingData.statistics.filter((el) => {
-        const isDayIn = daysCountFunc(trainingData.startTraining, el.date);
+        const formatDate = new Date(el.date);
+        const isDayIn = daysCountFunc(trainingData.startTraining, formatDate);
         return isDayIn === date;
       });
-      if (isDateIn.length === 1) {
-        return (pagesReadTotal += isDateIn[0].pagesRead);
-      }
-      if (isDateIn.length > 1) {
-        return isDateIn.reduce((sum, { pagesRead }) => (sum += pagesRead), 0);
-      }
-      return pagesReadTotal;
+      return (pagesReadTotal += isDateIn.reduce(
+        (sum, { pagesRead }) => (sum += pagesRead),
+        0
+      ));
     });
   };
   const pagesReadInTraining = isTraining ? makePagesReadArr() : 0;
@@ -149,16 +147,14 @@ const Chart = (props) => {
 
   return (
     <>
-      <div className={s.chartWrapper}>
-        <p className={s.chartText}>
-          pages/ days
-          <span className={s.chartText__Span}>
-            {!isTraining ? amountOfPagesPlan : trainingData.pagesPerDay}
-          </span>
-        </p>
-        <div className={s.chart}>
-          <LineChart chartOptions={options} chartData={userReadData} />
-        </div>
+      <p className={s.chartText}>
+        pages/ days
+        <span className={s.chartText__Span}>
+          {!isTraining ? amountOfPagesPlan : trainingData.pagesPerDay}
+        </span>
+      </p>
+      <div className={s.chart}>
+        <LineChart chartOptions={options} chartData={userReadData} />
       </div>
     </>
   );
