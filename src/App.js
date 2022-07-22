@@ -23,8 +23,6 @@ const LibraryPage = lazy(() => import("pages/LibraryPage"));
 const TrainingPage = lazy(() => import("pages/TrainingPage"));
 
 function App() {
-  const isLogin = useSelector(getIsLogin);
-
   const dispatch = useDispatch();
 
   useEffect(() => {
