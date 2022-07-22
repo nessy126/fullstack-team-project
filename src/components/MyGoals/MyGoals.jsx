@@ -4,7 +4,7 @@ import { getStatusIsTraining } from "redux/auth/authSelectors";
 
 const MyGoals = ({ data }) => {
   const statusIsTraining = useSelector(getStatusIsTraining);
-console.log(data);
+
   return (
     <>
       {!statusIsTraining ? (

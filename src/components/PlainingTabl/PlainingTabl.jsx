@@ -5,7 +5,6 @@ import Media from "react-media";
 
 
 const PlaningTabl = ({ books, handleDelBook }) => {
-    console.log(books);
     const deletItemFromList =(e)=>{
         handleDelBook(e)
     }
