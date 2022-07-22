@@ -1,0 +1,41 @@
+@import '../../assets/sass/styles/mixin';
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+.login {
+    margin-top: 30px;
+    padding: 10px;
+    color: var(--buttons-text-cl);
+    background-color: var(--accent-active-cl);
+    border: none;
+    height: 60px;
+    @include font(600, 16px, 38px);
+
+    &:hover {
+        color: var(--main-text-cl);
+        outline: 1px solid var(--main-text-cl);
+        background-color: var(--main-bg-cl);
+    }
+}
+
+
+.text{
+    padding: 10px;
+    @include font(500, 13px, 38px)
+}
+.changePage {
+    composes: text;
+    color: var(--accent-active-cl);
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+}
+
+.alreadyReg {
+    color: var(--secondary-text-cl);
+    text-align: center;
+    @include font(500, 13px, 38px)
+}
