@@ -12,8 +12,7 @@ import { getAllBooks } from "redux/book/bookOperations";
 import { getProgressTraining } from "redux/training/trainingOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
-import { IconContext } from "react-icons"
-
+import { IconContext } from "react-icons";
 
 import s from "./TrainingPage.module.scss";
 import ImputCalendar from 'components/ImputCalendar';
