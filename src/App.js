@@ -24,8 +24,6 @@ const TrainingPage = lazy(() => import("pages/TrainingPage"));
 
 function App() {
   const isLogin = useSelector(getIsLogin);
-  const { verificationToken } = useSelector((state) => state.auth);
-  // console.log(verificationToken);
 
   const dispatch = useDispatch();
 
