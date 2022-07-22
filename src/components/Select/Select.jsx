@@ -60,52 +60,52 @@ const Select = ({books, onGetSelectBook, resetInput, getFalseForReset}) => {
     
     return (
         <>
-        <div  className={s.dropdown}>
-            <div className={s.dropdown__wrapper} >
-                {isActive?(<input className={s.dropdown__input}
-                type="text"
-                name="filter"
-                value={filterBook}
-                onChange={onChangeFilter}
-                placeholder="Choose books from the library"/>):
-                (<input className={s.dropdown__input}
-                    readOnly
-                    type="text"
-                    name="filter"
-                    value={filterBook}
-                    onChange={onChangeFilter}
-                    placeholder="Choose books from the library"/>)}
-                <button type="button" onClick={handleClick} className={s.dropdown__btn}>
-                    <IconContext.Provider
-                    value={{
-                    className: `${s.react__icon}`,
-                    style: {
-                    width: "17px",
-                    height: "15px",
-                        },
-                    }}>
-                    <AiFillCaretDown />
-                </IconContext.Provider></button>
-                
+            <div className={s.dropdown}>
+                <div className={s.dropdown__wrapper} >
+                    {isActive ? (
+                        <input className={s.dropdown__input}
+                            type="text"
+                            name="filter"
+                            value={filterBook}
+                            onChange={onChangeFilter}
+                            placeholder="Choose books from the library" />) :
+                        (<input className={s.dropdown__input}
+                            readOnly
+                            type="text"
+                            name="filter"
+                            value={filterBook}
+                            onChange={onChangeFilter}
+                            placeholder="Choose books from the library" />)}
+                    <button type="button" onClick={handleClick} className={s.dropdown__btn}>
+                        <IconContext.Provider
+                            value={{
+                                className: `${s.react__icon}`,
+                                style: {
+                                    width: "17px",
+                                    height: "15px",
+                                },
+                            }}>
+                            <AiFillCaretDown />
+                        </IconContext.Provider></button>
+                </div>
+                {isActive && (
+                    <ul className={s.dropdown__content}>
+                        {booksFiltered?.map((book) => (
+                            <li key={[book._id]}
+                                onClick={(e) => {
+                                    setFilterBook(book.title);
+                                    setIsActive(false);
+                                    onGetSelectBook(book);
+                                }}
+                                className={s.dropdown__item}
+                            >
+                                {book.title}
+                            </li>
+                        ))}
+                    </ul>
+                )}
             </div>
-        {isActive && (
-        <ul className={s.dropdown__content}>
-            {booksFiltered?.map((book) => (
-            <li key={[book._id]}
-                onClick={(e) => {
-                    setFilterBook(book.title);
-                    setIsActive(false);
-                    onGetSelectBook(book);
-                }}
-                className={s.dropdown__item}
-            >
-                {book.title}
-            </li>
-            ))}
-            </ul>
-        )}
-        </div>
-    </>
+        </>
     );
 }
 

@@ -11,11 +11,11 @@ import { getAllBooks } from "redux/book/bookOperations";
 import { getProgressTraining } from "redux/training/trainingOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
-import { IconContext } from "react-icons";
-import { updateStorage } from "utils/localStorage/localStorage";
-import { STORAGE_KEY } from "assets/const";
+import { IconContext } from "react-icons"
+
 
 import s from "./TrainingPage.module.scss";
+import ImputCalendar from 'components/ImputCalendar';
 
 const TrainingPage = () => {
   const { auth } = useSelector((state) => state);
@@ -96,7 +96,7 @@ const TrainingPage = () => {
     }
   }, [dispatch, statusIsTraining]);
 
-  return (
+  return (<>
     <Media
       queries={{
         small: "(max-width: 767px)",
@@ -254,6 +254,8 @@ const TrainingPage = () => {
         </>
       )}
     </Media>
+    <ImputCalendar/>
+    </>
   );
 };
 
