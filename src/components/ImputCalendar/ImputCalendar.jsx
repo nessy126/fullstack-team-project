@@ -7,15 +7,15 @@ import s from "./ImputCalendar.module.scss";
 
 const ImputCalendar = () => {
   const [isActive, setIsActive] = useState(false);
-  const [filterBook, setFilterBook] = useState('');
-    const [value, setValue] = useState(new Date());
+  const [selectedDate, setselectedDate] = useState(new Date());
+  const [valueInput, setValueInput] = useState('');
 
   // При нажатии на клавишу ESС селект закрывается и инпут очищается 
   const closeSelectByEsc = useCallback(
     (e) => {
       if (e.code === "Escape") {
         setIsActive(false);
-        setValue(null);
+        setValueInput('');
       }
     }, [setIsActive]);
 
@@ -29,26 +29,33 @@ const ImputCalendar = () => {
       // При клике по иконке треугольника в инпуте, очищается инпут и открывается/закрывается селект
     const handleClick = () => {
         setIsActive(!isActive);
-        setValue(null);
+        setValueInput('');
   };
+  // 
   const handleChange = (e) => {
-      console.log(e)
-    setValue(e);
+    console.log(e)
+    setselectedDate(e)
+    console.log(selectedDate)
     setIsActive(!isActive);
     const data = new Date(e)
     // updateStorage(STORAGE_KEY, "saveValueStart", data.toString());
-  };
+  }; 
+  // const onChange = (e) => {
+  //   console.log(e)
+  //   setValueInput(e);
+  //   console.log(valueInput)
+  // }
   
   
   return (
     <div className={s.dropdown}>
       <div className={s.dropdown__wrapper} >
         <input className={s.dropdown__input}
-          type="text"
-          name="filter"
-          value={value}
-          // onChange={onChange}
-          placeholder="Start" />
+          name="inputName"
+          value={selectedDate}
+          // onChange={()=>console.log('value')}
+          placeholder="Start"
+          readOnly/>
         <button type="button" onClick={handleClick} className={s.dropdown__btn}>
           <IconContext.Provider
             value={{
@@ -59,10 +66,11 @@ const ImputCalendar = () => {
               },
             }}>
             <AiFillCaretDown />
-          </IconContext.Provider></button>
+          </IconContext.Provider>
+        </button>
       </div>
       {isActive && (<div>
-        <Calendar onChange={handleChange} value={value} />
+        <Calendar onChange={handleChange} value={selectedDate} />
       </div>)}
       
     </div>
