@@ -4,7 +4,7 @@ import MediaQuery from "react-responsive";
 import { FirstBook } from "components/MainNav/icons/FirstBook";
 import { useState } from "react";
 import Modal from "components/Modal/Modal";
-import FormReview from "./FormReview/FormReview";
+import FormReview from "../../FormReview/FormReview";
 import { FaStar } from "react-icons/fa";
 import Stars from "components/Rating/Stars/Stars";
 

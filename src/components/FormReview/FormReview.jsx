@@ -1,10 +1,9 @@
 import s from "./FormReview.module.scss";
 
 import { ErrorMessage, Formik } from "formik";
-import Notiflix from "notiflix";
-// import { useDispatch } from "react-redux";
 import Rating from "components/Rating/Rating";
 import { validationReviewForm } from "utils/validation/validationReviewForm";
+import { toast } from "react-toastify";
 
 export default function FormReview({ closeModal }) {
   // const dispatch = useDispatch();
@@ -21,7 +20,7 @@ export default function FormReview({ closeModal }) {
           console.log("values", values);
           resetForm();
           closeModal();
-          Notiflix.Notify.success(" Your review is saved");
+          toast.success(" Your review is saved");
         }}
       >
         {({ values, handleChange, handleBlur, handleSubmit }) => (

@@ -1,9 +1,9 @@
 import { ErrorMessage, Formik } from "formik";
-import Notiflix from "notiflix";
 import { useDispatch } from "react-redux";
 import { addBookValidationSchema } from "../../utils/validation/validationAddBook";
 import s from "./AddBookForm.module.scss";
 import { addBook } from "redux/book/bookOperations";
+import { toast } from "react-toastify";
 
 export default function AddBookForm({ closeModal }) {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ export default function AddBookForm({ closeModal }) {
           dispatch(addBook(values));
           resetForm();
           closeModal();
-          Notiflix.Notify.success("book add to list");
+          toast.success(" book add to list");
         }}
       >
         {({ values, handleChange, handleBlur, handleSubmit }) => (
