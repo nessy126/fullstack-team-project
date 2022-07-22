@@ -13,6 +13,7 @@ import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { IconContext } from "react-icons";
 
 import s from "./TrainingPage.module.scss";
+import StatisticsResults from "components/StatisticsResults";
 
 const TrainingPage = () => {
   const { auth } = useSelector((state) => state);

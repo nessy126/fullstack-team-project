@@ -6,10 +6,10 @@ import trainingSelectors from "../../redux/training/trainingSelectors";
 import Media from "react-media";
 import { MdMenuBook } from "react-icons/md";
 const StatisticsTabl = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProgress());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getProgress());
+  // }, [dispatch]);
 
   const allTraining = useSelector(trainingSelectors.getAllTrainings);
   console.log("allTraining :>> ", allTraining);
