@@ -43,7 +43,6 @@ export const currentApi = (auth) => {
   return axios
     .get(endPoint + "current")
     .then((res) => {
-      token.set(res.data.token);
       return res.data;
     })
     .catch((err) => {
@@ -59,4 +58,11 @@ export const logoutApi = (auth) => {
     .catch((err) => {
       throw err;
     });
+};
+
+export const resendApi = (email) => {
+  return axios
+    .post(endPoint + "verify", email)
+    .then((res) => res.data)
+    .catch((error) => console.log(error));
 };

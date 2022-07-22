@@ -58,12 +58,13 @@
 .page {
     width: 100px;
     text-align: center;
-    color: var(--main-text-cl);
+    color: var(--buttons-text-cl);
     background-color: var(--accent-active-cl);
     cursor: pointer;
     @include font(500, 14px, 36px);
 
     &:hover {
+        color: var(--main-text-cl);
         outline: 1px solid var(--main-text-cl);
         background-color: var(--main-bg-cl);
     }

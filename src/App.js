@@ -7,6 +7,7 @@ import "react-toastify/dist/ReactToastify.min.css";
 import Container from "components/Container";
 import PublicRoute from "components/PublicRoute";
 import PrivateRoute from "components/PrivateRoute";
+import Loader from "components/Loader";
 
 import MainNav from "./components/MainNav/MainNav";
 
@@ -32,7 +33,11 @@ function App() {
     <>
       <MainNav />
       <Container>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+              <Loader />
+          }
+        >
           <Routes>
             <Route element={<PublicRoute />}>
               <Route path="/" exact element={<HomePage />} />
