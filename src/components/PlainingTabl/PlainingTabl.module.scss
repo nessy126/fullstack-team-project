@@ -2,6 +2,7 @@
 
 .column__list {
   display: flex;
+  width: 100%;
   flex-direction: column;
   border-top: 1px solid var(--scrollbar-bg-cl);
   @include font(500, 12px, 1.25);
@@ -13,6 +14,7 @@ div.column__list {
   border-bottom: 1px solid var(--scrollbar-bg-cl);
 }
 .column__item {
+  width: 100%;
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid var(--scrollbar-bg-cl);
@@ -21,18 +23,26 @@ div.column__list {
 }
 .column__flex {
   display: flex;
+  width: 100%;
+  align-items: flex-start;
 }
-.icon__del {
-  margin-right: 13px;
+.column__icon {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 35px;
+  padding-right: 13px;
+}
+.icon__book {
   color: var(--placeholder-text-cl);
 }
 .column__title {
   color: var(--main-text-cl);
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   overflow: hidden;
-  width: 81%;
+  width: 208px;
 }
 .column__btn {
   display: flex;
@@ -40,7 +50,12 @@ div.column__list {
   align-items: flex-start;
   border: none;
   background-color: transparent;
-  width: 11%;
+  width: 27px;
+  height: 18px;
+  padding-left: 13px;
+}
+.icon__del {
+  color: var(--placeholder-text-cl);
 }
 .column__right {
   padding-left: 35px;
@@ -138,11 +153,11 @@ div.column__list {
 }
 .table__list::-webkit-scrollbar-thumb {
   background-color: transparent;
-  border: 2px solid var(--accent-active-cl);
+  border: 2px solid var(--training-bg-cl);
   border-radius: 5px;
 }
 .table__list::-webkit-scrollbar-thumb:hover {
-  background: var(--accent-active-cl);
+  background: var(--training-bg-cl);
 }
 
 .table__item {
@@ -157,39 +172,54 @@ div.column__list {
 }
 .table__icon {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   padding-right: 17px;
+  width: 39px;
 }
 .table__title {
-  width: 33%;
-  margin-right: 20px;
+  width: 224px;
+  padding-right: 20px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  @include vp(desktop) {
+    width: 322px;
+  }
 }
 .table__author {
-  width: 28%;
-  margin-right: 20px;
+  width: 186px;
+  padding-right: 20px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   overflow: hidden;
+  @include vp(desktop) {
+    width: 222px;
+  }
 }
 .table__year {
-  width: 15%;
+  width: 90px;
+  padding-right: 20px;
+  @include vp(desktop) {
+    width: 123px;
+  }
 }
 .table__pagesTotal {
-  width: 14%;
+  width: 70px;
+  padding-left: 20px;
+  @include vp(desktop) {
+    width: 140px;
+  }
 }
 
 .table__btn {
-  padding-right: 40px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   border: none;
   background-color: transparent;
-  width: 11%;
+  width: 27px;
+  height: 18px;
 }

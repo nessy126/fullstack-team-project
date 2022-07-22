@@ -4,7 +4,8 @@ import { IconContext } from "react-icons";
 import Media from "react-media";
 
 
-const PlaningTabl = ({books, handleDelBook}) => {
+const PlaningTabl = ({ books, handleDelBook }) => {
+    console.log(books);
     const deletItemFromList =(e)=>{
         handleDelBook(e)
     }
@@ -26,8 +27,16 @@ const PlaningTabl = ({books, handleDelBook}) => {
                         className={s.column__item}>
                         <div className={s.column__flex}>                        
                             <div className={s.column__icon}>
-                                <MdMenuBook 
-                                style={{ width: "22", height: "17", color: "#A6ABB9" }} />
+                                <IconContext.Provider
+                                    value={{
+                                    className: `${s.icon__book}`,
+                                    style: {
+                                    width: "100%",
+                                    height: "100%",
+                                        },
+                                    }}>
+                                        <MdMenuBook />
+                                </IconContext.Provider>
                             </div>
                             <div className={s.column__title}>{book.title}</div>
                             <button type="button" 
@@ -44,7 +53,6 @@ const PlaningTabl = ({books, handleDelBook}) => {
                                     }}>
                                         <MdOutlineDeleteOutline />
                                 </IconContext.Provider>
-                                
                             </button>
                         </div>
                         <div className={s.column__flex}>
@@ -56,8 +64,8 @@ const PlaningTabl = ({books, handleDelBook}) => {
                             <div className={s.column__left}>{book.year}</div>
                         </div>
                         <div className={s.column__flex}>
-                            <div className={s.column__right}>Pages:</div>
-                            <div className={s.column__left}>{book.pagesTotal}</div>
+                            <div className={s.column__right}>Page:</div>
+                            <div className={s.column__left}>{book.pageTotal}</div>
                         </div>
                     </li>
                 );
@@ -80,7 +88,7 @@ const PlaningTabl = ({books, handleDelBook}) => {
                             <div className={s.column__left}>...</div>
                         </div>
                         <div className={s.column__flex}>
-                            <div className={s.column__right}>Pages:</div>
+                            <div className={s.column__right}>Page:</div>
                             <div className={s.column__left}>...</div>
                         </div>
                     </div>)
@@ -92,7 +100,7 @@ const PlaningTabl = ({books, handleDelBook}) => {
                 <span>Book title</span>
                 <span>Author</span>
                 <span>Year</span>
-                <span>Pages</span>
+                <span>Page</span>
             </div>
             <div className={s.tableScrollBox}>
                 {isLoading ? (
@@ -105,13 +113,21 @@ const PlaningTabl = ({books, handleDelBook}) => {
                         <li key={book._id} 
                             className={s.table__item}>
                             <div className={s.table__icon}>
-                                <MdMenuBook 
-                                style={{ width: "22", height: "17", color: "#A6ABB9" }} />
+                                <IconContext.Provider
+                                    value={{
+                                    className: `${s.icon__book}`,
+                                    style: {
+                                    width: "100%",
+                                    height: "100%",
+                                        },
+                                    }}>
+                                        <MdMenuBook />
+                                </IconContext.Provider>
                             </div>
                             <div className={s.table__title}>{book.title}</div>
                             <div className={s.table__author}>{book.author}</div>
                             <div className={s.table__year}>{book.year}</div>
-                            <div className={s.table__pagesTotal}>{book.pagesTotal}</div>
+                            <div className={s.table__pagesTotal}>{book.pageTotal}</div>
                             <button type="button" 
                                 onClick={deletItemFromList} 
                                 id={book._id} 
@@ -138,7 +154,7 @@ const PlaningTabl = ({books, handleDelBook}) => {
                     <span>Book title</span>
                     <span>Author</span>
                     <span>Year</span>
-                    <span>Pages</span>
+                    <span>Page</span>
                 </div>
                 <div className={s.table__bottomEmpty}>
                     <div className={s.table__icon}>
