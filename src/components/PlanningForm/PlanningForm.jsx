@@ -13,10 +13,16 @@ const PlanningForm = ({addStartTraining, addEndTraining, addAmountOfDaysTraining
 
   useEffect(() => {
     const saveData = get(STORAGE_KEY);
-    if (saveData?.saveValueStart) {
+    // console.log(new Date(saveData?.saveValueStart))
+    // console.log(Date.now())
+    // console.log(new Date())
+    const acv=Math.ceil
+      (new Date() - new Date(saveData?.saveValueStart)) / (1000 * 3600 * 24)
+    console.log(acv)
+    if (saveData?.saveValueStart ) {
       setValueStart(new Date(saveData?.saveValueStart));
     };
-    if (saveData?.saveValueEnd) {
+    if (saveData?.saveValueEnd ) {
       setValueEnd(new Date(saveData.saveValueEnd));
     };
   }, []);

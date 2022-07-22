@@ -41,8 +41,11 @@
 }
 .button__plus {
   position: fixed;
-  right: 136px;
-  bottom: 25px;
+  // right: 136px;
+  // bottom: 25px;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 52px;
   height: 52px;
   border: none;
@@ -53,6 +56,7 @@
     background-color: var(--accent-active-cl-hover);
   }
 }
+
 .react__icon {
   color: var(--main-bg-cl);
   position: relative;
