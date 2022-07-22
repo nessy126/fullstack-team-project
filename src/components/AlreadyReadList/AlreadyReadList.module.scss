@@ -12,6 +12,7 @@
 .list {
   width: 270px;
   margin: 0 auto;
+  margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     box-shadow: none;
     width: 678px;
@@ -26,10 +27,17 @@
   @media screen and (min-width: 768px) {
     display: flex;
     justify-content: space-between;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 38px;
   }
   .bookInfoText {
     @media screen and (min-width: 768px) {
       margin-right: 25%;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 38px;
+      color: var(--secondary-text-cl);
     }
     @media screen and (min-width: 1280px) {
       margin-right: 20%;
@@ -38,6 +46,10 @@
 
   .title {
     margin-right: 125px;
+    color: var(--secondary-text-cl);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 38px;
     @media screen and (min-width: 1280px) {
       margin-right: 27%;
     }
@@ -45,19 +57,31 @@
 
   .author {
     margin-right: 75px;
+    color: var(--secondary-text-cl);
     @media screen and (min-width: 1280px) {
       margin-right: 12%;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 38px;
     }
   }
 
   .year {
+    color: var(--secondary-text-cl);
     margin-right: 50px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 38px;
     @media screen and (min-width: 1280px) {
       margin-right: 3%;
     }
   }
 
   .page {
+    color: var(--secondary-text-cl);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 38px;
     margin-right: 21px;
     @media screen and (min-width: 1280px) {
       margin-right: 6%;

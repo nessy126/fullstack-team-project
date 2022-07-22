@@ -5,6 +5,8 @@ import Rating from "components/Rating/Rating";
 import { validationReviewForm } from "utils/validation/validationReviewForm";
 import { toast } from "react-toastify";
 
+import MediaQuery from "react-responsive";
+
 export default function FormReview({ closeModal }) {
   // const dispatch = useDispatch();
   return (
@@ -53,16 +55,33 @@ export default function FormReview({ closeModal }) {
                 />
               </label>
             </div>
-            <button
-              type="button"
-              className={s.form__btn__close}
-              onClick={() => closeModal()}
-            >
-              <span className={s.btn__close__text}>Back</span>
-            </button>
-            <button type="submit" className={s.form__btn__submit}>
-              <span className={s.btn__submit__text}>Save</span>
-            </button>
+
+            <MediaQuery maxWidth={767}>
+              <button
+                type="button"
+                className={s.form__btn__close}
+                onClick={() => closeModal()}
+              >
+                <span className={s.btn__close__text}>Back</span>
+              </button>
+              <button type="submit" className={s.form__btn__submit}>
+                <span className={s.btn__submit__text}>Save</span>
+              </button>
+            </MediaQuery>
+            <MediaQuery minWidth={768}>
+              <div className={s.buttonDiv}>
+                <button
+                  type="button"
+                  className={s.form__btn__close}
+                  onClick={() => closeModal()}
+                >
+                  <span className={s.btn__close__text}>Back</span>
+                </button>
+                <button type="submit" className={s.form__btn__submit}>
+                  <span className={s.btn__submit__text}>Save</span>
+                </button>
+              </div>
+            </MediaQuery>
           </form>
         )}
       </Formik>
