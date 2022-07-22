@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 
 import s from "./CheckEmailModal.module.scss";
 import Modal from "components/Modal";
@@ -13,7 +13,7 @@ const CheckEmailModal = ({ isRegister, closeResend, resend }) => {
   return (
     <>
       {modal && (
-        <Modal type="Exit" closeModal={closeResend ? closeResend : closeModal}>
+        <Modal type="exit" closeModal={closeResend ? closeResend : closeModal}>
           <div className={s.modal}>
             <div className={s.image}></div>
             <p className={s.text}>
@@ -21,7 +21,6 @@ const CheckEmailModal = ({ isRegister, closeResend, resend }) => {
                 ? "Confirmation was resending to your email"
                 : "Check email and confirm your registration"}
             </p>
-            {/* <Link to="/login"> */}
             <button
               className={s.okBtn}
               onClick={closeResend ? closeResend : closeModal}
@@ -29,7 +28,6 @@ const CheckEmailModal = ({ isRegister, closeResend, resend }) => {
               {" "}
               Ok
             </button>
-            {/* </Link> */}
           </div>
         </Modal>
       )}
