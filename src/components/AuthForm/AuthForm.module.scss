@@ -55,9 +55,10 @@
 }
 
 .formReg {
+    // padding-bottom: 50px;
     composes: form;
     @include vp(tablet) {
-            height: 580px;
+            height: 600px;
         }
 }
 
