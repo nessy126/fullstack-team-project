@@ -31,37 +31,37 @@ function App() {
     dispatch(current());
   }, [dispatch]);
 
-  return (<>
-    <MainNav />
-    <Container>
-      
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes>
-          <Route element={<PublicRoute />}>
-            <Route path="/" exact element={<HomePage />} />
-            <Route path="/login" exact element={<LoginPage />} />
-            <Route path="/register" exact element={<RegisterPage />} />
-          </Route>
-          <Route element={<PrivateRoute />}>
-            <Route path="/training" element={<TrainingPage />} />
-            <Route path="/library" element={<LibraryPage />} />
-          </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Routes>
-      </Suspense>
-      <ToastContainer
-        position="top-right"
-        autoClose={4000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggablePercent={60}
-        pauseOnHover
-        limit={3}
-      />
-    </Container>
+  return (
+    <>
+      <MainNav />
+      <Container>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route element={<PublicRoute />}>
+              <Route path="/" exact element={<HomePage />} />
+              <Route path="/login" exact element={<LoginPage />} />
+              <Route path="/register" exact element={<RegisterPage />} />
+            </Route>
+            <Route element={<PrivateRoute />}>
+              <Route path="/training" element={<TrainingPage />} />
+              <Route path="/library" element={<LibraryPage />} />
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </Suspense>
+        <ToastContainer
+          position="top-right"
+          autoClose={4000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggablePercent={60}
+          pauseOnHover
+          limit={3}
+        />
+      </Container>
     </>
   );
 }

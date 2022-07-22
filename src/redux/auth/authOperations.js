@@ -62,4 +62,18 @@ export const logout = createAsyncThunk(
   }
 );
 
+export const resendVerification = createAsyncThunk(
+  "auth/resendConfirmation",
+  async (_, { getState, rejectWithValue }) => {
+    try {
+      const { email } = getState().auth.user;
 
+      const data = { email: email };
+
+      const res = await authAPI.resendApi(data);
+      return res;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
