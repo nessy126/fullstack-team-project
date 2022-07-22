@@ -25,7 +25,7 @@ const OneCard = (book) => {
   };
 
   const updatedBookTitle =
-    book.title.length <= 30 ? book.title : book.title.slice(0, 30) + "...";
+    book.title.length <= 30 ? book.title : book.title.slice(0, 29) + "...";
 
   const backRate = 5;
 
@@ -37,36 +37,60 @@ const OneCard = (book) => {
         </div>
         <p className={s.bookTitle}>{updatedBookTitle}</p>
       </div>
-      <div className={s.bookInfoWrapper}>
-        <MediaQuery maxWidth={767}>
-          <div className={s.bookInfo}>
-            <p className={s.bookInfoText}>Author:</p>
-            <p className={s.bookInfoText}>Year:</p>
-            <p className={s.bookInfoText}>Pages:</p>
-            <p className={s.bookInfoText}>Rating:</p>
-          </div>
-        </MediaQuery>
-        <div className={s.bookMoreInfo}>
-          <p className={s.bookMoreInfoAuthor}>{book.author}</p>
-          <p className={s.bookMoreInfoYear}>{book.year}</p>
-          <p className={s.bookMoreInfoPage}>{book.pages}</p>
-          <div className={s.bookMoreInfoPage}>
-            {backRate ? (
-              <div className={s.marginStar}>
-                <Stars backRate={backRate} />
+      <MediaQuery maxWidth={767}>
+        {/* <MediaQuery minWidth={767}></MediaQuery> */}
+        <div className={s.bookInfoWrapper}>
+          <MediaQuery maxWidth={767}>
+            <div className={s.bookInfo}>
+              <p className={s.bookInfoText}>Author:</p>
+              <p className={s.bookInfoText}>Year:</p>
+              <p className={s.bookInfoText}>Pages:</p>
+              <p className={s.bookInfoText}>Rating:</p>
+            </div>
+          </MediaQuery>
+
+          <MediaQuery maxWidth={767}>
+            <div className={s.bookMoreInfo}>
+              <p className={s.bookMoreInfoAuthor}>{book.author}</p>
+              <p className={s.bookMoreInfoYear}>{book.year}</p>
+              <p className={s.bookMoreInfoPage}>{book.pages}</p>
+              <div className={s.bookMoreInfoPage}>
+                {backRate ? (
+                  <div className={s.marginStar}>
+                    <Stars backRate={backRate} />
+                  </div>
+                ) : (
+                  <div className={s.marginStar}>
+                    <FaStar size={20} color={"#e4e5e9"} />
+                    <FaStar size={20} color={"#e4e5e9"} />
+                    <FaStar size={20} color={"#e4e5e9"} />
+                    <FaStar size={20} color={"#e4e5e9"} />
+                    <FaStar size={20} color={"#e4e5e9"} />
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className={s.marginStar}>
-                <FaStar size={20} color={"#e4e5e9"} />
-                <FaStar size={20} color={"#e4e5e9"} />
-                <FaStar size={20} color={"#e4e5e9"} />
-                <FaStar size={20} color={"#e4e5e9"} />
-                <FaStar size={20} color={"#e4e5e9"} />
-              </div>
-            )}
-          </div>
+            </div>
+          </MediaQuery>
         </div>
-      </div>
+      </MediaQuery>
+      <MediaQuery minWidth={768}>
+        <p className={s.bookMoreInfoAuthor}>{book.author}</p>
+        <p className={s.bookMoreInfoYear}>{book.year}</p>
+        <p className={s.bookMoreInfoPage}>{book.pages}</p>
+        {backRate ? (
+          <div className={s.marginStar}>
+            <Stars backRate={backRate} />
+          </div>
+        ) : (
+          <div className={s.marginStar}>
+            <FaStar size={20} color={"#e4e5e9"} />
+            <FaStar size={20} color={"#e4e5e9"} />
+            <FaStar size={20} color={"#e4e5e9"} />
+            <FaStar size={20} color={"#e4e5e9"} />
+            <FaStar size={20} color={"#e4e5e9"} />
+          </div>
+        )}
+      </MediaQuery>
       <button className={s.button} onClick={() => openModal()}>
         <span className={s.buttonText}>resume</span>
       </button>

@@ -8,7 +8,7 @@ const Stars = ({ backRate }) => {
         return (
           <FaStar
             key={index}
-            size={20}
+            size={17}
             color={ratingValue <= backRate ? "#ffc107" : "#e4e5e9"}
           />
         );
