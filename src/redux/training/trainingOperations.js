@@ -3,13 +3,9 @@ import * as trainingAPI from "utils/api/trainingApi";
 
 export const addTraining = createAsyncThunk(
   "training/start",
-  async (data, { getState, rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
-      const { auth } = getState();
-      if (!auth.token) {
-        return rejectWithValue("Not authorized");
-      }
-      const result = await trainingAPI.addTrainingAPI(data, auth);
+      const result = await trainingAPI.addTrainingAPI(data);
       return result;
     } catch (error) {
       return rejectWithValue(error);
@@ -19,14 +15,9 @@ export const addTraining = createAsyncThunk(
 
 export const getProgressTraining = createAsyncThunk(
   "training/progress",
-  async (_, { getState, rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const { auth } = getState();
-      if (!auth.token) {
-        return rejectWithValue("Not authorized");
-      }
-
-      const training = await trainingAPI.getProgressAPI(auth);
+      const training = await trainingAPI.getProgressAPI();
 
       const amountOfBooks = training.booksId.length;
       const booksLeft = training.booksId.filter(
@@ -48,13 +39,9 @@ export const getProgressTraining = createAsyncThunk(
 
 export const finishTraiining = createAsyncThunk(
   "training/finish",
-  async (data, { getState, rejectWithValue }) => {
+  async (data, { rejectWithValue }) => {
     try {
-      const { auth } = getState();
-      if (!auth.token) {
-        return rejectWithValue("Not authorized");
-      }
-      const finishedTraining = await trainingAPI.finishTraiiningApi(data, auth);
+      const finishedTraining = await trainingAPI.finishTraiiningApi(data);
       const amountOfBooks = finishedTraining.training.booksId.length;
 
       const result = { ...finishedTraining, amountOfBooks };

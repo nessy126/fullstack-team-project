@@ -1,0 +1,9 @@
+@import '../../assets/sass/styles/mixin';
+
+.changePage {
+    padding: 10px;
+    color: var(--accent-active-cl);
+    text-decoration: underline;
+    cursor: pointer;
+    @include font(500, 13px, 38px)
+}
