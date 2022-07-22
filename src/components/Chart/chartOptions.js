@@ -1,5 +1,6 @@
 const COLORS = {
   GRID: "#b1b5c2e5",
+  TEXT: "#000000",
 };
 
 const setTitle = (tooltipItems) => {
@@ -34,10 +35,11 @@ export const options = {
         display: true,
         text: "Days",
         align: "end",
+        color: COLORS.TEXT,
         font: {
           family: "Montserrat",
           size: 12,
-          lineHeight: 1.25,
+          lineHeight: 3.17,
         },
       },
     },

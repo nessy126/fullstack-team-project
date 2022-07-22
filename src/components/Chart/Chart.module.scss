@@ -1,34 +1,19 @@
 @import "../../assets/sass/main.scss";
 
-.chartWrapper {
-  padding: 20px 23px 20px 22px;
-  background-color: var(--main-bg-cl);
-  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
-
-  @include vp(tablet) {
-    // padding: 30px 49px 31px 49px;
-  }
-  @include vp(desktop) {
-    // padding: 30px 78px 32px 40px;
-    width: 100%;
-    font-size: 40px;
-  }
-}
-
 .chartText {
   @include vp(mobile) {
-    margin-bottom: 19px;
+    margin-bottom: 9px;
     padding-left: 6px;
   }
 
   @include vp(tablet) {
-    margin-bottom: 24px;
+    margin-bottom: 12px;
   }
 
   font-style: normal;
   font-weight: 500;
   font-size: 12px;
-  line-height: 1.25;
+  line-height: 3.17;
   text-transform: uppercase;
   color: #242a37;
 }
@@ -39,7 +24,7 @@
   height: 25px;
   align-items: center;
   justify-content: center;
-  margin-left: 10px;
+  margin-left: 9px;
   background-color: var(--auth-bg-cl);
 }
 

@@ -7,6 +7,7 @@ import Chart from "components/Chart";
 import StatisticsResults from "components/StatisticsResults/StatisticsResults";
 import StatisticsTabl from "components/StatisticsTabl/StatisticsTabl";
 import Statistics from "components/Statistics";
+import Loader from "components/Loader";
 import { getAllBooks } from "redux/book/bookOperations";
 import { getProgressTraining } from "redux/training/trainingOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
@@ -144,7 +145,9 @@ const TrainingPage = () => {
                   />
                   {!hideRightPart ? (
                     <>
-                      <Chart auth={auth} userData={dataForChartPlaining} />
+                      <div className={s.chartWrapper}>
+                        <Chart auth={auth} userData={dataForChartPlaining} />
+                      </div>
                       <button
                         className={s.button__plus}
                         type="button"
@@ -174,11 +177,13 @@ const TrainingPage = () => {
                 </div>
                 <div className={s.right__wrapper}>
                   <StatisticsTabl />
-                  {auth.isLoading ? (
-                    <p>Loading</p>
-                  ) : (
-                    <Chart auth={auth} userData={auth.training} />
-                  )}
+                  <div className={s.chartWrapper}>
+                    {auth.isLoading ? (
+                      <Loader />
+                    ) : (
+                      <Chart auth={auth} userData={auth.training} />
+                    )}
+                  </div>
                   <StatisticsResults />
                 </div>
               </section>
@@ -197,7 +202,9 @@ const TrainingPage = () => {
                     getDataEndTraining={getDataEndTraining}
                     getBookListPlaining={getBookListPlaining}
                   />
-                  <Chart auth={auth} userData={dataForChartPlaining} />
+                  <div className={s.chartWrapper}>
+                    <Chart auth={auth} userData={dataForChartPlaining} />
+                  </div>
                 </div>
               </section>
             ) : (
@@ -208,11 +215,13 @@ const TrainingPage = () => {
                 </div>
                 <div className={s.right__wrapper}>
                   <StatisticsTabl />
-                  {auth.isLoading ? (
-                    <p>Loading</p>
-                  ) : (
-                    <Chart auth={auth} userData={auth.training} />
-                  )}
+                  <div className={s.chartWrapper}>
+                    {auth.isLoading ? (
+                      <Loader />
+                    ) : (
+                      <Chart auth={auth} userData={auth.training} />
+                    )}
+                  </div>
                   <StatisticsResults />
                 </div>
               </section>
@@ -231,7 +240,9 @@ const TrainingPage = () => {
                     getDataEndTraining={getDataEndTraining}
                     getBookListPlaining={getBookListPlaining}
                   />
-                  <Chart auth={auth} userData={dataForChartPlaining} />
+                  <div className={s.chartWrapper}>
+                    <Chart auth={auth} userData={dataForChartPlaining} />
+                  </div>
                 </div>
               </section>
             ) : (
@@ -243,11 +254,13 @@ const TrainingPage = () => {
                 <div className={s.left__wrapper}>
                   <Statistics />
                   <StatisticsTabl />
-                  {auth.isLoading ? (
-                    <p>Loading</p>
-                  ) : (
-                    <Chart auth={auth} userData={auth.training} />
-                  )}
+                  <div className={s.chartWrapper}>
+                    {auth.isLoading ? (
+                      <Loader />
+                    ) : (
+                      <Chart auth={auth} userData={auth.training} />
+                    )}
+                  </div>
                 </div>
               </section>
             ))}
