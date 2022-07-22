@@ -3,7 +3,7 @@ import LineChart from "./LineChart";
 import { useSelector } from "react-redux";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 import initialData from "./trainingData";
-import { options } from "./chartOptions";
+import { setOptions } from "./chartOptions";
 
 import s from "./Chart.module.scss";
 
@@ -36,14 +36,16 @@ const Chart = (props) => {
   const amountOfPagesPlan =
     trainingData.booksList.length === 0
       ? 0
-      : Math.round(
+      : trainingData.amountOfDays > 0
+      ? Math.round(
           trainingData.booksList.reduce(
             (sum, { pageTotal }) => sum + pageTotal,
             0
           ) / trainingData.amountOfDays
-        );
+        )
+      : 0;
 
-  // Подсчет дней тренировки для корресктной работы графика
+  // Подсчет дней тренировки для корректной работы графика
 
   const countDaysForTraining = () => {
     const daysToRead = [];
@@ -71,6 +73,7 @@ const Chart = (props) => {
         const pagesPerDay = Math.ceil(
           amountOfPages / trainingData.amountOfDays
         );
+
         return (pagesSumToRead += pagesPerDay);
       }
       if (day === 0) {
@@ -154,7 +157,10 @@ const Chart = (props) => {
         </span>
       </p>
       <div className={s.chart}>
-        <LineChart chartOptions={options} chartData={userReadData} />
+        <LineChart
+          chartOptions={setOptions(amountOfPagesPlan)}
+          chartData={userReadData}
+        />
       </div>
     </>
   );
