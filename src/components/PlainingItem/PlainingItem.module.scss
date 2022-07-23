@@ -1,0 +1,225 @@
+@import "../../assets/sass/main.scss";
+
+.column__list {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  border-top: 1px solid var(--scrollbar-bg-cl);
+  @include font(500, 12px, 1.25);
+  color: var(--secondary-text-cl);
+}
+div.column__list {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--scrollbar-bg-cl);
+}
+.column__item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--scrollbar-bg-cl);
+  padding-bottom: 9px;
+  padding-top: 22px;
+}
+.column__flex {
+  display: flex;
+  width: 100%;
+  align-items: flex-start;
+}
+.column__icon {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 35px;
+  padding-right: 13px;
+}
+.icon__book {
+  color: var(--placeholder-text-cl);
+}
+.column__title {
+  color: var(--main-text-cl);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  width: 208px;
+}
+.column__btn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: none;
+  background-color: transparent;
+  width: 27px;
+  height: 18px;
+  padding-left: 13px;
+}
+.icon__del {
+  color: var(--placeholder-text-cl);
+}
+.column__right {
+  padding-left: 35px;
+  width: 40%;
+  @include font(500, 12px, 2.8);
+}
+.column__left {
+  width: 60%;
+  padding-right: 30px;
+  color: var(--main-text-cl);
+  @include font(500, 12px, 2.8);
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+.table__wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  @include font(500, 14px, 2.71);
+  color: var(--secondary-text-cl);
+  padding-top: 40px;
+}
+.table__top {
+  border-top: 1px solid var(--scrollbar-bg-cl);
+  border-bottom: 1px solid var(--scrollbar-bg-cl);
+}
+.table__top span:first-child {
+  margin-right: 195px;
+}
+.table__top span:nth-child(2) {
+  margin-right: 133px;
+}
+.table__top span:last-child {
+  margin-left: 50px;
+}
+.table__topEmpty {
+  border-top: 1px solid var(--scrollbar-bg-cl);
+  border-bottom: 1px solid var(--scrollbar-bg-cl);
+}
+.table__topEmpty span:first-child {
+  margin-right: 275px;
+}
+.table__topEmpty span:nth-child(2) {
+  margin-right: 133px;
+}
+.table__topEmpty span:last-child {
+  margin-left: 50px;
+}
+.table__bottomEmpty {
+  display: flex;
+  border-bottom: 1px solid var(--scrollbar-bg-cl);
+}
+.table__titleEmpty {
+  color: var(--main-text-cl);
+  @include font(500, 14px, 2.71);
+}
+
+.tableScrollBox::-webkit-scrollbar-track {
+  // -webkit-box-shadow: inset 0 0 6px rgba(156, 147, 147, 0.1);
+  background-color: transparent;
+  width: 100%;
+}
+.tableScrollBox::-webkit-scrollbar {
+  width: 5px;
+  background-color: var(--scrollbar-bg-cl);
+}
+.tableScrollBox::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border: 5px solid var(--training-bg-cl);
+  border-radius: 2px;
+}
+.tableScrollBox::-webkit-scrollbar-thumb:hover {
+  background: red;
+}
+.tableScrollBox {
+  overflow-y: scroll;
+  @include vp(tablet) {
+    max-height: 30vh;
+  }
+  @include vp(desktop) {
+    max-height: 42vh;
+  }
+}
+.table__list::-webkit-scrollbar-track {
+  // -webkit-box-shadow: inset 0 0 6px var(--training-bg-cl);
+  background-color: transparent;
+  border-radius: 2px;
+}
+.table__list::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+.table__list::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border: 2px solid var(--training-bg-cl);
+  border-radius: 5px;
+}
+.table__list::-webkit-scrollbar-thumb:hover {
+  background: var(--training-bg-cl);
+}
+
+.table__item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  color: var(--main-text-cl);
+  border-bottom: 1px solid var(--scrollbar-bg-cl);
+  @include font(500, 14px, 1.21);
+}
+.table__icon {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 17px;
+  width: 39px;
+}
+.table__title {
+  width: 224px;
+  padding-right: 20px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  @include vp(desktop) {
+    width: 322px;
+  }
+}
+.table__author {
+  width: 186px;
+  padding-right: 20px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  @include vp(desktop) {
+    width: 222px;
+  }
+}
+.table__year {
+  width: 90px;
+  padding-right: 20px;
+  @include vp(desktop) {
+    width: 123px;
+  }
+}
+.table__pagesTotal {
+  width: 70px;
+  padding-left: 20px;
+  @include vp(desktop) {
+    width: 140px;
+  }
+}
+
+.table__btn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: none;
+  background-color: transparent;
+  width: 27px;
+  height: 18px;
+}
