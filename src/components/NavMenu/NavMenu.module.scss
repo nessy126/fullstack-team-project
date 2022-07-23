@@ -1,0 +1,33 @@
+.navMenu {
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+.navItem {
+  margin-right: 15px;
+}
+
+.link {
+  display: block;
+
+  width: 33px;
+  height: 33px;
+
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+
+  transition: background-color 350ms ease;
+
+  &:hover,
+  &:focus {
+    border-radius: 50%;
+    background-color: var(--auth-bg-cl);
+  }
+}
+
+.svg {
+  width: 22px;
+  height: 38px;
+  fill: var(--placeholder-text-cl);
+}

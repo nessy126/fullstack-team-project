@@ -1,14 +1,13 @@
-import s from "./OneCard.module.scss";
+import s from "./AlreadyReadCard.module.scss";
 
 import MediaQuery from "react-responsive";
-import { FirstBook } from "components/MainNav/icons/FirstBook";
+import { FirstBook } from "assets/images/icons/FirstBook";
 import { useState } from "react";
 import Modal from "components/Modal/Modal";
-import FormReview from "../../FormReview/FormReview";
-import { FaStar } from "react-icons/fa";
-import Stars from "components/Rating/Stars/Stars";
+import FormReview from "../FormReview/FormReview";
+import Stars from "components/Stars/Stars";
 
-const OneCard = (book) => {
+const AlreadyReadCard = (book) => {
   //   const dispatch = useDispatch();
 
   const [modal, setModal] = useState(false);
@@ -27,7 +26,7 @@ const OneCard = (book) => {
   const updatedBookTitle =
     book.title.length <= 30 ? book.title : book.title.slice(0, 29) + "...";
 
-  const backRate = 5;
+  const backRate = null;
 
   return (
     <li className={s.card}>
@@ -61,11 +60,7 @@ const OneCard = (book) => {
                   </div>
                 ) : (
                   <div className={s.marginStar}>
-                    <FaStar size={20} color={"#e4e5e9"} />
-                    <FaStar size={20} color={"#e4e5e9"} />
-                    <FaStar size={20} color={"#e4e5e9"} />
-                    <FaStar size={20} color={"#e4e5e9"} />
-                    <FaStar size={20} color={"#e4e5e9"} />
+                    <Stars />
                   </div>
                 )}
               </div>
@@ -83,11 +78,7 @@ const OneCard = (book) => {
           </div>
         ) : (
           <div className={s.marginStar}>
-            <FaStar size={20} color={"#e4e5e9"} />
-            <FaStar size={20} color={"#e4e5e9"} />
-            <FaStar size={20} color={"#e4e5e9"} />
-            <FaStar size={20} color={"#e4e5e9"} />
-            <FaStar size={20} color={"#e4e5e9"} />
+            <Stars />
           </div>
         )}
       </MediaQuery>
@@ -103,4 +94,4 @@ const OneCard = (book) => {
   );
 };
 
-export default OneCard;
+export default AlreadyReadCard;

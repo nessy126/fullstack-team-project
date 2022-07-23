@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 
-import LineChart from "../LineChart/LineChart";
+import LineChart from "../LineChart";
 import Loader from "components/Loader";
 import { setOptions } from "../../assets/helpers/chart/chartOptions";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
