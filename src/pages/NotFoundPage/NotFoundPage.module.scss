@@ -1,6 +1,31 @@
+@import 'assets/sass/styles/mixin';
+
 .notfound{
+    display: flex;
+    flex-direction: column;
+    margin: 50px auto;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
+}
+
+.iconVector{
+    width: 150px;
+    height: 150px;
+    fill: var(--error-page-fill);
+}
+
+.badReq{
+    margin-top: 20px;
+    color: var(--error-page-fill);
+    @include font(600, 35px, 40px);
+
+}
+
+.text{
+    margin-top: 5px;
+    font-size: 20px;
+    color: var(--secondary-text-cl);
+    @include font(500, 20px, 40px);
 }
