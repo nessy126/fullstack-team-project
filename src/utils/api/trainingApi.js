@@ -28,6 +28,7 @@ export const getProgressAPI = (auth) => {
 //   "factEndTraining": "111111111",
 //   "trainingID": "62d6ef9f32198562acca2e3c"
 // }
+
 export const finishTraiiningApi = (data, auth) => {
   return axios
     .patch(endPoint + "finish", data)

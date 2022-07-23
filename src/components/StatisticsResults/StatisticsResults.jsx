@@ -2,12 +2,15 @@ import DateTimePicker from "react-datetime-picker";
 import React, { useState, useEffect } from "react";
 import s from "./StatisticsResults.module.scss";
 import { MdOutlineSignalWifiStatusbarNull } from "react-icons/md";
+import { getAllBooks } from "redux/auth/authSelectors";
+import { useDispatch, useSelector } from "react-redux";
 
 const StatisticsResults = () => {
+  const dispatch = useDispatch();
   const [pagesRead, setPagesRead] = useState("");
   const [valueStart, setValueStart] = useState(new Date());
   const [newName, setnewName] = useState();
-
+  const allBooks = useSelector(getAllBooks);
   useEffect(() => {
     setValueStart(new Date());
   }, [newName]);
@@ -24,6 +27,14 @@ const StatisticsResults = () => {
     }
   };
 
+  let correctBook = allBooks.find(function (book) {
+    return book.pageTotal > book.pageFinished;
+  });
+
+  // console.log(correctBook._id);
+  // console.log("pageTotal :>> ", correctBook.pageTotal);
+  // console.log("pageFinished :>> ", correctBook.pageFinished);
+
   const onSubmit = (e) => {
     e.preventDefault();
     const newName = {
@@ -35,7 +46,6 @@ const StatisticsResults = () => {
     };
 
     // dispatch();
-    console.log("newName :>> ", newName);
     setnewName(newName);
     setPagesRead("");
   };
@@ -64,12 +74,14 @@ const StatisticsResults = () => {
             <p className={s.paragraph}>Amount of pages</p>
             <input
               className={s.input}
-              type="tel"
+              type="number"
               name="number"
               value={pagesRead}
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               autoComplete="off"
               onChange={onInput}
+              required="required"
+              pattern="\d{3,5}"
             />
           </label>
         </div>

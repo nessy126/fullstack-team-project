@@ -130,6 +130,7 @@ const authSlice = createSlice({
         booksLeft: payload.booksLeft,
         pagesPerDay: payload.pagesPerDay,
       };
+      state.statistics = [...state.training.statistics, payload];
     },
     [getProgressTraining.rejected]: (state, { payload }) => {
       state.isLoading = false;

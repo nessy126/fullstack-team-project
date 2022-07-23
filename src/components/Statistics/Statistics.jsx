@@ -1,4 +1,4 @@
-import StatisticsTabl from "components/StatisticsTabl";
+// import StatisticsTabl from "components/StatisticsTabl";
 import CountdownTimer from "../CountdownTimer/CountdownTimer";
 import s from "./Statistics.module.scss";
 import { useSelector } from "react-redux";
@@ -37,7 +37,7 @@ const Statistics = () => {
           {/* <CountdownTimer targetDate={dateTimeToGoal} /> */}
         </div>
       </div>
-      <StatisticsTabl />
+      {/* <StatisticsTabl /> */}
       <StatisticsResults></StatisticsResults>
     </>
   );
