@@ -1,0 +1,65 @@
+@import "../../assets/sass/main.scss";
+
+.button {
+  width: 200px;
+  height: 40px;
+
+  border: none;
+
+  color: var(--main-bg-cl);
+
+  display: block;
+
+  margin: 0 auto;
+  margin-top: 20px;
+
+  background-color: var(--accent-active-cl);
+
+  &:hover,
+  &:focus {
+    background-color: var(--accent-active-cl-hover);
+  }
+}
+
+.buttonText {
+  width: 39px;
+  height: 38px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 38px;
+
+  text-align: center;
+}
+
+.phonePlusButton {
+  width: 52px;
+  height: 52px;
+
+  padding: 15px;
+
+  display: block;
+
+  text-align: center;
+
+  position: fixed;
+  bottom: 0%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+
+  border: none;
+  border-radius: 50%;
+
+  background: var(--accent-active-cl);
+
+  &:hover,
+  &:focus {
+    background-color: var(--accent-active-cl-hover);
+  }
+}
+
+@include vp(tablet) {
+  .phonePlusButton {
+    display: none;
+  }
+}
