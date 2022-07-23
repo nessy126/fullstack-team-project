@@ -3,7 +3,7 @@ import LineChart from "./LineChart";
 import { useSelector } from "react-redux";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 import initialData from "./trainingData";
-import { options } from "./chartOptions";
+import { setOptions } from "./chartOptions";
 
 import s from "./Chart.module.scss";
 
@@ -36,14 +36,16 @@ const Chart = (props) => {
   const amountOfPagesPlan =
     trainingData.booksList.length === 0
       ? 0
-      : Math.round(
+      : trainingData.amountOfDays > 0
+      ? Math.round(
           trainingData.booksList.reduce(
             (sum, { pageTotal }) => sum + pageTotal,
             0
           ) / trainingData.amountOfDays
-        );
+        )
+      : 0;
 
-  // Подсчет дней тренировки для корресктной работы графика
+  // Подсчет дней тренировки для корректной работы графика
 
   const countDaysForTraining = () => {
     const daysToRead = [];
@@ -71,6 +73,7 @@ const Chart = (props) => {
         const pagesPerDay = Math.ceil(
           amountOfPages / trainingData.amountOfDays
         );
+
         return (pagesSumToRead += pagesPerDay);
       }
       if (day === 0) {
@@ -86,16 +89,14 @@ const Chart = (props) => {
     let pagesReadTotal = 0;
     return daysForTraining.map((date) => {
       const isDateIn = trainingData.statistics.filter((el) => {
-        const isDayIn = daysCountFunc(trainingData.startTraining, el.date);
+        const formatDate = new Date(el.date);
+        const isDayIn = daysCountFunc(trainingData.startTraining, formatDate);
         return isDayIn === date;
       });
-      if (isDateIn.length === 1) {
-        return (pagesReadTotal += isDateIn[0].pagesRead);
-      }
-      if (isDateIn.length > 1) {
-        return isDateIn.reduce((sum, { pagesRead }) => (sum += pagesRead), 0);
-      }
-      return pagesReadTotal;
+      return (pagesReadTotal += isDateIn.reduce(
+        (sum, { pagesRead }) => (sum += pagesRead),
+        0
+      ));
     });
   };
   const pagesReadInTraining = isTraining ? makePagesReadArr() : 0;
@@ -149,16 +150,17 @@ const Chart = (props) => {
 
   return (
     <>
-      <div className={s.chartWrapper}>
-        <p className={s.chartText}>
-          pages/ days
-          <span className={s.chartText__Span}>
-            {!isTraining ? amountOfPagesPlan : trainingData.pagesPerDay}
-          </span>
-        </p>
-        <div className={s.chart}>
-          <LineChart chartOptions={options} chartData={userReadData} />
-        </div>
+      <p className={s.chartText}>
+        pages/ days
+        <span className={s.chartText__Span}>
+          {!isTraining ? amountOfPagesPlan : trainingData.pagesPerDay}
+        </span>
+      </p>
+      <div className={s.chart}>
+        <LineChart
+          chartOptions={setOptions(amountOfPagesPlan)}
+          chartData={userReadData}
+        />
       </div>
     </>
   );
