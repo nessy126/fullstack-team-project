@@ -1,16 +1,15 @@
-import s from "./PlainingTabl.module.scss";
 import { useSelector } from "react-redux";
 import { MdMenuBook } from "react-icons/md";
 import Media from "react-media";
 import PlainingItem from "components/PlainingItem";
 import Loader from "components/Loader";
+import s from "./PlainingTabl.module.scss";
 
 const PlaningTabl = ({ books, handleDelBook }) => {
   const deletItemFromList = (e) => {
     handleDelBook(e);
   };
   const isLoading = useSelector((state) => state.books.isLoading);
-
   const show = books?.length > 0 ? true : false;
   return (
     <Media
