@@ -15,7 +15,6 @@ import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { IconContext } from "react-icons";
 
 import s from "./TrainingPage.module.scss";
-import ImputCalendar from 'components/ImputCalendar';
 
 const TrainingPage = () => {
   const { auth } = useSelector((state) => state);
