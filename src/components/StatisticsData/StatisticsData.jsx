@@ -22,7 +22,7 @@ const StatisticsData = () => {
     },
   ];
   return (
-    <>
+    <section className={s.page__wrapperStat}>
       <Media
         queries={{
           small: "(max-width: 1199px)",
@@ -32,16 +32,16 @@ const StatisticsData = () => {
         {(matches) => (
           <>
             {matches.small && (
-              <section className={s.page__wrapperStat}>
+              <>
                 <Statistics />
                 <MyGoals data={arrayStatistic} />
                 <StatisticsTabl />
                 <Chart />
                 <StatisticsResults />
-              </section>
+              </>
             )}
             {matches.large && (
-              <section className={s.page__wrapperStat}>
+              <>
                 <div className={s.right__wrapper}>
                   <MyGoals data={arrayStatistic} />
                   <StatisticsResults />
@@ -51,12 +51,12 @@ const StatisticsData = () => {
                   <StatisticsTabl />
                   <Chart />
                 </div>
-              </section>
+              </>
             )}
           </>
         )}
       </Media>
-    </>
+    </section>
   );
 };
 

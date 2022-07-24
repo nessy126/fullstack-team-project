@@ -13,6 +13,19 @@ export const addBook = createAsyncThunk(
   }
 );
 
+export const addReview = createAsyncThunk(
+  "book/addReview",
+  async (review, { rejectWithValue }) => {
+    const { id, ...data } = review;
+    try {
+      const result = await bookAPI.addReview(id, data);
+      return result;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const getAllBooks = createAsyncThunk(
   "allBooks/get",
   async (_, { rejectWithValue }) => {

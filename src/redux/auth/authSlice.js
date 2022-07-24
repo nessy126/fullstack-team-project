@@ -6,6 +6,7 @@ import {
   addTraining,
   finishTraiining,
   getProgressTraining,
+  addStatistics,
 } from "redux/training/trainingOperations";
 
 const initialState = {
@@ -109,6 +110,19 @@ const authSlice = createSlice({
       state.error = payload;
       state.isLoading = false;
     },
+    [addStatistics.pending]: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [addStatistics.fulfilled]: (state, { payload }) => {
+      console.log("payload :>> ", payload);
+      state.training.statistics = payload;
+      state.isLoading = false;
+    },
+    [addStatistics.rejected]: (state, { payload }) => {
+      state.error = payload;
+      state.isLoading = false;
+    },
     [getProgressTraining.pending]: (state) => {
       state.isLoading = true;
       state.error = null;
@@ -129,6 +143,7 @@ const authSlice = createSlice({
         amountOfBooks: payload.amountOfBooks,
         booksLeft: payload.booksLeft,
         pagesPerDay: payload.pagesPerDay,
+        statistics: payload.statistics,
       };
     },
     [getProgressTraining.rejected]: (state, { payload }) => {

@@ -8,8 +8,6 @@ import FormReview from "../FormReview/FormReview";
 import Stars from "components/Stars/Stars";
 
 const AlreadyReadCard = (book) => {
-  //   const dispatch = useDispatch();
-
   const [modal, setModal] = useState(false);
 
   const openModal = () => {
@@ -25,8 +23,6 @@ const AlreadyReadCard = (book) => {
 
   const updatedBookTitle =
     book.title.length <= 30 ? book.title : book.title.slice(0, 29) + "...";
-
-  const backRate = null;
 
   return (
     <li className={s.card}>
@@ -54,9 +50,9 @@ const AlreadyReadCard = (book) => {
               <p className={s.bookMoreInfoYear}>{book.year}</p>
               <p className={s.bookMoreInfoPage}>{book.pages}</p>
               <div className={s.bookMoreInfoPage}>
-                {backRate ? (
+                {book.rating ? (
                   <div className={s.marginStar}>
-                    <Stars backRate={backRate} />
+                    <Stars backRate={book.rating} />
                   </div>
                 ) : (
                   <div className={s.marginStar}>
@@ -72,9 +68,9 @@ const AlreadyReadCard = (book) => {
         <p className={s.bookMoreInfoAuthor}>{book.author}</p>
         <p className={s.bookMoreInfoYear}>{book.year}</p>
         <p className={s.bookMoreInfoPage}>{book.pages}</p>
-        {backRate ? (
+        {book.rating ? (
           <div className={s.marginStar}>
-            <Stars backRate={backRate} />
+            <Stars backRate={book.rating} />
           </div>
         ) : (
           <div className={s.marginStar}>
@@ -87,7 +83,12 @@ const AlreadyReadCard = (book) => {
       </button>
       {modal.open && (
         <Modal type={"exit"} closeModal={closeModal}>
-          <FormReview closeModal={closeModal} />
+          <FormReview
+            closeModal={closeModal}
+            id={book.id}
+            backRate={book.rating}
+            comment={book.comment}
+          />
         </Modal>
       )}
     </li>

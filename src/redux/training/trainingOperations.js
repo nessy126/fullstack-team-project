@@ -37,6 +37,18 @@ export const getProgressTraining = createAsyncThunk(
   }
 );
 
+export const addStatistics = createAsyncThunk(
+  "training/Statistics ",
+  async (data, { rejectWithValue }) => {
+    try {
+      const result = await trainingAPI.addStatistics(data);
+      return result;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  }
+);
+
 export const finishTraiining = createAsyncThunk(
   "training/finish",
   async (data, { rejectWithValue }) => {

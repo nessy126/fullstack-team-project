@@ -3,9 +3,7 @@ import AddBookForm from "../../components/AddBookForm/AddBookForm";
 import { LibraryModal } from "../../components/LibraryModal/LibraryModal";
 import Modal from "../../components/Modal/Modal";
 import MediaQuery from "react-responsive";
-
 import GoingToReadList from "../../components/GoingToReadList/GoingToReadList";
-
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBooks } from "redux/book/bookOperations";
 import bookSelectors from "../../redux/book/bookSelectors";
@@ -21,13 +19,14 @@ const LibraryPage = () => {
   const booksGoingToRead = useSelector(bookSelectors.getListGoingToRead);
   const booksInReading = useSelector(bookSelectors.getListInReading);
   const booksFinished = useSelector(bookSelectors.getListFinished);
+
   const [modal, setModal] = useState({
     open: false,
   });
 
   useEffect(() => {
     dispatch(getAllBooks());
-  }, [dispatch]);
+  }, [dispatch, booksGoingToRead, booksInReading, booksFinished]);
 
   const openModal = () => {
     setModal({
@@ -78,7 +77,10 @@ const LibraryPage = () => {
                   type={"booksGoingToRead"}
                 />
               )}
-              <NextButton setNext={setNext} />
+              {AlreadyReadList.length === 0 &&
+              booksInReading.length === 0 ? null : (
+                <NextButton setNext={setNext} />
+              )}
             </>
           )}
         </>
