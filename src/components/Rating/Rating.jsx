@@ -2,8 +2,8 @@ import s from "./Rating.module.scss";
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-const Rating = ({ values }) => {
-  const [rating, setRating] = useState(0);
+const Rating = ({ values, backRate }) => {
+  const [rating, setRating] = useState(backRate);
   const [hover, setHover] = useState(null);
   values.rating = rating;
 

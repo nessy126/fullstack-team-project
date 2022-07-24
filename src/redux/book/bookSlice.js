@@ -41,7 +41,7 @@ const bookSlice = createSlice({
     },
     [addTraining.fulfilled]: (state, { payload }) => {
       payload.booksId.map((id) => {
-        const changedBook = state.books.find((book) => book._id === id);
+        const changedBook = state.books.books.find((book) => book._id === id);
         return (changedBook.status = "inReading");
       });
     },

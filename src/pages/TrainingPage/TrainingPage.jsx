@@ -4,10 +4,8 @@ import Media from "react-media";
 import MyGoals from "components/MyGoals";
 import TrainingData from "components/TrainingData";
 import Chart from "components/Chart";
-import StatisticsResults from "components/StatisticsResults/StatisticsResults";
 import StatisticsTabl from "components/StatisticsTabl/StatisticsTabl";
 import Statistics from "components/Statistics";
-import Loader from "components/Loader";
 import { getAllBooks } from "redux/book/bookOperations";
 import { getProgressTraining } from "redux/training/trainingOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
@@ -15,6 +13,7 @@ import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { IconContext } from "react-icons";
 
 import s from "./TrainingPage.module.scss";
+import StatisticsResults from "components/StatisticsResults";
 
 const TrainingPage = () => {
   const { auth } = useSelector((state) => state);
@@ -23,10 +22,10 @@ const TrainingPage = () => {
 
   const [amountBooksTraining, setAmountBooksTraining] = useState(0);
   const [amountDaysTraining, setAmountDaysTraining] = useState(0);
-  const [dataStartTraining, setDataStartTraining] = useState(0);
-  const [dataEndTraining, setDataEndTraining] = useState(0);
+  // const [dataStartTraining, setDataStartTraining] = useState(0);
+  // const [dataEndTraining, setDataEndTraining] = useState(0);
   const [hideRightPart, setHideRightPart] = useState(false);
-  const [bookListPlaining, setBookListPlaining] = useState([]);
+  // const [bookListPlaining, setBookListPlaining] = useState([]);
   const statusIsTraining = useSelector(getStatusIsTraining);
 
   const getAmountBooksTraining = (e) => {
@@ -35,15 +34,15 @@ const TrainingPage = () => {
   const getAmountDaysTraining = (e) => {
     setAmountDaysTraining(e);
   };
-  const getDataStartTraining = (e) => {
-    setDataStartTraining(e);
-  };
-  const getDataEndTraining = (e) => {
-    setDataEndTraining(e);
-  };
-  const getBookListPlaining = (e) => {
-    setBookListPlaining(e);
-  };
+  // const getDataStartTraining = (e) => {
+  //   setDataStartTraining(e);
+  // };
+  // const getDataEndTraining = (e) => {
+  //   setDataEndTraining(e);
+  // };
+  // const getBookListPlaining = (e) => {
+  //   setBookListPlaining(e);
+  // };
 
   const arrayPlanTraining = [
     {
@@ -70,14 +69,6 @@ const TrainingPage = () => {
       amount: 2,
     },
   ];
-
-  const dataForChartPlaining = {
-    booksList: bookListPlaining,
-    amountOfBooks: amountBooksTraining,
-    startTraining: dataStartTraining,
-    endTraining: dataEndTraining,
-    amountOfDays: amountDaysTraining,
-  };
 
   const toglMobileTraining = (e) => {
     setHideRightPart(!hideRightPart);
@@ -136,16 +127,14 @@ const TrainingPage = () => {
                   <TrainingData
                     getAmountDaysTraining={getAmountDaysTraining}
                     getAmountBooksTraining={getAmountBooksTraining}
-                    getDataStartTraining={getDataStartTraining}
-                    getDataEndTraining={getDataEndTraining}
-                    getBookListPlaining={getBookListPlaining}
+                    // getDataStartTraining={getDataStartTraining}
+                    // getDataEndTraining={getDataEndTraining}
+                    // getBookListPlaining={getBookListPlaining}
                     showRight={hideRightPart}
                   />
                   {!hideRightPart ? (
                     <>
-                      <div className={s.chartWrapper}>
-                        <Chart auth={auth} userData={dataForChartPlaining} />
-                      </div>
+                      <Chart />
                       <button
                         className={s.button__plus}
                         type="button"
@@ -175,13 +164,7 @@ const TrainingPage = () => {
                 </div>
                 <div className={s.right__wrapper}>
                   <StatisticsTabl />
-                  <div className={s.chartWrapper}>
-                    {auth.isLoading ? (
-                      <Loader />
-                    ) : (
-                      <Chart auth={auth} userData={auth.training} />
-                    )}
-                  </div>
+                  <Chart />
                   <StatisticsResults />
                 </div>
               </section>
@@ -196,13 +179,11 @@ const TrainingPage = () => {
                   <TrainingData
                     getAmountDaysTraining={getAmountDaysTraining}
                     getAmountBooksTraining={getAmountBooksTraining}
-                    getDataStartTraining={getDataStartTraining}
-                    getDataEndTraining={getDataEndTraining}
-                    getBookListPlaining={getBookListPlaining}
+                    // getDataStartTraining={getDataStartTraining}
+                    // getDataEndTraining={getDataEndTraining}
+                    // getBookListPlaining={getBookListPlaining}
                   />
-                  <div className={s.chartWrapper}>
-                    <Chart auth={auth} userData={dataForChartPlaining} />
-                  </div>
+                  <Chart />
                 </div>
               </section>
             ) : (
@@ -213,13 +194,7 @@ const TrainingPage = () => {
                 </div>
                 <div className={s.right__wrapper}>
                   <StatisticsTabl />
-                  <div className={s.chartWrapper}>
-                    {auth.isLoading ? (
-                      <Loader />
-                    ) : (
-                      <Chart auth={auth} userData={auth.training} />
-                    )}
-                  </div>
+                  <Chart />
                   <StatisticsResults />
                 </div>
               </section>
@@ -234,31 +209,22 @@ const TrainingPage = () => {
                   <TrainingData
                     getAmountDaysTraining={getAmountDaysTraining}
                     getAmountBooksTraining={getAmountBooksTraining}
-                    getDataStartTraining={getDataStartTraining}
-                    getDataEndTraining={getDataEndTraining}
-                    getBookListPlaining={getBookListPlaining}
+                    // getDataStartTraining={getDataStartTraining}
+                    // getDataEndTraining={getDataEndTraining}
+                    // getBookListPlaining={getBookListPlaining}
                   />
-                  <div className={s.chartWrapper}>
-                    <Chart auth={auth} userData={dataForChartPlaining} />
-                  </div>
+                  <Chart />
                 </div>
               </section>
             ) : (
               <section className={s.page__wrapperStat}>
                 <div className={s.right__wrapper}>
                   <MyGoals data={arrayStatistic} />
-                  <StatisticsResults />
                 </div>
                 <div className={s.left__wrapper}>
                   <Statistics />
                   <StatisticsTabl />
-                  <div className={s.chartWrapper}>
-                    {auth.isLoading ? (
-                      <Loader />
-                    ) : (
-                      <Chart auth={auth} userData={auth.training} />
-                    )}
-                  </div>
+                  <Chart />
                 </div>
               </section>
             ))}
