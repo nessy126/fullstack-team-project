@@ -7,13 +7,11 @@ import Chart from "components/Chart";
 import StatisticsResults from "components/StatisticsResults/StatisticsResults";
 import StatisticsTabl from "components/StatisticsTabl/StatisticsTabl";
 import Statistics from "components/Statistics";
-import Loader from "components/Loader";
 import { getAllBooks } from "redux/book/bookOperations";
 import { getProgressTraining } from "redux/training/trainingOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { IconContext } from "react-icons";
-
 
 import s from "./TrainingPage.module.scss";
 
@@ -24,13 +22,11 @@ const TrainingPage = () => {
 
   const [amountBooksTraining, setAmountBooksTraining] = useState(0);
   const [amountDaysTraining, setAmountDaysTraining] = useState(0);
-  const [dataStartTraining, setDataStartTraining] = useState(0);
-  const [dataEndTraining, setDataEndTraining] = useState(0);
+  // const [dataStartTraining, setDataStartTraining] = useState(0);
+  // const [dataEndTraining, setDataEndTraining] = useState(0);
   const [hideRightPart, setHideRightPart] = useState(false);
-  const [bookListPlaining, setBookListPlaining] = useState([]);
+  // const [bookListPlaining, setBookListPlaining] = useState([]);
   const statusIsTraining = useSelector(getStatusIsTraining);
-  
-  const isLoading = useSelector((state) => state.books.isLoading);
 
   const getAmountBooksTraining = (e) => {
     setAmountBooksTraining(e);
@@ -38,15 +34,15 @@ const TrainingPage = () => {
   const getAmountDaysTraining = (e) => {
     setAmountDaysTraining(e);
   };
-  const getDataStartTraining = (e) => {
-    setDataStartTraining(e);
-  };
-  const getDataEndTraining = (e) => {
-    setDataEndTraining(e);
-  };
-  const getBookListPlaining = (e) => {
-    setBookListPlaining(e);
-  };
+  // const getDataStartTraining = (e) => {
+  //   setDataStartTraining(e);
+  // };
+  // const getDataEndTraining = (e) => {
+  //   setDataEndTraining(e);
+  // };
+  // const getBookListPlaining = (e) => {
+  //   setBookListPlaining(e);
+  // };
 
   const arrayPlanTraining = [
     {
@@ -74,14 +70,6 @@ const TrainingPage = () => {
     },
   ];
 
-  const dataForChartPlaining = {
-    booksList: bookListPlaining,
-    amountOfBooks: amountBooksTraining,
-    startTraining: dataStartTraining,
-    endTraining: dataEndTraining,
-    amountOfDays: amountDaysTraining,
-  };
-
   const toglMobileTraining = (e) => {
     setHideRightPart(!hideRightPart);
   };
@@ -98,178 +86,152 @@ const TrainingPage = () => {
     }
   }, [dispatch, statusIsTraining]);
 
-  return (<>
-    {isLoading ? (<Loader /> ):
-      (<Media
-        queries={{
-          small: "(max-width: 767px)",
-          medium: "(min-width: 768px) and (max-width: 1199px)",
-          large: "(min-width: 1200px)",
-        }}
-      >
-        {(matches) => (
-          <>
-            {matches.small &&
-              (!statusIsTraining ? (
-                <section className={s.page__wrapper}>
-                  {hideRightPart ? (
-                    <button
-                      className={s.button__arrow}
-                      type="button"
-                      onClick={toglMobileTraining}
+  return (
+    <Media
+      queries={{
+        small: "(max-width: 767px)",
+        medium: "(min-width: 768px) and (max-width: 1199px)",
+        large: "(min-width: 1200px)",
+      }}
+    >
+      {(matches) => (
+        <>
+          {matches.small &&
+            (!statusIsTraining ? (
+              <section className={s.page__wrapper}>
+                {hideRightPart ? (
+                  <button
+                    className={s.button__arrow}
+                    type="button"
+                    onClick={toglMobileTraining}
+                  >
+                    <IconContext.Provider
+                      value={{
+                        className: `${s.icon__arrow}`,
+                        style: {
+                          width: "100%",
+                          height: "100%",
+                        },
+                      }}
                     >
-                      <IconContext.Provider
-                        value={{
-                          className: `${s.icon__arrow}`,
-                          style: {
-                            width: "100%",
-                            height: "100%",
-                          },
-                        }}
-                      >
-                        <HiOutlineArrowNarrowLeft />
-                      </IconContext.Provider>
-                    </button>
-                  ) : null}
+                      <HiOutlineArrowNarrowLeft />
+                    </IconContext.Provider>
+                  </button>
+                ) : null}
+                {!hideRightPart ? (
+                  <div className={s.right__wrapper}>
+                    <MyGoals data={arrayPlanTraining} />
+                  </div>
+                ) : null}
+                <div className={s.left__wrapper}>
+                  <TrainingData
+                    getAmountDaysTraining={getAmountDaysTraining}
+                    getAmountBooksTraining={getAmountBooksTraining}
+                    // getDataStartTraining={getDataStartTraining}
+                    // getDataEndTraining={getDataEndTraining}
+                    // getBookListPlaining={getBookListPlaining}
+                    showRight={hideRightPart}
+                  />
                   {!hideRightPart ? (
-                    <div className={s.right__wrapper}>
-                      <MyGoals data={arrayPlanTraining} />
-                    </div>
-                  ) : null}
-                  <div className={s.left__wrapper}>
-                    <TrainingData
-                      getAmountDaysTraining={getAmountDaysTraining}
-                      getAmountBooksTraining={getAmountBooksTraining}
-                      getDataStartTraining={getDataStartTraining}
-                      getDataEndTraining={getDataEndTraining}
-                      getBookListPlaining={getBookListPlaining}
-                      showRight={hideRightPart}
-                    />
-                    {!hideRightPart ? (
-                      <>
-                        <div className={s.chartWrapper}>
-                          <Chart auth={auth} userData={dataForChartPlaining} />
-                        </div>
-                        <button
-                          className={s.button__plus}
-                          type="button"
-                          onClick={toglMobileTraining}
+                    <>
+                      <Chart />
+                      <button
+                        className={s.button__plus}
+                        type="button"
+                        onClick={toglMobileTraining}
+                      >
+                        <IconContext.Provider
+                          value={{
+                            className: `${s.react__icon}`,
+                            style: {
+                              width: "16px",
+                              height: "16px",
+                            },
+                          }}
                         >
-                          <IconContext.Provider
-                            value={{
-                              className: `${s.react__icon}`,
-                              style: {
-                                width: "16px",
-                                height: "16px",
-                              },
-                            }}
-                          >
-                            <HiOutlinePlus />
-                          </IconContext.Provider>
-                        </button>
-                      </>
-                    ) : null}
-                  </div>
-                </section>
-              ) : (
-                <section className={s.page__wrapperStat}>
-                  <div className={s.left__wrapper}>
-                    <Statistics />
-                    <MyGoals data={arrayStatistic} />
-                  </div>
-                  <div className={s.right__wrapper}>
-                    <StatisticsTabl />
-                    <div className={s.chartWrapper}>
-                      {auth.isLoading ? (
-                        <Loader />
-                      ) : (
-                        <Chart auth={auth} userData={auth.training} />
-                      )}
-                    </div>
-                    <StatisticsResults />
-                  </div>
-                </section>
-              ))}
-            {matches.medium &&
-              (!statusIsTraining ? (
-                <section className={s.page__wrapper}>
-                  <div className={s.right__wrapper}>
-                    <MyGoals data={arrayPlanTraining} />
-                  </div>
-                  <div className={s.left__wrapper}>
-                    <TrainingData
-                      getAmountDaysTraining={getAmountDaysTraining}
-                      getAmountBooksTraining={getAmountBooksTraining}
-                      getDataStartTraining={getDataStartTraining}
-                      getDataEndTraining={getDataEndTraining}
-                      getBookListPlaining={getBookListPlaining}
-                    />
-                    <div className={s.chartWrapper}>
-                      <Chart auth={auth} userData={dataForChartPlaining} />
-                    </div>
-                  </div>
-                </section>
-              ) : (
-                <section className={s.page__wrapperStat}>
-                  <div className={s.left__wrapper}>
-                    <Statistics />
-                    <MyGoals data={arrayStatistic} />
-                  </div>
-                  <div className={s.right__wrapper}>
-                    <StatisticsTabl />
-                    <div className={s.chartWrapper}>
-                      {auth.isLoading ? (
-                        <Loader />
-                      ) : (
-                        <Chart auth={auth} userData={auth.training} />
-                      )}
-                    </div>
-                    <StatisticsResults />
-                  </div>
-                </section>
-              ))}
-            {matches.large &&
-              (!statusIsTraining ? (
-                <section className={s.page__wrapper}>
-                  <div className={s.right__wrapper}>
-                    <MyGoals data={arrayPlanTraining} />
-                  </div>
-                  <div className={s.left__wrapper}>
-                    <TrainingData
-                      getAmountDaysTraining={getAmountDaysTraining}
-                      getAmountBooksTraining={getAmountBooksTraining}
-                      getDataStartTraining={getDataStartTraining}
-                      getDataEndTraining={getDataEndTraining}
-                      getBookListPlaining={getBookListPlaining}
-                    />
-                    <div className={s.chartWrapper}>
-                      <Chart auth={auth} userData={dataForChartPlaining} />
-                    </div>
-                  </div>
-                </section>
-              ) : (
-                <section className={s.page__wrapperStat}>
-                  <div className={s.right__wrapper}>
-                    <MyGoals data={arrayStatistic} />
-                    <StatisticsResults />
-                  </div>
-                  <div className={s.left__wrapper}>
-                    <Statistics />
-                    <StatisticsTabl />
-                    <div className={s.chartWrapper}>
-                      {auth.isLoading ? (
-                        <Loader />
-                      ) : (
-                        <Chart auth={auth} userData={auth.training} />
-                      )}
-                    </div>
-                  </div>
-                </section>
-              ))}
-          </>
-        )}
-      </Media>)}
-  </>
+                          <HiOutlinePlus />
+                        </IconContext.Provider>
+                      </button>
+                    </>
+                  ) : null}
+                </div>
+              </section>
+            ) : (
+              <section className={s.page__wrapperStat}>
+                <div className={s.left__wrapper}>
+                  <Statistics />
+                  <MyGoals data={arrayStatistic} />
+                </div>
+                <div className={s.right__wrapper}>
+                  <StatisticsTabl />
+                  <Chart />
+                  <StatisticsResults />
+                </div>
+              </section>
+            ))}
+          {matches.medium &&
+            (!statusIsTraining ? (
+              <section className={s.page__wrapper}>
+                <div className={s.right__wrapper}>
+                  <MyGoals data={arrayPlanTraining} />
+                </div>
+                <div className={s.left__wrapper}>
+                  <TrainingData
+                    getAmountDaysTraining={getAmountDaysTraining}
+                    getAmountBooksTraining={getAmountBooksTraining}
+                    // getDataStartTraining={getDataStartTraining}
+                    // getDataEndTraining={getDataEndTraining}
+                    // getBookListPlaining={getBookListPlaining}
+                  />
+                  <Chart />
+                </div>
+              </section>
+            ) : (
+              <section className={s.page__wrapperStat}>
+                <div className={s.left__wrapper}>
+                  <Statistics />
+                  <MyGoals data={arrayStatistic} />
+                </div>
+                <div className={s.right__wrapper}>
+                  <StatisticsTabl />
+                  <Chart />
+                  <StatisticsResults />
+                </div>
+              </section>
+            ))}
+          {matches.large &&
+            (!statusIsTraining ? (
+              <section className={s.page__wrapper}>
+                <div className={s.right__wrapper}>
+                  <MyGoals data={arrayPlanTraining} />
+                </div>
+                <div className={s.left__wrapper}>
+                  <TrainingData
+                    getAmountDaysTraining={getAmountDaysTraining}
+                    getAmountBooksTraining={getAmountBooksTraining}
+                    // getDataStartTraining={getDataStartTraining}
+                    // getDataEndTraining={getDataEndTraining}
+                    // getBookListPlaining={getBookListPlaining}
+                  />
+                  <Chart />
+                </div>
+              </section>
+            ) : (
+              <section className={s.page__wrapperStat}>
+                <div className={s.right__wrapper}>
+                  <MyGoals data={arrayStatistic} />
+                  <StatisticsResults />
+                </div>
+                <div className={s.left__wrapper}>
+                  <Statistics />
+                  <StatisticsTabl />
+                  <Chart />
+                </div>
+              </section>
+            ))}
+        </>
+      )}
+    </Media>
   );
 };
 

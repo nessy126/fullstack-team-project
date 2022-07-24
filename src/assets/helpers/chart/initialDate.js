@@ -1,4 +1,4 @@
-const trainingData = {
+const initialData = {
   booksId: [],
   booksList: [],
   amountOfBooks: 0,
@@ -10,4 +10,4 @@ const trainingData = {
   statistics: [],
 };
 
-export default trainingData;
+export default initialData;

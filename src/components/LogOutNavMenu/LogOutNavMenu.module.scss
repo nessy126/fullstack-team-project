@@ -1,0 +1,44 @@
+@import "../../assets/sass/main.scss";
+
+.accLogo {
+  width: 33px;
+
+  margin-right: 14px;
+
+  border-radius: 50%;
+
+  text-align: center;
+  background-color: var(--auth-bg-cl);
+}
+
+@include vp(tablet) {
+  .accLogo {
+    display: none;
+  }
+}
+
+.logout__button {
+  border: none;
+  background-color: transparent;
+  color: rgba(189, 189, 189, 1);
+  text-decoration: underline;
+  margin-right: 4.25%;
+  transition: color 250ms ease;
+
+  &:hover,
+  &:focus {
+    color: var(--main-text-cl);
+  }
+}
+
+@include vp(tablet) {
+  .logout__button {
+    margin-right: -3.25%;
+  }
+}
+
+@include vp(desktop) {
+  .logout__button {
+    margin-right: -1.95%;
+  }
+}

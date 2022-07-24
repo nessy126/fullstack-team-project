@@ -1,10 +1,10 @@
-import s from "./OneCard.module.scss";
+import s from "./GoingToReadCard.module.scss";
 
 import MediaQuery from "react-responsive";
-import { FirstBook } from "components/MainNav/icons/FirstBook";
-import { OrangeBook } from "components/MainNav/icons/OrangeBook";
+import { FirstBook } from "assets/images/icons/FirstBook";
+import { OrangeBook } from "assets/images/icons/OrangeBook";
 
-const OneCard = (book) => {
+const GoingToReadCard = (book) => {
   //   const dispatch = useDispatch();
 
   return (
@@ -33,4 +33,4 @@ const OneCard = (book) => {
   );
 };
 
-export default OneCard;
+export default GoingToReadCard;
