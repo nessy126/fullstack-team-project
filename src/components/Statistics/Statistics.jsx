@@ -1,4 +1,4 @@
-import CountdownTimer from "./CountdownTimer";
+import CountdownTimer from "../CountdownTimer/CountdownTimer";
 import s from "./Statistics.module.scss";
 
 const Statistics = () => {

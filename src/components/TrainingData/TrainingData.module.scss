@@ -1,4 +1,31 @@
 @import "../../assets/sass/main.scss";
+.page__wrapper {
+  display: flex;
+  flex-direction: column;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  @include vp(desktop) {
+    flex-direction: row-reverse;
+    padding-top: 50px;
+  }
+}
+.left__wrapper {
+  margin-bottom: 30px;
+  @include vp(desktop) {
+    border: 1px solid green;
+    margin-right: 40px;
+    margin-bottom: 0;
+  }
+}
+.right__wrapper {
+  margin-bottom: 30px;
+  @include vp(tablet) {
+    margin-bottom: 0;
+  }
+  @include vp(desktop) {
+    border: 1px solid red;
+  }
+}
 .select__wrapper {
   width: 100%;
   display: flex;
@@ -7,75 +34,6 @@
   @include vp(tablet) {
     flex-direction: row;
   }
-}
-
-.select__button {
-  @include font(500, 14px, 2.71);
-  color: var(--additional-text-cl);
-  background-color: var(--secondary-bg-cl);
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 70px;
-  padding-right: 70px;
-  border: 1px solid var(--main-text-cl);
-  transition: all 250ms linear;
-}
-.select__button:hover,
-.select__button:focus {
-  background-color: var(--scrollbar-bg-cl);
-  border: 1px solid var(--additional-bg-cl);
-  box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-}
-.select__button:active {
-  background-color: var(--training-bg-cl);
-}
-.select__button:disabled {
-  cursor: auto;
-}
-.select__button:disabled.select__button:hover {
-  background-color: var(--secondary-bg-cl);
-  border: 1px solid var(--additional-bg-cl);
-  box-shadow: none;
-}
-
-.button__wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 35px;
-  @include vp(tablet) {
-    margin-top: 40px;
-  }
-}
-.start__button {
-  background-color: var(--accent-active-cl);
-  color: var(--main-bg-cl);
-  margin-bottom: 41px;
-  @include font(600, 14px, 2.71);
-  padding-top: 2px;
-  padding-bottom: 2px;
-  padding-left: 38px;
-  padding-right: 38px;
-  border: none;
-  transition: all 250ms linear;
-}
-.start__button:hover,
-.start__button:focus {
-  background-color: var(--accent-active-cl-hover);
-  box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
-}
-.start__button:active {
-  background-color: var(--training-bg-cl);
-  color: var(--accent-active-cl);
-}
-.start__button:disabled {
-  cursor: auto;
-}
-.start__button:disabled:hover,
-.start__button:disabled:focus {
-  cursor: auto;
-  background-color: var(--accent-active-cl);
-  color: var(--main-bg-cl);
 }
 
 // Styles for tost
