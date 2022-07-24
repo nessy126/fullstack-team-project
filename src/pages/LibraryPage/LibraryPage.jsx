@@ -69,7 +69,8 @@ const LibraryPage = () => {
           </>
 
           <>
-            {AlreadyReadList.length > 1 || booksInReading.length > 1 ? null : (
+            {AlreadyReadList.length === 0 ||
+            booksInReading.length === 0 ? null : (
               <NextButton />
             )}
           </>

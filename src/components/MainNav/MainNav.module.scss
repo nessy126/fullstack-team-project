@@ -74,6 +74,7 @@
   font-family: "Abril Fatface";
   @include font(400, 20px, 1.35);
   text-decoration: none;
+  margin-bottom: revert;
   color: var(--main-text-cl);
 }
 
