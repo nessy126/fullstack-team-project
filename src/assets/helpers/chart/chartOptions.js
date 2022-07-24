@@ -58,6 +58,21 @@ export const setOptions = (pagesToCheck) => {
       intersect: false,
     },
     plugins: {
+      title: {
+        display: true,
+        position: "top",
+        align: "start",
+        text: `PAGES/DAY   ${pagesToCheck}`,
+        color: COLORS.TEXT,
+        padding: 12,
+        fullSize: false,
+        font: {
+          family: "'Montserrat', sans-serif",
+          weight: 500,
+          size: 12,
+          lineHeight: 3.17,
+        },
+      },
       legend: { display: false },
       tooltip: {
         enabled: setTrueOrFalse,
