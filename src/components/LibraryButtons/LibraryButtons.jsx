@@ -1,18 +1,15 @@
 import s from "./LibraryButtons.module.scss";
 
 import MediaQuery from "react-responsive";
-import { Plus } from "assets/images/icons/Plus";
+
 import { Link } from "react-router-dom";
+import { Plus } from "assets/images/icons/Plus";
 
 export const NextButton = ({ setNext }) => {
   return (
     <Link to={"/training"} className={s.button}>
       <span className={s.buttonText}>Next</span>
     </Link>
-
-    // <button className={} onClick={() => setNext(true)}>
-
-    // </button>
   );
 };
 

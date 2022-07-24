@@ -43,16 +43,16 @@ const MainNav = ({ modalClass }) => {
   return (
     <>
       {!logIn ? (
-        <header className={s.authHead}>
-          <section className={s.authHeader}>
+        <header className={modalClass ? modalClass : s.authHead}>
+          <section className={modalClass ? s.noVision : s.authHeader}>
             <Link to="/" className={s.authTitleLink}>
               <h1 className={s.title}>BR</h1>
             </Link>
           </section>
         </header>
       ) : (
-        <header className={s.head}>
-          <section className={modalClass ? modalClass : s.header}>
+        <header className={modalClass ? modalClass : s.head}>
+          <section className={modalClass ? s.noVision : s.header}>
             <Link
               to={isTraining ? "/training" : "/library"}
               className={s.titleLink}
