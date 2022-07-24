@@ -115,8 +115,8 @@ const authSlice = createSlice({
       state.error = null;
     },
     [addStatistics.fulfilled]: (state, { payload }) => {
-      console.log("payload :>> ", payload);
-      state.training.statistics = payload;
+      state.training.statistics = payload.statistics;
+      state.training.booksList = payload.booksId;
       state.isLoading = false;
     },
     [addStatistics.rejected]: (state, { payload }) => {

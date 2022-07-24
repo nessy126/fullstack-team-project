@@ -1,18 +1,60 @@
 @import "../../assets/sass/main.scss";
-
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  z-index: 1100;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--main-bg-cl);
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  width: 100%;
+}
 .header {
   display: flex;
   align-items: center;
-  text-align: center;
   justify-content: space-between;
+  height: 60px;
+  z-index: 1100;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--main-bg-cl);
+  width: 320px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+@include vp(tablet) {
+  .header {
+    width: 768px;
+  }
+}
+@include vp(desktop) {
+  .header {
+    width: 1280px;
+  }
+}
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
   height: 60px;
   z-index: 1100;
   margin-left: auto;
   margin-right: auto;
 
   background-color: var(--main-bg-cl);
-  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-  width: 100%;
 }
 
 .authHeader {
@@ -26,8 +68,18 @@
   margin-right: auto;
 
   background-color: var(--main-bg-cl);
-  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-  width: 100%;
+  width: 320px;
+}
+
+@include vp(tablet) {
+  .authHeader {
+    width: 768px;
+  }
+}
+@include vp(desktop) {
+  .authHeader {
+    width: 1280px;
+  }
 }
 
 @include vp(mobile-only) {
@@ -36,11 +88,11 @@
   }
 }
 
-@include vp(tablet) {
-  .header {
-    justify-content: space-around;
-  }
-}
+// @include vp(tablet) {
+//   .header {
+//     justify-content: space-around;
+//   }
+// }
 
 .navMenu {
   display: flex;
@@ -74,6 +126,7 @@
   font-family: "Abril Fatface";
   @include font(400, 20px, 1.35);
   text-decoration: none;
+  // margin-bottom: revert;
   color: var(--main-text-cl);
 }
 
@@ -99,7 +152,25 @@
 .titleLink {
   display: block;
 
-  margin-left: 25px;
+  // margin-left: 25px;
+
+  width: 33px;
+  height: 33px;
+
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+
+  transition: background-color 350ms ease;
+  &:hover,
+  &:focus {
+    border-radius: 50%;
+    background-color: var(--auth-bg-cl);
+  }
+}
+
+.authTitleLink {
+  display: block;
 
   width: 33px;
   height: 33px;
@@ -141,13 +212,16 @@
 }
 
 .accLogoTablet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 33px;
-
-  margin-right: 14px;
+  height: 33px;
 
   border-radius: 50%;
-
-  text-align: center;
+  margin-right: 14px;
+  @include font(600, 14px, 2.71);
+  // text-align: center;
   background-color: var(--auth-bg-cl);
 }
 

@@ -5,6 +5,8 @@ import { useSelector } from "react-redux";
 // import { getProgressTraining } from "../../redux/training/trainingOperations";
 import { getAllBooks } from "../../redux/auth/authSelectors";
 import Media from "react-media";
+import { FiSquare } from "react-icons/fi";
+import { AiOutlineCheckSquare } from "react-icons/ai";
 import { MdMenuBook } from "react-icons/md";
 const StatisticsTabl = () => {
   // const dispatch = useDispatch();
@@ -32,13 +34,23 @@ const StatisticsTabl = () => {
                     <li key={book._id} className={s.column__item}>
                       <div className={s.column__flex}>
                         <div className={s.column__icon}>
-                          <MdMenuBook
-                            style={{
-                              width: "22",
-                              height: "17",
-                              color: "#A6ABB9",
-                            }}
-                          />
+                          {book.pageTotal === book.pageFinished ? (
+                            <AiOutlineCheckSquare
+                              style={{
+                                width: "15",
+                                height: "15",
+                                color: "#FF6B08",
+                              }}
+                            />
+                          ) : (
+                            <FiSquare
+                              style={{
+                                width: "15",
+                                height: "15",
+                                color: "#A6ABB9",
+                              }}
+                            />
+                          )}
                         </div>
                         <div className={s.column__title}>{book.title}</div>
                       </div>
@@ -102,13 +114,23 @@ const StatisticsTabl = () => {
                           return (
                             <li key={book._id} className={s.table__item}>
                               <div className={s.table__icon}>
-                                <MdMenuBook
-                                  style={{
-                                    width: "22",
-                                    height: "17",
-                                    color: "#A6ABB9",
-                                  }}
-                                />
+                                {book.pageTotal === book.pageFinished ? (
+                                  <AiOutlineCheckSquare
+                                    style={{
+                                      width: "15",
+                                      height: "15",
+                                      color: "#FF6B08",
+                                    }}
+                                  />
+                                ) : (
+                                  <FiSquare
+                                    style={{
+                                      width: "15",
+                                      height: "15",
+                                      color: "#A6ABB9",
+                                    }}
+                                  />
+                                )}
                               </div>
                               <div className={s.table__title}>{book.title}</div>
                               <div className={s.table__author}>
