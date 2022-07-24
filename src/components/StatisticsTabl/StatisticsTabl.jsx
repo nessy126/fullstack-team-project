@@ -12,7 +12,6 @@ const StatisticsTabl = () => {
   }, [dispatch]);
 
   const allTraining = useSelector(getAllBooks);
-  console.log("allTraining :>> ", allTraining);
   const show = allTraining?.length > 0 ? true : false;
   const isLoading = false;
   return (
