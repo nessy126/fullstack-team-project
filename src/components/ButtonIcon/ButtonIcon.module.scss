@@ -1,0 +1,103 @@
+@import "../../assets/sass/main.scss";
+
+.button__arrow {
+  border: none;
+  background-color: transparent;
+  width: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.icon__arrow {
+  color: var(--accent-active-cl);
+}
+.button__plus {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--accent-active-cl);
+  &:hover,
+  &:focus {
+    background-color: var(--accent-active-cl-hover);
+  }
+}
+.react__icon {
+  color: var(--main-bg-cl);
+  position: relative;
+  top: 0;
+  right: 0;
+}
+
+.select__button {
+  @include font(500, 14px, 2.71);
+  color: var(--additional-text-cl);
+  background-color: var(--secondary-bg-cl);
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 70px;
+  padding-right: 70px;
+  border: 1px solid var(--main-text-cl);
+  transition: all 250ms linear;
+}
+.select__button:hover,
+.select__button:focus {
+  background-color: var(--scrollbar-bg-cl);
+  border: 1px solid var(--additional-bg-cl);
+  box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+}
+.select__button:active {
+  background-color: var(--training-bg-cl);
+}
+.select__button:disabled {
+  cursor: auto;
+}
+.select__button:disabled.select__button:hover {
+  background-color: var(--secondary-bg-cl);
+  border: 1px solid var(--additional-bg-cl);
+  box-shadow: none;
+}
+
+.button__wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 35px;
+  @include vp(tablet) {
+    margin-top: 40px;
+  }
+}
+.start__button {
+  background-color: var(--accent-active-cl);
+  color: var(--main-bg-cl);
+  margin-bottom: 41px;
+  @include font(600, 14px, 2.71);
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 38px;
+  padding-right: 38px;
+  border: none;
+  transition: all 250ms linear;
+}
+.start__button:hover,
+.start__button:focus {
+  background-color: var(--accent-active-cl-hover);
+  box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+}
+.start__button:active {
+  background-color: var(--training-bg-cl);
+  color: var(--accent-active-cl);
+}
+.start__button:disabled {
+  cursor: auto;
+}
+.start__button:disabled:hover,
+.start__button:disabled:focus {
+  cursor: auto;
+  background-color: var(--accent-active-cl);
+  color: var(--main-bg-cl);
+}

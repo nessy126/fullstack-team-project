@@ -1,26 +1,21 @@
-import PlaningTabl from "components/PlainingTabl";
-import PlanningForm from "components/PlanningForm";
-import Select from "components/Select";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Media from "react-media";
 import { toast } from "react-toastify";
+import MyGoals from "components/MyGoals";
+import PlanningForm from "components/PlanningForm";
+import Select from "components/Select";
+import PlaningTabl from "components/PlainingTabl";
+import Chart from "components/Chart";
+import ButtonIcon from "components/ButtonIcon";
 import { addTraining } from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
 import { get, remove, updateStorage } from "utils/localStorage/localStorage";
 import { STORAGE_KEY } from "assets/const";
 import s from "./TrainingData.module.scss";
 
-const TrainingData = ({
-  getAmountDaysTraining,
-  getAmountBooksTraining,
-  getDataStartTraining,
-  getDataEndTraining,
-  getBookListPlaining,
-  showRight,
-}) => {
+const TrainingData = () => {
   const dispatch = useDispatch();
-
   const listGoingToRead = useSelector(bookSelectors.getListGoingToRead);
 
   // Локальный стейт для получения и передачи данных из других компонентов
@@ -33,6 +28,7 @@ const TrainingData = ({
   const [valueTraining, setValueTraining] = useState({});
   const [amountOfDaysTraining, setAmountOfDaysTraining] = useState(0);
   const [resetInput, setResetInput] = useState(false);
+  const [hideRightPart, setHideRightPart] = useState(false);
 
   const addStartTraining = (e) => {
     setStartTraining(e);
@@ -47,6 +43,19 @@ const TrainingData = ({
     setResetInput(false);
     updateStorage(STORAGE_KEY, "saveResetInput", false);
   };
+  const toglMobileTraining = (e) => {
+    setHideRightPart(!hideRightPart);
+  };
+  const arrayPlanTraining = [
+    {
+      title: "Amount of books",
+      amount: booksId.length || 0,
+    },
+    {
+      title: "Amount of days",
+      amount: amountOfDaysTraining || 0,
+    },
+  ];
 
   useEffect(() => {
     const saveData = get(STORAGE_KEY);
@@ -80,28 +89,6 @@ const TrainingData = ({
   }, [startTraining, endTraining]);
 
   useEffect(() => {
-    if (amountOfDaysTraining > 0) {
-      getAmountDaysTraining(amountOfDaysTraining);
-      //   getDataStartTraining(startTraining);
-      //   getDataEndTraining(endTraining);
-    }
-  }, [
-    amountOfDaysTraining,
-    // startTraining,
-    // endTraining,
-    // getDataStartTraining,
-    // getDataEndTraining,
-    getAmountDaysTraining,
-  ]);
-
-  useEffect(() => {
-    if (booksId.length >= 0) {
-      getAmountBooksTraining(booksId.length);
-      //   getBookListPlaining(listPlainingBooks);
-    }
-  }, [booksId, listPlainingBooks, getAmountBooksTraining, getBookListPlaining]);
-
-  useEffect(() => {
     if (startTraining > 0 && endTraining > 0 && booksId.length > 0) {
       const newValue = {
         booksId,
@@ -133,7 +120,6 @@ const TrainingData = ({
     updateStorage(STORAGE_KEY, "saveListPlainingBooks", updateList);
     updateStorage(STORAGE_KEY, "saveBooksId", updateBookId);
   };
-  // и возврата книги в список listGoingToRead
 
   // Функция для получения отфильтрованного списка книг для рендера в селекте (удаляются книги выдранные пользователем и отрендерреные в списке книг listPlainingBooks)
   const getVisibleBooks = (listGoingToRead) => {
@@ -191,7 +177,7 @@ const TrainingData = ({
   const hideBtnStart = listPlainingBooks?.length > 0 ? true : false;
 
   return (
-    <>
+    <section className={s.page__wrapper}>
       <Media
         queries={{
           small: "(max-width: 767px)",
@@ -202,8 +188,9 @@ const TrainingData = ({
           <>
             {matches.small && (
               <>
-                {showRight ? (
+                {hideRightPart && (
                   <>
+                    <ButtonIcon onClick={toglMobileTraining} type="arrow" />
                     <PlanningForm
                       addStartTraining={addStartTraining}
                       addEndTraining={addEndTraining}
@@ -218,105 +205,81 @@ const TrainingData = ({
                         onGetSelectBook={onGetSelectBook}
                       />
                       {showBtnAdd ? (
-                        <button
-                          type="button"
+                        <ButtonIcon
+                          type="addActive"
                           onClick={handleAddSelected}
-                          className={s.select__button}
-                        >
-                          Add
-                        </button>
+                        />
                       ) : (
-                        <button
-                          type="button"
-                          disabled
+                        <ButtonIcon
+                          type="addDisabled"
                           onClick={handleAddSelected}
-                          className={s.select__button}
-                        >
-                          Add
-                        </button>
+                        />
                       )}
-                    </div>{" "}
+                    </div>
                   </>
-                ) : (
+                )}
+                {!hideRightPart && (
                   <>
+                    <MyGoals data={arrayPlanTraining} />
                     <PlaningTabl
                       books={listPlainingBooks}
                       handleDelBook={handleDelBook}
                     />
-                    {!hideBtnStart ? null : (
-                      <>
-                        <div className={s.button__wrapper}>
-                          <button
-                            type="button"
-                            onClick={clickOnStartBtn}
-                            className={s.start__button}
-                          >
-                            Start training
-                          </button>
-                        </div>
-                      </>
+                    {hideBtnStart && (
+                      <ButtonIcon onClick={clickOnStartBtn} type="btnStart" />
                     )}
+                    <Chart />
+                    <ButtonIcon onClick={toglMobileTraining} type="plus" />
                   </>
                 )}
               </>
             )}
             {matches.medium && (
               <>
-                <PlanningForm
-                  addStartTraining={addStartTraining}
-                  addEndTraining={addEndTraining}
-                  addAmountOfDaysTraining={addAmountOfDaysTraining}
-                />
-                <div className={s.select__wrapper}>
-                  <Select
-                    books={onFilteredlistGoingToRead}
-                    selected={selected}
-                    onGetSelectBook={onGetSelectBook}
-                    resetInput={resetInput}
-                    getFalseForReset={getFalseForReset}
-                  />
-                  {showBtnAdd ? (
-                    <button
-                      type="button"
-                      onClick={handleAddSelected}
-                      className={s.select__button}
-                    >
-                      Add
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      disabled
-                      onClick={handleAddSelected}
-                      className={s.select__button}
-                    >
-                      Add
-                    </button>
-                  )}
+                <div className={s.right__wrapper}>
+                  <MyGoals data={arrayPlanTraining} />
                 </div>
-                <PlaningTabl
-                  books={listPlainingBooks}
-                  handleDelBook={handleDelBook}
-                />
-                {!hideBtnStart ? null : (
-                  <>
-                    <div className={s.button__wrapper}>
-                      <button
-                        type="button"
-                        onClick={clickOnStartBtn}
-                        className={s.start__button}
-                      >
-                        Start training
-                      </button>
-                    </div>
-                  </>
-                )}
+                <div className={s.left__wrapper}>
+                  <PlanningForm
+                    addStartTraining={addStartTraining}
+                    addEndTraining={addEndTraining}
+                    addAmountOfDaysTraining={addAmountOfDaysTraining}
+                  />
+                  <div className={s.select__wrapper}>
+                    <Select
+                      books={onFilteredlistGoingToRead}
+                      selected={selected}
+                      onGetSelectBook={onGetSelectBook}
+                      resetInput={resetInput}
+                      getFalseForReset={getFalseForReset}
+                    />
+                    {showBtnAdd ? (
+                      <ButtonIcon
+                        type="addActive"
+                        onClick={handleAddSelected}
+                      />
+                    ) : (
+                      <ButtonIcon
+                        type="addDisabled"
+                        onClick={handleAddSelected}
+                      />
+                    )}
+                  </div>
+                  <PlaningTabl
+                    books={listPlainingBooks}
+                    handleDelBook={handleDelBook}
+                  />
+                  {hideBtnStart && (
+                    <ButtonIcon onClick={clickOnStartBtn} type="btnStart" />
+                  )}
+                  <Chart />
+                </div>
               </>
             )}
           </>
         )}
       </Media>
-    </>
+    </section>
   );
 };
 
