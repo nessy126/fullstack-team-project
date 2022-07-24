@@ -58,7 +58,7 @@ const MainNav = ({ modalClass }) => {
           </Link>
           <div className={s.userBar}>
             <div className={s.accLogoTablet}>{userName?.slice(0, 1)}</div>
-            <p>{userName}</p>
+            <div className={s.name}>{userName}</div>
           </div>
           <div className={s.navMenuContainer}>
             <NavMenu />
