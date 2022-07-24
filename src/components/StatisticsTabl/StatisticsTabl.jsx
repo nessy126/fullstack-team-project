@@ -5,6 +5,7 @@ import { getProgressTraining } from "../../redux/training/trainingOperations";
 import { getAllBooks } from "../../redux/auth/authSelectors";
 import Media from "react-media";
 import { MdMenuBook } from "react-icons/md";
+import { IoCheckboxOutline } from "react-icons/md";
 const StatisticsTabl = () => {
   const dispatch = useDispatch();
   useEffect(() => {
