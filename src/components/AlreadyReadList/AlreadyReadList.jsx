@@ -2,6 +2,8 @@ import s from "./AlreadyReadList.module.scss";
 
 import MediaQuery from "react-responsive";
 import AlreadyReadCard from "../AlreadyReadCard/AlreadyReadCard";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const AlreadyReadList = ({ library }) => {
   return (

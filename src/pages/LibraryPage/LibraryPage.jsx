@@ -15,7 +15,6 @@ import {
 
 const LibraryPage = () => {
   const dispatch = useDispatch();
-  const [next, setNext] = useState(false);
   const booksGoingToRead = useSelector(bookSelectors.getListGoingToRead);
   const booksInReading = useSelector(bookSelectors.getListInReading);
   const booksFinished = useSelector(bookSelectors.getListFinished);
@@ -26,7 +25,7 @@ const LibraryPage = () => {
 
   useEffect(() => {
     dispatch(getAllBooks());
-  }, [dispatch, booksGoingToRead, booksInReading, booksFinished]);
+  }, [dispatch]);
 
   const openModal = () => {
     setModal({
@@ -50,39 +49,30 @@ const LibraryPage = () => {
       booksInReading.length ||
       booksFinished.length ? (
         <>
-          {next ? (
-            <>
-              {AlreadyReadList.length > 0 ? (
-                <AlreadyReadList library={booksFinished} />
-              ) : null}
+          <>
+            {AlreadyReadList.length > 0 ? (
+              <AlreadyReadList library={booksFinished} />
+            ) : null}
 
-              {booksInReading.length > 0 ? (
-                <GoingToReadList
-                  library={booksInReading}
-                  type={"booksInReading"}
-                />
-              ) : null}
-              {booksGoingToRead.length > 0 && (
-                <GoingToReadList
-                  library={booksGoingToRead}
-                  type={"booksGoingToRead"}
-                />
-              )}
-            </>
-          ) : (
-            <>
-              {booksGoingToRead.length > 0 && (
-                <GoingToReadList
-                  library={booksGoingToRead}
-                  type={"booksGoingToRead"}
-                />
-              )}
-              {AlreadyReadList.length === 0 &&
-              booksInReading.length === 0 ? null : (
-                <NextButton setNext={setNext} />
-              )}
-            </>
-          )}
+            {booksInReading.length > 0 ? (
+              <GoingToReadList
+                library={booksInReading}
+                type={"booksInReading"}
+              />
+            ) : null}
+            {booksGoingToRead.length > 0 && (
+              <GoingToReadList
+                library={booksGoingToRead}
+                type={"booksGoingToRead"}
+              />
+            )}
+          </>
+
+          <>
+            {AlreadyReadList.length > 1 || booksInReading.length > 1 ? null : (
+              <NextButton />
+            )}
+          </>
         </>
       ) : (
         <LibraryModal />

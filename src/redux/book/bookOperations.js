@@ -16,9 +16,7 @@ export const addBook = createAsyncThunk(
 export const addReview = createAsyncThunk(
   "book/addReview",
   async (review, { rejectWithValue }) => {
-    console.log("review", review);
     const { id, ...data } = review;
-    console.log("data,id", data, id);
     try {
       const result = await bookAPI.addReview(id, data);
       return result;
