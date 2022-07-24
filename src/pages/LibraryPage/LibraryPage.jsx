@@ -19,13 +19,14 @@ const LibraryPage = () => {
   const booksGoingToRead = useSelector(bookSelectors.getListGoingToRead);
   const booksInReading = useSelector(bookSelectors.getListInReading);
   const booksFinished = useSelector(bookSelectors.getListFinished);
+
   const [modal, setModal] = useState({
     open: false,
   });
 
   useEffect(() => {
     dispatch(getAllBooks());
-  }, [dispatch]);
+  }, [dispatch, booksFinished]);
 
   const openModal = () => {
     setModal({
@@ -76,7 +77,7 @@ const LibraryPage = () => {
                   type={"booksGoingToRead"}
                 />
               )}
-              {AlreadyReadList.length === 0 ||
+              {AlreadyReadList.length === 0 &&
               booksInReading.length === 0 ? null : (
                 <NextButton setNext={setNext} />
               )}

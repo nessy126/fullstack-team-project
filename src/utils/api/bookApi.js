@@ -23,3 +23,14 @@ export const getAllBooksAPI = (auth) => {
       throw err;
     });
 };
+
+export const addReview = (id, review) => {
+  return axios
+    .patch(endPoint + id + "/feedback", review)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      throw err;
+    });
+};

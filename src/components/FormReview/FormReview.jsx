@@ -6,30 +6,32 @@ import { validationReviewForm } from "utils/validation/validationReviewForm";
 import { toast } from "react-toastify";
 
 import MediaQuery from "react-responsive";
+import { useDispatch } from "react-redux";
+import { addReview } from "redux/book/bookOperations";
 
-export default function FormReview({ closeModal }) {
-  // const dispatch = useDispatch();
+export default function FormReview({ closeModal, id, backRate, comment }) {
+  const dispatch = useDispatch();
   return (
     <>
       <Formik
         initialValues={{
           rating: 0,
-          review: "",
+          comment: comment,
+          id: id,
         }}
         validationSchema={validationReviewForm}
         onSubmit={(values, { resetForm }) => {
-          // dispatch(addBook(values));
-          console.log("values", values);
+          dispatch(addReview(values));
           resetForm();
           closeModal();
-          toast.success(" Your review is saved");
+          toast.success(" Your comment is saved");
         }}
       >
         {({ values, handleChange, handleBlur, handleSubmit }) => (
           <form onSubmit={handleSubmit} className={s.form}>
             <div className={s.form__container}>
               <h2 className={s.modalTitle}>Choose rating of the book</h2>
-              <Rating values={values} />
+              <Rating values={values} backRate={backRate} />
               <ErrorMessage
                 component="div"
                 name="rating"
@@ -40,14 +42,14 @@ export default function FormReview({ closeModal }) {
                 <h2 className={s.Resume}>Resume</h2>
                 <ErrorMessage
                   component="div"
-                  name="review"
+                  name="comment"
                   className={s.errorMessageUp}
                 />
                 <textarea
                   type="text"
-                  name="review"
+                  name="comment"
                   autoComplete="off"
-                  value={values.review}
+                  value={values.comment}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   placeholder="..."
