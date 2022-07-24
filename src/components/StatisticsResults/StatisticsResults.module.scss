@@ -213,6 +213,8 @@ div.datetime__picker {
 
  .item {
     display: flex;
+    justify-content: space-between;
+// justify-content: safe center;
     height: 20px;
  }
 
@@ -232,14 +234,16 @@ div.datetime__picker {
   }
 
  .itemData {
-    margin-right: 30px;
+    // width: 50px;
+    // margin-right: 30px;
     font-weight: 400;
         font-size: 14px;
         line-height: 38px;
         color: var(--main-text-cl);
  }
  .itemTime {
-    margin-right: 30px;
+    // width: 50px;
+    // margin-right: 30px;
     font-weight: 400;
     font-size: 14px;
     line-height: 38px;
@@ -248,7 +252,9 @@ div.datetime__picker {
 
     color: var(--secondary-text-cl);
  }
+
  .itemPages {
+    //   width: 40px;
         font-weight: 400;
         font-size: 14px;
         line-height: 38px;

@@ -211,7 +211,6 @@ const TrainingPage = () => {
                   ) : (
                     <Chart auth={auth} userData={auth.training} />
                   )}
-                  <StatisticsResults />
                 </div>
               </section>
             ))}
@@ -236,7 +235,6 @@ const TrainingPage = () => {
               <section className={s.page__wrapperStat}>
                 <div className={s.right__wrapper}>
                   <MyGoals data={arrayStatistic} />
-                  <StatisticsResults />
                 </div>
                 <div className={s.left__wrapper}>
                   <Statistics />

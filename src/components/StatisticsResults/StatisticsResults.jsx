@@ -1,19 +1,36 @@
 import DateTimePicker from "react-datetime-picker";
 import React, { useState, useEffect } from "react";
 import s from "./StatisticsResults.module.scss";
-import { MdOutlineSignalWifiStatusbarNull } from "react-icons/md";
-import { getAllBooks } from "redux/auth/authSelectors";
+import {
+  getAllBooks,
+  getTraininId,
+  getStatistics,
+} from "redux/auth/authSelectors";
+import { addStatistics } from "redux/training/trainingOperations";
 import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
 
 const StatisticsResults = () => {
   const dispatch = useDispatch();
   const [pagesRead, setPagesRead] = useState("");
   const [valueStart, setValueStart] = useState(new Date());
-  const [newName, setnewName] = useState();
+  const [newStatistics, setNewStatistics] = useState();
   const allBooks = useSelector(getAllBooks);
+  const traingId = useSelector(getTraininId);
+  const allStatistics = useSelector(getStatistics);
+  const restSttatistics = allStatistics.filter(
+    (val, index, arr) => index > arr.length - 6
+  );
+
   useEffect(() => {
     setValueStart(new Date());
-  }, [newName]);
+  }, [newStatistics]);
+
+  let correctBook = allBooks?.find(
+    (book) => book?.pageTotal > book?.pageFinished
+  );
+
+  let correctPage = correctBook?.pageTotal - correctBook?.pageFinished;
 
   const onInput = (e) => {
     const { name, value } = e.target;
@@ -27,26 +44,29 @@ const StatisticsResults = () => {
     }
   };
 
-  let correctBook = allBooks.find(function (book) {
-    return book.pageTotal > book.pageFinished;
-  });
-
-  // console.log(correctBook._id);
-  // console.log("pageTotal :>> ", correctBook.pageTotal);
-  // console.log("pageFinished :>> ", correctBook.pageFinished);
-
   const onSubmit = (e) => {
     e.preventDefault();
-    const newName = {
-      date: `${valueStart.getDate()}.0${
-        valueStart.getMonth() + 1
-      }.${valueStart.getFullYear()} `,
-      time: `${valueStart.getHours()}:${valueStart.getMinutes()}:${valueStart.getSeconds()} `,
-      pagesRead,
-    };
+    if (correctBook === undefined) {
+      alert("Ти прочитав всі книги ");
+      setPagesRead("");
+      return;
+    }
+    if (pagesRead > correctPage) {
+      alert("Забагато сторінок ");
+      setPagesRead("");
+      return;
+    }
 
-    // dispatch();
-    setnewName(newName);
+    const newStatistics = {
+      date: valueStart,
+      idBook: correctBook._id,
+      trainingID: traingId,
+      pagesRead,
+      days: moment().quarter(3).format("DD.MM.YYYY"),
+      time: moment().quarter(3).format("HH:mm:ss"),
+    };
+    dispatch(addStatistics(newStatistics));
+    setNewStatistics(newStatistics);
     setPagesRead("");
   };
 
@@ -67,7 +87,6 @@ const StatisticsResults = () => {
               disableClock={true}
               format="dd.MM.yyyy"
               placeholderText="Start"
-              required={false}
             />
           </div>
           <label>
@@ -80,8 +99,7 @@ const StatisticsResults = () => {
               title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
               autoComplete="off"
               onChange={onInput}
-              required="required"
-              pattern="\d{3,5}"
+              min="1"
             />
           </label>
         </div>
@@ -91,41 +109,17 @@ const StatisticsResults = () => {
       </form>
       <h2 className={s.titleStatic}>STATISTICS</h2>
       <ul className={s.list}>
-        <li className={s.item}>
-          <p className={s.itemData}>10.10.2019</p>
-          <p className={s.itemTime}>08:10:23</p>
-          <p className={s.itemPages}>
-            <span className={s.itemNumber}>32</span>pages
-          </p>
-        </li>
-        <li className={s.item}>
-          <p className={s.itemData}>10.10.2019</p>
-          <p className={s.itemTime}>08:10:23</p>
-          <p className={s.itemPages}>
-            <span className={s.itemNumber}>32</span>pages
-          </p>
-        </li>
-        <li className={s.item}>
-          <p className={s.itemData}>10.10.2019</p>
-          <p className={s.itemTime}>08:10:23</p>
-          <p className={s.itemPages}>
-            <span className={s.itemNumber}>32</span>pages
-          </p>
-        </li>
-        <li className={s.item}>
-          <p className={s.itemData}>10.10.2019</p>
-          <p className={s.itemTime}>08:10:23</p>
-          <p className={s.itemPages}>
-            <span className={s.itemNumber}>32</span>pages
-          </p>
-        </li>
-        <li className={s.item}>
-          <p className={s.itemData}>10.10.2019</p>
-          <p className={s.itemTime}>08:10:23</p>
-          <p className={s.itemPages}>
-            <span className={s.itemNumber}>32</span>pages
-          </p>
-        </li>
+        {restSttatistics?.map(({ date, pagesRead, days, time }) => {
+          return (
+            <li className={s.item} key={date}>
+              <p className={s.itemData}>{days}</p>
+              <p className={s.itemTime}>{time}</p>
+              <p className={s.itemPages}>
+                <span className={s.itemNumber}>{pagesRead}</span>pages
+              </p>
+            </li>
+          );
+        })}
       </ul>
     </section>
   );

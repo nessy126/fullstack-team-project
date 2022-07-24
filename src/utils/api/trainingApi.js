@@ -24,6 +24,18 @@ export const getProgressAPI = (auth) => {
     });
 };
 
+export const addStatistics = (data, auth) => {
+  console.log("data :>> ", data);
+  return axios
+    .patch(endPoint + "statistics", data)
+    .then((res) => {
+      return res.data;
+    })
+    .catch((err) => {
+      throw err;
+    });
+};
+
 //{
 //   "factEndTraining": "111111111",
 //   "trainingID": "62d6ef9f32198562acca2e3c"
