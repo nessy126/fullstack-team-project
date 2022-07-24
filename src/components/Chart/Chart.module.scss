@@ -50,11 +50,12 @@
   height: 290px;
   background-color: var(--main-bg-cl);
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.25);
-
+  margin-top: 30px;
   @include vp(tablet) {
     padding: 31px 36px 12px 36px;
     width: 678px;
     height: 340px;
+    margin-top: 40px;
   }
   @include vp(desktop) {
     padding: 31px 37px 12px 39px;

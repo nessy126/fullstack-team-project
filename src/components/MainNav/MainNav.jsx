@@ -41,13 +41,15 @@ const MainNav = ({ modalClass }) => {
   };
 
   return (
-    <header className={s.head}>
+    <>
       {!logIn ? (
-        <section className={s.authHeader}>
-          <Link to={"/"} className={s.titleLink}>
-            <h1 className={s.title}>BR</h1>
-          </Link>
-        </section>
+        <header className={s.authHead}>
+          <section className={s.authHeader}>
+            <Link to="/" className={s.authTitleLink}>
+              <h1 className={s.title}>BR</h1>
+            </Link>
+          </section>
+        </header>
       ) : (
         <section className={modalClass ? modalClass : s.header}>
           <Link
@@ -75,7 +77,7 @@ const MainNav = ({ modalClass }) => {
           />
         </Modal>
       )}
-    </header>
+    </>
   );
 };
 

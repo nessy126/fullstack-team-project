@@ -43,6 +43,20 @@
   justify-content: center;
 }
 
+.authHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  height: 60px;
+  z-index: 1100;
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: var(--main-bg-cl);
+}
+
 .authHeader {
   display: flex;
   align-items: center;
@@ -54,8 +68,18 @@
   margin-right: auto;
 
   background-color: var(--main-bg-cl);
-  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
   width: 320px;
+}
+
+@include vp(tablet) {
+  .authHeader {
+    width: 768px;
+  }
+}
+@include vp(desktop) {
+  .authHeader {
+    width: 1280px;
+  }
 }
 
 @include vp(mobile-only) {
@@ -129,6 +153,24 @@
   display: block;
 
   // margin-left: 25px;
+
+  width: 33px;
+  height: 33px;
+
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+
+  transition: background-color 350ms ease;
+  &:hover,
+  &:focus {
+    border-radius: 50%;
+    background-color: var(--auth-bg-cl);
+  }
+}
+
+.authTitleLink {
+  display: block;
 
   width: 33px;
   height: 33px;
