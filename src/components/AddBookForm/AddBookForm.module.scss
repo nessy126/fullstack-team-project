@@ -3,8 +3,10 @@
 .form {
   display: flex;
   margin-top: 30px;
+
   @media screen and (max-width: 1279px) {
     flex-direction: column;
+    margin-bottom: 40px;
     // align-items: center;
   }
   @media screen and (min-width: 768px) {
@@ -12,6 +14,7 @@
   }
   @media screen and (min-width: 1280px) {
     padding-left: 0;
+    margin-bottom: 30px;
   }
 
   &__container {

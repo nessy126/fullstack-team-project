@@ -3,7 +3,7 @@ export const Home = ({ svg }) => {
     <svg
       className={svg}
       width="22"
-      height="17"
+      height="20"
       viewBox="0 0 40 40"
       fill={svg}
       xmlns="http://www.w3.org/2000/svg"

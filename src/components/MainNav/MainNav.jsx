@@ -1,11 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { Home } from "./icons/homeIcon";
-import { LibraryIcon } from "./icons/libraryIcon";
-
 import Modal from "../Modal/Modal";
-import MediaQuery from "react-responsive";
 import s from "./MainNav.module.scss";
 import { logout } from "redux/auth/authOperations";
 import {
@@ -13,6 +9,9 @@ import {
   getStatusIsTraining,
   getUser,
 } from "redux/auth/authSelectors";
+import MainNavModal from "components/MainNavModal/MainNavModal";
+import NavMenu from "components/NavMenu/NavMenu";
+import LogOutNavMenu from "components/LogOutNavMenu";
 
 const MainNav = ({ modalClass }) => {
   const logIn = useSelector(getIsLogin);
@@ -20,10 +19,8 @@ const MainNav = ({ modalClass }) => {
   const user = useSelector(getUser);
   const userName = user?.name;
   const dispatch = useDispatch();
-
   const [modal, setModal] = useState({
     open: false,
-    content: null,
   });
 
   const openModal = () => {
@@ -64,53 +61,18 @@ const MainNav = ({ modalClass }) => {
             <p>{userName}</p>
           </div>
           <div className={s.navMenuContainer}>
-            <nav>
-              <ul className={s.navMenu}>
-                <li className={s.navItem}></li>
-                <li className={s.navItem}>
-                  <Link to="/library" className={s.link}>
-                    <LibraryIcon svg={s.svg} />
-                  </Link>
-                </li>
-                <li className={s.navItem}>
-                  <Link to="/training" className={s.link}>
-                    <Home svg={s.svg} />
-                  </Link>
-                </li>
-              </ul>
-            </nav>
+            <NavMenu />
             <div className={s.line}>|</div>
-            <div className={s.accLogo}>{userName?.slice(0, 1)}</div>
-            <button
-              className={s.logout__button}
-              type="button"
-              onClick={() => openModal()}
-            >
-              <span className={s.logout__text}>Exit</span>
-            </button>
+            <LogOutNavMenu userName={userName} openModal={openModal} />
           </div>
         </section>
       )}
-
       {modal.open && (
         <Modal type="exit" closeModal={closeModal}>
-          <p className={s.exitText}>
-            The changes you made will be lost if you navigate away from this
-            application
-          </p>
-          <div className={s.modalButtonBlock}>
-            <button className={s.notExit} onClick={() => closeModal()}>
-              <span className={s.notExitText}>Сancel</span>
-            </button>
-            <button className={s.exit} onClick={() => logoutButtonAction()}>
-              <MediaQuery maxWidth={767}>
-                <span className={s.buttonExitText}>Leave</span>
-              </MediaQuery>
-              <MediaQuery minWidth={768}>
-                <span className={s.buttonExitText}>Leave this app</span>
-              </MediaQuery>
-            </button>
-          </div>
+          <MainNavModal
+            closeModal={closeModal}
+            logoutButtonAction={logoutButtonAction}
+          />
         </Modal>
       )}
     </header>

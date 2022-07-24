@@ -1,22 +1,20 @@
 .card {
   display: flex;
   margin: 0;
-
   background-color: var(--main-bg-cl);
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  // margin-bottom: 10px;
   &:not(:last-child) {
     margin-bottom: 10px;
   }
   @media screen and (max-width: 767px) {
     padding: 18px 15px 0px 10px;
     position: relative;
-    height: 200px;
+    height: 180px;
   }
 
   @media screen and (min-width: 768px) {
-    padding-top: 14px;
-    padding-bottom: 14px;
-    margin-top: 14px;
+    // margin-bottom: 14px;
     height: 62px;
   }
 }
@@ -64,9 +62,8 @@
   width: 154px;
 
   @media screen and (min-width: 768px) {
-    width: 135px;
-    align-self: center;
-    margin-right: 20px;
+    width: 190px;
+    margin-right: 75px;
     font-size: 14px;
     line-height: 1.5;
   }
@@ -92,7 +89,6 @@
   margin-left: 30px;
   margin-top: 5px;
   @media screen and (min-width: 768px) {
-    margin-left: 0px;
     display: flex;
     align-items: center;
   }
