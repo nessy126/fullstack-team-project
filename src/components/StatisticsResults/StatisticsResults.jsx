@@ -1,4 +1,3 @@
-import DateTimePicker from "react-datetime-picker";
 import React, { useState, useEffect } from "react";
 import s from "./StatisticsResults.module.scss";
 import {
@@ -7,7 +6,7 @@ import {
   getStatistics,
 } from "redux/auth/authSelectors";
 import { addStatistics } from "redux/training/trainingOperations";
-import { useDispatch, useSelector } from "react-redux";
+
 import moment from "moment";
 
 const StatisticsResults = () => {
@@ -77,17 +76,9 @@ const StatisticsResults = () => {
         <div className={s.flex}>
           <div>
             <p className={s.paragraph}>Date</p>
-            <DateTimePicker
-              onChange={setValueStart}
-              value={valueStart}
-              minDate={new Date()}
-              clearIcon={null}
-              className={s.datetime__picker}
-              calendarClassName={s.react__calendar}
-              disableClock={true}
-              format="dd.MM.yyyy"
-              placeholderText="Start"
-            />
+            <p className={s.datetime__picker}>
+              {moment().quarter(3).format("DD.MM.YYYY")}
+            </p>
           </div>
           <label>
             <p className={s.paragraph}>Amount of pages</p>
