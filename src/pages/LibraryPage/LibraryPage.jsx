@@ -26,7 +26,9 @@ const LibraryPage = () => {
 
   useEffect(() => {
     dispatch(getAllBooks());
-  }, [dispatch, booksGoingToRead, booksInReading, booksFinished]);
+  }, [dispatch, 
+    // booksGoingToRead, booksInReading, booksFinished
+  ]);
 
   const openModal = () => {
     setModal({
