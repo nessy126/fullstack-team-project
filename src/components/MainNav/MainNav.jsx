@@ -41,31 +41,35 @@ const MainNav = ({ modalClass }) => {
   };
 
   return (
-    <header className={s.head}>
+    <>
       {!logIn ? (
-        <section className={s.authHeader}>
-          <Link to={"/"} className={s.titleLink}>
-            <h1 className={s.title}>BR</h1>
-          </Link>
-        </section>
+        <header className={modalClass ? modalClass : s.authHead}>
+          <section className={modalClass ? s.noVision : s.authHeader}>
+            <Link to="/" className={s.authTitleLink}>
+              <h1 className={s.title}>BR</h1>
+            </Link>
+          </section>
+        </header>
       ) : (
-        <section className={modalClass ? modalClass : s.header}>
-          <Link
-            to={isTraining ? "/training" : "/library"}
-            className={s.titleLink}
-          >
-            <h1 className={s.title}>BR</h1>
-          </Link>
-          <div className={s.userBar}>
-            <div className={s.accLogoTablet}>{userName?.slice(0, 1)}</div>
-            <p>{userName}</p>
-          </div>
-          <div className={s.navMenuContainer}>
-            <NavMenu />
-            <div className={s.line}>|</div>
-            <LogOutNavMenu userName={userName} openModal={openModal} />
-          </div>
-        </section>
+        <header className={modalClass ? modalClass : s.head}>
+          <section className={modalClass ? s.noVision : s.header}>
+            <Link
+              to={isTraining ? "/training" : "/library"}
+              className={s.titleLink}
+            >
+              <h1 className={s.title}>BR</h1>
+            </Link>
+            <div className={s.userBar}>
+              <div className={s.accLogoTablet}>{userName?.slice(0, 1)}</div>
+              <p>{userName}</p>
+            </div>
+            <div className={s.navMenuContainer}>
+              <NavMenu />
+              <div className={s.line}>|</div>
+              <LogOutNavMenu userName={userName} openModal={openModal} />
+            </div>
+          </section>
+        </header>
       )}
       {modal.open && (
         <Modal type="exit" closeModal={closeModal}>
@@ -75,7 +79,7 @@ const MainNav = ({ modalClass }) => {
           />
         </Modal>
       )}
-    </header>
+    </>
   );
 };
 

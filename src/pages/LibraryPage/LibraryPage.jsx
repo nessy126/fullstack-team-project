@@ -8,10 +8,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllBooks } from "redux/book/bookOperations";
 import bookSelectors from "../../redux/book/bookSelectors";
 import AlreadyReadList from "components/AlreadyReadList";
-import {
-  NextButton,
-  PlusButton,
-} from "components/LibraryButtons/LibraryButtons";
+import s from "./LibraryPage.module.scss";
+import { NextButton } from "components/LibraryButtons/LibraryButtons";
+import { Plus } from "assets/images/icons/Plus";
 
 const LibraryPage = () => {
   const dispatch = useDispatch();
@@ -41,7 +40,11 @@ const LibraryPage = () => {
 
   return (
     <>
-      <PlusButton openModal={openModal} />
+      <MediaQuery maxWidth={767}>
+        <button className={s.phonePlusButton} onClick={() => openModal()}>
+          <Plus />
+        </button>
+      </MediaQuery>
       <MediaQuery minWidth={768}>
         <AddBookForm closeModal={closeModal} />
       </MediaQuery>
@@ -69,8 +72,7 @@ const LibraryPage = () => {
           </>
 
           <>
-            {AlreadyReadList.length === 0 ||
-            booksInReading.length === 0 ? null : (
+            {AlreadyReadList.length > 0 || booksInReading.length > 0 ? null : (
               <NextButton />
             )}
           </>

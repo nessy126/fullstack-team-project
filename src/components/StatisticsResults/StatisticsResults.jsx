@@ -5,8 +5,11 @@ import {
   getTraininId,
   getStatistics,
 } from "redux/auth/authSelectors";
-import { addStatistics } from "redux/training/trainingOperations";
-
+import {
+  addStatistics,
+  finishTraiining,
+} from "redux/training/trainingOperations";
+import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 
 const StatisticsResults = () => {
@@ -29,6 +32,17 @@ const StatisticsResults = () => {
     (book) => book?.pageTotal > book?.pageFinished
   );
 
+  const dataToFinishTraining = {
+    trainingID: traingId,
+    factEndTraining: Number(new Date()),
+    booksId: ["62cec8aec6e91af0ab950c3d"],
+  };
+
+  //
+  const letsFinishTraining = () => {
+    dispatch(finishTraiining(dataToFinishTraining));
+  };
+
   let correctPage = correctBook?.pageTotal - correctBook?.pageFinished;
 
   const onInput = (e) => {
@@ -47,6 +61,7 @@ const StatisticsResults = () => {
     e.preventDefault();
     if (correctBook === undefined) {
       alert("Ти прочитав всі книги ");
+      letsFinishTraining();
       setPagesRead("");
       return;
     }
@@ -98,6 +113,9 @@ const StatisticsResults = () => {
           Add result
         </button>
       </form>
+      <button onClick={letsFinishTraining} className={s.button} type="button">
+        Finish training
+      </button>
       <h2 className={s.titleStatic}>STATISTICS</h2>
       <ul className={s.list}>
         {restSttatistics?.map(({ date, pagesRead, days, time }) => {

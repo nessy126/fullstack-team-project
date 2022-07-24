@@ -11,14 +11,13 @@ import { getStatusIsTraining } from "redux/auth/authSelectors";
 const TrainingPage = () => {
   const dispatch = useDispatch();
 
-  const { auth } = useSelector((state) => state);
   const statusIsTraining = useSelector(getStatusIsTraining);
 
   useEffect(() => {
     if (!statusIsTraining) {
-      dispatch(getAllBooks(auth));
+      dispatch(getAllBooks());
     }
-  }, [dispatch, auth, statusIsTraining]);
+  }, [dispatch, statusIsTraining]);
 
   useEffect(() => {
     if (statusIsTraining) {
