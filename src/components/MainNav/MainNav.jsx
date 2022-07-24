@@ -51,25 +51,23 @@ const MainNav = ({ modalClass }) => {
           </section>
         </header>
       ) : (
-        <header className={s.head}>
-          <section className={modalClass ? modalClass : s.header}>
-            <Link
-              to={isTraining ? "/training" : "/library"}
-              className={s.titleLink}
-            >
-              <h1 className={s.title}>BR</h1>
-            </Link>
-            <div className={s.userBar}>
-              <div className={s.accLogoTablet}>{userName?.slice(0, 1)}</div>
-              <p>{userName}</p>
-            </div>
-            <div className={s.navMenuContainer}>
-              <NavMenu />
-              <div className={s.line}>|</div>
-              <LogOutNavMenu userName={userName} openModal={openModal} />
-            </div>
-          </section>
-        </header>
+        <section className={modalClass ? modalClass : s.header}>
+          <Link
+            to={isTraining ? "/training" : "/library"}
+            className={s.titleLink}
+          >
+            <h1 className={s.title}>BR</h1>
+          </Link>
+          <div className={s.userBar}>
+            <div className={s.accLogoTablet}>{userName?.slice(0, 1)}</div>
+            <div className={s.name}>{userName}</div>
+          </div>
+          <div className={s.navMenuContainer}>
+            <NavMenu />
+            <div className={s.line}>|</div>
+            <LogOutNavMenu userName={userName} openModal={openModal} />
+          </div>
+        </section>
       )}
       {modal.open && (
         <Modal type="exit" closeModal={closeModal}>
