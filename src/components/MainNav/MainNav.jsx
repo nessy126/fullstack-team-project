@@ -42,7 +42,6 @@ const MainNav = ({ modalClass }) => {
 
   return (
     <header>
-      d
       {!logIn ? (
         <section className={s.authHeader}>
           <Link to={"/"} className={s.titleLink}>

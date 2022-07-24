@@ -7,20 +7,10 @@ import { toast } from "react-toastify";
 
 import MediaQuery from "react-responsive";
 import { useDispatch } from "react-redux";
-import { addReview, getAllBooks } from "redux/book/bookOperations";
-import { useEffect, useState } from "react";
+import { addReview } from "redux/book/bookOperations";
 
 export default function FormReview({ closeModal, id, backRate, comment }) {
   const dispatch = useDispatch();
-  const [flag, setFlag] = useState(false);
-
-  useEffect(() => {
-    console.log("localState :>> ", flag);
-    if (flag) {
-      console.log("localState :>> ", flag);
-      dispatch(getAllBooks());
-    }
-  }, [dispatch, flag]);
 
   return (
     <>
@@ -33,11 +23,8 @@ export default function FormReview({ closeModal, id, backRate, comment }) {
         validationSchema={validationReviewForm}
         onSubmit={(values, { resetForm }) => {
           dispatch(addReview(values));
-          setFlag(true);
-          console.log("localState", flag);
           resetForm();
           closeModal();
-
           toast.success(" Your comment is saved");
         }}
       >
