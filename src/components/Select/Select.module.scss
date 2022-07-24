@@ -21,7 +21,7 @@
     margin-right: 25px;
     margin-bottom: 0;
   }
-  @include vp(decktop) {
+  @include vp(desktop) {
     width: 669px;
     margin-right: 46px;
   }
