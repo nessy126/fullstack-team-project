@@ -1,4 +1,3 @@
-import DateTimePicker from "react-datetime-picker";
 import React, { useState, useEffect } from "react";
 import s from "./StatisticsResults.module.scss";
 import {
@@ -6,7 +5,10 @@ import {
   getTraininId,
   getStatistics,
 } from "redux/auth/authSelectors";
-import { addStatistics, finishTraiining } from "redux/training/trainingOperations";
+import {
+  addStatistics,
+  finishTraiining,
+} from "redux/training/trainingOperations";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 
@@ -22,25 +24,24 @@ const StatisticsResults = () => {
     (val, index, arr) => index > arr.length - 6
   );
 
-  
   useEffect(() => {
     setValueStart(new Date());
   }, [newStatistics]);
-  
+
   let correctBook = allBooks?.find(
     (book) => book?.pageTotal > book?.pageFinished
-    );
+  );
 
-    const dataToFinishTraining = {
-      trainingID: traingId,
-      factEndTraining: Number(new Date()),
-      booksId: ["62cec8aec6e91af0ab950c3d"],
-    }
-    
-//
-    const letsFinishTraining = () => {
-      dispatch(finishTraiining(dataToFinishTraining))
-    }
+  const dataToFinishTraining = {
+    trainingID: traingId,
+    factEndTraining: Number(new Date()),
+    booksId: ["62cec8aec6e91af0ab950c3d"],
+  };
+
+  //
+  const letsFinishTraining = () => {
+    dispatch(finishTraiining(dataToFinishTraining));
+  };
 
   let correctPage = correctBook?.pageTotal - correctBook?.pageFinished;
 
@@ -60,7 +61,7 @@ const StatisticsResults = () => {
     e.preventDefault();
     if (correctBook === undefined) {
       alert("Ти прочитав всі книги ");
-      letsFinishTraining()
+      letsFinishTraining();
       setPagesRead("");
       return;
     }
@@ -90,17 +91,9 @@ const StatisticsResults = () => {
         <div className={s.flex}>
           <div>
             <p className={s.paragraph}>Date</p>
-            <DateTimePicker
-              onChange={setValueStart}
-              value={valueStart}
-              minDate={new Date()}
-              clearIcon={null}
-              className={s.datetime__picker}
-              calendarClassName={s.react__calendar}
-              disableClock={true}
-              format="dd.MM.yyyy"
-              placeholderText="Start"
-            />
+            <p className={s.datetime__picker}>
+              {moment().quarter(3).format("DD.MM.YYYY")}
+            </p>
           </div>
           <label>
             <p className={s.paragraph}>Amount of pages</p>
@@ -120,9 +113,9 @@ const StatisticsResults = () => {
           Add result
         </button>
       </form>
-        <button onClick={letsFinishTraining} className={s.button} type="button">
-          Finish training
-        </button>
+      <button onClick={letsFinishTraining} className={s.button} type="button">
+        Finish training
+      </button>
       <h2 className={s.titleStatic}>STATISTICS</h2>
       <ul className={s.list}>
         {restSttatistics?.map(({ date, pagesRead, days, time }) => {
