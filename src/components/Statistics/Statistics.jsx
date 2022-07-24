@@ -9,7 +9,6 @@ const Statistics = () => {
   const newYearCountdown = Date.now() - getFullYearMs;
   const timeEndYear = ms_of_a_year(getFullYear) - newYearCountdown;
   const timeEndGoal = useSelector(getEndTraining);
-  console.log("timeEndGoal :>> ", timeEndGoal);
   const correctTime = timeEndGoal - Date.now();
   const dateTimeToNewYear = now_in_ms + timeEndYear;
   const dateTimeToGoal = now_in_ms + correctTime;

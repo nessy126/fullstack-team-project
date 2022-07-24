@@ -16,7 +16,6 @@ const StatisticsTabl = () => {
   const allTraining = useSelector(getAllBooks);
   const show = allTraining?.length > 0 ? true : false;
   const isLoading = false;
-  console.log("allTraining :>> ", allTraining);
   return (
     <Media
       queries={{
