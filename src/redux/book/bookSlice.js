@@ -45,6 +45,20 @@ const bookSlice = createSlice({
         return (changedBook.status = "inReading");
       });
     },
+    [addTraining.pending]: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [addTraining.fulfilled]: (state, { payload }) => {
+      payload.booksId.map((id) => {
+        const changedBook = state.books.find((book) => book._id === id._id);
+        return (changedBook.status = "inReading");
+      });
+    },
+    [addTraining.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
+    },
   },
 });
 export default bookSlice.reducer;
