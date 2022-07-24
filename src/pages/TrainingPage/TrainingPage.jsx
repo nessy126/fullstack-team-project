@@ -4,7 +4,6 @@ import Media from "react-media";
 import MyGoals from "components/MyGoals";
 import TrainingData from "components/TrainingData";
 import Chart from "components/Chart";
-import StatisticsResults from "components/StatisticsResults/StatisticsResults";
 import StatisticsTabl from "components/StatisticsTabl/StatisticsTabl";
 import Statistics from "components/Statistics";
 import { getAllBooks } from "redux/book/bookOperations";
@@ -14,6 +13,7 @@ import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { IconContext } from "react-icons";
 
 import s from "./TrainingPage.module.scss";
+import StatisticsResults from "components/StatisticsResults";
 
 const TrainingPage = () => {
   const { auth } = useSelector((state) => state);
@@ -220,7 +220,6 @@ const TrainingPage = () => {
               <section className={s.page__wrapperStat}>
                 <div className={s.right__wrapper}>
                   <MyGoals data={arrayStatistic} />
-                  <StatisticsResults />
                 </div>
                 <div className={s.left__wrapper}>
                   <Statistics />
