@@ -41,7 +41,7 @@ const MainNav = ({ modalClass }) => {
   };
 
   return (
-    <header>
+    <header className={s.head}>
       {!logIn ? (
         <section className={s.authHeader}>
           <Link to={"/"} className={s.titleLink}>
