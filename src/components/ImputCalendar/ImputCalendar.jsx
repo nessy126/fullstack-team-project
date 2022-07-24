@@ -33,9 +33,7 @@ const ImputCalendar = () => {
   };
   // 
   const handleChange = (e) => {
-    console.log(e)
     setselectedDate(e)
-    console.log(selectedDate)
     setIsActive(!isActive);
     const data = new Date(e)
     // updateStorage(STORAGE_KEY, "saveValueStart", data.toString());
