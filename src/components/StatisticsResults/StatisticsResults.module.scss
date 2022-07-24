@@ -217,6 +217,18 @@ div.datetime__picker {
 // justify-content: safe center;
     height: 20px;
  }
+  @include vp(tablet) {
+      .item {
+        justify-content: start;
+
+      }
+  }
+  @include vp(desktop) {
+      .item {
+          justify-content: space-between;
+
+      }
+  }
 
  @include vp(tablet) {
      .list {
@@ -241,6 +253,19 @@ div.datetime__picker {
         line-height: 38px;
         color: var(--main-text-cl);
  }
+
+ @include vp(tablet) {
+     .itemData {
+        margin-right: 30px;
+     }
+ }
+
+ @include vp(desktop) {
+     .itemData {
+         margin-right: 0px;
+     }
+ }
+
  .itemTime {
     // width: 50px;
     // margin-right: 30px;
@@ -252,7 +277,16 @@ div.datetime__picker {
 
     color: var(--secondary-text-cl);
  }
-
+@include vp(tablet) {
+    .itemTime {
+        margin-right: 30px;
+    }
+}
+@include vp(desktop) {
+    .itemTime {
+        margin-right: 0px;
+    }
+}
  .itemPages {
     //   width: 40px;
         font-weight: 400;
