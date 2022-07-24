@@ -1,6 +1,5 @@
 import CountdownTimer from "../CountdownTimer/CountdownTimer";
 import s from "./Statistics.module.scss";
-import StatisticsResults from "components/StatisticsResults";
 const Statistics = () => {
   const now_in_ms = new Date().getTime();
   const getFullYear = new Date().getFullYear();
@@ -31,7 +30,6 @@ const Statistics = () => {
           {/* <CountdownTimer targetDate={dateTimeToGoal} /> */}
         </div>
       </div>
-      <StatisticsResults></StatisticsResults>
     </>
   );
 };
