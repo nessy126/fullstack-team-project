@@ -1,15 +1,9 @@
 import React from "react";
-import DateTimeDisplay from "./DateTimeDisplay";
+import { useEffect } from "react";
 import { useCountdown } from "hooks/useCountDown";
+
+import DateTimeDisplay from "./DateTimeDisplay";
 import s from "./CountdownTimer.module.scss";
-const ExpiredNotice = () => {
-  return (
-    <div className="expired-notice">
-      <span>Expired!!!</span>
-      <p>Please select a future date and time.</p>
-    </div>
-  );
-};
 
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
@@ -25,11 +19,18 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
   );
 };
 
-const CountdownTimer = ({ targetDate }) => {
+const CountdownTimer = ({ targetDate, type, setModal }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
+  let endOfCountdown = days + hours + minutes + seconds;
 
-  if (days + hours + minutes + seconds <= 0) {
-    return <ExpiredNotice />;
+  useEffect(() => {
+    if (type === "targetData" && endOfCountdown <= 0) {
+      setModal();
+    }
+  });
+
+  if (endOfCountdown <= 0) {
+    return <ShowCounter days="0" hours="0" minutes="0" seconds="0" />;
   } else {
     return (
       <ShowCounter

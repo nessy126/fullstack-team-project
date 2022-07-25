@@ -1,8 +1,10 @@
-import CountdownTimer from "../CountdownTimer/CountdownTimer";
-import s from "./Statistics.module.scss";
 import { useSelector } from "react-redux";
 import { getEndTraining } from "redux/auth/authSelectors";
-const Statistics = () => {
+
+import CountdownTimer from "../CountdownTimer/CountdownTimer";
+import s from "./Statistics.module.scss";
+
+const Statistics = ({ setModal }) => {
   const now_in_ms = new Date().getTime();
   const getFullYear = new Date().getFullYear();
   const getFullYearMs = new Date(getFullYear + "-01-01").getTime();
@@ -32,7 +34,11 @@ const Statistics = () => {
         </div>
         <div>
           <h2 className={s.counterTitle}>Goal countdown</h2>
-          <CountdownTimer targetDate={dateTimeToGoal} />
+          <CountdownTimer
+            targetDate={dateTimeToGoal}
+            type="targetData"
+            setModal={setModal}
+          />
         </div>
       </div>
     </>
