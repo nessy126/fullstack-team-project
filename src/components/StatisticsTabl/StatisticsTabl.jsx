@@ -1,17 +1,18 @@
 import s from "./StatisticsTable.module.scss";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { getProgressTraining } from "../../redux/training/trainingOperations";
+// import { useEffect } from "react";
+import { useSelector } from "react-redux";
+// import { useDispatch } from "react-redux";
+// import { getProgressTraining } from "../../redux/training/trainingOperations";
 import { getAllBooks } from "../../redux/auth/authSelectors";
 import Media from "react-media";
 import { FiSquare } from "react-icons/fi";
 import { AiOutlineCheckSquare } from "react-icons/ai";
 import { MdMenuBook } from "react-icons/md";
 const StatisticsTabl = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getProgressTraining());
-  }, [dispatch]);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getProgressTraining());
+  // }, [dispatch]);
 
   const allTraining = useSelector(getAllBooks);
   const show = allTraining?.length > 0 ? true : false;

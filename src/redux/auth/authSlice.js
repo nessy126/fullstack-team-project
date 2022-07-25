@@ -47,7 +47,10 @@ const authSlice = createSlice({
       state.error = null;
     },
     [signUp.fulfilled]: (state, { payload }) => {
-      state.user = { ...payload };
+      state.user = { 
+        name: payload.name,
+        email: payload.email,
+       };
       state.isLoading = false;
       state.registerPass = true;
     },
@@ -154,23 +157,24 @@ const authSlice = createSlice({
       state.isLoading = true;
       state.error = null;
     },
-    [finishTraiining.fulfilled]: (state, { payload }) => {
+    [finishTraiining.fulfilled]: (state) => {
       state.isTraining = false;
       state.isLoading = false;
       state.training = {
-        ...state.training,
-        trainingID: payload.training._id,
-        booksId: payload.training.booksId,
-        startTraining: payload.training.startTraining,
-        endTraining: payload.training.endTraining,
-        factEndTraining: payload.training.factEndTraining,
-        amountOfDays: payload.training.amountOfDays,
-        amountOfPages: payload.training.amountOfPages,
-        pagesPerDay: payload.training.pagesPerDay,
-        amountOfBooks: payload.training?.amountOfBooks,
-        booksLeft: payload.training,
-        status: payload.training.status,
-        statistics: payload.training.statistics,
+        ...initialState.training
+        // ...state.training,
+        // trainingID: payload.training._id,
+        // booksId: payload.training.booksId,
+        // startTraining: payload.training.startTraining,
+        // endTraining: payload.training.endTraining,
+        // factEndTraining: payload.training.factEndTraining,
+        // amountOfDays: payload.training.amountOfDays,
+        // amountOfPages: payload.training.amountOfPages,
+        // pagesPerDay: payload.training.pagesPerDay,
+        // amountOfBooks: payload.training?.amountOfBooks,
+        // booksLeft: payload.training,
+        // status: payload.training.status,
+        // statistics: payload.training.statistics,
       };
       state.error = null;
     },

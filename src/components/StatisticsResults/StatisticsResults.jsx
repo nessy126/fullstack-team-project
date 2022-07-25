@@ -1,4 +1,3 @@
-import DateTimePicker from "react-datetime-picker";
 import React, { useState, useEffect } from "react";
 import s from "./StatisticsResults.module.scss";
 import {
@@ -6,7 +5,10 @@ import {
   getTraininId,
   getStatistics,
 } from "redux/auth/authSelectors";
-import { addStatistics } from "redux/training/trainingOperations";
+import {
+  addStatistics,
+  finishTraiining,
+} from "redux/training/trainingOperations";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 
@@ -30,6 +32,17 @@ const StatisticsResults = () => {
     (book) => book?.pageTotal > book?.pageFinished
   );
 
+  const dataToFinishTraining = {
+    trainingID: traingId,
+    factEndTraining: Number(new Date()),
+    booksId: ["62cec8aec6e91af0ab950c3d"],
+  };
+
+  //
+  const letsFinishTraining = () => {
+    dispatch(finishTraiining(dataToFinishTraining));
+  };
+
   let correctPage = correctBook?.pageTotal - correctBook?.pageFinished;
 
   const onInput = (e) => {
@@ -48,6 +61,7 @@ const StatisticsResults = () => {
     e.preventDefault();
     if (correctBook === undefined) {
       alert("Ти прочитав всі книги ");
+      letsFinishTraining();
       setPagesRead("");
       return;
     }
@@ -71,23 +85,16 @@ const StatisticsResults = () => {
   };
 
   return (
+    <>
     <section className={s.section}>
       <h2 className={s.title}>RESULTS</h2>
       <form className={s.form} onSubmit={onSubmit}>
         <div className={s.flex}>
           <div>
             <p className={s.paragraph}>Date</p>
-            <DateTimePicker
-              onChange={setValueStart}
-              value={valueStart}
-              minDate={new Date()}
-              clearIcon={null}
-              className={s.datetime__picker}
-              calendarClassName={s.react__calendar}
-              disableClock={true}
-              format="dd.MM.yyyy"
-              placeholderText="Start"
-            />
+            <p className={s.datetime__picker}>
+              {moment().quarter(3).format("DD.MM.YYYY")}
+            </p>
           </div>
           <label>
             <p className={s.paragraph}>Amount of pages</p>
@@ -122,6 +129,10 @@ const StatisticsResults = () => {
         })}
       </ul>
     </section>
+     <button onClick={letsFinishTraining} className={s.button} type="button">
+     Finish training
+   </button>
+   </>
   );
 };
 

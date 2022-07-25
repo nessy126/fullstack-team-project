@@ -1,6 +1,5 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
-import spriteSVG from "assets/images/sprite.svg";
 import { SignUpSchema, LoginSchema } from "assets/schemas/authSchemas";
 import { login, signUp } from "redux/auth/authOperations";
 
@@ -38,14 +37,6 @@ const AuthForm = ({ type }) => {
           <div className={s.auth}>
             <div className={s.back}>
               <div className={isRegister ? s.formReg : s.form}>
-                <div className={s.google}>
-                  <button>
-                    <svg className={s.iconGoogle}>
-                      <use href={`${spriteSVG}#google`}></use>
-                    </svg>
-                    Google
-                  </button>
-                </div>
                 <Form onSubmit={handleSubmit}>
                   <div>
                     {isRegister && (

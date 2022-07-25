@@ -39,6 +39,7 @@ const bookSlice = createSlice({
       state.isLoading = false;
       state.error = payload;
     },
+
     [addTraining.pending]: (state) => {
       state.isLoading = true;
       state.error = null;
@@ -48,6 +49,10 @@ const bookSlice = createSlice({
         const changedBook = state.books.find((book) => book._id === id._id);
         return (changedBook.status = "inReading");
       });
+    },
+    [addTraining.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.error = payload;
     },
 
     [addReview.fulfilled]: (state, { payload }) => {
@@ -62,10 +67,6 @@ const bookSlice = createSlice({
       state.error = null;
     },
     [addReview.rejected]: (state, { payload }) => {
-      state.isLoading = false;
-      state.error = payload;
-    },
-    [addTraining.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },

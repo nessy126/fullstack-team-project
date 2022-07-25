@@ -2,7 +2,7 @@ import axios from "axios";
 
 const endPoint = "api/training/";
 
-export const addTrainingAPI = (newTraining, auth) => {
+export const addTrainingAPI = (newTraining) => {
   return axios
     .post(endPoint + "start", newTraining)
     .then((res) => {
@@ -13,7 +13,7 @@ export const addTrainingAPI = (newTraining, auth) => {
     });
 };
 
-export const getProgressAPI = (auth) => {
+export const getProgressAPI = () => {
   return axios
     .get(endPoint)
     .then((res) => {
@@ -24,8 +24,7 @@ export const getProgressAPI = (auth) => {
     });
 };
 
-export const addStatistics = (data, auth) => {
-  console.log("data :>> ", data);
+export const addStatistics = (data) => {
   return axios
     .patch(endPoint + "statistics", data)
     .then((res) => {
@@ -36,12 +35,7 @@ export const addStatistics = (data, auth) => {
     });
 };
 
-//{
-//   "factEndTraining": "111111111",
-//   "trainingID": "62d6ef9f32198562acca2e3c"
-// }
-
-export const finishTraiiningApi = (data, auth) => {
+export const finishTraiiningApi = (data) => {
   return axios
     .patch(endPoint + "finish", data)
     .then((res) => {
