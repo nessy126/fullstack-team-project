@@ -7,7 +7,6 @@ import StatisticsData from "components/StatisticsData";
 import { getAllBooks } from "redux/book/bookOperations";
 import { getProgressTraining } from "redux/training/trainingOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
-import ImputCalendar from "./../../components/ImputCalendar/ImputCalendar";
 
 const TrainingPage = () => {
   const dispatch = useDispatch();
@@ -30,7 +29,6 @@ const TrainingPage = () => {
     <>
       {!statusIsTraining && <TrainingData />}
       {statusIsTraining && <StatisticsData />}
-      <ImputCalendar />
     </>
   );
 };

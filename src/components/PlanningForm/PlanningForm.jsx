@@ -5,6 +5,7 @@ import DateTimePicker from "react-datetime-picker";
 import { toast } from "react-toastify";
 import { get, updateStorage } from "utils/localStorage/localStorage";
 import { STORAGE_KEY } from "assets/const";
+import ImputCalendar from "./../ImputCalendar/ImputCalendar";
 
 const PlanningForm = ({
   addStartTraining,
@@ -42,13 +43,8 @@ const PlanningForm = ({
         (valueEnd - valueStart) / (1000 * 3600 * 24)
       );
       if (amountOfDays <= 0) {
-        toast(
-          "The end date of the workout must be greater than the start date of the workout",
-          {
-            className: `${s.tost__background}`,
-            bodyClassName: `${s.tost__body}`,
-            progressClassName: `${s.progress__bar}`,
-          }
+        toast.error(
+          "The end date of the workout must be greater than the start date of the workout"
         );
         return;
       }
@@ -73,7 +69,19 @@ const PlanningForm = ({
           </div>
         </div>
         <div className={s.calendar__wrapper}>
-          <div className={s.input__wrapper}>
+          <ImputCalendar
+            getHandleChange={handleChangeStart}
+            minDate={new Date()}
+            value={valueStart}
+            placeholderText="Start"
+          />
+          <ImputCalendar
+            getHandleChange={handleChangeEnd}
+            minDate={new Date(Date.now() + 24 * 60 * 60 * 1000)}
+            value={valueEnd}
+            placeholderText={"Finish"}
+          />
+          {/* <div className={s.input__wrapper}>
             <DateTimePicker
               onChange={handleChangeStart}
               value={valueStart}
@@ -86,8 +94,8 @@ const PlanningForm = ({
               format="dd.MM.yyyy HH:mm"
               placeholderText="Start"
             />
-          </div>
-          <div className={s.input__wrapper}>
+          </div> */}
+          {/* <div className={s.input__wrapper}>
             <DateTimePicker
               onChange={handleChangeEnd}
               value={valueEnd}
@@ -100,7 +108,7 @@ const PlanningForm = ({
               placeholderText={"Finish"}
               calendarIcon={<img alt="button" src={polygonIconSvg} />}
             />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
