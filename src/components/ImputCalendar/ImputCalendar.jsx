@@ -1,24 +1,35 @@
-import Calendar from 'react-calendar';
+import Calendar from "react-calendar";
 import { useState, useEffect, useCallback } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
+import { FiCalendar } from "react-icons/fi";
 import { IconContext } from "react-icons";
+import ButtonIcon from "components/ButtonIcon";
+
 import s from "./ImputCalendar.module.scss";
 
-
-const ImputCalendar = () => {
+const ImputCalendar = (props) => {
+  // const { type } = props;
   const [isActive, setIsActive] = useState(false);
-  const [selectedDate, setselectedDate] = useState(new Date());
-  const [valueInput, setValueInput] = useState('');
+  const [selectedDate, setselectedDate] = useState("");
 
-  // При нажатии на клавишу ESС селект закрывается и инпут очищается 
+  if (selectedDate !== "") {
+    selectedDate.getTime();
+    console.log(selectedDate.toLocaleDateString());
+  }
+  // console.log(selectedDate.getDate());
+  // const [selectedDate, setselectedDate] = useState(new Date());
+  const [valueInput, setValueInput] = useState("");
+
+  // При нажатии на клавишу ESС селект закрывается и инпут очищается
   const closeSelectByEsc = useCallback(
     (e) => {
       if (e.code === "Escape") {
         setIsActive(false);
-        setValueInput('');
+        setValueInput("");
       }
-    }, [setIsActive]);
-
+    },
+    [setIsActive]
+  );
   useEffect(() => {
     window.addEventListener("keydown", closeSelectByEsc);
     return () => {
@@ -26,53 +37,50 @@ const ImputCalendar = () => {
     };
   }, [closeSelectByEsc]);
 
-      // При клике по иконке треугольника в инпуте, очищается инпут и открывается/закрывается селект
-    const handleClick = () => {
-        setIsActive(!isActive);
-        setValueInput('');
-  };
-  // 
-  const handleChange = (e) => {
-    setselectedDate(e)
+  // При клике по иконке треугольника в инпуте, очищается инпут и открывается/закрывается селект
+  const handleClick = () => {
     setIsActive(!isActive);
-    const data = new Date(e)
+    setValueInput("");
+  };
+  //
+  const handleChange = (e) => {
+    setselectedDate(e);
+    setIsActive(!isActive);
+    const data = new Date(e);
     // updateStorage(STORAGE_KEY, "saveValueStart", data.toString());
-  }; 
-  // const onChange = (e) => {
-  //   console.log(e)
-  //   setValueInput(e);
-  //   console.log(valueInput)
-  // }
-  
-  
+  };
+
   return (
     <div className={s.dropdown}>
-      <div className={s.dropdown__wrapper} >
-        <input className={s.dropdown__input}
+      <div className={s.dropdown__wrapper}>
+        <IconContext.Provider
+          value={{
+            className: `${s.react__fiCalendar}`,
+            style: {
+              width: "17px",
+              height: "17px",
+            },
+          }}
+        >
+          <FiCalendar />
+        </IconContext.Provider>
+        <input
+          className={s.dropdown__input}
           name="inputName"
-          value={selectedDate}
-          // onChange={()=>console.log('value')}
+          value={selectedDate.toLocaleDateString()}
+          onChange={() => console.log("value")}
           placeholder="Start"
-          readOnly/>
-        <button type="button" onClick={handleClick} className={s.dropdown__btn}>
-          <IconContext.Provider
-            value={{
-              className: `${s.react__icon}`,
-              style: {
-                width: "17px",
-                height: "15px",
-              },
-            }}>
-            <AiFillCaretDown />
-          </IconContext.Provider>
-        </button>
+          readOnly
+        />
+        <ButtonIcon onClick={handleClick} type="caretDown" />
       </div>
-      {isActive && (<div>
-        <Calendar onChange={handleChange} value={selectedDate} />
-      </div>)}
-      
+      {isActive && (
+        <div>
+          <Calendar onChange={handleChange} value={selectedDate} />
+        </div>
+      )}
     </div>
   );
-}
+};
 
 export default ImputCalendar;

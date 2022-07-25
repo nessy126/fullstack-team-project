@@ -1,5 +1,6 @@
 import Media from "react-media";
 import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
+import { AiFillCaretDown } from "react-icons/ai";
 import { IconContext } from "react-icons";
 import s from "./ButtonIcon.module.scss";
 
@@ -80,6 +81,21 @@ const ButtonIcon = (props) => {
             Start training
           </button>
         </div>
+      )}
+      {type === "caretDown" && (
+        <button className={s.dropdown__btn} type="button" onClick={onClick}>
+          <IconContext.Provider
+            value={{
+              className: `${s.react__caretDown}`,
+              style: {
+                width: "100%",
+                height: "100%",
+              },
+            }}
+          >
+            <AiFillCaretDown />
+          </IconContext.Provider>
+        </button>
       )}
     </>
   );

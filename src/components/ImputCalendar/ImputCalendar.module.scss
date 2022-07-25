@@ -1,0 +1,43 @@
+@import "../../assets/sass/main.scss";
+
+.dropdown {
+  position: relative;
+  width: 270px;
+  height: 42px;
+  box-shadow: inset 0px 1px 2px rgba(29, 29, 27, 0.15);
+  background-color: var(--main-bg-cl);
+  @include font(500, 14px, 2.71);
+  color: var(--placeholder-text-cl);
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 13px;
+  padding-right: 13px;
+  // margin-bottom: 35px;
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-between;
+  @include vp(tablet) {
+    width: 250px;
+    // margin-right: 25px;
+    // margin-bottom: 0;
+  }
+}
+
+.dropdown__wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdown__wrapper .dropdown__input {
+  width: 70%;
+  height: 100%;
+  border: none;
+  background-color: var(--main-bg-cl);
+  margin: 0;
+  padding: 0;
+}
+
+.react__fiCalendar {
+  width: 10%;
+}
