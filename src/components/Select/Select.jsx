@@ -2,6 +2,7 @@ import s from "./Select.module.scss";
 import { useState, useEffect, useCallback } from "react";
 import { AiFillCaretDown } from "react-icons/ai";
 import { IconContext } from "react-icons";
+import { useMouseClose } from "hooks/useCloseSelect";
 
 const Select = ({ books, onGetSelectBook, resetInput, getFalseForReset }) => {
   const [isActive, setIsActive] = useState(false);
@@ -17,7 +18,6 @@ const Select = ({ books, onGetSelectBook, resetInput, getFalseForReset }) => {
     },
     [setIsActive]
   );
-
   useEffect(() => {
     window.addEventListener("keydown", closeSelectByEsc);
     return () => {
@@ -31,6 +31,12 @@ const Select = ({ books, onGetSelectBook, resetInput, getFalseForReset }) => {
     setFilterBook("");
     getFalseForReset(false);
   };
+  // Для закрытия кликом по экрану ввели функцию closeSelect, которая передается вместе с флагом как параметры в кастомный хук useMouseClose (который вешает слушателя на document при открытом селекте и снимает его при закрытии селекта)
+  const closeSelect = () => {
+    setIsActive(false);
+    setFilterBook("");
+  };
+  const ulRef = useMouseClose(closeSelect, isActive);
 
   // Функция для получения отфильтрованного списка книг для рендера в селекте (отбор по слову введенному в инпут)
   const getVisibleBooks = (books) => {
@@ -63,7 +69,7 @@ const Select = ({ books, onGetSelectBook, resetInput, getFalseForReset }) => {
 
   return (
     <>
-      <div className={s.dropdown}>
+      <div className={s.dropdown} ref={ulRef}>
         <div className={s.dropdown__wrapper}>
           {isActive ? (
             <input

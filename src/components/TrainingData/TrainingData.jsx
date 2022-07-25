@@ -147,11 +147,7 @@ const TrainingData = () => {
     setBooksId(newBookId);
     setSelected({});
     setShowBtnAdd(false);
-    toast("Book was added to the list", {
-      className: `${s.tost__background}`,
-      bodyClassName: `${s.tost__body}`,
-      progressClassName: `${s.progress__bar}`,
-    });
+    toast.success("Book was added to the list");
     setResetInput(true);
     updateStorage(STORAGE_KEY, "saveListPlainingBooks", updateList);
     updateStorage(STORAGE_KEY, "saveBooksId", newBookId);
