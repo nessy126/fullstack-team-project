@@ -124,10 +124,11 @@
 
 .title {
   font-family: "Abril Fatface";
-  font-weight: 400;
+  font-weight: 800;
   font-size: 20px;
   line-height: 27px;
   text-decoration: none;
+  margin-top: 3px;
   // margin-bottom: revert;
   color: var(--main-text-cl);
 }
@@ -205,6 +206,7 @@
   height: 22px;
   text-align: center;
   margin-right: 14px;
+  margin-top: 7px;
 }
 
 .svg {
@@ -219,12 +221,17 @@
   justify-content: center;
   width: 33px;
   height: 33px;
+  margin-top: 1px;
 
   border-radius: 50%;
   margin-right: 14px;
   @include font(600, 14px, 2.71);
   // text-align: center;
   background-color: var(--auth-bg-cl);
+}
+
+.userName {
+  margin-top: 9px;
 }
 
 .userBar {
