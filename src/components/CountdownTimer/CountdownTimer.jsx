@@ -19,15 +19,15 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
   );
 };
 
-const CountdownTimer = ({ targetDate, type, setModal }) => {
+const CountdownTimer = ({ targetDate, type, setModal, setEnd }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
   let endOfCountdown = days + hours + minutes + seconds;
 
   useEffect(() => {
-    if (type === "targetData" && endOfCountdown <= 0) {
+    if (setEnd !== 0 && type === "targetData" && endOfCountdown <= 0) {
       setModal();
     }
-  });
+  }, [endOfCountdown, setModal, type, setEnd]);
 
   if (endOfCountdown <= 0) {
     return <ShowCounter days="0" hours="0" minutes="0" seconds="0" />;

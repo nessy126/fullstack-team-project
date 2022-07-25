@@ -3,17 +3,22 @@ import { getEndTraining } from "redux/auth/authSelectors";
 
 import CountdownTimer from "../CountdownTimer/CountdownTimer";
 import s from "./Statistics.module.scss";
+import Loader from "components/Loader";
 
 const Statistics = ({ setModal }) => {
+  const timeEndGoal = useSelector(getEndTraining);
   const now_in_ms = new Date().getTime();
   const getFullYear = new Date().getFullYear();
   const getFullYearMs = new Date(getFullYear + "-01-01").getTime();
   const newYearCountdown = Date.now() - getFullYearMs;
   const timeEndYear = ms_of_a_year(getFullYear) - newYearCountdown;
-  const timeEndGoal = useSelector(getEndTraining);
   const correctTime = timeEndGoal - Date.now();
   const dateTimeToNewYear = now_in_ms + timeEndYear;
   const dateTimeToGoal = now_in_ms + correctTime;
+
+  const {
+    auth: { isLoading },
+  } = useSelector((state) => state);
 
   function ms_of_a_year(year) {
     return isLeapYear(year)
@@ -28,18 +33,31 @@ const Statistics = ({ setModal }) => {
   return (
     <>
       <div className={s.counterDiv}>
-        <div>
-          <h2 className={s.counterTitle}>Year countdown</h2>
-          <CountdownTimer targetDate={dateTimeToNewYear} />
-        </div>
-        <div>
-          <h2 className={s.counterTitle}>Goal countdown</h2>
-          <CountdownTimer
-            targetDate={dateTimeToGoal}
-            type="targetData"
-            setModal={setModal}
-          />
-        </div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <div>
+              <h2 className={s.counterTitle}>Year countdown</h2>
+              <CountdownTimer targetDate={dateTimeToNewYear} />
+            </div>
+          </>
+        )}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <div>
+              <h2 className={s.counterTitle}>Goal countdown</h2>
+              <CountdownTimer
+                targetDate={dateTimeToGoal}
+                type="targetData"
+                setModal={setModal}
+                setEnd={timeEndGoal}
+              />
+            </div>
+          </>
+        )}
       </div>
     </>
   );
