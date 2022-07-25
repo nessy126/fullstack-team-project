@@ -6,6 +6,7 @@ import { OrangeBook } from "assets/images/icons/OrangeBook";
 
 const GoingToReadCard = (book) => {
   //   const dispatch = useDispatch();
+ 
 
   return (
     <li className={s.card}>
@@ -24,7 +25,13 @@ const GoingToReadCard = (book) => {
           </div>
         </MediaQuery>
         <div className={s.bookMoreInfo}>
-          <p className={s.bookMoreInfoAuthor}>{book.author}</p>
+          <p
+            className={
+              book.author.length > 30 ? s.bookMoreInfoAuthor : s.authorText
+            }
+          >
+            {book.author}
+          </p>
           <p className={s.bookMoreInfoYear}>{book.year}</p>
           <p className={s.bookMoreInfoPage}>{book.pages}</p>
         </div>

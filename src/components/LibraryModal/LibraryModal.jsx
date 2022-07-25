@@ -29,7 +29,7 @@ export const LibraryModal = () => {
       <MediaQuery maxWidth={767}>
         {modal.open && (
           <Modal closeModal={closeModal} type="Exit">
-            <div>
+            <div className={s.wrapper}>
               <h2 className={s.titlesMargin}>
                 <strong className={s.titles}>STEP 1.</strong>
               </h2>

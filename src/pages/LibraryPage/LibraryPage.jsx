@@ -48,30 +48,31 @@ const LibraryPage = () => {
       <MediaQuery minWidth={768}>
         <AddBookForm closeModal={closeModal} />
       </MediaQuery>
-      {booksGoingToRead.length ||
-      booksInReading.length ||
-      booksFinished.length ? (
+      {booksGoingToRead?.length ||
+      booksInReading?.length ||
+      booksFinished?.length ? (
         <>
           <>
-            {AlreadyReadList.length > 0 ? (
+            {booksFinished?.length > 0 ? (
               <AlreadyReadList library={booksFinished} />
             ) : null}
 
-            {booksInReading.length > 0 ? (
+            {booksInReading?.length > 0 ? (
               <GoingToReadList
                 library={booksInReading}
                 type={"booksInReading"}
               />
             ) : null}
-            {booksGoingToRead.length > 0 && (
+            {booksGoingToRead?.length > 0 && (
               <GoingToReadList
                 library={booksGoingToRead}
                 type={"booksGoingToRead"}
               />
             )}
           </>
-
-          <NextButton />
+          {booksInReading?.length || booksFinished?.length ? null : (
+            <NextButton />
+          )}
         </>
       ) : (
         <LibraryModal />

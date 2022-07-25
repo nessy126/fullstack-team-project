@@ -60,6 +60,7 @@
   line-height: 1.25;
   color: var(--main-text-cl);
   width: 154px;
+  overflow-wrap: break-word;
 
   @media screen and (min-width: 768px) {
     width: 190px;
@@ -106,12 +107,36 @@
   font-size: 12px;
   line-height: 1.17;
   color: var(--main-text-cl);
-  height: 26px;
+  height: 64px;
+  overflow-wrap: anywhere;
 
   @media screen and (min-width: 768px) {
     width: 160px;
     font-size: 14px;
     line-height: 1.5;
+  }
+
+  @media screen and (min-width: 1280px) {
+    width: 190px;
+    margin-right: 125px;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+.authorText {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  height: 26px;
+  color: var(--main-text-cl);
+  overflow-wrap: anywhere;
+
+  @media screen and (min-width: 768px) {
+    width: 160px;
+    font-size: 14px;
+    line-height: 1.5;
+    height: 23px;
   }
 
   @media screen and (min-width: 1280px) {

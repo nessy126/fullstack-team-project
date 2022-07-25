@@ -1,5 +1,11 @@
 @import "../../assets/sass/main.scss";
 
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .titles {
   width: 62px;
   height: 38px;
@@ -39,6 +45,7 @@
   width: 169px;
 
   margin-left: 10px;
+  margin-right: 37px;
 
   font-style: normal;
   font-weight: 600;
@@ -50,6 +57,7 @@
 
 @include vp(tablet) {
   .underTitle {
+    margin-right: 0px;
     width: 193px;
     font-size: 15px;
   }

@@ -24,6 +24,9 @@ const AlreadyReadCard = (book) => {
   const updatedBookTitle =
     book.title.length <= 30 ? book.title : book.title.slice(0, 29) + "...";
 
+  const updatedBookAuthor =
+    book.author.length <= 20 ? book.author : book.author.slice(0, 19) + "...";
+
   return (
     <li className={s.card}>
       <div className={s.iconTitle}>
@@ -46,7 +49,13 @@ const AlreadyReadCard = (book) => {
 
           <MediaQuery maxWidth={767}>
             <div className={s.bookMoreInfo}>
-              <p className={s.bookMoreInfoAuthor}>{book.author}</p>
+              <p
+                className={
+                  book.author.length > 30 ? s.bookMoreInfoAuthor : s.titleText
+                }
+              >
+                {book.author}
+              </p>
               <p className={s.bookMoreInfoYear}>{book.year}</p>
               <p className={s.bookMoreInfoPage}>{book.pages}</p>
               <div className={s.bookMoreInfoPage}>
@@ -65,7 +74,9 @@ const AlreadyReadCard = (book) => {
         </div>
       </MediaQuery>
       <MediaQuery minWidth={768}>
-        <p className={s.bookMoreInfoAuthor}>{book.author}</p>
+        <p className={updatedBookAuthor ? s.bookMoreInfoAuthor : s.titleText}>
+          {updatedBookAuthor}
+        </p>
         <p className={s.bookMoreInfoYear}>{book.year}</p>
         <p className={s.bookMoreInfoPage}>{book.pages}</p>
         {book.rating ? (
@@ -82,7 +93,7 @@ const AlreadyReadCard = (book) => {
         <span className={s.buttonText}>resume</span>
       </button>
       {modal.open && (
-        <Modal type={"exit"} closeModal={closeModal}>
+        <Modal type="exit" closeModal={closeModal}>
           <FormReview
             closeModal={closeModal}
             id={book.id}

@@ -7,7 +7,9 @@ import s from "./Modal.module.scss";
 
 const modalRoot = document.getElementById("modalRoot");
 
-const Modal = ({ closeModal, children, type }) => {
+const Modal = ({ closeModal, children, type, style }) => {
+  console.log("type", type);
+
   const close = useCallback(
     (e) => {
       if (e.code === "Escape") {
