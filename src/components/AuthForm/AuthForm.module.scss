@@ -47,7 +47,7 @@
     
     @include vp(tablet){
         width: 400px;
-        height: 420px;
+        height: 350px;
         padding: 30px 40px 10px;
         background-color: var(--main-bg-cl);
     }
@@ -58,7 +58,7 @@
     // padding-bottom: 50px;
     composes: form;
     @include vp(tablet) {
-            height: 600px;
+            height: 520px;
         }
 }
 

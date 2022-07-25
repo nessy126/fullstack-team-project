@@ -85,6 +85,7 @@ const StatisticsResults = () => {
   };
 
   return (
+    <>
     <section className={s.section}>
       <h2 className={s.title}>RESULTS</h2>
       <form className={s.form} onSubmit={onSubmit}>
@@ -113,9 +114,6 @@ const StatisticsResults = () => {
           Add result
         </button>
       </form>
-      <button onClick={letsFinishTraining} className={s.button} type="button">
-        Finish training
-      </button>
       <h2 className={s.titleStatic}>STATISTICS</h2>
       <ul className={s.list}>
         {restSttatistics?.map(({ date, pagesRead, days, time }) => {
@@ -131,6 +129,10 @@ const StatisticsResults = () => {
         })}
       </ul>
     </section>
+     <button onClick={letsFinishTraining} className={s.button} type="button">
+     Finish training
+   </button>
+   </>
   );
 };
 
