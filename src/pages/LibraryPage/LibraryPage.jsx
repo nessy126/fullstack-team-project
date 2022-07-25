@@ -71,11 +71,7 @@ const LibraryPage = () => {
             )}
           </>
 
-          <>
-            {AlreadyReadList.length > 0 || booksInReading.length > 0 ? null : (
-              <NextButton />
-            )}
-          </>
+          <NextButton />
         </>
       ) : (
         <LibraryModal />

@@ -119,7 +119,9 @@
 
 .title {
   font-family: "Abril Fatface";
-  @include font(400, 20px, 1.35);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
   text-decoration: none;
   margin-bottom: revert;
   color: var(--main-text-cl);
@@ -235,6 +237,6 @@
   }
 }
 
-.noVision{
+.noVision {
   display: none;
 }
