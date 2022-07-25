@@ -25,7 +25,6 @@ export const getProgressAPI = () => {
 };
 
 export const addStatistics = (data) => {
-  console.log("data :>> ", data);
   return axios
     .patch(endPoint + "statistics", data)
     .then((res) => {
@@ -40,7 +39,6 @@ export const finishTraiiningApi = (data) => {
   return axios
     .patch(endPoint + "finish", data)
     .then((res) => {
-      console.log(res.data);
       return res.data;
     })
     .catch((err) => {
