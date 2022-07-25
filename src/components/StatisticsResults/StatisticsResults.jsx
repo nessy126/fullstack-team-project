@@ -5,10 +5,7 @@ import {
   getTraininId,
   getStatistics,
 } from "redux/auth/authSelectors";
-import {
-  addStatistics,
-  finishTraiining,
-} from "redux/training/trainingOperations";
+import { addStatistics } from "redux/training/trainingOperations";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { AiFillCaretDown } from "react-icons/ai";
@@ -34,11 +31,11 @@ const StatisticsResults = () => {
     (book) => book?.pageTotal > book?.pageFinished
   );
 
-  const dataToFinishTraining = {
-    trainingID: traingId,
-    factEndTraining: Number(new Date()),
-    booksId: ["62cec8aec6e91af0ab950c3d"],
-  };
+  // const dataToFinishTraining = {
+  //   trainingID: traingId,
+  //   factEndTraining: Number(new Date()),
+  //   booksId: ["62cec8aec6e91af0ab950c3d"],
+  // };
 
   //
   // const letsFinishTraining = () => {
