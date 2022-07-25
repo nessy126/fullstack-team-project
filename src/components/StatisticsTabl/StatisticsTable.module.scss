@@ -9,6 +9,7 @@
 }
 
 .column__list {
+  margin-top: 20px;
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -164,11 +165,11 @@ div.column__list {
   overflow-y: scroll;
 
   @include vp(tablet) {
-    max-height: 30vh;
+    max-height: 20vh;
   }
 
   @include vp(desktop) {
-    max-height: 42vh;
+    max-height: 15vh;
   }
 }
 
@@ -209,6 +210,8 @@ div.column__list {
   padding-bottom: 9px;
   padding-top: 22px;
 }
+
+
 
 .column__flex {
   display: flex;
@@ -279,6 +282,23 @@ div.column__list {
   border-bottom: 1px solid var(--scrollbar-bg-cl);
   @include font(500, 14px, 1.21);
 }
+ 
+@include vp(desktop) {
+  .table__item {
+    border-bottom: 0px solid var(--scrollbar-bg-cl);
+
+  }
+}
+
+
+
+
+    @include vp(desktop) {
+      .table__list li:last-child  {
+        border-bottom: 1px solid var(--scrollbar-bg-cl);
+  
+      }
+    }
 
 .table__icon {
   display: flex;
