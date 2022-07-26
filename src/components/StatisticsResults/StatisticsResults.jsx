@@ -23,7 +23,7 @@ const StatisticsResults = () => {
   const restSttatistics = allStatistics.filter(
     (val, index, arr) => index > arr.length - 6
   );
-
+console.log(valueStart);
   useEffect(() => {
     setValueStart(new Date());
   }, [newStatistics]);
@@ -65,20 +65,24 @@ const StatisticsResults = () => {
       setPagesRead("");
       return;
     }
-    if (pagesRead > correctPage) {
+    if (Number(pagesRead) > correctPage) {
       alert("Забагато сторінок ");
       setPagesRead("");
       return;
     }
 
+    console.log(correctBook);
+
     const newStatistics = {
       date: valueStart,
       idBook: correctBook._id,
       trainingID: traingId,
-      pagesRead,
+      pagesRead: Number(pagesRead),
       days: moment().quarter(3).format("DD.MM.YYYY"),
       time: moment().quarter(3).format("HH:mm:ss"),
+      pageTotal: correctBook.pageTotal
     };
+    console.log(newStatistics);
     dispatch(addStatistics(newStatistics));
     setNewStatistics(newStatistics);
     setPagesRead("");
