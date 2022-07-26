@@ -117,6 +117,26 @@ const ButtonIcon = ({ type, onClick, id }) => {
           </IconContext.Provider>
         </button>
       )}
+      {type === "deleteOutlineColumn" && (
+        <button
+          type="button"
+          onClick={onClick}
+          id={id}
+          className={s.column__btn}
+        >
+          <IconContext.Provider
+            value={{
+              className: `${s.icon__del}`,
+              style: {
+                width: "100%",
+                height: "100%",
+              },
+            }}
+          >
+            <MdOutlineDeleteOutline />
+          </IconContext.Provider>
+        </button>
+      )}
     </>
   );
 };
