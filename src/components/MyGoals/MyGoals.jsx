@@ -1,6 +1,7 @@
 import s from "./MyGoals.module.scss";
 import { useSelector } from "react-redux";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
+import PropTypes from "prop-types";
 
 const MyGoals = ({ data }) => {
   const statusIsTraining = useSelector(getStatusIsTraining);
@@ -46,6 +47,15 @@ const MyGoals = ({ data }) => {
       )}
     </>
   );
+};
+
+MyGoals.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      amount: PropTypes.number,
+      title: PropTypes.string,
+    }).isRequired
+  ).isRequired,
 };
 
 export default MyGoals;
