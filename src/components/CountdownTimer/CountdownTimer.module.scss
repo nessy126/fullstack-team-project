@@ -11,6 +11,7 @@ font-size: 25px;
   line-height: 1.75rem;
   padding: 0.5rem;
   box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+  background-color: var(--main-bg-cl);
   text-decoration: none;
   color: #000;
 }
@@ -22,9 +23,9 @@ font-size: 25px;
   font-size: 25px;
   /* identical to box height, or 152% */
 
-  color: #091e3f;
+  color: var(--chart-plan-cl);
 
-  height: 50px;
+height: 59px;
 }
 
 @include vp(tablet) {
