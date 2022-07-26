@@ -70,9 +70,7 @@ const LibraryPage = () => {
               />
             )}
           </>
-          {booksInReading?.length || booksFinished?.length ? null : (
-            <NextButton />
-          )}
+          <NextButton />
         </>
       ) : (
         <LibraryModal />

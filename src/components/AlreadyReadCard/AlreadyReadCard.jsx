@@ -90,7 +90,7 @@ const AlreadyReadCard = (book) => {
         )}
       </MediaQuery>
       <button className={s.button} onClick={() => openModal()}>
-        <span className={s.buttonText}>resume</span>
+        <span className={s.buttonText}>Resume</span>
       </button>
       {modal.open && (
         <Modal type="exit" closeModal={closeModal}>
