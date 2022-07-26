@@ -118,7 +118,7 @@
   margin-bottom: -5px;
   line-height: 1.17;
   color: var(--main-text-cl);
-  height: 60px;
+  // height: 60px;
 
   @media screen and (min-width: 768px) {
     width: 94px;
@@ -145,7 +145,7 @@
 
   @media screen and (min-width: 768px) {
     width: 94px;
-    height: 26px;
+    height: 0px;
     font-size: 14px;
     line-height: 1.5;
     margin-left: -23px;
