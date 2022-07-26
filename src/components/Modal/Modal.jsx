@@ -1,7 +1,7 @@
 import { useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { ArrowLeft } from "../../assets/images/icons/ArrowLeft";
-import MainNav from "../MainNav/MainNav";
+import MainNav from "../Header/Header";
 
 import s from "./Modal.module.scss";
 

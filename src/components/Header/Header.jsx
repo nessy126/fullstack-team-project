@@ -1,29 +1,83 @@
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import Modal from "../Modal/Modal";
 import s from "./Header.module.scss";
-
 import { logout } from "redux/auth/authOperations";
-import { NavLink } from "react-router-dom";
-import { getIsLogin } from "redux/auth/authSelectors";
+import {
+  getIsLogin,
+  getStatusIsTraining,
+  getUser,
+} from "redux/auth/authSelectors";
+import MainNavModal from "components/HeaderModal/HeaderModal";
+import NavMenu from "components/HeaderMenu/HeaderMenu";
+import LogOutNavMenu from "components/LogOutHeaderMenu";
 
-const Header = () => {
+const Header = ({ modalClass }) => {
+  const logIn = useSelector(getIsLogin);
+  const isTraining = useSelector(getStatusIsTraining);
+  const user = useSelector(getUser);
+  const userName = user?.name;
   const dispatch = useDispatch();
-  const isAuth = useSelector(getIsLogin);
+  const [modal, setModal] = useState({
+    open: false,
+  });
 
-  const logOutUser = () => {
-    dispatch(logout());
+  const openModal = () => {
+    setModal({
+      open: true,
+    });
   };
+
+  const logoutButtonAction = () => {
+    dispatch(logout());
+    closeModal();
+  };
+
+  const closeModal = () => {
+    setModal({
+      open: false,
+    });
+  };
+
   return (
     <>
-      <h1 className={s.title}>Header</h1>
-      <NavLink to="/">HomePage</NavLink>
-      {isAuth && (
-        <>
-          <NavLink to="/training">Training</NavLink>
-          <NavLink to="/library">Library</NavLink>
-          <button onClick={logOutUser}>Logout</button>
-        </>
+      {!logIn ? (
+        <header className={s.authHead}>
+          <section className={s.authHeader}>
+            <Link to="/" className={s.authTitleLink}>
+              <h1 className={s.title}>BR</h1>
+            </Link>
+          </section>
+        </header>
+      ) : (
+        <header className={modalClass ? modalClass : s.head}>
+          <section className={modalClass ? modalClass : s.header}>
+            <Link
+              to={isTraining ? "/training" : "/library"}
+              className={s.titleLink}
+            >
+              <h1 className={s.title}>BR</h1>
+            </Link>
+            <div className={s.userBar}>
+              <div className={s.accLogoTablet}>{userName?.slice(0, 1)}</div>
+              <p className={s.userName}>{userName}</p>
+            </div>
+            <div className={s.navMenuContainer}>
+              <NavMenu />
+              <div className={s.line}>|</div>
+              <LogOutNavMenu userName={userName} openModal={openModal} />
+            </div>
+          </section>
+        </header>
+      )}
+      {modal.open && (
+        <Modal type="exit" closeModal={closeModal}>
+          <MainNavModal
+            closeModal={closeModal}
+            logoutButtonAction={logoutButtonAction}
+          />
+        </Modal>
       )}
     </>
   );
