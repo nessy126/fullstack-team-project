@@ -6,6 +6,7 @@ import Modal from "components/Modal/Modal";
 import FormReview from "../FormReview/FormReview";
 import Stars from "components/Stars/Stars";
 import { AlreadyReadIcon } from "assets/images/icons/AlreadyReadIcon";
+import BooksInfo from "components/BooksInfo";
 
 const AlreadyReadCard = (book) => {
   const [modal, setModal] = useState(false);
@@ -37,14 +38,7 @@ const AlreadyReadCard = (book) => {
       </div>
       <MediaQuery maxWidth={767}>
         <div className={s.bookInfoWrapper}>
-          <MediaQuery maxWidth={767}>
-            <div className={s.bookInfo}>
-              <p className={s.bookInfoText}>Author:</p>
-              <p className={s.bookInfoText}>Year:</p>
-              <p className={s.bookInfoText}>Pages:</p>
-              <p className={s.bookInfoText}>Rating:</p>
-            </div>
-          </MediaQuery>
+          <BooksInfo type={"alreadyRead"} />
 
           <MediaQuery maxWidth={767}>
             <div className={s.bookMoreInfo}>

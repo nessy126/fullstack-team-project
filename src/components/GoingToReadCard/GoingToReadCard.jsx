@@ -1,12 +1,11 @@
 import s from "./GoingToReadCard.module.scss";
 
-import MediaQuery from "react-responsive";
 import { FirstBook } from "assets/images/icons/FirstBook";
 import { OrangeBook } from "assets/images/icons/OrangeBook";
+import BooksInfo from "components/BooksInfo";
 
 const GoingToReadCard = (book) => {
   //   const dispatch = useDispatch();
- 
 
   return (
     <li className={s.card}>
@@ -17,13 +16,7 @@ const GoingToReadCard = (book) => {
         <p className={s.bookTitle}>{book.title}</p>
       </div>
       <div className={s.bookInfoWrapper}>
-        <MediaQuery maxWidth={767}>
-          <div className={s.bookInfo}>
-            <p className={s.bookInfoText}>Author</p>
-            <p className={s.bookInfoText}>Year</p>
-            <p className={s.bookInfoText}>Pages</p>
-          </div>
-        </MediaQuery>
+        <BooksInfo />
         <div className={s.bookMoreInfo}>
           <p
             className={
