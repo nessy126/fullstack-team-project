@@ -25,7 +25,7 @@
   margin-top: 10px;
   @media screen and (min-width: 768px) {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     font-weight: 500;
     font-size: 14px;
     line-height: 38px;
@@ -35,7 +35,7 @@
   }
   .bookInfoText {
     @media screen and (min-width: 768px) {
-      margin-right: 25%;
+      margin-right: 21%;
       font-weight: 500;
       font-size: 14px;
       line-height: 38px;
@@ -47,7 +47,7 @@
   }
 
   .title {
-    margin-right: 125px;
+    margin-right: 156px;
     color: var(--secondary-text-cl);
     font-weight: 500;
     font-size: 14px;
@@ -58,7 +58,7 @@
   }
 
   .author {
-    margin-right: 75px;
+    margin-right: 68px;
     color: var(--secondary-text-cl);
     @media screen and (min-width: 1280px) {
       margin-right: 16%;
@@ -70,7 +70,7 @@
 
   .year {
     color: var(--secondary-text-cl);
-    margin-right: 50px;
+    margin-right: 57px;
     font-weight: 500;
     font-size: 14px;
     line-height: 38px;
@@ -84,7 +84,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 38px;
-    margin-right: 21px;
+    margin-right: 26px;
     @media screen and (min-width: 1280px) {
       margin-right: 9%;
     }
