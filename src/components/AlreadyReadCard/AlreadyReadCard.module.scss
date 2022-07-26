@@ -125,15 +125,15 @@
     font-size: 14px;
     height: auto;
     line-height: 1.5;
-    // margin-left: -23px;
   }
 
   @media screen and (min-width: 1280px) {
     width: 190px;
-    margin-right: 12px;
+    margin-right: 29px;
     height: auto;
     font-size: 14px;
     line-height: 1.5;
+    margin-left: -23px;
   }
 }
 
@@ -150,7 +150,7 @@
     height: 0px;
     font-size: 14px;
     line-height: 1.5;
-    // margin-left: -23px;
+
     margin-top: 16px;
   }
 
@@ -159,6 +159,7 @@
     margin-right: 12px;
     font-size: 14px;
     line-height: 1.5;
+    margin-left: -23px;
   }
 }
 
@@ -201,6 +202,7 @@
 
   @media screen and (min-width: 1280px) {
     font-size: 14px;
+    margin-left: 0px;
     line-height: 2.71;
   }
 }
