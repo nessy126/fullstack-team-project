@@ -50,11 +50,10 @@ export const currentApi = (auth) => {
     });
 };
 
-//
 export const logoutApi = (auth) => {
   token.set(auth.token);
   return axios
-    .post(endPoint + "logout")
+    .get(endPoint + "logout")
     .then(token.unset())
     .catch((err) => {
       throw err;
