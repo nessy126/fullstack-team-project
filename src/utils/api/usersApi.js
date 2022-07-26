@@ -50,6 +50,7 @@ export const currentApi = (auth) => {
     });
 };
 
+//
 export const logoutApi = (auth) => {
   token.set(auth.token);
   return axios
