@@ -1,11 +1,12 @@
 import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 import { useState, useEffect, useCallback } from "react";
 import { FiCalendar } from "react-icons/fi";
 import { IconContext } from "react-icons";
 import ButtonIcon from "components/ButtonIcon";
 import { useMouseClose } from "hooks/useCloseSelect";
 import s from "./ImputCalendar.module.scss";
-import "react-calendar/dist/Calendar.css";
+import PropTypes from "prop-types";
 
 const ImputCalendar = (props) => {
   const { placeholderText, getHandleChange, minDate, value } = props;
@@ -74,6 +75,12 @@ const ImputCalendar = (props) => {
       )}
     </div>
   );
+};
+ImputCalendar.propTypes = {
+  placeholderText: PropTypes.string.isRequired,
+  getHandleChange: PropTypes.func.isRequired,
+  minDate: PropTypes.instanceOf(Date).isRequired,
+  value: PropTypes.any,
 };
 
 export default ImputCalendar;

@@ -4,6 +4,7 @@ import { get, updateStorage } from "utils/localStorage/localStorage";
 import { STORAGE_KEY } from "assets/const";
 import ImputCalendar from "components/ImputCalendar";
 import s from "./PlanningForm.module.scss";
+import PropTypes from "prop-types";
 
 const PlanningForm = ({
   addStartTraining,
@@ -80,13 +81,19 @@ const PlanningForm = ({
               getHandleChange={handleChangeEnd}
               minDate={new Date(Date.now() + 24 * 60 * 60 * 1000)}
               value={valueEnd}
-              placeholderText={"Finish"}
+              placeholderText="Finish"
             />
           </div>
         </div>
       </div>
     </>
   );
+};
+
+PlanningForm.propTypes = {
+  addStartTraining: PropTypes.func.isRequired,
+  addEndTraining: PropTypes.func.isRequired,
+  addAmountOfDaysTraining: PropTypes.func.isRequired,
 };
 
 export default PlanningForm;

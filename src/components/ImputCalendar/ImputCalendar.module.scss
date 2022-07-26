@@ -45,10 +45,13 @@
 .react__calendar {
   position: absolute;
   z-index: 2;
-  background-color: var(--main-bg-cl);
+  background: var(--main-bg-cl);
   right: 0;
+  top: 45px;
   font-family: "Montserrat", sans-serif;
   @include font(500, 12px, 1.25);
+  border-radius: 6px;
+  border: 1px solid var(--placeholder-text-cl);
 }
 button.react__calendar {
   @include font(500, 12px, 1.25);
