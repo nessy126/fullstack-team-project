@@ -5,7 +5,7 @@ import { signUp, login, logout, current } from "./authOperations";
 import {
   addTraining,
   finishTraiining,
-  getProgressTraining,
+  getCurrentTraining,
   addStatistics,
 } from "redux/training/trainingOperations";
 
@@ -126,11 +126,11 @@ const authSlice = createSlice({
       state.error = payload;
       state.isLoading = false;
     },
-    [getProgressTraining.pending]: (state) => {
+    [getCurrentTraining.pending]: (state) => {
       state.isLoading = true;
       state.error = null;
     },
-    [getProgressTraining.fulfilled]: (state, { payload }) => {
+    [getCurrentTraining.fulfilled]: (state, { payload }) => {
       state.isTraining = true;
       state.isLoading = false;
       state.error = null;
@@ -149,7 +149,7 @@ const authSlice = createSlice({
         statistics: payload.statistics,
       };
     },
-    [getProgressTraining.rejected]: (state, { payload }) => {
+    [getCurrentTraining.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },

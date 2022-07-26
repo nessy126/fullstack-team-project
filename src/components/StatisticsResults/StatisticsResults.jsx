@@ -22,7 +22,6 @@ const StatisticsResults = () => {
   const restSttatistics = allStatistics.filter(
     (val, index, arr) => index > arr.length - 6
   );
-
   useEffect(() => {
     setValueStart(new Date());
   }, [newStatistics]);
@@ -70,11 +69,11 @@ const StatisticsResults = () => {
       return;
     }
 
-    const newStatistics = {
+      const newStatistics = {
       date: valueStart,
       idBook: correctBook._id,
       trainingID: traingId,
-      pagesRead,
+      pagesRead: Number(pagesRead),
       days: moment().quarter(3).format("DD.MM.YYYY"),
       time: moment().quarter(3).format("HH:mm:ss"),
     };
