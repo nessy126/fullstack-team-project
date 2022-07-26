@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import s from "./PlanningForm.module.scss";
-import polygonIconSvg from "../../assets/svg/polygon1.svg";
-import DateTimePicker from "react-datetime-picker";
 import { toast } from "react-toastify";
 import { get, updateStorage } from "utils/localStorage/localStorage";
 import { STORAGE_KEY } from "assets/const";
-import ImputCalendar from "./../ImputCalendar/ImputCalendar";
+import ImputCalendar from "components/ImputCalendar";
+import s from "./PlanningForm.module.scss";
 
 const PlanningForm = ({
   addStartTraining,
@@ -69,46 +67,22 @@ const PlanningForm = ({
           </div>
         </div>
         <div className={s.calendar__wrapper}>
-          <ImputCalendar
-            getHandleChange={handleChangeStart}
-            minDate={new Date()}
-            value={valueStart}
-            placeholderText="Start"
-          />
-          <ImputCalendar
-            getHandleChange={handleChangeEnd}
-            minDate={new Date(Date.now() + 24 * 60 * 60 * 1000)}
-            value={valueEnd}
-            placeholderText={"Finish"}
-          />
-          {/* <div className={s.input__wrapper}>
-            <DateTimePicker
-              onChange={handleChangeStart}
-              value={valueStart}
+          <div className={s.input__wrapper}>
+            <ImputCalendar
+              getHandleChange={handleChangeStart}
               minDate={new Date()}
-              calendarIcon={<img alt="button" src={polygonIconSvg} />}
-              clearIcon={null}
-              className={s.datetime__picker}
-              calendarClassName={s.react__calendar}
-              disableClock={true}
-              format="dd.MM.yyyy HH:mm"
+              value={valueStart}
               placeholderText="Start"
             />
-          </div> */}
-          {/* <div className={s.input__wrapper}>
-            <DateTimePicker
-              onChange={handleChangeEnd}
-              value={valueEnd}
+          </div>
+          <div className={s.input__wrapper}>
+            <ImputCalendar
+              getHandleChange={handleChangeEnd}
               minDate={new Date(Date.now() + 24 * 60 * 60 * 1000)}
-              clearIcon={null}
-              className={s.datetime__picker}
-              calendarClassName={s.react__calendar}
-              disableClock={true}
-              format="dd.MM.yyyy HH:mm"
+              value={valueEnd}
               placeholderText={"Finish"}
-              calendarIcon={<img alt="button" src={polygonIconSvg} />}
             />
-          </div> */}
+          </div>
         </div>
       </div>
     </>

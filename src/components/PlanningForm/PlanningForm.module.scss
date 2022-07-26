@@ -43,60 +43,10 @@
   margin-top: 20px;
   width: 270px;
   height: 42px;
-  display: flex;
-  // border: 1px solid var(--placeholder-text-cl);
   @include vp(tablet) {
     margin-top: 0;
     &:first-child {
       margin-right: 45px;
-      align-items: center;
-      justify-content: end;
     }
   }
-}
-div.datetime__picker {
-  background-color: var(--secondary-bg-cl);
-  box-sizing: border-box;
-  color: var(--main-text-cl);
-  @include font(500, 14px, 2.71);
-  margin: 0;
-  display: block;
-  width: 270px;
-  height: 42px;
-  border: none;
-}
-.react-datetime-picker__wrapper {
-  border: none;
-}
-
-// .datetime-picker * {
-//     border: none;
-//   }
-div.react__calendar {
-  background-color: var(--main-bg-cl);
-  width: 270px;
-  border-radius: 4px;
-  font-family: "Montserrat", sans-serif;
-  @include font(500, 12px, 1.25);
-}
-button.react__calendar {
-  background-color: var(--accent-active-cl);
-}
-// .react__calendar
-//   .react-calendar__tile.react-calendar__tile--now.react-calendar__month-view__days__day {
-//   background-color: var(--accent-active-cl);
-// }
-
-// Styles for tost
-.tost__background {
-  background: var(--placeholder-text-cl);
-  color: var(--main-text-cl);
-}
-.tost__body {
-  font-family: "Montserrat", sans-serif;
-  @include font(500, 18px, 1.1);
-}
-.progress__bar {
-  height: 10px;
-  border-radius: 5px;
 }
