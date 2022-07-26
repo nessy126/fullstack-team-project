@@ -9,7 +9,7 @@ import {
   getStatusIsTraining,
   getUser,
 } from "redux/auth/authSelectors";
-import MainNavModal from "components/HeaderModal/HeaderModal";
+import HeaderModal from "components/HeaderModal/HeaderModal";
 import NavMenu from "components/HeaderMenu/HeaderMenu";
 import LogOutNavMenu from "components/LogOutHeaderMenu";
 
@@ -73,7 +73,7 @@ const Header = ({ modalClass }) => {
       )}
       {modal.open && (
         <Modal type="exit" closeModal={closeModal}>
-          <MainNavModal
+          <HeaderModal
             closeModal={closeModal}
             logoutButtonAction={logoutButtonAction}
           />
