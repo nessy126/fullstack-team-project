@@ -40,7 +40,7 @@ export default function FormReview({ closeModal, id, backRate, comment }) {
               />
 
               <label className={s.form__label}>
-                <h2 className={s.Resume}>Resume</h2>
+                <h2 className={s.resume}>Resume</h2>
                 <ErrorMessage
                   component="div"
                   name="comment"
