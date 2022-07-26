@@ -4,8 +4,9 @@ import { useSelector } from "react-redux";
 import Media from "react-media";
 
 import data from "assets/dataBase/descriptionLists.json";
-import s from "./MobileHomePage.module.scss";
 import ListDescription from "components/ListDescription";
+
+import s from "./MobileHomePage.module.scss";
 
 const MobileHomePage = () => {
   const isAuth = useSelector(getIsLogin);

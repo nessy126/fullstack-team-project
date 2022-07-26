@@ -1,6 +1,9 @@
-import s from "./RegLogButtons.module.scss";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import LoginOptions from "./LoginOptions";
+
+import s from "./RegLogButtons.module.scss";
 
 const RegLogButtons = ({ isRegister }) => {
   return (
@@ -23,3 +26,7 @@ const RegLogButtons = ({ isRegister }) => {
 };
 
 export default RegLogButtons;
+
+RegLogButtons.propTypes = {
+  isRegister: PropTypes.bool,
+};
