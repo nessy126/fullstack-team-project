@@ -1,4 +1,4 @@
-import {  useEffect,useRef } from "react"; 
+import {  useEffect, useRef } from "react"; 
 
  // Для закрытия селекта кликом по экрану
   export const useMouseClose = (callbback, isActive) => {
