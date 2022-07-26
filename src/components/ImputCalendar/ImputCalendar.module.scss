@@ -1,0 +1,58 @@
+@import "../../assets/sass/main.scss";
+
+.dropdown {
+  position: relative;
+  width: 270px;
+  height: 42px;
+  border: 1px solid var(--placeholder-text-cl);
+  background-color: var(--secondary-bg-cl);
+  @include font(500, 14px, 2.71);
+  color: var(--placeholder-text-cl);
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 13px;
+  padding-right: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  @include vp(tablet) {
+    width: 250px;
+  }
+}
+
+.dropdown__wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dropdown__wrapper .dropdown__input {
+  width: 70%;
+  height: 100%;
+  border: none;
+  background-color: var(--secondary-bg-cl);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.react__fiCalendar {
+  width: 10%;
+  background-color: var(--secondary-bg-cl);
+}
+.react__calendar {
+  position: absolute;
+  z-index: 2;
+  background: var(--main-bg-cl);
+  right: 0;
+  top: 45px;
+  font-family: "Montserrat", sans-serif;
+  @include font(500, 12px, 1.25);
+  border-radius: 6px;
+  border: 1px solid var(--placeholder-text-cl);
+}
+button.react__calendar {
+  @include font(500, 12px, 1.25);
+}

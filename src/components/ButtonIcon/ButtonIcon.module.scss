@@ -101,3 +101,24 @@
   background-color: var(--accent-active-cl);
   color: var(--main-bg-cl);
 }
+
+.dropdown__btn {
+  border: none;
+  background-color: transparent;
+  color: var(--main-text-cl);
+  width: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transition: all 250ms linear;
+}
+.react__caretDown {
+  width: 10%;
+}
+.dropdown__btn:hover,
+.dropdown__btn:focus {
+  color: var(--accent-active-cl);
+}
+.dropdown__btn:active {
+  color: var(--accent-active-cl-hover);
+}
