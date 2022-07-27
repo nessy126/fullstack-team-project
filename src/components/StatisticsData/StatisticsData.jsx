@@ -31,15 +31,15 @@ const StatisticsData = () => {
   const arrayStatistic = [
     {
       title: "Amount of books",
-      amount: allBooks.length,
+      amount: allBooks?.length || [],
     },
     {
       title: "Amount of days",
-      amount: amountOfDays,
+      amount: amountOfDays || 0,
     },
     {
       title: "Books left",
-      amount: readBooks.length,
+      amount: readBooks?.length  || [],
     },
   ];
 
