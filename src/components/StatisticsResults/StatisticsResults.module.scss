@@ -2,17 +2,23 @@
 .section {
   background-color: var(--main-bg-cl);
   box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
-  margin-top: 30px;
-  padding-bottom: 20px;
-
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding-left: 17px;
+  padding-right: 13px;
+  padding-bottom: 13px;
   @include vp(tablet) {
-    margin-top: 40px;
+    padding-left: 84px;
+    padding-right: 84px;
+    padding-bottom: 0;
   }
-
-  @include vp(desktop) {
-    padding-bottom: 13px;
+}
+@include vp(desktop) {
+  .section {
     height: 340px;
     width: 275px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 
@@ -20,7 +26,7 @@
   display: flex;
   justify-content: center;
 }
-.input {
+.flex .input {
   padding-left: 13px;
   height: 42px;
   width: 110px;
@@ -29,29 +35,37 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 38px;
+  margin-bottom: 0;
+}
 
-  @include vp(tablet) {
+@include vp(tablet) {
+  .input {
     margin-right: 30px;
   }
+}
 
-  @include vp(desktop) {
+@include vp(desktop) {
+  .input {
     margin-right: 0px;
   }
 }
 
 .title {
   font-weight: 600;
-  font-size: 12px;
-  line-height: 3.17;
+  font-size: 14px;
+  line-height: 38px;
   text-align: center;
   padding-top: 10px;
   margin-bottom: -12px;
+}
 
-  @include vp(tablet) {
+@include vp(tablet) {
+  .title {
     padding-top: 21px;
   }
-
-  @include vp(desktop) {
+}
+@include vp(desktop) {
+  .title {
     padding-top: 10px;
   }
 }
@@ -63,35 +77,38 @@
 .paragraph {
   font-weight: 500;
   font-size: 11px;
-  line-height: 2.35;
+  line-height: 38px;
 }
 .button {
   display: block;
   width: 240px;
-  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 20px;
-  padding: 0px 45px;
+  margin-bottom: 25px;
+  text-align: center;
   font-weight: 500;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 14px;
-  line-height: 2.38;
+  line-height: 38px;
   color: var(--main-bg-cl);
   background-color: var(--accent-active-cl);
   border: none;
+}
 
-  @include vp(tablet) {
-    width: 240px;
+@include vp(tablet) {
+  .button {
     margin: 0px;
-    padding-left: 76px;
-    padding-right: 78px;
     font-weight: 600;
     font-size: 16px;
     align-self: flex-end;
   }
+}
 
-  @include vp(desktop) {
+@include vp(desktop) {
+  .button {
     margin: 0 auto;
-    padding-left: 76px;
-    padding-right: 78px;
     margin-top: 20px;
     margin-bottom: 25px;
   }
@@ -103,15 +120,12 @@
   height: 42px;
   border: 1px solid var(--placeholder-text-cl);
   color: var(--main-text-cl);
+  text-align: center;
   @include font(400, 14px, 2.71);
   margin: 0;
   height: 42px;
   width: 110px;
   margin-right: 20px;
-  padding-left: 13px;
-}
-.iconDown {
-  margin-top: 5px;
 }
 
 .titleStatic {
@@ -119,14 +133,16 @@
   font-size: 14px;
   line-height: 38px;
   text-align: center;
+}
 
-  @include vp(tablet) {
-    margin-left: -45%;
+@include vp(tablet) {
+  .titleStatic {
     margin-top: 14px;
   }
+}
 
-  @include vp(desktop) {
-    margin-top: 0px;
+@include vp(desktop) {
+  .titleStatic {
     margin-left: 0px;
     margin-bottom: -14px;
   }
@@ -193,7 +209,6 @@
 
 .list {
   padding-right: 17px;
-  padding-left: 17px;
   padding-bottom: 13px;
 }
 
@@ -215,7 +230,6 @@
 
 @include vp(tablet) {
   .list {
-    margin-left: 66px;
     padding-bottom: 35px;
   }
 }
@@ -229,7 +243,6 @@
 
 .itemData {
   width: 65px;
-  // margin-right: 30px;
   font-weight: 400;
   font-size: 14px;
   line-height: 38px;
@@ -250,7 +263,6 @@
 
 .itemTime {
   width: 50px;
-  // margin-right: 30px;
   font-weight: 400;
   font-size: 14px;
   line-height: 38px;

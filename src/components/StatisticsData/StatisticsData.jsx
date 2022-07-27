@@ -51,8 +51,8 @@ const StatisticsData = () => {
       <section className={s.page__wrapperStat}>
         <Media
           queries={{
-            small: "(max-width: 1199px)",
-            large: "(min-width: 1200px)",
+            small: "(max-width: 1279px)",
+            large: "(min-width: 1280px)",
           }}
         >
           {(matches) => (
