@@ -9,7 +9,7 @@ import PublicRoute from "components/PublicRoute";
 import PrivateRoute from "components/PrivateRoute";
 import Loader from "components/Loader";
 
-import MainNav from "./components/MainNav/MainNav";
+import Header from "./components/Header/Header";
 
 import { useDispatch } from "react-redux";
 import { current } from "redux/auth/authOperations";
@@ -31,13 +31,9 @@ function App() {
 
   return (
     <>
-      <MainNav />
+      <Header />
       <Container>
-        <Suspense
-          fallback={
-              <Loader />
-          }
-        >
+        <Suspense fallback={<Loader />}>
           <Routes>
             <Route element={<PublicRoute />}>
               <Route path="/" exact element={<HomePage />} />

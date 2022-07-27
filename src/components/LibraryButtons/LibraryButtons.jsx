@@ -5,7 +5,7 @@ import MediaQuery from "react-responsive";
 import { Link } from "react-router-dom";
 import { Plus } from "assets/images/icons/Plus";
 
-export const NextButton = ({ setNext }) => {
+export const NextButton = () => {
   return (
     <Link to={"/training"} className={s.button}>
       <span className={s.buttonText}>Next</span>

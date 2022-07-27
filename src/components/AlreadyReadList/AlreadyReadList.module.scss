@@ -12,7 +12,6 @@
 .list {
   width: 270px;
   margin: 0 auto;
-  margin-bottom: 40px;
   @media screen and (min-width: 768px) {
     box-shadow: none;
     width: 678px;
@@ -26,40 +25,43 @@
   margin-top: 10px;
   @media screen and (min-width: 768px) {
     display: flex;
-    justify-content: space-between;
+    // justify-content: space-between;
     font-weight: 500;
     font-size: 14px;
     line-height: 38px;
   }
+  @media screen and (min-width: 1280px) {
+    justify-content: normal;
+  }
   .bookInfoText {
     @media screen and (min-width: 768px) {
-      margin-right: 25%;
+      margin-right: 21%;
       font-weight: 500;
       font-size: 14px;
       line-height: 38px;
       color: var(--secondary-text-cl);
     }
     @media screen and (min-width: 1280px) {
-      margin-right: 20%;
+      margin-right: 0%;
     }
   }
 
   .title {
-    margin-right: 125px;
+    margin-right: 156px;
     color: var(--secondary-text-cl);
     font-weight: 500;
     font-size: 14px;
     line-height: 38px;
     @media screen and (min-width: 1280px) {
-      margin-right: 27%;
+      margin-right: 26%;
     }
   }
 
   .author {
-    margin-right: 75px;
+    margin-right: 68px;
     color: var(--secondary-text-cl);
     @media screen and (min-width: 1280px) {
-      margin-right: 12%;
+      margin-right: 16%;
       font-weight: 500;
       font-size: 14px;
       line-height: 38px;
@@ -68,12 +70,12 @@
 
   .year {
     color: var(--secondary-text-cl);
-    margin-right: 50px;
+    margin-right: 57px;
     font-weight: 500;
     font-size: 14px;
     line-height: 38px;
     @media screen and (min-width: 1280px) {
-      margin-right: 3%;
+      margin-right: 7%;
     }
   }
 
@@ -82,9 +84,9 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 38px;
-    margin-right: 21px;
+    margin-right: 26px;
     @media screen and (min-width: 1280px) {
-      margin-right: 6%;
+      margin-right: 9%;
     }
   }
 }

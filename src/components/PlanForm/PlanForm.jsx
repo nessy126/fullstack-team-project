@@ -3,10 +3,10 @@ import { toast } from "react-toastify";
 import { get, updateStorage } from "utils/localStorage/localStorage";
 import { STORAGE_KEY } from "assets/const";
 import InputCalendar from "components/InputCalendar";
-import s from "./PlainingForm.module.scss";
+import s from "./PlanForm.module.scss";
 import PropTypes from "prop-types";
 
-const PlanningForm = ({
+const PlanForm = ({
   addStartTraining,
   addEndTraining,
   addAmountOfDaysTraining,
@@ -61,7 +61,7 @@ const PlanningForm = ({
 
   return (
     <>
-      <div className={s.planningForm__wrapper}>
+      <div className={s.PlanForm__wrapper}>
         <div className={s.top__wrapper}>
           <div className={s.title__wrapper}>
             <h3 className={s.title}>My training</h3>
@@ -90,10 +90,10 @@ const PlanningForm = ({
   );
 };
 
-PlanningForm.propTypes = {
+PlanForm.propTypes = {
   addStartTraining: PropTypes.func.isRequired,
   addEndTraining: PropTypes.func.isRequired,
   addAmountOfDaysTraining: PropTypes.func.isRequired,
 };
 
-export default PlanningForm;
+export default PlanForm;
