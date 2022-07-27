@@ -8,7 +8,6 @@ import {
 import { addStatistics } from "redux/training/trainingOperations";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { AiFillCaretDown } from "react-icons/ai";
 import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
 
@@ -75,14 +74,6 @@ const StatisticsResults = () => {
                 <span className={s.iconAntenna}>
                   {moment().quarter(3).format("DD.MM.YYYY")}
                 </span>
-                <AiFillCaretDown
-                  className={s.icon}
-                  style={{
-                    width: "21",
-                    height: "11",
-                    color: "#242A37",
-                  }}
-                />
               </p>
             </div>
             <label>
