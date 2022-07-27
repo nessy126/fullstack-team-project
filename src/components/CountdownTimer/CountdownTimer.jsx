@@ -4,6 +4,7 @@ import { useCountdown } from "hooks/useCountDown";
 import PropTypes from "prop-types";
 
 import DateTimeDisplay from "./DateTimeDisplay";
+import { MODAL_TYPES } from "assets/helpers/modal";
 import s from "./CountdownTimer.module.scss";
 
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
@@ -30,7 +31,7 @@ const CountdownTimer = ({ targetDate, timerType, setModal, timeEndGoal }) => {
       timerType === "targetData" &&
       endOfCountdown <= 0
     ) {
-      setModal();
+      setModal(MODAL_TYPES.OUT_OF_TIME);
     }
   }, [endOfCountdown, setModal, timerType, timeEndGoal]);
 
