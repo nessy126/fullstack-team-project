@@ -17,7 +17,7 @@ const StatisticsResults = () => {
   const [valueStart, setValueStart] = useState(new Date());
   const [newStatistics, setNewStatistics] = useState();
   const allBooks = useSelector(getAllBooks);
-  const traingId = useSelector(getTraininId);
+  const IdTraining = useSelector(getTraininId);
   const allStatistics = useSelector(getStatistics);
   const restSttatistics = allStatistics.filter(
     (val, index, arr) => index > arr.length - 6
@@ -31,7 +31,7 @@ const StatisticsResults = () => {
   );
 
   // const dataToFinishTraining = {
-  //   trainingID: traingId,
+  //   trainingID: IdTraining,
   //   factEndTraining: Number(new Date()),
   //   booksId: ["62cec8aec6e91af0ab950c3d"],
   // };
@@ -68,16 +68,15 @@ const StatisticsResults = () => {
       setPagesRead("");
       return;
     }
-
-      const newStatistics = {
-      date: valueStart,
-      idBook: correctBook._id,
-      trainingID: traingId,
+    const newStatistics = {
       pagesRead: Number(pagesRead),
-      days: moment().quarter(3).format("DD.MM.YYYY"),
+      dateShow: moment().quarter(3).format("DD.MM.YYYY"),
       time: moment().quarter(3).format("HH:mm:ss"),
+      dateNow: valueStart,
     };
-    dispatch(addStatistics(newStatistics));
+    console.log("newStatistics :>> ", newStatistics);
+    console.log("IdTraining :>> ", IdTraining);
+    dispatch(addStatistics({ newStatistics, IdTraining }));
     setNewStatistics(newStatistics);
     setPagesRead("");
   };
@@ -124,10 +123,10 @@ const StatisticsResults = () => {
         </form>
         <h2 className={s.titleStatic}>STATISTICS</h2>
         <ul className={s.list}>
-          {restSttatistics?.map(({ date, pagesRead, days, time }) => {
+          {restSttatistics?.map(({ dateShow, pagesRead, time }) => {
             return (
-              <li className={s.item} key={date}>
-                <p className={s.itemData}>{days}</p>
+              <li className={s.item} key={time}>
+                <p className={s.itemData}>{dateShow}</p>
                 <p className={s.itemTime}>{time}</p>
                 <p className={s.itemPages}>
                   <span className={s.itemNumber}>{pagesRead}</span>pages
@@ -137,9 +136,6 @@ const StatisticsResults = () => {
           })}
         </ul>
       </section>
-      {/* <button onClick={letsFinishTraining} className={s.button} type="button">
-     Finish training
-   </button> */}
     </>
   );
 };
