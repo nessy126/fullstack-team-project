@@ -6,28 +6,23 @@
   margin-right: auto;
   padding-left: 25px;
   padding-right: 25px;
-}
 
-@include vp(mobile){
-  .container {
-   width: 320px;
+  @include vp(mobile){
+     width: 320px;
   }
-}
-
-@include vp(tablet) {
-  .container {
-    width: 768px;
-    padding-left: 45px;
-    padding-right: 45px;
+  
+  @include vp(tablet) {
+      width: 768px;
+      padding-left: 45px;
+      padding-right: 45px;
   }
-}
-
-@include vp(desktop) {
-  .container {
-    width: 1280px;
-    padding-left: 39px;
-    padding-right: 39px;
+  
+  @include vp(desktop) {
+      width: 1280px;
+      padding-left: 39px;
+      padding-right: 39px;
     }
-  }
+  
 
+}  
 
