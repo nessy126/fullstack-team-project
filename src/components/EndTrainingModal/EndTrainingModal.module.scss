@@ -1,0 +1,52 @@
+@import "../../assets/sass/main.scss";
+
+.wrapper {
+  display: block;
+  text-align: center;
+}
+
+.svg {
+  margin-bottom: 14px;
+  width: 54px;
+  height: 54px;
+}
+
+.text {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.38;
+  color: var(--main-text-cl);
+
+  & + .text {
+    @include vp(mobile) {
+      margin-bottom: 20px;
+    }
+    @include vp(tablet) {
+      margin-bottom: 25px;
+    }
+  }
+}
+
+.button {
+  width: 97px;
+  height: 40px;
+
+  border: none;
+  background: var(--accent-active-cl);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 2.71;
+  color: var(--buttons-text-cl);
+
+  @include vp(tablet) {
+    min-width: 130px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: var(--accent-active-cl-hover);
+  }
+}

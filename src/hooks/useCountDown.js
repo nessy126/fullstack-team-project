@@ -29,5 +29,3 @@ const getReturnValues = (countDown) => {
 
   return [days, hours, minutes, seconds];
 };
-
-

@@ -9,6 +9,7 @@ import {
   pagesReadInTrainingFunc,
   amountOfPagesFunc,
 } from "./chartFunctions";
+import { COLORS } from "./colors";
 
 export {
   setOptions,
@@ -20,4 +21,5 @@ export {
   makePlanToRead,
   pagesReadInTrainingFunc,
   amountOfPagesFunc,
+  COLORS,
 };

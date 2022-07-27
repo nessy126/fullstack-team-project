@@ -38,7 +38,7 @@ const StatisticsResults = () => {
 
   //
   // const letsFinishTraining = () => {
-  //   dispatch(finishTraiining(dataToFinishTraining));
+  //   dispatch(finishTraining(dataToFinishTraining));
   // };
 
   let correctPage = correctBook?.pageTotal - correctBook?.pageFinished;
@@ -68,6 +68,7 @@ const StatisticsResults = () => {
       setPagesRead("");
       return;
     }
+
     const newStatistics = {
       pagesRead: Number(pagesRead),
       dateShow: moment().quarter(3).format("DD.MM.YYYY"),

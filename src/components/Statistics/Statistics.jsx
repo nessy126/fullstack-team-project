@@ -1,16 +1,19 @@
-import CountdownTimer from "../CountdownTimer/CountdownTimer";
-import s from "./Statistics.module.scss";
 import { useSelector } from "react-redux";
 import { getEndTraining } from "redux/auth/authSelectors";
+import PropTypes from "prop-types";
+
+import CountdownTimer from "../CountdownTimer/CountdownTimer";
 import Loader from "components/Loader";
 
-const Statistics = () => {
+import s from "./Statistics.module.scss";
+
+const Statistics = ({ setModal }) => {
+  const timeEndGoal = useSelector(getEndTraining);
   const now_in_ms = new Date().getTime();
   const getFullYear = new Date().getFullYear();
   const getFullYearMs = new Date(getFullYear + "-01-01").getTime();
   const newYearCountdown = Date.now() - getFullYearMs;
   const timeEndYear = ms_of_a_year(getFullYear) - newYearCountdown;
-  const timeEndGoal = useSelector(getEndTraining);
   const correctTime = timeEndGoal - Date.now();
   const dateTimeToNewYear = now_in_ms + timeEndYear;
   const dateTimeToGoal = now_in_ms + correctTime;
@@ -48,13 +51,22 @@ const Statistics = () => {
           <>
             <div>
               <h2 className={s.counterTitle}>Goal countdown</h2>
-              <CountdownTimer targetDate={dateTimeToGoal} />
+              <CountdownTimer
+                targetDate={dateTimeToGoal}
+                timerType="targetData"
+                setModal={setModal}
+                timeEndGoal={timeEndGoal}
+              />
             </div>
           </>
         )}
       </div>
     </>
   );
+};
+
+Statistics.propTypes = {
+  setModal: PropTypes.func.isRequired,
 };
 
 export default Statistics;
