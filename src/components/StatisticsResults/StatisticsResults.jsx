@@ -13,8 +13,6 @@ import { toast } from "react-toastify";
 import { type } from "@testing-library/user-event/dist/type";
 
 const StatisticsResults = () => {
-  const test = [{ da: "20" }, { ta: "20" }];
-  console.log("test :>> ", Array.isArray(test));
   const dispatch = useDispatch();
   const [pagesRead, setPagesRead] = useState("");
   const [valueStart, setValueStart] = useState(new Date());
@@ -126,10 +124,10 @@ const StatisticsResults = () => {
         </form>
         <h2 className={s.titleStatic}>STATISTICS</h2>
         <ul className={s.list}>
-          {restSttatistics?.map(({ date, pagesRead, days, time }) => {
+          {restSttatistics?.map(({ dateShow, pagesRead, time }) => {
             return (
-              <li className={s.item} key={date}>
-                <p className={s.itemData}>{days}</p>
+              <li className={s.item} key={time}>
+                <p className={s.itemData}>{dateShow}</p>
                 <p className={s.itemTime}>{time}</p>
                 <p className={s.itemPages}>
                   <span className={s.itemNumber}>{pagesRead}</span>pages
