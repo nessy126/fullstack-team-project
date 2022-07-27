@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { MdMenuBook } from "react-icons/md";
+import { IconContext } from "react-icons";
 import Media from "react-media";
 import Loader from "components/Loader";
 import PlanList from "components/PlanList";
@@ -31,9 +32,17 @@ const PlaningTabl = ({ books, handleDelBook }) => {
               <div className={s.column__list}>
                 <div className={s.column__flex}>
                   <div className={s.column__icon}>
-                    <MdMenuBook
-                      style={{ width: "22", height: "17", color: "#A6ABB9" }}
-                    />
+                    <IconContext.Provider
+                      value={{
+                        className: `${s.icon__book}`,
+                        style: {
+                          width: "100%",
+                          height: "100%",
+                        },
+                      }}
+                    >
+                      <MdMenuBook />
+                    </IconContext.Provider>
                   </div>
                   <div className={s.column__title}>...</div>
                 </div>
