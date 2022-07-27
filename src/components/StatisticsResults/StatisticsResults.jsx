@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { AiFillCaretDown } from "react-icons/ai";
 import { toast } from "react-toastify";
+import { type } from "@testing-library/user-event/dist/type";
 
 const StatisticsResults = () => {
   const dispatch = useDispatch();
@@ -78,6 +79,7 @@ const StatisticsResults = () => {
       days: moment().quarter(3).format("DD.MM.YYYY"),
       time: moment().quarter(3).format("HH:mm:ss"),
     };
+    console.log("pagesRead :>> ", typeof pagesRead);
     dispatch(addStatistics(newStatistics));
     setNewStatistics(newStatistics);
     setPagesRead("");
