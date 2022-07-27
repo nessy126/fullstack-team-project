@@ -1,9 +1,11 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 import spriteSVG from "assets/images/sprite.svg";
+
 import s from "./ListDescription.module.scss";
 
-const list = ({ list }) => {
+const ListDescription = ({ list }) => {
   return (
     <>
       <ul className={s.list}>
@@ -21,4 +23,8 @@ const list = ({ list }) => {
   );
 };
 
-export default list;
+export default ListDescription;
+
+ListDescription.propTypes = {
+  list: PropTypes.arrayOf(PropTypes.string.isRequired),
+};

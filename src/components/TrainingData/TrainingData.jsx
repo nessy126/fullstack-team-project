@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Media from "react-media";
 import { toast } from "react-toastify";
 import MyGoals from "components/MyGoals";
-import PlanningForm from "components/PlanningForm";
+import PlainingForm from "components/PlainingForm";
 import Select from "components/Select";
 import PlaningTabl from "components/PlainingTabl";
 import Chart from "components/Chart";
@@ -187,7 +187,7 @@ const TrainingData = () => {
                 {hideRightPart && (
                   <>
                     <ButtonIcon onClick={toglMobileTraining} type="arrow" />
-                    <PlanningForm
+                    <PlainingForm
                       addStartTraining={addStartTraining}
                       addEndTraining={addEndTraining}
                       addAmountOfDaysTraining={addAmountOfDaysTraining}
@@ -236,7 +236,7 @@ const TrainingData = () => {
                   <MyGoals data={arrayPlanTraining} />
                 </div>
                 <div className={s.left__wrapper}>
-                  <PlanningForm
+                  <PlainingForm
                     addStartTraining={addStartTraining}
                     addEndTraining={addEndTraining}
                     addAmountOfDaysTraining={addAmountOfDaysTraining}

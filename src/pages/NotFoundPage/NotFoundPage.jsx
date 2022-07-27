@@ -1,6 +1,6 @@
-import s from "./NotFoundPage.module.scss";
-
 import spriteSVG from "assets/images/sprite.svg";
+
+import s from "./NotFoundPage.module.scss";
 
 const NotFoundPage = () => {
   return (

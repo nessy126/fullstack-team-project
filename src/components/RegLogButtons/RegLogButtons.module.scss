@@ -3,10 +3,11 @@
 .buttons {
     display: flex;
     flex-direction: column;
+    margin-top: 35px;
 }
 
 .login {
-    margin-top: 30px;
+    // margin-top: 30px;
     padding: 10px;
     color: var(--buttons-text-cl);
     background-color: var(--accent-active-cl);
@@ -23,11 +24,14 @@
 
 
 .text{
+    // margin-top: 5px;
     padding: 10px;
     @include font(500, 13px, 38px)
 }
+
 .changePage {
     composes: text;
+    margin-top: 5px;
     color: var(--accent-active-cl);
     text-decoration: underline;
     cursor: pointer;
@@ -35,6 +39,8 @@
 }
 
 .alreadyReg {
+    margin-top: 5px;
+    margin-bottom: 20px;
     color: var(--secondary-text-cl);
     text-align: center;
     @include font(500, 13px, 38px)

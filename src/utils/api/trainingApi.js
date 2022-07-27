@@ -15,7 +15,7 @@ export const addTrainingAPI = (newTraining) => {
 
 export const getProgressAPI = () => {
   return axios
-    .get(endPoint)
+    .get(endPoint + "current")
     .then((res) => {
       return res.data;
     })

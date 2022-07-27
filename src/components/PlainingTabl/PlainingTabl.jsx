@@ -3,6 +3,7 @@ import { MdMenuBook } from "react-icons/md";
 import Media from "react-media";
 import PlainingItem from "components/PlainingItem";
 import Loader from "components/Loader";
+import PropTypes from "prop-types";
 import s from "./PlainingTabl.module.scss";
 
 const PlaningTabl = ({ books, handleDelBook }) => {
@@ -109,6 +110,10 @@ const PlaningTabl = ({ books, handleDelBook }) => {
       )}
     </Media>
   );
+};
+PlaningTabl.propTypes = {
+  handleDelBook: PropTypes.func.isRequired,
+  books: PropTypes.array,
 };
 
 export default PlaningTabl;

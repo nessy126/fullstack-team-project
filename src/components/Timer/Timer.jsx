@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+
 import { resendVerification } from "redux/auth/authOperations";
 
 import s from "./Timer.module.scss";
@@ -7,7 +9,6 @@ import s from "./Timer.module.scss";
 const Timer = ({ setModal }) => {
   const dispatch = useDispatch();
   const [timer, setTimer] = useState(false);
-
   const [minutes, setMinutes] = useState(1);
   const [seconds, setSeconds] = useState(30);
 
@@ -60,3 +61,7 @@ const Timer = ({ setModal }) => {
 };
 
 export default Timer;
+
+Timer.propTypes = {
+  setModal: PropTypes.func,
+};
