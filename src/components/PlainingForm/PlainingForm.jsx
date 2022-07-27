@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import { get, updateStorage } from "utils/localStorage/localStorage";
 import { STORAGE_KEY } from "assets/const";
-import ImputCalendar from "components/ImputCalendar";
-import s from "./PlanningForm.module.scss";
+import InputCalendar from "components/InputCalendar";
+import s from "./PlainingForm.module.scss";
 import PropTypes from "prop-types";
 
 const PlanningForm = ({
@@ -69,7 +69,7 @@ const PlanningForm = ({
         </div>
         <div className={s.calendar__wrapper}>
           <div className={s.input__wrapper}>
-            <ImputCalendar
+            <InputCalendar
               getHandleChange={handleChangeStart}
               minDate={new Date()}
               value={valueStart}
@@ -77,7 +77,7 @@ const PlanningForm = ({
             />
           </div>
           <div className={s.input__wrapper}>
-            <ImputCalendar
+            <InputCalendar
               getHandleChange={handleChangeEnd}
               minDate={new Date(Date.now() + 24 * 60 * 60 * 1000)}
               value={valueEnd}

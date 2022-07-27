@@ -122,3 +122,25 @@
 .dropdown__btn:active {
   color: var(--accent-active-cl-hover);
 }
+.column__btn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: none;
+  background-color: transparent;
+  width: 27px;
+  height: 18px;
+  padding-left: 13px;
+}
+.icon__del {
+  color: var(--placeholder-text-cl);
+}
+.table__btn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: none;
+  background-color: transparent;
+  width: 27px;
+  height: 18px;
+}
