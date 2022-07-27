@@ -96,7 +96,7 @@ const makePagesReadArr = (daysArr, statistics, dateStart) => {
   let pagesReadTotal = 0;
   return daysArr.map((date) => {
     const isDateIn = statistics.filter((el) => {
-      const formatDate = new Date(el.date);
+      const formatDate = new Date(el.dateNow);
       const isDayIn = daysCountFunc(dateStart, formatDate);
       return isDayIn === date;
     });
