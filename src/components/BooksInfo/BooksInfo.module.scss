@@ -10,6 +10,10 @@
   color: var(--secondary-text-cl);
 }
 
+.bookInfoText:first-child {
+  margin-bottom: 10px;
+}
+
 .bookInfoGR {
   padding-left: 55px;
 }

@@ -10,7 +10,6 @@ import BooksInfo from "components/BooksInfo";
 
 const AlreadyReadCard = (book) => {
   const [modal, setModal] = useState(false);
-
   const openModal = () => {
     setModal({
       open: true,
@@ -39,7 +38,6 @@ const AlreadyReadCard = (book) => {
       <MediaQuery maxWidth={767}>
         <div className={s.bookInfoWrapper}>
           <BooksInfo type={"alreadyRead"} />
-
           <MediaQuery maxWidth={767}>
             <div className={s.bookMoreInfo}>
               <p
