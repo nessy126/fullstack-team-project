@@ -2,9 +2,10 @@ import { useSelector } from "react-redux";
 import Media from "react-media";
 
 import AuthForm from "components/AuthForm";
-import s from "./RegisterPage.module.scss";
 import MobileHomePage from "pages/MobileHomePage";
 import CheckEmailModal from "components/CheckEmailModal";
+
+import s from "./RegisterPage.module.scss";
 
 const RegisterPage = () => {
   const { registerPass } = useSelector((state) => state.auth);

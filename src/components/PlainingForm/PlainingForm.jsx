@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import s from "./PlanningForm.module.scss";
-import polygonIconSvg from "../../assets/svg/polygon1.svg";
-import DateTimePicker from "react-datetime-picker";
 import { toast } from "react-toastify";
 import { get, updateStorage } from "utils/localStorage/localStorage";
 import { STORAGE_KEY } from "assets/const";
+import InputCalendar from "components/InputCalendar";
+import s from "./PlainingForm.module.scss";
+import PropTypes from "prop-types";
 
 const PlanningForm = ({
   addStartTraining,
@@ -42,13 +42,8 @@ const PlanningForm = ({
         (valueEnd - valueStart) / (1000 * 3600 * 24)
       );
       if (amountOfDays <= 0) {
-        toast(
-          "The end date of the workout must be greater than the start date of the workout",
-          {
-            className: `${s.tost__background}`,
-            bodyClassName: `${s.tost__body}`,
-            progressClassName: `${s.progress__bar}`,
-          }
+        toast.error(
+          "The end date of the workout must be greater than the start date of the workout"
         );
         return;
       }
@@ -74,37 +69,31 @@ const PlanningForm = ({
         </div>
         <div className={s.calendar__wrapper}>
           <div className={s.input__wrapper}>
-            <DateTimePicker
-              onChange={handleChangeStart}
-              value={valueStart}
+            <InputCalendar
+              getHandleChange={handleChangeStart}
               minDate={new Date()}
-              calendarIcon={<img alt="button" src={polygonIconSvg} />}
-              clearIcon={null}
-              className={s.datetime__picker}
-              calendarClassName={s.react__calendar}
-              disableClock={true}
-              format="dd.MM.yyyy HH:mm"
+              value={valueStart}
               placeholderText="Start"
             />
           </div>
           <div className={s.input__wrapper}>
-            <DateTimePicker
-              onChange={handleChangeEnd}
-              value={valueEnd}
+            <InputCalendar
+              getHandleChange={handleChangeEnd}
               minDate={new Date(Date.now() + 24 * 60 * 60 * 1000)}
-              clearIcon={null}
-              className={s.datetime__picker}
-              calendarClassName={s.react__calendar}
-              disableClock={true}
-              format="dd.MM.yyyy HH:mm"
-              placeholderText={"Finish"}
-              calendarIcon={<img alt="button" src={polygonIconSvg} />}
+              value={valueEnd}
+              placeholderText="Finish"
             />
           </div>
         </div>
       </div>
     </>
   );
+};
+
+PlanningForm.propTypes = {
+  addStartTraining: PropTypes.func.isRequired,
+  addEndTraining: PropTypes.func.isRequired,
+  addAmountOfDaysTraining: PropTypes.func.isRequired,
 };
 
 export default PlanningForm;
