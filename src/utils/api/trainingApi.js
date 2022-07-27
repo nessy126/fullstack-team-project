@@ -35,9 +35,9 @@ export const addStatistics = (data) => {
     });
 };
 
-export const finishTraiiningApi = (data) => {
+export const finishTrainingApi = (data) => {
   return axios
-    .patch(endPoint + "finish", data)
+    .get(endPoint + data + "/finish")
     .then((res) => {
       return res.data;
     })

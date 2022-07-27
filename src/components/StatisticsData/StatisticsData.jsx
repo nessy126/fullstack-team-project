@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import Media from "react-media";
 
 import MyGoals from "components/MyGoals";
@@ -7,17 +8,21 @@ import StatisticsTabl from "components/StatisticsTabl/StatisticsTabl";
 import Statistics from "components/CountdownTimer";
 import Chart from "components/Chart";
 import EndTrainingModal from "components/EndTrainingModal";
+import { finishTraining } from "redux/training/trainingOperations";
 
 import s from "./StatisticsData.module.scss";
 
 const StatisticsData = () => {
+  const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
+  const { auth } = useSelector((state) => state);
 
   const openModal = () => {
     setModal(true);
   };
 
   const closeModal = () => {
+    dispatch(finishTraining(auth.training.trainingID));
     setModal(false);
   };
 

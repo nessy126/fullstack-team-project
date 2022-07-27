@@ -49,11 +49,11 @@ export const addStatistics = createAsyncThunk(
   }
 );
 
-export const finishTraiining = createAsyncThunk(
+export const finishTraining = createAsyncThunk(
   "training/finish",
   async (data, { rejectWithValue }) => {
     try {
-      const finishedTraining = await trainingAPI.finishTraiiningApi(data);
+      const finishedTraining = await trainingAPI.finishTrainingApi(data);
       const amountOfBooks = finishedTraining.training.booksId.length;
 
       const result = { ...finishedTraining, amountOfBooks };

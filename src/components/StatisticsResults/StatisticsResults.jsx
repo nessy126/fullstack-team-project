@@ -38,7 +38,7 @@ const StatisticsResults = () => {
 
   //
   // const letsFinishTraining = () => {
-  //   dispatch(finishTraiining(dataToFinishTraining));
+  //   dispatch(finishTraining(dataToFinishTraining));
   // };
 
   let correctPage = correctBook?.pageTotal - correctBook?.pageFinished;
@@ -69,7 +69,7 @@ const StatisticsResults = () => {
       return;
     }
 
-      const newStatistics = {
+    const newStatistics = {
       date: valueStart,
       idBook: correctBook._id,
       trainingID: traingId,
