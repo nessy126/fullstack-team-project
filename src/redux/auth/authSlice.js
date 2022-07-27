@@ -20,7 +20,6 @@ const initialState = {
     booksList: [],
     startTraining: 0,
     endTraining: 0,
-    factEndTraining: 0,
     amountOfDays: 0,
     amountOfPages: 0,
     pagesPerDay: 0,
@@ -162,19 +161,6 @@ const authSlice = createSlice({
       state.isLoading = false;
       state.training = {
         ...initialState.training,
-        // ...state.training,
-        // trainingID: payload.training._id,
-        // booksId: payload.training.booksId,
-        // startTraining: payload.training.startTraining,
-        // endTraining: payload.training.endTraining,
-        // factEndTraining: payload.training.factEndTraining,
-        // amountOfDays: payload.training.amountOfDays,
-        // amountOfPages: payload.training.amountOfPages,
-        // pagesPerDay: payload.training.pagesPerDay,
-        // amountOfBooks: payload.training?.amountOfBooks,
-        // booksLeft: payload.training,
-        // status: payload.training.status,
-        // statistics: payload.training.statistics,
       };
       state.error = null;
     },
