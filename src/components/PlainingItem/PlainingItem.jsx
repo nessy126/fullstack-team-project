@@ -6,47 +6,11 @@ import ButtonIcon from "components/ButtonIcon";
 
 const PlainingItem = ({ type, book, deletItemFromList }) => {
   return (
-    <>
-      <li className={type === "column" ? s.column__item : s.table__item}>
-        {type === "column" ? (
-          <>
-            <div className={s.column__flex}>
-              <div className={s.column__icon}>
-                <IconContext.Provider
-                  value={{
-                    className: `${s.icon__book}`,
-                    style: {
-                      width: "100%",
-                      height: "100%",
-                    },
-                  }}
-                >
-                  <MdMenuBook />
-                </IconContext.Provider>
-              </div>
-              <div className={s.column__title}>{book.title}</div>
-              <ButtonIcon
-                onClick={deletItemFromList}
-                type="deleteOutlineColumn"
-                id={book._id}
-              />
-            </div>
-            <div className={s.column__flex}>
-              <div className={s.column__right}>Author:</div>
-              <div className={s.column__left}>{book.author}</div>
-            </div>
-            <div className={s.column__flex}>
-              <div className={s.column__right}>Year:</div>
-              <div className={s.column__left}>{book.year}</div>
-            </div>
-            <div className={s.column__flex}>
-              <div className={s.column__right}>Page:</div>
-              <div className={s.column__left}>{book.pageTotal}</div>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className={s.table__icon}>
+    <li className={type === "column" ? s.column__item : s.table__item}>
+      {type === "column" ? (
+        <>
+          <div className={s.column__flex}>
+            <div className={s.column__icon}>
               <IconContext.Provider
                 value={{
                   className: `${s.icon__book}`,
@@ -59,19 +23,53 @@ const PlainingItem = ({ type, book, deletItemFromList }) => {
                 <MdMenuBook />
               </IconContext.Provider>
             </div>
-            <div className={s.table__title}>{book.title}</div>
-            <div className={s.table__author}>{book.author}</div>
-            <div className={s.table__year}>{book.year}</div>
-            <div className={s.table__pagesTotal}>{book.pageTotal}</div>
+            <div className={s.column__title}>{book.title}</div>
             <ButtonIcon
               onClick={deletItemFromList}
-              type="deleteOutlineTable"
+              type="deleteOutlineColumn"
               id={book._id}
             />
-          </>
-        )}
-      </li>
-    </>
+          </div>
+          <div className={s.column__flex}>
+            <div className={s.column__right}>Author:</div>
+            <div className={s.column__left}>{book.author}</div>
+          </div>
+          <div className={s.column__flex}>
+            <div className={s.column__right}>Year:</div>
+            <div className={s.column__left}>{book.year}</div>
+          </div>
+          <div className={s.column__flex}>
+            <div className={s.column__right}>Page:</div>
+            <div className={s.column__left}>{book.pageTotal}</div>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className={s.table__icon}>
+            <IconContext.Provider
+              value={{
+                className: `${s.icon__book}`,
+                style: {
+                  width: "100%",
+                  height: "100%",
+                },
+              }}
+            >
+              <MdMenuBook />
+            </IconContext.Provider>
+          </div>
+          <div className={s.table__title}>{book.title}</div>
+          <div className={s.table__author}>{book.author}</div>
+          <div className={s.table__year}>{book.year}</div>
+          <div className={s.table__pagesTotal}>{book.pageTotal}</div>
+          <ButtonIcon
+            onClick={deletItemFromList}
+            type="deleteOutlineTable"
+            id={book._id}
+          />
+        </>
+      )}
+    </li>
   );
 };
 PlainingItem.propTypes = {

@@ -1,11 +1,10 @@
 import { useSelector } from "react-redux";
 import { MdMenuBook } from "react-icons/md";
 import Media from "react-media";
-import PlainingItem from "components/PlainingItem";
 import Loader from "components/Loader";
+import PlanList from "components/PlanList";
 import PropTypes from "prop-types";
 import s from "./PlainingTabl.module.scss";
-
 const PlaningTabl = ({ books, handleDelBook }) => {
   const deletItemFromList = (e) => {
     handleDelBook(e);
@@ -23,18 +22,11 @@ const PlaningTabl = ({ books, handleDelBook }) => {
         <>
           {matches.small &&
             (show ? (
-              <ul className={s.column__list}>
-                {books?.map((book) => {
-                  return (
-                    <PlainingItem
-                      key={book._id}
-                      type="column"
-                      deletItemFromList={deletItemFromList}
-                      book={book}
-                    />
-                  );
-                })}
-              </ul>
+              <PlanList
+                books={books}
+                type="column"
+                deletItemFromList={deletItemFromList}
+              />
             ) : (
               <div className={s.column__list}>
                 <div className={s.column__flex}>
@@ -68,41 +60,30 @@ const PlaningTabl = ({ books, handleDelBook }) => {
                 <span>Page</span>
               </div>
               {show ? (
-                <>
-                  <div className={s.tableScrollBox}>
-                    {isLoading ? (
-                      <Loader />
-                    ) : (
-                      <ul className={s.table__list}>
-                        {books?.map((book) => {
-                          return (
-                            <PlainingItem
-                              key={book._id}
-                              type="table"
-                              deletItemFromList={deletItemFromList}
-                              book={book}
-                            />
-                          );
-                        })}
-                      </ul>
-                    )}
-                  </div>
-                </>
+                <div className={s.tableScrollBox}>
+                  {isLoading ? (
+                    <Loader />
+                  ) : (
+                    <PlanList
+                      books={books}
+                      type="table"
+                      deletItemFromList={deletItemFromList}
+                    />
+                  )}
+                </div>
               ) : (
-                <>
-                  <div className={s.table__bottomEmpty}>
-                    <div className={s.table__icon}>
-                      <MdMenuBook
-                        style={{
-                          width: "22",
-                          height: "17",
-                          color: "#A6ABB9",
-                        }}
-                      />
-                    </div>
-                    <div className={s.table__titleEmpty}>...</div>
+                <div className={s.table__bottomEmpty}>
+                  <div className={s.table__icon}>
+                    <MdMenuBook
+                      style={{
+                        width: "22",
+                        height: "17",
+                        color: "#A6ABB9",
+                      }}
+                    />
                   </div>
-                </>
+                  <div className={s.table__titleEmpty}>...</div>
+                </div>
               )}
             </div>
           )}
@@ -115,5 +96,4 @@ PlaningTabl.propTypes = {
   handleDelBook: PropTypes.func.isRequired,
   books: PropTypes.array,
 };
-
 export default PlaningTabl;
