@@ -35,9 +35,9 @@ export const addStatistics = (data) => {
     });
 };
 
-export const finishTrainingApi = (data) => {
+export const finishTrainingApi = (trainingID) => {
   return axios
-    .get(endPoint + data + "/finish")
+    .get(endPoint + trainingID + "/finish")
     .then((res) => {
       return res.data;
     })
