@@ -41,8 +41,6 @@ export const addStatistics = createAsyncThunk(
   "training/Statistics ",
   async ({ newStatistics, IdTraining }, { rejectWithValue }) => {
     try {
-      console.log("newStatistics :>> ", newStatistics);
-      console.log("IdTraining :>> ", IdTraining);
       const result = await trainingAPI.addStatistics(newStatistics, IdTraining);
       return result;
     } catch (error) {

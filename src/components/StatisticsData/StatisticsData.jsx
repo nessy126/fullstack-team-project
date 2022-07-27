@@ -5,20 +5,25 @@ import StatisticsTabl from "components/StatisticsTabl/StatisticsTabl";
 import Statistics from "components/CountdownTimer";
 import Chart from "components/Chart";
 import s from "./StatisticsData.module.scss";
+import { useSelector } from "react-redux";
+import { getAllBooks, getAmountOfDays } from "redux/auth/authSelectors";
 
 const StatisticsData = () => {
+  const allBooks = useSelector(getAllBooks);
+  const amountOfDays = useSelector(getAmountOfDays);
+  let readBooks = allBooks?.filter((book) => book?.status === "finished");
   const arrayStatistic = [
     {
       title: "Amount of books",
-      amount: 3,
+      amount: allBooks.length,
     },
     {
       title: "Amount of days",
-      amount: 2,
+      amount: amountOfDays,
     },
     {
       title: "Books left",
-      amount: 2,
+      amount: readBooks.length,
     },
   ];
   return (

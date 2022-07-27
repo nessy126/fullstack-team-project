@@ -14,3 +14,5 @@ export const getTraininId = (state) => state.auth.training.trainingID;
 export const getStatistics = (state) => state.auth.training.statistics;
 
 export const getEndTraining = (state) => state.auth.training.endTraining;
+
+export const getAmountOfDays = (state) => state.auth.training.amountOfDays;

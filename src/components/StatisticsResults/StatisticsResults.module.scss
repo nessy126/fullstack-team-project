@@ -48,6 +48,7 @@ border: 1px solid var(--placeholder-text-cl);
         line-height: 38px;
         text-align: center;
         padding-top: 10px;
+        margin-bottom: -12px;
 }
 
 @include vp(tablet) {
@@ -150,6 +151,7 @@ border: 1px solid var(--placeholder-text-cl);
         @include vp(desktop) {
             .titleStatic {
                 margin-left: 0px;
+                    margin-bottom: -14px;
     
             }
         }
