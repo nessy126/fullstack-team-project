@@ -7,7 +7,7 @@ export const getToken = ({ auth }) => auth.token;
 export const getStatusIsTraining = ({ auth }) => auth.isTraining;
 
 export const getAllBooks = (state) =>
-  state.auth.training.booksList.length > 0 ? state.auth.training.booksList : [];
+  state.auth.training.booksList?.length > 0 ? state.auth.training.booksList : [];
 
 export const getTraininId = (state) => state.auth.training.trainingID;
 

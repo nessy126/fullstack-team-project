@@ -51,6 +51,7 @@ const StatisticsResults = () => {
       setPagesRead("");
       return;
     }
+
     const newStatistics = {
       pagesRead: Number(pagesRead),
       dateShow: moment().quarter(3).format("DD.MM.YYYY"),

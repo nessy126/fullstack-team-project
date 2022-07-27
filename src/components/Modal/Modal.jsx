@@ -17,7 +17,6 @@ const Modal = ({ closeModal, children, type, style }) => {
         closeModal();
       }
     },
-
     [closeModal]
   );
 
@@ -30,7 +29,7 @@ const Modal = ({ closeModal, children, type, style }) => {
     <>
       <div onClick={close} className={s.overlay}>
         <div className={type === "exit" ? s.headerModal : s.content}>
-          {type !== "exit" && (
+          {type !== "exit" && type !== "end" && (
             <>
               <Header modalClass={s.head} />
               <button className={s.button} onClick={() => closeModal()}>
