@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux";
-import s from "./RegLogButtons.module.scss";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+
 import CheckEmailModal from "components/CheckEmailModal";
 import Timer from "components/Timer";
+
+import s from "./RegLogButtons.module.scss";
 
 const LoginOptions = () => {
   const { registerPass } = useSelector((state) => state.auth);

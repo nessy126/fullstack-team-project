@@ -1,10 +1,12 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useDispatch } from "react-redux";
+import PropTypes from "prop-types";
+
 import { SignUpSchema, LoginSchema } from "assets/schemas/authSchemas";
 import { login, signUp } from "redux/auth/authOperations";
+import RegLogButtons from "components/RegLogButtons";
 
 import s from "./AuthForm.module.scss";
-import RegLogButtons from "components/RegLogButtons";
 
 const AuthForm = ({ type }) => {
   const dispatch = useDispatch();
@@ -36,7 +38,7 @@ const AuthForm = ({ type }) => {
         {({ handleSubmit }) => (
           <div className={s.auth}>
             <div className={s.back}>
-              <div className={isRegister ? s.formReg : s.form}>
+              <div className={s.form}>
                 <Form onSubmit={handleSubmit}>
                   <div>
                     {isRegister && (
@@ -123,3 +125,7 @@ const AuthForm = ({ type }) => {
 };
 
 export default AuthForm;
+
+AuthForm.propTypes = {
+  type: PropTypes.string.isRequired,
+};

@@ -41,26 +41,19 @@
 }
 
 .form {
-    padding: 30px 25px 10px;
+    padding: 30px 25px 0px;
     display: block;
     width: 100%;
     
     @include vp(tablet){
         width: 400px;
-        height: 350px;
-        padding: 30px 40px 10px;
+        height: auto;
+        padding: 30px 40px 0px;
         background-color: var(--main-bg-cl);
     }
 
 }
 
-.formReg {
-    // padding-bottom: 50px;
-    composes: form;
-    @include vp(tablet) {
-            height: 520px;
-        }
-}
 
 .name, .email, .password{
     color: var(--auth-bg-cl);
@@ -77,6 +70,10 @@
     }
 }
 
+.name {
+    margin-top: 0;
+}
+
 .errorMessage{
     position: absolute;
     color: var(--error-text-color);
@@ -88,38 +85,3 @@
     padding-left: 10px;
 }
 
-
-
-.buttons {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-}
-
-.login{
-    margin-top: 30px;
-    padding: 10px;
-    color: var(--buttons-text-cl);
-    background-color: var(--accent-active-cl);
-    border: none;
-    height: 60px;
-    @include font(600, 16px, 38px);
-    &:hover {
-            color: var(--main-text-cl);
-            outline: 1px solid var(--main-text-cl);
-            background-color: var(--main-bg-cl);
-        }
-}
-
-.changePage{
-    color: var(--accent-active-cl);
-    text-decoration: underline;
-    padding: 10px;
-    cursor: pointer;
-    @include font(500, 13px, 38px)
-}
-
-.alreadyReg{
-    color: var(--secondary-text-cl);
-    @include font(500, 13px, 38px)
-}
