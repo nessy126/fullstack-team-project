@@ -13,7 +13,7 @@ export const addTraining = createAsyncThunk(
   }
 );
 
-export const getProgressTraining = createAsyncThunk(
+export const getCurrentTraining = createAsyncThunk(
   "training/progress",
   async (_, { rejectWithValue }) => {
     try {

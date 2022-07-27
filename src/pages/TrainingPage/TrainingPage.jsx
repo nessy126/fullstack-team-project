@@ -5,7 +5,7 @@ import TrainingData from "components/TrainingData";
 import StatisticsData from "components/StatisticsData";
 
 import { getAllBooks } from "redux/book/bookOperations";
-import { getProgressTraining } from "redux/training/trainingOperations";
+import { getCurrentTraining } from "redux/training/trainingOperations";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 
 const TrainingPage = () => {
@@ -21,7 +21,7 @@ const TrainingPage = () => {
 
   useEffect(() => {
     if (statusIsTraining) {
-      dispatch(getProgressTraining());
+      dispatch(getCurrentTraining());
     }
   }, [dispatch, statusIsTraining]);
 
