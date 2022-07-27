@@ -1,11 +1,13 @@
 import { useState } from "react";
 import Media from "react-media";
+
 import MyGoals from "components/MyGoals";
 import StatisticsResults from "components/StatisticsResults/StatisticsResults";
 import StatisticsTabl from "components/StatisticsTabl/StatisticsTabl";
 import Statistics from "components/CountdownTimer";
 import Chart from "components/Chart";
 import EndTrainingModal from "components/EndTrainingModal";
+
 import s from "./StatisticsData.module.scss";
 
 const StatisticsData = () => {

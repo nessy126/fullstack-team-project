@@ -1,6 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useCountdown } from "hooks/useCountDown";
+import PropTypes from "prop-types";
 
 import DateTimeDisplay from "./DateTimeDisplay";
 import s from "./CountdownTimer.module.scss";
@@ -19,15 +20,19 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
   );
 };
 
-const CountdownTimer = ({ targetDate, type, setModal, setEnd }) => {
+const CountdownTimer = ({ targetDate, timerType, setModal, timeEndGoal }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
   let endOfCountdown = days + hours + minutes + seconds;
 
   useEffect(() => {
-    if (setEnd !== 0 && type === "targetData" && endOfCountdown <= 0) {
+    if (
+      timeEndGoal !== 0 &&
+      timerType === "targetData" &&
+      endOfCountdown <= 0
+    ) {
       setModal();
     }
-  }, [endOfCountdown, setModal, type, setEnd]);
+  }, [endOfCountdown, setModal, timerType, timeEndGoal]);
 
   if (endOfCountdown <= 0) {
     return <ShowCounter days="0" hours="0" minutes="0" seconds="0" />;
@@ -41,6 +46,12 @@ const CountdownTimer = ({ targetDate, type, setModal, setEnd }) => {
       />
     );
   }
+};
+
+CountdownTimer.propTypes = {
+  targetDate: PropTypes.number.isRequired,
+  timerType: PropTypes.string,
+  timeEndGoal: PropTypes.number,
 };
 
 export default CountdownTimer;

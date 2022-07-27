@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import Modal from "components/Modal";
 import spriteSVG from "../../assets/svg/endTrainingModal/symbol-defs.svg";
 import s from "./EndTrainingModal.module.scss";
@@ -19,6 +20,10 @@ const EndTrainingModal = ({ closeModal }) => {
       </div>
     </Modal>
   );
+};
+
+EndTrainingModal.propTypes = {
+  closeModal: PropTypes.func.isRequired,
 };
 
 export default EndTrainingModal;

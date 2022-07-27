@@ -1,9 +1,11 @@
 import { useSelector } from "react-redux";
 import { getEndTraining } from "redux/auth/authSelectors";
+import PropTypes from "prop-types";
 
 import CountdownTimer from "../CountdownTimer/CountdownTimer";
-import s from "./Statistics.module.scss";
 import Loader from "components/Loader";
+
+import s from "./Statistics.module.scss";
 
 const Statistics = ({ setModal }) => {
   const timeEndGoal = useSelector(getEndTraining);
@@ -51,9 +53,9 @@ const Statistics = ({ setModal }) => {
               <h2 className={s.counterTitle}>Goal countdown</h2>
               <CountdownTimer
                 targetDate={dateTimeToGoal}
-                type="targetData"
+                timerType="targetData"
                 setModal={setModal}
-                setEnd={timeEndGoal}
+                timeEndGoal={timeEndGoal}
               />
             </div>
           </>
@@ -61,6 +63,10 @@ const Statistics = ({ setModal }) => {
       </div>
     </>
   );
+};
+
+Statistics.propTypes = {
+  setModal: PropTypes.func.isRequired,
 };
 
 export default Statistics;

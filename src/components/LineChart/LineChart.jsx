@@ -1,13 +1,9 @@
 import { useState, useEffect } from "react";
 import { Line } from "react-chartjs-2";
 import "chart.js/auto";
+import PropTypes from "prop-types";
 
-import { setOptions } from "../../assets/helpers/chart";
-
-const COLORS = {
-  PLAN: "#091E3F",
-  READ: "#FF6B08",
-};
+import { setOptions, COLORS } from "../../assets/helpers/chart";
 
 function LineChart({ chartData }) {
   const {
@@ -38,7 +34,6 @@ function LineChart({ chartData }) {
     ],
   });
 
-  // Динамическое отображение графика на странице планирования тренировки
   useEffect(() => {
     setUserReadData({
       labels: daysForTraining,
@@ -61,12 +56,21 @@ function LineChart({ chartData }) {
         },
       ],
     });
-    // Зависимость установлена таким образом, что данные меняються только в том случае, если приходит новый массив с данными от родительского компонента
-    // Коментарий ниже(строка 66) оставлен специально eslint-ером. Не удалять!
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [chartData]);
+  }, [daysForTraining, pagesReadInTraining, planToRead]);
 
   return <Line options={setOptions(amountOfPagesPlan)} data={userReadData} />;
 }
+
+LineChart.propTypes = {
+  chartData: PropTypes.shape({
+    daysForTraining: PropTypes.arrayOf(PropTypes.number),
+    planToRead: PropTypes.arrayOf(PropTypes.number),
+    pagesReadInTraining: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.number,
+    ]),
+    amountOfPagesPlan: PropTypes.number,
+  }),
+};
 
 export default LineChart;
