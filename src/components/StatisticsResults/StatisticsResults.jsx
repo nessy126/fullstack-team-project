@@ -10,7 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { AiFillCaretDown } from "react-icons/ai";
 import { toast } from "react-toastify";
-import { type } from "@testing-library/user-event/dist/type";
 
 const StatisticsResults = () => {
   const dispatch = useDispatch();
@@ -137,9 +136,6 @@ const StatisticsResults = () => {
           })}
         </ul>
       </section>
-      {/* <button onClick={letsFinishTraining} className={s.button} type="button">
-     Finish training
-   </button> */}
     </>
   );
 };
