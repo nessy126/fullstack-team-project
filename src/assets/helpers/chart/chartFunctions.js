@@ -29,7 +29,7 @@ const amountOfPagesPlanCountFunc = (booksArr, days) => {
   }
   if (days > 0) {
     return Math.floor(
-      booksArr.reduce((sum, { pageTotal }) => sum + pageTotal, 0) / days
+      booksArr?.reduce((sum, { pageTotal }) => sum + pageTotal, 0) / days
     );
   }
   return 0;
@@ -37,7 +37,7 @@ const amountOfPagesPlanCountFunc = (booksArr, days) => {
 
 const amountOfPagesFunc = (arr, status) => {
   if (!status) {
-    return arr.reduce((sum, { pageTotal }) => sum + pageTotal, 0);
+    return arr?.reduce((sum, { pageTotal }) => sum + pageTotal, 0);
   }
 };
 
