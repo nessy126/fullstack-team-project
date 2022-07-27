@@ -1,9 +1,9 @@
 import { Home } from "assets/images/icons/homeIcon";
 import { LibraryIcon } from "assets/images/icons/libraryIcon";
 import { Link } from "react-router-dom";
-import s from "./NavMenu.module.scss";
+import s from "./HeaderMenu.module.scss";
 
-const NavMenu = () => {
+const HeaderMenu = () => {
   return (
     <nav>
       <ul className={s.navMenu}>
@@ -23,4 +23,4 @@ const NavMenu = () => {
   );
 };
 
-export default NavMenu;
+export default HeaderMenu;

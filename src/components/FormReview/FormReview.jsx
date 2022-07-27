@@ -2,16 +2,16 @@ import s from "./FormReview.module.scss";
 
 import { ErrorMessage, Formik } from "formik";
 import Rating from "components/Rating/Rating";
-import { validationReviewForm } from "utils/validation/validationReviewForm";
+
 import { toast } from "react-toastify";
 
 import MediaQuery from "react-responsive";
 import { useDispatch } from "react-redux";
 import { addReview } from "redux/book/bookOperations";
+import { validationReviewForm } from "utils/validation/validationReviewForm";
 
 export default function FormReview({ closeModal, id, backRate, comment }) {
   const dispatch = useDispatch();
-
   return (
     <>
       <Formik
@@ -38,9 +38,9 @@ export default function FormReview({ closeModal, id, backRate, comment }) {
                 name="rating"
                 className={s.errorMessage}
               />
-              <div className={s.hiddenMargin}></div>
+
               <label className={s.form__label}>
-                <h2 className={s.Resume}>Resume</h2>
+                <h2 className={s.resume}>Resume</h2>
                 <ErrorMessage
                   component="div"
                   name="comment"
