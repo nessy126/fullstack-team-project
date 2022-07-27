@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 import { AiFillCaretDown } from "react-icons/ai";
 import { toast } from "react-toastify";
+import { v4 as uuidv4 } from "uuid";
 
 const StatisticsResults = () => {
   const dispatch = useDispatch();
@@ -22,6 +23,7 @@ const StatisticsResults = () => {
   const restSttatistics = allStatistics.filter(
     (val, index, arr) => index > arr.length - 6
   );
+
   useEffect(() => {
     setValueStart(new Date());
   }, [newStatistics]);
@@ -29,19 +31,6 @@ const StatisticsResults = () => {
   let correctBook = allBooks?.find(
     (book) => book?.pageTotal > book?.pageFinished
   );
-
-  // const dataToFinishTraining = {
-  //   trainingID: IdTraining,
-  //   factEndTraining: Number(new Date()),
-  //   booksId: ["62cec8aec6e91af0ab950c3d"],
-  // };
-
-  //
-  // const letsFinishTraining = () => {
-  //   dispatch(finishTraining(dataToFinishTraining));
-  // };
-
-  let correctPage = correctBook?.pageTotal - correctBook?.pageFinished;
 
   const onInput = (e) => {
     const { name, value } = e.target;
@@ -59,12 +48,6 @@ const StatisticsResults = () => {
     e.preventDefault();
     if (correctBook === undefined) {
       toast.success("Congratulations! You've read all books!");
-      // letsFinishTraining();
-      setPagesRead("");
-      return;
-    }
-    if (pagesRead > correctPage) {
-      toast.error(`Maximum pages ${correctPage}`);
       setPagesRead("");
       return;
     }
@@ -75,8 +58,6 @@ const StatisticsResults = () => {
       time: moment().quarter(3).format("HH:mm:ss"),
       dateNow: valueStart,
     };
-    console.log("newStatistics :>> ", newStatistics);
-    console.log("IdTraining :>> ", IdTraining);
     dispatch(addStatistics({ newStatistics, IdTraining }));
     setNewStatistics(newStatistics);
     setPagesRead("");
@@ -126,7 +107,7 @@ const StatisticsResults = () => {
         <ul className={s.list}>
           {restSttatistics?.map(({ dateShow, pagesRead, time }) => {
             return (
-              <li className={s.item} key={time}>
+              <li className={s.item} key={uuidv4()}>
                 <p className={s.itemData}>{dateShow}</p>
                 <p className={s.itemTime}>{time}</p>
                 <p className={s.itemPages}>
