@@ -1,22 +1,98 @@
 @import "../../assets/sass/main.scss";
+.head {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
 
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--main-bg-cl);
+  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  width: 100%;
+}
 .header {
   display: flex;
   align-items: center;
-  text-align: center;
   justify-content: space-between;
   height: 60px;
-  z-index: 1100;
 
-  background-color: #ffffff;
-  box-shadow: 0px 2px 3px rgba(9, 30, 63, 0.1);
+  margin-left: auto;
+  margin-right: auto;
+  background-color: var(--main-bg-cl);
+  width: 320px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 @include vp(tablet) {
   .header {
-    justify-content: space-around;
+    width: 768px;
   }
 }
+@include vp(desktop) {
+  .header {
+    width: 1280px;
+  }
+}
+.name {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.authHead {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  height: 60px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: var(--main-bg-cl);
+}
+
+.authHeader {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: flex-start;
+  height: 60px;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  background-color: var(--main-bg-cl);
+  width: 320px;
+}
+
+@include vp(tablet) {
+  .authHeader {
+    width: 768px;
+  }
+}
+@include vp(desktop) {
+  .authHeader {
+    width: 1280px;
+  }
+}
+
+@include vp(mobile-only) {
+  .authHeader {
+    justify-content: center;
+  }
+}
+
+// @include vp(tablet) {
+//   .header {
+//     justify-content: space-around;
+//   }
+// }
 
 .navMenu {
   display: flex;
@@ -48,13 +124,13 @@
 
 .title {
   font-family: "Abril Fatface";
-  font-style: normal;
-  font-weight: 400;
+  font-weight: 800;
   font-size: 20px;
-
   line-height: 27px;
   text-decoration: none;
-  color: #242a37;
+  margin-top: 3px;
+  // margin-bottom: revert;
+  color: var(--main-text-cl);
 }
 
 .link {
@@ -72,14 +148,14 @@
   &:hover,
   &:focus {
     border-radius: 50%;
-    background-color: #e3e9ed;
+    background-color: var(--auth-bg-cl);
   }
 }
 
 .titleLink {
   display: block;
 
-  margin-left: 25px;
+  // margin-left: 25px;
 
   width: 33px;
   height: 33px;
@@ -92,7 +168,25 @@
   &:hover,
   &:focus {
     border-radius: 50%;
-    background-color: #e3e9ed;
+    background-color: var(--auth-bg-cl);
+  }
+}
+
+.authTitleLink {
+  display: block;
+
+  width: 33px;
+  height: 33px;
+
+  text-align: center;
+  text-decoration: none;
+  border-radius: 50%;
+
+  transition: background-color 350ms ease;
+  &:hover,
+  &:focus {
+    border-radius: 50%;
+    background-color: var(--auth-bg-cl);
   }
 }
 @include vp(tablet) {
@@ -112,66 +206,32 @@
   height: 22px;
   text-align: center;
   margin-right: 14px;
+  margin-top: 7px;
 }
 
 .svg {
   width: 22px;
   height: 33px;
-  fill: #a6abb9;
-}
-
-.accLogo {
-  width: 33px;
-
-  margin-right: 14px;
-
-  border-radius: 50%;
-
-  text-align: center;
-  background-color: #f5f7fa;
-}
-
-@include vp(tablet) {
-  .accLogo {
-    display: none;
-  }
+  fill: var(--placeholder-text-cl);
 }
 
 .accLogoTablet {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 33px;
-
-  margin-right: 14px;
+  height: 33px;
+  margin-top: 1px;
 
   border-radius: 50%;
-
-  text-align: center;
-  background-color: #f5f7fa;
+  margin-right: 14px;
+  @include font(600, 14px, 2.71);
+  // text-align: center;
+  background-color: var(--auth-bg-cl);
 }
 
-.logout__button {
-  border: none;
-  background-color: transparent;
-  color: rgba(189, 189, 189, 1);
-  text-decoration: underline;
-  margin-right: 4.25%;
-  transition: color 250ms ease;
-
-  &:hover,
-  &:focus {
-    color: #242a37;
-  }
-}
-
-@include vp(tablet) {
-  .logout__button {
-    margin-right: -3.25%;
-  }
-}
-
-@include vp(desktop) {
-  .logout__button {
-    margin-right: -1.95%;
-  }
+.userName {
+  margin-top: 9px;
 }
 
 .userBar {
@@ -181,98 +241,17 @@
 @include vp(tablet) {
   .userBar {
     display: flex;
-    margin-right: 25%;
-    margin-left: 32%;
+    margin-right: 12%;
+    margin-left: 20%;
+  }
+}
+@include vp(desktop) {
+  .userBar {
+    margin-right: 22%;
+    margin-left: 30%;
   }
 }
 
-.exitText {
-  margin-right: 21px;
-  margin-left: 20px;
-  margin-top: 27px;
-  margin-bottom: 20px;
-  width: 237px;
-  height: 66px;
-
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 22px;
-
-  text-align: center;
-
-  color: #242a37;
-}
-
-@include vp(tablet) {
-  .exitText {
-    width: 329px;
-    height: 44px;
-    margin-left: 30px;
-    margin-right: 30px;
-    margin-top: 27px;
-    margin-bottom: 26px;
-  }
-}
-
-.modalButtonBlock {
-  text-align: center;
-}
-
-.notExit {
-  width: 130px;
-  height: 40px;
-
-  border: 1px solid #242a37;
-  background-color: transparent;
-  margin-right: 30px;
-}
-
-@include vp(tablet) {
-  .notExit {
-    width: 98px;
-  }
-}
-
-.exit {
-  width: 97px;
-  height: 40px;
-
-  border: none;
-  background: #ff6b08;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-}
-
-@include vp(tablet) {
-  .exit {
-    width: 130px;
-  }
-}
-
-.notExitText {
-  width: 49px;
-  height: 38px;
-
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 38px;
-
-  text-align: center;
-
-  color: #242a37;
-}
-
-.buttonExitText {
-  width: 103px;
-  height: 38px;
-
-  font-style: normal;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 38px;
-
-  text-align: center;
-
-  color: #ffffff;
+.noVision {
+  display: none;
 }

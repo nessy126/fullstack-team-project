@@ -2,11 +2,12 @@ import { useSelector } from "react-redux";
 
 import LineChart from "../LineChart";
 import Loader from "components/Loader";
-import { setOptions } from "../../assets/helpers/chart/chartOptions";
+
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 import { get } from "../../utils/localStorage/localStorage";
 import { initialData } from "../../assets/helpers/chart";
 import { STORAGE_KEY } from "assets/const";
+
 import s from "./Chart.module.scss";
 
 import {
@@ -81,17 +82,11 @@ const Chart = () => {
   return (
     <div className={s.chartWrapper}>
       {!isTraining ? (
-        <LineChart
-          chartOptions={setOptions(amountOfPagesPlan)}
-          chartData={chartData}
-        />
+        <LineChart chartData={chartData} />
       ) : isLoading ? (
         <Loader />
       ) : (
-        <LineChart
-          chartOptions={setOptions(amountOfPagesPlan)}
-          chartData={chartData}
-        />
+        <LineChart chartData={chartData} />
       )}
     </div>
   );

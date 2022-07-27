@@ -13,7 +13,7 @@ export const addTraining = createAsyncThunk(
   }
 );
 
-export const getProgressTraining = createAsyncThunk(
+export const getCurrentTraining = createAsyncThunk(
   "training/progress",
   async (_, { rejectWithValue }) => {
     try {
@@ -39,9 +39,9 @@ export const getProgressTraining = createAsyncThunk(
 
 export const addStatistics = createAsyncThunk(
   "training/Statistics ",
-  async (data, { rejectWithValue }) => {
+  async ({ newStatistics, IdTraining }, { rejectWithValue }) => {
     try {
-      const result = await trainingAPI.addStatistics(data);
+      const result = await trainingAPI.addStatistics(newStatistics, IdTraining);
       return result;
     } catch (error) {
       return rejectWithValue(error);
@@ -49,11 +49,11 @@ export const addStatistics = createAsyncThunk(
   }
 );
 
-export const finishTraiining = createAsyncThunk(
+export const finishTraining = createAsyncThunk(
   "training/finish",
   async (data, { rejectWithValue }) => {
     try {
-      const finishedTraining = await trainingAPI.finishTraiiningApi(data);
+      const finishedTraining = await trainingAPI.finishTrainingApi(data);
       const amountOfBooks = finishedTraining.training.booksId.length;
 
       const result = { ...finishedTraining, amountOfBooks };

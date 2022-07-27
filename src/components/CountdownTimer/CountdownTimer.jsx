@@ -1,15 +1,10 @@
 import React from "react";
-import DateTimeDisplay from "./DateTimeDisplay";
+import { useEffect } from "react";
 import { useCountdown } from "hooks/useCountDown";
+import PropTypes from "prop-types";
+
+import DateTimeDisplay from "./DateTimeDisplay";
 import s from "./CountdownTimer.module.scss";
-const ExpiredNotice = () => {
-  return (
-    <div className="expired-notice">
-      <span>Expired!!!</span>
-      <p>Please select a future date and time.</p>
-    </div>
-  );
-};
 
 const ShowCounter = ({ days, hours, minutes, seconds }) => {
   return (
@@ -25,11 +20,22 @@ const ShowCounter = ({ days, hours, minutes, seconds }) => {
   );
 };
 
-const CountdownTimer = ({ targetDate }) => {
+const CountdownTimer = ({ targetDate, timerType, setModal, timeEndGoal }) => {
   const [days, hours, minutes, seconds] = useCountdown(targetDate);
+  let endOfCountdown = days + hours + minutes + seconds;
 
-  if (days + hours + minutes + seconds <= 0) {
-    return <ExpiredNotice />;
+  useEffect(() => {
+    if (
+      timeEndGoal !== 0 &&
+      timerType === "targetData" &&
+      endOfCountdown <= 0
+    ) {
+      setModal();
+    }
+  }, [endOfCountdown, setModal, timerType, timeEndGoal]);
+
+  if (endOfCountdown <= 0) {
+    return <ShowCounter days="0" hours="0" minutes="0" seconds="0" />;
   } else {
     return (
       <ShowCounter
@@ -40,6 +46,12 @@ const CountdownTimer = ({ targetDate }) => {
       />
     );
   }
+};
+
+CountdownTimer.propTypes = {
+  targetDate: PropTypes.number.isRequired,
+  timerType: PropTypes.string,
+  timeEndGoal: PropTypes.number,
 };
 
 export default CountdownTimer;

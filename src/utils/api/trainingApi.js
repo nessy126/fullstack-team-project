@@ -4,7 +4,7 @@ const endPoint = "api/training/";
 
 export const addTrainingAPI = (newTraining) => {
   return axios
-    .post(endPoint + "start", newTraining)
+    .post(endPoint, newTraining)
     .then((res) => {
       return res.data;
     })
@@ -15,7 +15,7 @@ export const addTrainingAPI = (newTraining) => {
 
 export const getProgressAPI = () => {
   return axios
-    .get(endPoint)
+    .get(endPoint + "current")
     .then((res) => {
       return res.data;
     })
@@ -24,9 +24,9 @@ export const getProgressAPI = () => {
     });
 };
 
-export const addStatistics = (data) => {
+export const addStatistics = (data, IdTraining) => {
   return axios
-    .patch(endPoint + "statistics", data)
+    .patch(endPoint + IdTraining + "/statistics", data)
     .then((res) => {
       return res.data;
     })
@@ -35,9 +35,9 @@ export const addStatistics = (data) => {
     });
 };
 
-export const finishTraiiningApi = (data) => {
+export const finishTrainingApi = (trainingID) => {
   return axios
-    .patch(endPoint + "finish", data)
+    .get(endPoint + trainingID + "/finish")
     .then((res) => {
       return res.data;
     })

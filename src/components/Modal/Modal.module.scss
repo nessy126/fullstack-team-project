@@ -1,3 +1,5 @@
+@import "../../assets/sass/main.scss";
+
 .overlay {
   position: fixed;
   top: 0;
@@ -17,11 +19,17 @@
 }
 
 .content {
-  background-color: var(--secondary-bg-cl);
-  padding: 20px;
-  height: 100vh;
-  width: 100%;
   position: relative;
+  background-color: var(--secondary-bg-cl);
+  @include vp(mobile) {
+    padding: 44px 16px 50px 17px;
+    max-width: 270px;
+  }
+
+  @include vp(tablet) {
+    padding: 40px 50px 51px 51px;
+    max-width: 390px;
+  }
 }
 
 .button {
@@ -34,7 +42,7 @@
 .headerModal {
   background-color: var(--main-bg-cl);
   padding: 20px;
-  min-width: 300px;
+  min-width: 270px;
   max-width: 700px;
   position: relative;
 }

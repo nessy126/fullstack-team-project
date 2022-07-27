@@ -1,7 +1,7 @@
 import MediaQuery from "react-responsive";
-import s from "./MainNavModal.module.scss";
+import s from "./HeaderModal.module.scss";
 
-const MainNavModal = ({ closeModal, logoutButtonAction }) => {
+const HeaderModal = ({ closeModal, logoutButtonAction }) => {
   return (
     <>
       <p className={s.exitText}>
@@ -25,4 +25,4 @@ const MainNavModal = ({ closeModal, logoutButtonAction }) => {
   );
 };
 
-export default MainNavModal;
+export default HeaderModal;

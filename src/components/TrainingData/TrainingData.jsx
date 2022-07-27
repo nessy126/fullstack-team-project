@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import Media from "react-media";
 import { toast } from "react-toastify";
 import MyGoals from "components/MyGoals";
-import PlanningForm from "components/PlanningForm";
+import PlanForm from "components/PlanForm";
 import Select from "components/Select";
 import PlaningTabl from "components/PlainingTabl";
 import Chart from "components/Chart";
@@ -159,11 +159,7 @@ const TrainingData = () => {
   // При клике по кнопке "Старт тренировки" сначала проверяется наличие обеих дат (начало и конец тренировки) и только после этого отправляется запрос на бек по созданию тренировки
   const clickOnStartBtn = () => {
     if (startTraining === 0 || endTraining === 0) {
-      toast("Choose a start and end date for your workout", {
-        className: `${s.tost__background}`,
-        bodyClassName: `${s.tost__body}`,
-        progressClassName: `${s.progress__bar}`,
-      });
+      toast.error("Choose a start and end date for your workout");
       return;
     }
     dispatch(addTraining(valueTraining));
@@ -187,7 +183,7 @@ const TrainingData = () => {
                 {hideRightPart && (
                   <>
                     <ButtonIcon onClick={toglMobileTraining} type="arrow" />
-                    <PlanningForm
+                    <PlanForm
                       addStartTraining={addStartTraining}
                       addEndTraining={addEndTraining}
                       addAmountOfDaysTraining={addAmountOfDaysTraining}
@@ -236,7 +232,7 @@ const TrainingData = () => {
                   <MyGoals data={arrayPlanTraining} />
                 </div>
                 <div className={s.left__wrapper}>
-                  <PlanningForm
+                  <PlanForm
                     addStartTraining={addStartTraining}
                     addEndTraining={addEndTraining}
                     addAmountOfDaysTraining={addAmountOfDaysTraining}

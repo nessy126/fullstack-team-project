@@ -4,8 +4,8 @@ import { signUp, login, logout, current } from "./authOperations";
 
 import {
   addTraining,
-  finishTraiining,
-  getProgressTraining,
+  finishTraining,
+  getCurrentTraining,
   addStatistics,
 } from "redux/training/trainingOperations";
 
@@ -20,7 +20,6 @@ const initialState = {
     booksList: [],
     startTraining: 0,
     endTraining: 0,
-    factEndTraining: 0,
     amountOfDays: 0,
     amountOfPages: 0,
     pagesPerDay: 0,
@@ -47,10 +46,10 @@ const authSlice = createSlice({
       state.error = null;
     },
     [signUp.fulfilled]: (state, { payload }) => {
-      state.user = { 
+      state.user = {
         name: payload.name,
         email: payload.email,
-       };
+      };
       state.isLoading = false;
       state.registerPass = true;
     },
@@ -63,7 +62,9 @@ const authSlice = createSlice({
       state.error = null;
     },
     [login.fulfilled]: (state, { payload }) => {
-      state.user = { ...payload?.user };
+      state.user = { email: payload.user.email,
+      name: payload.user.name
+      };
       state.token = payload?.token;
       state.isLoading = false;
       state.isLoggedIn = true;
@@ -118,19 +119,19 @@ const authSlice = createSlice({
       state.error = null;
     },
     [addStatistics.fulfilled]: (state, { payload }) => {
-      state.training.statistics = payload.statistics;
-      state.training.booksList = payload.booksId;
+      state.training.statistics = payload.training.statistics;
+      state.training.booksList = payload.training.booksId;
       state.isLoading = false;
     },
     [addStatistics.rejected]: (state, { payload }) => {
       state.error = payload;
       state.isLoading = false;
     },
-    [getProgressTraining.pending]: (state) => {
+    [getCurrentTraining.pending]: (state) => {
       state.isLoading = true;
       state.error = null;
     },
-    [getProgressTraining.fulfilled]: (state, { payload }) => {
+    [getCurrentTraining.fulfilled]: (state, { payload }) => {
       state.isTraining = true;
       state.isLoading = false;
       state.error = null;
@@ -149,36 +150,23 @@ const authSlice = createSlice({
         statistics: payload.statistics,
       };
     },
-    [getProgressTraining.rejected]: (state, { payload }) => {
+    [getCurrentTraining.rejected]: (state, { payload }) => {
       state.isLoading = false;
       state.error = payload;
     },
-    [finishTraiining.pending]: (state) => {
+    [finishTraining.pending]: (state) => {
       state.isLoading = true;
       state.error = null;
     },
-    [finishTraiining.fulfilled]: (state) => {
+    [finishTraining.fulfilled]: (state) => {
       state.isTraining = false;
       state.isLoading = false;
       state.training = {
-        ...initialState.training
-        // ...state.training,
-        // trainingID: payload.training._id,
-        // booksId: payload.training.booksId,
-        // startTraining: payload.training.startTraining,
-        // endTraining: payload.training.endTraining,
-        // factEndTraining: payload.training.factEndTraining,
-        // amountOfDays: payload.training.amountOfDays,
-        // amountOfPages: payload.training.amountOfPages,
-        // pagesPerDay: payload.training.pagesPerDay,
-        // amountOfBooks: payload.training?.amountOfBooks,
-        // booksLeft: payload.training,
-        // status: payload.training.status,
-        // statistics: payload.training.statistics,
+        ...initialState.training,
       };
       state.error = null;
     },
-    [finishTraiining.rejected]: (state, { payload }) => {
+    [finishTraining.rejected]: (state, { payload }) => {
       state.error = payload;
       state.isLoading = false;
     },

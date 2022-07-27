@@ -1,7 +1,6 @@
-import s from "./LogOutNavMenu.module.scss";
+import s from "./LogOutHeaderMenu.module.scss";
 
-const LogOutNavMenu = ({ userName,openModal }) => {
-
+const LogOutHeaderMenu = ({ userName, openModal }) => {
   return (
     <>
       <div className={s.accLogo}>{userName?.slice(0, 1)}</div>
@@ -10,10 +9,10 @@ const LogOutNavMenu = ({ userName,openModal }) => {
         type="button"
         onClick={() => openModal()}
       >
-        <span className={s.logout__text}>Exit</span>
+        <span className={s.logout__text}>Logout</span>
       </button>
     </>
   );
 };
 
-export default LogOutNavMenu;
+export default LogOutHeaderMenu;

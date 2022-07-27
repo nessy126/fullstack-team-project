@@ -1,13 +1,13 @@
 import { useCallback, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { ArrowLeft } from "../../assets/images/icons/ArrowLeft";
-import MainNav from "../MainNav/MainNav";
+import Header from "../Header/Header";
 
 import s from "./Modal.module.scss";
 
 const modalRoot = document.getElementById("modalRoot");
 
-const Modal = ({ closeModal, children, type }) => {
+const Modal = ({ closeModal, children, type, style }) => {
   const close = useCallback(
     (e) => {
       if (e.code === "Escape") {
@@ -17,7 +17,6 @@ const Modal = ({ closeModal, children, type }) => {
         closeModal();
       }
     },
-
     [closeModal]
   );
 
@@ -30,9 +29,9 @@ const Modal = ({ closeModal, children, type }) => {
     <>
       <div onClick={close} className={s.overlay}>
         <div className={type === "exit" ? s.headerModal : s.content}>
-          {type !== "exit" && (
+          {type !== "exit" && type !== "end" && (
             <>
-              <MainNav modalClass={s.head} />
+              <Header modalClass={s.head} />
               <button className={s.button} onClick={() => closeModal()}>
                 <ArrowLeft color={s.closeArrowColor} />
               </button>

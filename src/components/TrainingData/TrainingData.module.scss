@@ -12,7 +12,6 @@
 .left__wrapper {
   margin-bottom: 30px;
   @include vp(desktop) {
-    border: 1px solid green;
     margin-right: 40px;
     margin-bottom: 0;
   }
@@ -22,9 +21,6 @@
   @include vp(tablet) {
     margin-bottom: 0;
   }
-  @include vp(desktop) {
-    border: 1px solid red;
-  }
 }
 .select__wrapper {
   width: 100%;
@@ -33,6 +29,7 @@
   align-items: center;
   @include vp(tablet) {
     flex-direction: row;
+    justify-content: space-between;
   }
 }
 
