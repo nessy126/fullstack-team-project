@@ -13,12 +13,14 @@ import { toast } from "react-toastify";
 import { type } from "@testing-library/user-event/dist/type";
 
 const StatisticsResults = () => {
+  const test = [{ da: "20" }, { ta: "20" }];
+  console.log("test :>> ", Array.isArray(test));
   const dispatch = useDispatch();
   const [pagesRead, setPagesRead] = useState("");
   const [valueStart, setValueStart] = useState(new Date());
   const [newStatistics, setNewStatistics] = useState();
   const allBooks = useSelector(getAllBooks);
-  const traingId = useSelector(getTraininId);
+  const IdTraining = useSelector(getTraininId);
   const allStatistics = useSelector(getStatistics);
   const restSttatistics = allStatistics.filter(
     (val, index, arr) => index > arr.length - 6
@@ -32,7 +34,7 @@ const StatisticsResults = () => {
   );
 
   // const dataToFinishTraining = {
-  //   trainingID: traingId,
+  //   trainingID: IdTraining,
   //   factEndTraining: Number(new Date()),
   //   booksId: ["62cec8aec6e91af0ab950c3d"],
   // };
@@ -69,17 +71,15 @@ const StatisticsResults = () => {
       setPagesRead("");
       return;
     }
-
-      const newStatistics = {
-      date: valueStart,
-      idBook: correctBook._id,
-      trainingID: traingId,
+    const newStatistics = {
       pagesRead: Number(pagesRead),
-      days: moment().quarter(3).format("DD.MM.YYYY"),
+      dateShow: moment().quarter(3).format("DD.MM.YYYY"),
       time: moment().quarter(3).format("HH:mm:ss"),
+      dateNow: valueStart,
     };
-    console.log("pagesRead :>> ", typeof pagesRead);
-    dispatch(addStatistics(newStatistics));
+    console.log("newStatistics :>> ", newStatistics);
+    console.log("IdTraining :>> ", IdTraining);
+    dispatch(addStatistics({ newStatistics, IdTraining }));
     setNewStatistics(newStatistics);
     setPagesRead("");
   };
