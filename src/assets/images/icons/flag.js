@@ -1,7 +1,7 @@
 export const Flag = () => {
   return (
     <svg
-      width="15"
+      width="22"
       height="17"
       viewBox="0 0 15 17"
       fill="none"
