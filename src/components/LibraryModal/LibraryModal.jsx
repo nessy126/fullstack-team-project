@@ -28,8 +28,16 @@ export const LibraryModal = () => {
         {modal.open && (
           <Modal closeModal={closeModal} type="Exit">
             <div className={s.wrapper}>
-              <Steps type="step-1" />
-              <Steps />
+              <Steps
+                title="STEP 1."
+                underTitle="Create your own library"
+                text="Add there books which you are going to read."
+              />
+              <Steps
+                title="STEP 2."
+                underTitle="Create your first training"
+                text="Set a goal, choose period, start training."
+              />
               <div className={s.buttonContainer}>
                 <button className={s.button} onClick={() => closeModal()}>
                   Ok
@@ -42,8 +50,16 @@ export const LibraryModal = () => {
       <MediaQuery minWidth={768}>
         <div className={s.bcg}>
           <div className={s.marginDiv}>
-            <Steps type="step-1" />
-            <Steps />
+            <Steps
+              title="STEP 1."
+              underTitle="Create your own library"
+              text="Add there books which you are going to read."
+            />
+            <Steps
+              title="STEP 2."
+              underTitle="Create your first training"
+              text="Set a goal, choose period, start training."
+            />
           </div>
         </div>
       </MediaQuery>
