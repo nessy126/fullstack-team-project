@@ -34,7 +34,7 @@ const InputCalendar = (props) => {
 
   return (
     <div className={s.dropdown} ref={ulRef}>
-      <div className={s.dropdown__wrapper}>
+      <div className={s.dropdown__wrapper} onClick={handleClick}>
         <IconContext.Provider
           value={{
             className: `${s.react__fiCalendar}`,

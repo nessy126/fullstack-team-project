@@ -23,7 +23,7 @@
   background-color: var(--secondary-bg-cl);
   @include vp(mobile) {
     padding: 44px 16px 50px 17px;
-    max-width: 270px;
+    width: 270px;
   }
 
   @include vp(tablet) {

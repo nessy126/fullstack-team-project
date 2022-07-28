@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import s from "./StatisticsResults.module.scss";
 import {
   getAllBooks,
@@ -8,11 +9,10 @@ import {
 import { addStatistics } from "redux/training/trainingOperations";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
-import { AiFillCaretDown } from "react-icons/ai";
-import { toast } from "react-toastify";
 import { v4 as uuidv4 } from "uuid";
+import { MODAL_TYPES } from "assets/helpers/modal";
 
-const StatisticsResults = () => {
+const StatisticsResults = ({ setModal }) => {
   const dispatch = useDispatch();
   const [pagesRead, setPagesRead] = useState("");
   const [valueStart, setValueStart] = useState(new Date());
@@ -20,7 +20,7 @@ const StatisticsResults = () => {
   const allBooks = useSelector(getAllBooks);
   const IdTraining = useSelector(getTraininId);
   const allStatistics = useSelector(getStatistics);
-  const restSttatistics = allStatistics.filter(
+  const restStatistics = allStatistics.filter(
     (val, index, arr) => index > arr.length - 6
   );
 
@@ -31,6 +31,14 @@ const StatisticsResults = () => {
   let correctBook = allBooks?.find(
     (book) => book?.pageTotal > book?.pageFinished
   );
+
+  useEffect(() => {
+    if (correctBook === undefined && allBooks.length > 0) {
+      setModal(MODAL_TYPES.IN_TIME);
+      setPagesRead("");
+      return;
+    }
+  }, [correctBook, allBooks, setModal]);
 
   const onInput = (e) => {
     const { name, value } = e.target;
@@ -46,11 +54,6 @@ const StatisticsResults = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    if (correctBook === undefined) {
-      toast.success("Congratulations! You've read all books!");
-      setPagesRead("");
-      return;
-    }
 
     const newStatistics = {
       pagesRead: Number(pagesRead),
@@ -58,6 +61,7 @@ const StatisticsResults = () => {
       time: moment().quarter(3).format("HH:mm:ss"),
       dateNow: valueStart,
     };
+
     dispatch(addStatistics({ newStatistics, IdTraining }));
     setNewStatistics(newStatistics);
     setPagesRead("");
@@ -75,14 +79,6 @@ const StatisticsResults = () => {
                 <span className={s.iconAntenna}>
                   {moment().quarter(3).format("DD.MM.YYYY")}
                 </span>
-                <AiFillCaretDown
-                  className={s.icon}
-                  style={{
-                    width: "21",
-                    height: "11",
-                    color: "#242A37",
-                  }}
-                />
               </p>
             </div>
             <label>
@@ -92,7 +88,7 @@ const StatisticsResults = () => {
                 type="number"
                 name="number"
                 value={pagesRead}
-                title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+                title="At least one page required"
                 autoComplete="off"
                 onChange={onInput}
                 min="1"
@@ -105,7 +101,7 @@ const StatisticsResults = () => {
         </form>
         <h2 className={s.titleStatic}>STATISTICS</h2>
         <ul className={s.list}>
-          {restSttatistics?.map(({ dateShow, pagesRead, time }) => {
+          {restStatistics?.map(({ dateShow, pagesRead, time }) => {
             return (
               <li className={s.item} key={uuidv4()}>
                 <p className={s.itemData}>{dateShow}</p>
@@ -120,6 +116,10 @@ const StatisticsResults = () => {
       </section>
     </>
   );
+};
+
+StatisticsResults.propTypes = {
+  setModal: PropTypes.func,
 };
 
 export default StatisticsResults;
