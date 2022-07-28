@@ -29,9 +29,6 @@ const LoginOptions = () => {
         </Link>
       )}
       {modal && <CheckEmailModal closeResend={closeResend} resend />}
-      {/* <div style={padding: "25px"}>
-        <div style={backgroundColor = "red"}></div>
-      </div> */}
     </>
   );
 };
