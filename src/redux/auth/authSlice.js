@@ -47,8 +47,8 @@ const authSlice = createSlice({
     },
     [signUp.fulfilled]: (state, { payload }) => {
       state.user = {
-        name: payload.name,
-        email: payload.email,
+        name: payload?.name,
+        email: payload?.email,
       };
       state.isLoading = false;
       state.registerPass = true;
@@ -62,13 +62,11 @@ const authSlice = createSlice({
       state.error = null;
     },
     [login.fulfilled]: (state, { payload }) => {
-      state.user = { email: payload.user.email,
-      name: payload.user.name
-      };
+      state.user = { email: payload?.user.email, name: payload?.user.name };
       state.token = payload?.token;
       state.isLoading = false;
       state.isLoggedIn = true;
-      state.isTraining = payload.user.isTrainingActive;
+      state.isTraining = payload?.user.isTrainingActive;
     },
     [login.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -96,7 +94,7 @@ const authSlice = createSlice({
       state.user = { ...payload };
       state.isLoading = false;
       state.isLoggedIn = true;
-      state.isTraining = payload.isTrainingActive;
+      state.isTraining = payload?.isTrainingActive;
     },
     [current.rejected]: (state, { payload }) => {
       state.isLoading = false;
@@ -119,8 +117,8 @@ const authSlice = createSlice({
       state.error = null;
     },
     [addStatistics.fulfilled]: (state, { payload }) => {
-      state.training.statistics = payload.training.statistics;
-      state.training.booksList = payload.training.booksId;
+      state.training.statistics = payload?.training.statistics;
+      state.training.booksList = payload?.training.booksId;
       state.isLoading = false;
     },
     [addStatistics.rejected]: (state, { payload }) => {
@@ -137,17 +135,17 @@ const authSlice = createSlice({
       state.error = null;
       state.training = {
         ...state.training,
-        trainingID: payload._id,
-        booksList: payload.booksId,
-        startTraining: payload.startTraining,
-        endTraining: payload.endTraining,
-        factEndTraining: payload.factEndTraining,
-        amountOfDays: payload.amountOfDays,
-        amountOfPages: payload.amountOfPages,
-        amountOfBooks: payload.amountOfBooks,
-        booksLeft: payload.booksLeft,
-        pagesPerDay: payload.pagesPerDay,
-        statistics: payload.statistics,
+        trainingID: payload?._id,
+        booksList: payload?.booksId,
+        startTraining: payload?.startTraining,
+        endTraining: payload?.endTraining,
+        factEndTraining: payload?.factEndTraining,
+        amountOfDays: payload?.amountOfDays,
+        amountOfPages: payload?.amountOfPages,
+        amountOfBooks: payload?.amountOfBooks,
+        booksLeft: payload?.booksLeft,
+        pagesPerDay: payload?.pagesPerDay,
+        statistics: payload?.statistics,
       };
     },
     [getCurrentTraining.rejected]: (state, { payload }) => {
