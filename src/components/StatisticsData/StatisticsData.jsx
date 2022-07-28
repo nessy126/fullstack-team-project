@@ -14,24 +14,27 @@ import { getAllBooks, getAmountOfDays } from "redux/auth/authSelectors";
 const StatisticsData = () => {
   const allBooks = useSelector(getAllBooks);
   const amountOfDays = useSelector(getAmountOfDays);
-  let readBooks = allBooks?.filter((book) => book?.status === "finished");
+  let readBooks = allBooks?.filter((book) => book?.status === "inReading");
   const dispatch = useDispatch();
   const [modal, setModal] = useState(false);
+  const [modalType, setModalType] = useState(null);
   const { auth } = useSelector((state) => state);
 
-  const openModal = () => {
+  const openModal = (modalType) => {
+    setModalType(modalType);
     setModal(true);
   };
 
   const closeModal = () => {
     dispatch(finishTraining(auth.training.trainingID));
     setModal(false);
+    setModalType(null);
   };
 
   const arrayStatistic = [
     {
       title: "Amount of books",
-      amount: allBooks?.length || [],
+      amount: allBooks?.length || 0,
     },
     {
       title: "Amount of days",
@@ -39,7 +42,7 @@ const StatisticsData = () => {
     },
     {
       title: "Books left",
-      amount: readBooks?.length || [],
+      amount: readBooks?.length || 0,
     },
   ];
 
@@ -60,14 +63,14 @@ const StatisticsData = () => {
                   <MyGoals data={arrayStatistic} />
                   <StatisticsTabl />
                   <Chart />
-                  <StatisticsResults />
+                  <StatisticsResults setModal={openModal} />
                 </>
               )}
               {matches.large && (
                 <>
                   <div className={s.right__wrapper}>
                     <MyGoals data={arrayStatistic} />
-                    <StatisticsResults />
+                    <StatisticsResults setModal={openModal} />
                   </div>
                   <div className={s.left__wrapper}>
                     <Statistics setModal={openModal} />
@@ -80,7 +83,9 @@ const StatisticsData = () => {
           )}
         </Media>
       </section>
-      {modal && <EndTrainingModal closeModal={closeModal} />}
+      {modal && (
+        <EndTrainingModal closeModal={closeModal} modalType={modalType} />
+      )}
     </>
   );
 };
