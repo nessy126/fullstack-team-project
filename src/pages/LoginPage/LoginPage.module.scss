@@ -1,6 +1,8 @@
 @import '../../assets/sass/styles/mixin';
 
 .login {
+    position: relative;
+    width: 100%;
     background-color: var(--main-bg-cl);
 
     @include vp(desktop) {

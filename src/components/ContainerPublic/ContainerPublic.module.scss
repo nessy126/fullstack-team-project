@@ -1,0 +1,21 @@
+@import '/src/assets/sass/styles/mixin';
+
+.container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include vp(mobile) {
+        width: 320px;
+    }
+
+    @include vp(tablet) {
+        width: 768px;
+    }
+
+    @include vp(desktop) {
+        width: 1280px;
+    }
+
+
+}
