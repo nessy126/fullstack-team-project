@@ -27,8 +27,12 @@ export const login = createAsyncThunk(
       const res = await authAPI.loginApi(user);
       return res;
     } catch (error) {
-      toast.error("Wrong email or password");
-      return rejectWithValue(error);
+      const { status } = error.response;
+      if (status === 401) {
+        return toast.error("Unverified email");
+      }
+      toast.error("Wrong email/password");
+      rejectWithValue(error);
     }
   }
 );
@@ -46,7 +50,7 @@ export const current = createAsyncThunk(
       const res = await authAPI.currentApi(auth);
       return res;
     } catch (error) {
-      return rejectWithValue(error);
+      rejectWithValue(error);
     }
   }
 );
@@ -58,7 +62,7 @@ export const logout = createAsyncThunk(
       const { auth } = getState();
       await authAPI.logoutApi(auth);
     } catch (error) {
-      return rejectWithValue(error);
+      rejectWithValue(error);
     }
   }
 );
@@ -74,8 +78,7 @@ export const resendVerification = createAsyncThunk(
       const res = await authAPI.resendApi(data);
       return res;
     } catch (error) {
-      toast.error("Wrong !");
-      return rejectWithValue(error);
+      rejectWithValue(error);
     }
   }
 );
