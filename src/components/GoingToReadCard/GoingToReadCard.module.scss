@@ -61,12 +61,20 @@
   color: var(--main-text-cl);
   width: 154px;
   overflow-wrap: break-word;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
 
   @media screen and (min-width: 768px) {
     width: 190px;
     margin-right: 75px;
     font-size: 14px;
     line-height: 1.5;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
   }
 
   @media screen and (min-width: 1280px) {
