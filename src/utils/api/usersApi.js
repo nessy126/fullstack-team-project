@@ -1,5 +1,6 @@
 import axios from "axios";
 import api from "./api";
+import { toast } from "react-toastify";
 
 api();
 
@@ -64,5 +65,8 @@ export const resendApi = (email) => {
   return axios
     .post(endPoint + "verify", email)
     .then((res) => res.data)
-    .catch((error) => console.log(error));
+    .catch((error) => {
+      toast.error("Verification already passing !");
+      console.log(error);
+    });
 };

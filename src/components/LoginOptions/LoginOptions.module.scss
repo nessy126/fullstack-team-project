@@ -1,0 +1,18 @@
+@import 'assets/sass/styles/mixin';
+
+.textResend {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    color: var(--secondary-text-cl);
+    text-align: center;
+    @include font(500, 13px, 38px)
+}
+
+.changePage {
+    composes: textResend;
+    margin-top: 5px;
+    color: var(--accent-active-cl);
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+}

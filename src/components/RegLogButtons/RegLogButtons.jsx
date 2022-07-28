@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 
-import LoginOptions from "./LoginOptions";
+import LoginOptions from "components/LoginOptions";
 
 import s from "./RegLogButtons.module.scss";
 

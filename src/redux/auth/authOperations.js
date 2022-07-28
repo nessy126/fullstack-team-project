@@ -74,6 +74,7 @@ export const resendVerification = createAsyncThunk(
       const res = await authAPI.resendApi(data);
       return res;
     } catch (error) {
+      toast.error("Wrong !");
       return rejectWithValue(error);
     }
   }

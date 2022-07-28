@@ -1,4 +1,4 @@
-@import '../../assets/sass/styles/mixin';
+@import 'assets/sass/styles/mixin';
 
 .buttons {
     display: flex;
@@ -23,26 +23,27 @@
 }
 
 
-.text{
+.textResend{
     // margin-top: 5px;
+    color: var(--secondary-text-cl);
     padding: 10px;
     @include font(500, 13px, 38px)
 }
 
-.changePage {
-    composes: text;
-    margin-top: 5px;
-    color: var(--accent-active-cl);
-    text-decoration: underline;
-    cursor: pointer;
-    text-align: center;
-}
 
-.alreadyReg {
+.alreadyReg  {
     margin-top: 5px;
     margin-bottom: 20px;
     color: var(--secondary-text-cl);
     text-align: center;
     @include font(500, 13px, 38px)
     
+}
+.changePage {
+    composes: alreadyReg;
+    margin-top: 5px;
+    color: var(--accent-active-cl);
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
 }
