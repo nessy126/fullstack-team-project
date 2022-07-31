@@ -1,4 +1,5 @@
 import s from "./MyGoals.module.scss";
+import PlanTitle from "components/PlanTitle";
 import { useSelector } from "react-redux";
 import { getStatusIsTraining } from "redux/auth/authSelectors";
 import PropTypes from "prop-types";
@@ -10,11 +11,7 @@ const MyGoals = ({ data }) => {
     <>
       {!statusIsTraining ? (
         <div className={s.goal__wrapper__plan}>
-          <div className={s.top__wrapper}>
-            <div className={s.title__wrapper}>
-              <h3 className={s.title}>My goals</h3>
-            </div>
-          </div>
+          <PlanTitle text="My goals" />
           <ul className={s.list__plan}>
             {data.map(({ title, amount }) => {
               return (
@@ -28,11 +25,7 @@ const MyGoals = ({ data }) => {
         </div>
       ) : (
         <div className={s.goal__wrapper__statistic}>
-          <div className={s.top__wrapper}>
-            <div className={s.title__wrapper}>
-              <h3 className={s.title}>My goals</h3>
-            </div>
-          </div>
+          <PlanTitle text="My goals" />
           <ul className={s.list__statistic}>
             {data.map(({ title, amount }) => {
               return (

@@ -1,0 +1,39 @@
+@import "../../assets/sass/main.scss";
+.top__wrapperPlan {
+  width: 100%;
+}
+.title__wrapperPlan {
+  width: 100%;
+  background-color: var(--training-bg-cl);
+  color: var(--main-bg-cl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 11px;
+  padding-bottom: 11px;
+}
+.title {
+  @include font(600, 20px, 1.9);
+}
+.top__wrapperGoal {
+  width: 100%;
+  @include vp(tablet) {
+    padding-bottom: 14px;
+  }
+  @include vp(desktop) {
+    padding-bottom: 0;
+  }
+}
+.title__wrapperGoal {
+  width: 100%;
+  background-color: var(--training-bg-cl);
+  color: var(--main-bg-cl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 11px;
+  padding-bottom: 11px;
+  @include vp(tablet) {
+    width: 275px;
+  }
+}
