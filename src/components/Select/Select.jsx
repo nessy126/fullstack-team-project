@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useMouseClose } from "hooks/useCloseSelect";
 import { useCloseByEsc } from "hooks/useCloseByEsc";
-import ButtonIcon from "components/ButtonIcon";
+import ButtonReactIcon from "components/ButtonReactIcon";
+import { AiFillCaretDown } from "react-icons/ai";
 import PropTypes from "prop-types";
 import s from "./Select.module.scss";
 
@@ -75,7 +76,9 @@ const Select = ({ books, onGetSelectBook, resetInput, getFalseForReset }) => {
             placeholder="Choose books from the library"
           />
         )}
-        <ButtonIcon onClick={handleClick} type="caretDown" />
+        <ButtonReactIcon onClick={handleClick} name="caretDown">
+          <AiFillCaretDown />
+        </ButtonReactIcon>
       </div>
       {isActive && (
         <ul className={s.dropdown__content}>

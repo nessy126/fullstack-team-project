@@ -8,11 +8,13 @@ import Select from "components/Select";
 import PlaningTabl from "components/PlainingTabl";
 import Chart from "components/Chart";
 import ButtonIcon from "components/ButtonIcon";
+import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { addTraining } from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
 import { get, remove, updateStorage } from "utils/localStorage/localStorage";
 import { STORAGE_KEY } from "assets/const";
 import s from "./TrainingData.module.scss";
+import ButtonReactIcon from "components/ButtonReactIcon";
 
 const TrainingData = () => {
   const dispatch = useDispatch();
@@ -182,7 +184,9 @@ const TrainingData = () => {
               <>
                 {hideRightPart && (
                   <>
-                    <ButtonIcon onClick={toglMobileTraining} type="arrow" />
+                    <ButtonReactIcon onClick={toglMobileTraining} name="arrow">
+                      <HiOutlineArrowNarrowLeft />
+                    </ButtonReactIcon>
                     <PlanForm
                       addStartTraining={addStartTraining}
                       addEndTraining={addEndTraining}
@@ -196,17 +200,10 @@ const TrainingData = () => {
                         selected={selected}
                         onGetSelectBook={onGetSelectBook}
                       />
-                      {showBtnAdd ? (
-                        <ButtonIcon
-                          type="addActive"
-                          onClick={handleAddSelected}
-                        />
-                      ) : (
-                        <ButtonIcon
-                          type="addDisabled"
-                          onClick={handleAddSelected}
-                        />
-                      )}
+                      <ButtonIcon
+                        type={showBtnAdd ? "addActive" : "addDisabled"}
+                        onClick={handleAddSelected}
+                      />
                     </div>
                   </>
                 )}
@@ -221,7 +218,9 @@ const TrainingData = () => {
                       <ButtonIcon onClick={clickOnStartBtn} type="btnStart" />
                     )}
                     <Chart />
-                    <ButtonIcon onClick={toglMobileTraining} type="plus" />
+                    <ButtonReactIcon onClick={toglMobileTraining} name="plus">
+                      <HiOutlinePlus />
+                    </ButtonReactIcon>
                   </>
                 )}
               </>
@@ -245,17 +244,10 @@ const TrainingData = () => {
                       resetInput={resetInput}
                       getFalseForReset={getFalseForReset}
                     />
-                    {showBtnAdd ? (
-                      <ButtonIcon
-                        type="addActive"
-                        onClick={handleAddSelected}
-                      />
-                    ) : (
-                      <ButtonIcon
-                        type="addDisabled"
-                        onClick={handleAddSelected}
-                      />
-                    )}
+                    <ButtonIcon
+                      type={showBtnAdd ? "addActive" : "addDisabled"}
+                      onClick={handleAddSelected}
+                    />
                   </div>
                   <PlaningTabl
                     books={listPlainingBooks}

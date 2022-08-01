@@ -1,38 +1,5 @@
 @import "../../assets/sass/main.scss";
 
-.button__arrow {
-  border: none;
-  background-color: transparent;
-  width: 30px;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-.icon__arrow {
-  color: var(--accent-active-cl);
-}
-.button__plus {
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 52px;
-  height: 52px;
-  border: none;
-  border-radius: 50%;
-  background-color: var(--accent-active-cl);
-  &:hover,
-  &:focus {
-    background-color: var(--accent-active-cl-hover);
-  }
-}
-.react__icon {
-  color: var(--main-bg-cl);
-  position: relative;
-  top: 0;
-  right: 0;
-}
-
 .select__button {
   @include font(500, 14px, 2.71);
   color: var(--additional-text-cl);
