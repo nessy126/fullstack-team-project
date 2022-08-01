@@ -7,7 +7,7 @@ import PlanForm from "components/PlanForm";
 import Select from "components/Select";
 import PlaningTabl from "components/PlainingTabl";
 import Chart from "components/Chart";
-import ButtonIcon from "components/ButtonIcon";
+import ButtonText from "components/ButtonText";
 import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { addTraining } from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
@@ -200,9 +200,11 @@ const TrainingData = () => {
                         selected={selected}
                         onGetSelectBook={onGetSelectBook}
                       />
-                      <ButtonIcon
-                        type={showBtnAdd ? "addActive" : "addDisabled"}
+                      <ButtonText
+                        disabled={showBtnAdd}
+                        name="select__button"
                         onClick={handleAddSelected}
+                        text="Add"
                       />
                     </div>
                   </>
@@ -215,7 +217,11 @@ const TrainingData = () => {
                       handleDelBook={handleDelBook}
                     />
                     {hideBtnStart && (
-                      <ButtonIcon onClick={clickOnStartBtn} type="btnStart" />
+                      <ButtonText
+                        name="start__button"
+                        onClick={clickOnStartBtn}
+                        text="Start training"
+                      />
                     )}
                     <Chart />
                     <ButtonReactIcon onClick={toglMobileTraining} name="plus">
@@ -244,9 +250,11 @@ const TrainingData = () => {
                       resetInput={resetInput}
                       getFalseForReset={getFalseForReset}
                     />
-                    <ButtonIcon
-                      type={showBtnAdd ? "addActive" : "addDisabled"}
+                    <ButtonText
+                      disabled={showBtnAdd}
+                      name="select__button"
                       onClick={handleAddSelected}
+                      text="Add"
                     />
                   </div>
                   <PlaningTabl
@@ -254,7 +262,11 @@ const TrainingData = () => {
                     handleDelBook={handleDelBook}
                   />
                   {hideBtnStart && (
-                    <ButtonIcon onClick={clickOnStartBtn} type="btnStart" />
+                    <ButtonText
+                      name="start__button"
+                      onClick={clickOnStartBtn}
+                      text="Start training"
+                    />
                   )}
                   <Chart />
                 </div>

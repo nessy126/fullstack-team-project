@@ -72,11 +72,6 @@ const PlainingItem = ({ type, book, deletItemFromList }) => {
           >
             <MdOutlineDeleteOutline />
           </ButtonReactIcon>
-          {/* <ButtonIcon
-            onClick={deletItemFromList}
-            type="deleteOutlineTable"
-            id={book._id}
-          /> */}
         </>
       )}
     </li>

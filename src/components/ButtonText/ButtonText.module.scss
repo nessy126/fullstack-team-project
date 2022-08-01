@@ -28,20 +28,9 @@
   border: 1px solid var(--additional-bg-cl);
   box-shadow: none;
 }
-
-.button__wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 35px;
-  @include vp(tablet) {
-    margin-top: 40px;
-  }
-}
 .start__button {
   background-color: var(--accent-active-cl);
   color: var(--main-bg-cl);
-  // margin-bottom: 41px;
   @include font(600, 14px, 2.71);
   padding-top: 2px;
   padding-bottom: 2px;
@@ -49,6 +38,14 @@
   padding-right: 38px;
   border: none;
   transition: all 250ms linear;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35px;
+  width: 171px;
+  @include vp(tablet) {
+    margin-top: 40px;
+    width: 200px;
+  }
 }
 .start__button:hover,
 .start__button:focus {
