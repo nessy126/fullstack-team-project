@@ -2,9 +2,9 @@ import { IconContext } from "react-icons";
 import PropTypes from "prop-types";
 import s from "./ButtonReactIcon.module.scss";
 
-const ButtonReactIcon = ({ onClick, name, children }) => {
+const ButtonReactIcon = ({ onClick, name, children, id }) => {
   return (
-    <button className={s[name]} type="button" onClick={onClick}>
+    <button className={s[name]} type="button" onClick={onClick} id={id}>
       <IconContext.Provider
         value={{
           className: `${s.icon}`,
@@ -23,6 +23,7 @@ const ButtonReactIcon = ({ onClick, name, children }) => {
 ButtonReactIcon.propTypes = {
   onClick: PropTypes.func.isRequired,
   name: PropTypes.string.isRequired,
+  id: PropTypes.string,
   children: PropTypes.any.isRequired,
 };
 
