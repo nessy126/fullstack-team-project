@@ -4,7 +4,6 @@ import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 
-import Container from "components/Container";
 import PublicRoute from "components/PublicRoute";
 import PrivateRoute from "components/PrivateRoute";
 import Loader from "components/Loader";
@@ -32,34 +31,32 @@ function App() {
   return (
     <>
       <Header />
-      <Container>
-        <Suspense fallback={<Loader />}>
-          <Routes>
-            <Route element={<PublicRoute />}>
-              <Route path="/" exact element={<HomePage />} />
-              <Route path="/login" exact element={<LoginPage />} />
-              <Route path="/register" exact element={<RegisterPage />} />
-            </Route>
-            <Route element={<PrivateRoute />}>
-              <Route path="/training" element={<TrainingPage />} />
-              <Route path="/library" element={<LibraryPage />} />
-            </Route>
-            <Route path="*" element={<NotFoundPage />} />
-          </Routes>
-        </Suspense>
-        <ToastContainer
-          position="top-right"
-          autoClose={4000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggablePercent={60}
-          pauseOnHover
-          limit={3}
-        />
-      </Container>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route element={<PublicRoute />}>
+            <Route path="/" exact element={<HomePage />} />
+            <Route path="/login" exact element={<LoginPage />} />
+            <Route path="/register" exact element={<RegisterPage />} />
+          </Route>
+          <Route element={<PrivateRoute />}>
+            <Route path="/training" element={<TrainingPage />} />
+            <Route path="/library" element={<LibraryPage />} />
+          </Route>
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </Suspense>
+      <ToastContainer
+        position="top-right"
+        autoClose={4000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggablePercent={60}
+        pauseOnHover
+        limit={3}
+      />
     </>
   );
 }

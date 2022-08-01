@@ -5,7 +5,7 @@ import { useState } from "react";
 import CheckEmailModal from "components/CheckEmailModal";
 import Timer from "components/Timer";
 
-import s from "./RegLogButtons.module.scss";
+import s from "./LoginOptions.module.scss";
 
 const LoginOptions = () => {
   const { registerPass } = useSelector((state) => state.auth);
@@ -19,7 +19,7 @@ const LoginOptions = () => {
   return (
     <>
       {registerPass ? (
-        <p className={s.text}>
+        <p className={s.textResend}>
           Resend email confirmation
           <Timer setModal={setModal} />
         </p>
