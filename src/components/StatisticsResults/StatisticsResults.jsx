@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import ButtonText from "components/ButtonText";
 import s from "./StatisticsResults.module.scss";
 import {
   getAllBooks,
@@ -95,9 +96,7 @@ const StatisticsResults = ({ setModal }) => {
               />
             </label>
           </div>
-          <button className={s.button} type="submit">
-            Add result
-          </button>
+          <ButtonText name="result" text="Add result" type="submit" />
         </form>
         <h2 className={s.titleStatic}>STATISTICS</h2>
         <ul className={s.list}>
