@@ -27,16 +27,10 @@ export const signUpApi = (user) => {
     });
 };
 
-export const loginApi = (user) => {
-  return axios
-    .post(endPoint + "login", user)
-    .then((res) => {
-      token.set(res.data.token);
-      return res.data;
-    })
-    .catch((err) => {
-      throw err;
-    });
+export const loginApi = async (user) => {
+  const res = await axios.post(endPoint + "login", user);
+  token.set(res.data.token);
+  return res.data;
 };
 
 export const currentApi = (auth) => {
