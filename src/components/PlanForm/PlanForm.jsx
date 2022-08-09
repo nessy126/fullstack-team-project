@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { get, updateStorage } from "utils/localStorage/localStorage";
 import { STORAGE_KEY } from "assets/const";
 import InputCalendar from "components/InputCalendar";
+import PlanTitle from "components/PlanTitle";
 import s from "./PlanForm.module.scss";
 import PropTypes from "prop-types";
 
@@ -62,11 +63,7 @@ const PlanForm = ({
   return (
     <>
       <div className={s.PlanForm__wrapper}>
-        <div className={s.top__wrapper}>
-          <div className={s.title__wrapper}>
-            <h3 className={s.title}>My training</h3>
-          </div>
-        </div>
+        <PlanTitle text="My training" />
         <div className={s.calendar__wrapper}>
           <div className={s.input__wrapper}>
             <InputCalendar

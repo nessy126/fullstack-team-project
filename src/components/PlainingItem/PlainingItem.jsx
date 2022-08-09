@@ -2,7 +2,8 @@ import s from "./PlainingItem.module.scss";
 import { MdMenuBook } from "react-icons/md";
 import { IconContext } from "react-icons";
 import PropTypes from "prop-types";
-import ButtonIcon from "components/ButtonIcon";
+import ButtonReactIcon from "components/ButtonReactIcon";
+import { MdOutlineDeleteOutline } from "react-icons/md";
 
 const PlainingItem = ({ type, book, deletItemFromList }) => {
   return (
@@ -24,11 +25,13 @@ const PlainingItem = ({ type, book, deletItemFromList }) => {
               </IconContext.Provider>
             </div>
             <div className={s.column__title}>{book.title}</div>
-            <ButtonIcon
+            <ButtonReactIcon
               onClick={deletItemFromList}
-              type="deleteOutlineColumn"
+              name="deleteOutlineColumn"
               id={book._id}
-            />
+            >
+              <MdOutlineDeleteOutline />
+            </ButtonReactIcon>
           </div>
           <div className={s.column__flex}>
             <div className={s.column__right}>Author:</div>
@@ -62,11 +65,13 @@ const PlainingItem = ({ type, book, deletItemFromList }) => {
           <div className={s.table__author}>{book.author}</div>
           <div className={s.table__year}>{book.year}</div>
           <div className={s.table__pagesTotal}>{book.pageTotal}</div>
-          <ButtonIcon
+          <ButtonReactIcon
             onClick={deletItemFromList}
-            type="deleteOutlineTable"
+            name="deleteOutlineTable"
             id={book._id}
-          />
+          >
+            <MdOutlineDeleteOutline />
+          </ButtonReactIcon>
         </>
       )}
     </li>

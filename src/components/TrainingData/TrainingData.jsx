@@ -7,7 +7,9 @@ import PlanForm from "components/PlanForm";
 import Select from "components/Select";
 import PlaningTabl from "components/PlainingTabl";
 import Chart from "components/Chart";
-import ButtonIcon from "components/ButtonIcon";
+import ButtonText from "components/ButtonText";
+import ButtonReactIcon from "components/ButtonReactIcon";
+import { HiOutlinePlus, HiOutlineArrowNarrowLeft } from "react-icons/hi";
 import { addTraining } from "redux/training/trainingOperations";
 import bookSelectors from "redux/book/bookSelectors";
 import { get, remove, updateStorage } from "utils/localStorage/localStorage";
@@ -182,7 +184,9 @@ const TrainingData = () => {
               <>
                 {hideRightPart && (
                   <>
-                    <ButtonIcon onClick={toglMobileTraining} type="arrow" />
+                    <ButtonReactIcon onClick={toglMobileTraining} name="arrow">
+                      <HiOutlineArrowNarrowLeft />
+                    </ButtonReactIcon>
                     <PlanForm
                       addStartTraining={addStartTraining}
                       addEndTraining={addEndTraining}
@@ -196,17 +200,12 @@ const TrainingData = () => {
                         selected={selected}
                         onGetSelectBook={onGetSelectBook}
                       />
-                      {showBtnAdd ? (
-                        <ButtonIcon
-                          type="addActive"
-                          onClick={handleAddSelected}
-                        />
-                      ) : (
-                        <ButtonIcon
-                          type="addDisabled"
-                          onClick={handleAddSelected}
-                        />
-                      )}
+                      <ButtonText
+                        disabled={showBtnAdd}
+                        name="select__button"
+                        onClick={handleAddSelected}
+                        text="Add"
+                      />
                     </div>
                   </>
                 )}
@@ -218,10 +217,16 @@ const TrainingData = () => {
                       handleDelBook={handleDelBook}
                     />
                     {hideBtnStart && (
-                      <ButtonIcon onClick={clickOnStartBtn} type="btnStart" />
+                      <ButtonText
+                        name="start__button"
+                        onClick={clickOnStartBtn}
+                        text="Start training"
+                      />
                     )}
                     <Chart />
-                    <ButtonIcon onClick={toglMobileTraining} type="plus" />
+                    <ButtonReactIcon onClick={toglMobileTraining} name="plus">
+                      <HiOutlinePlus />
+                    </ButtonReactIcon>
                   </>
                 )}
               </>
@@ -245,24 +250,23 @@ const TrainingData = () => {
                       resetInput={resetInput}
                       getFalseForReset={getFalseForReset}
                     />
-                    {showBtnAdd ? (
-                      <ButtonIcon
-                        type="addActive"
-                        onClick={handleAddSelected}
-                      />
-                    ) : (
-                      <ButtonIcon
-                        type="addDisabled"
-                        onClick={handleAddSelected}
-                      />
-                    )}
+                    <ButtonText
+                      disabled={showBtnAdd}
+                      name="select__button"
+                      onClick={handleAddSelected}
+                      text="Add"
+                    />
                   </div>
                   <PlaningTabl
                     books={listPlainingBooks}
                     handleDelBook={handleDelBook}
                   />
                   {hideBtnStart && (
-                    <ButtonIcon onClick={clickOnStartBtn} type="btnStart" />
+                    <ButtonText
+                      name="start__button"
+                      onClick={clickOnStartBtn}
+                      text="Start training"
+                    />
                   )}
                   <Chart />
                 </div>

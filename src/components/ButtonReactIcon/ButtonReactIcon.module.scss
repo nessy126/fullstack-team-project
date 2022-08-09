@@ -1,0 +1,81 @@
+@import "../../assets/sass/main.scss";
+
+.arrow {
+  border: none;
+  background-color: transparent;
+  width: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.arrow .icon {
+  color: var(--accent-active-cl);
+}
+.plus {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 52px;
+  height: 52px;
+  padding: 17px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--accent-active-cl);
+  &:hover,
+  &:focus {
+    background-color: var(--accent-active-cl-hover);
+  }
+}
+.plus .icon {
+  color: var(--main-bg-cl);
+  position: relative;
+  top: 0;
+  right: 0;
+}
+.caretDown {
+  border: none;
+  background-color: transparent;
+  color: var(--main-text-cl);
+  width: 15px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  transition: all 250ms linear;
+}
+.caretDown:hover,
+.caretDown:focus {
+  color: var(--accent-active-cl);
+}
+.caretDown:active {
+  color: var(--accent-active-cl-hover);
+}
+.caretDown .icon {
+  width: 10%;
+}
+.deleteOutlineColumn {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: none;
+  background-color: transparent;
+  width: 27px;
+  height: 18px;
+  padding-left: 13px;
+}
+.deleteOutlineColumn .icon {
+  color: var(--placeholder-text-cl);
+}
+
+.deleteOutlineTable {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  border: none;
+  background-color: transparent;
+  width: 27px;
+  height: 18px;
+}
+.deleteOutlineTable .icon {
+  color: var(--placeholder-text-cl);
+}

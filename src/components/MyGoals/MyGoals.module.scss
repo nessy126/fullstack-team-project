@@ -57,33 +57,7 @@
     padding-right: 0;
     margin-bottom: 40px;
     margin-top: 39px;
-
   }
-}
-.top__wrapper {
-  width: 100%;
-  @include vp(tablet) {
-    padding-bottom: 14px;
-  }
-  @include vp(desktop) {
-    padding-bottom: 0;
-  }
-}
-.title__wrapper {
-  width: 100%;
-  background-color: var(--training-bg-cl);
-  color: var(--main-bg-cl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-top: 11px;
-  padding-bottom: 11px;
-  @include vp(tablet) {
-    width: 275px;
-  }
-}
-.title {
-  @include font(600, 20px, 1.9);
 }
 .list__plan {
   display: flex;
@@ -194,7 +168,6 @@
     padding-bottom: 31px;
   }
 }
-
 
 .list__statistic .amount {
   height: 100%;

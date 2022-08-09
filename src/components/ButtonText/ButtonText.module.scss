@@ -1,0 +1,97 @@
+@import "../../assets/sass/main.scss";
+
+.select__button {
+  @include font(500, 14px, 2.71);
+  color: var(--additional-text-cl);
+  background-color: var(--secondary-bg-cl);
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 70px;
+  padding-right: 70px;
+  border: 1px solid var(--main-text-cl);
+  transition: all 250ms linear;
+}
+.select__button:hover,
+.select__button:focus {
+  background-color: var(--scrollbar-bg-cl);
+  border: 1px solid var(--additional-bg-cl);
+  box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+}
+.select__button:active {
+  background-color: var(--training-bg-cl);
+}
+.select__button:disabled {
+  cursor: auto;
+}
+.select__button:disabled.select__button:hover {
+  background-color: var(--secondary-bg-cl);
+  border: 1px solid var(--additional-bg-cl);
+  box-shadow: none;
+}
+.start__button {
+  background-color: var(--accent-active-cl);
+  color: var(--main-bg-cl);
+  @include font(600, 14px, 2.71);
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 38px;
+  padding-right: 38px;
+  border: none;
+  transition: all 250ms linear;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 35px;
+  width: 171px;
+  @include vp(tablet) {
+    margin-top: 40px;
+    width: 200px;
+  }
+}
+.start__button:hover,
+.start__button:focus {
+  background-color: var(--accent-active-cl-hover);
+  box-shadow: 4px 4px 8px rgba(36, 42, 55, 0.15);
+}
+.start__button:active {
+  background-color: var(--training-bg-cl);
+  color: var(--accent-active-cl);
+}
+.start__button:disabled {
+  cursor: auto;
+}
+.start__button:disabled:hover,
+.start__button:disabled:focus {
+  cursor: auto;
+  background-color: var(--accent-active-cl);
+  color: var(--main-bg-cl);
+}
+
+.result {
+  display: block;
+  width: 240px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
+  margin-bottom: 25px;
+  text-align: center;
+  font-weight: 500;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 14px;
+  line-height: 38px;
+  color: var(--main-bg-cl);
+  background-color: var(--accent-active-cl);
+  border: none;
+  @include vp(tablet) {
+    margin: 0px;
+    font-weight: 600;
+    font-size: 16px;
+    align-self: flex-end;
+    height: 40px;
+  }
+  @include vp(desktop) {
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 25px;
+  }
+}

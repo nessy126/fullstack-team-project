@@ -3,7 +3,8 @@ import "react-calendar/dist/Calendar.css";
 import { useState } from "react";
 import { FiCalendar } from "react-icons/fi";
 import { IconContext } from "react-icons";
-import ButtonIcon from "components/ButtonIcon";
+import ButtonReactIcon from "components/ButtonReactIcon";
+import { AiFillCaretDown } from "react-icons/ai";
 import { useMouseClose } from "hooks/useCloseSelect";
 import s from "./InputCalendar.module.scss";
 import PropTypes from "prop-types";
@@ -49,7 +50,10 @@ const InputCalendar = (props) => {
         <div className={s.dropdown__input} placeholder="Start">
           {value?.toLocaleDateString() || placeholderText}
         </div>
-        <ButtonIcon onClick={handleClick} type="caretDown" />
+        <ButtonReactIcon onClick={handleClick} name="caretDown">
+          <AiFillCaretDown />
+        </ButtonReactIcon>
+        {/* <ButtonIcon onClick={handleClick} type="caretDown" /> */}
       </div>
       {isActive && (
         <div>
